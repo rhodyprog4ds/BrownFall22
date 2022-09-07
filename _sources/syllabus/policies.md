@@ -37,3 +37,10 @@ For specific questions, reply to a specifc comment.
 If you think we missed *where* you did something, add a comment on that line
 (on the code tab of the PR, click the plus (+) next to the line) and then post
 on the conversation tab with an overview of what you're requestion and tag @brownsarahm
+
+
+## Collaboration
+
+You may talk to other students about the general approach or ask clarifying questions about instructions by posting to the [GitHub discussions](https://github.com/rhodyprog4ds/fall-22-discuss-share-community/discussions) for our course.
+
+You may only view one another's code, when explicitly instructed to share for peer review, and only *via GitHub* by adding a classmate as a collaborator.  If you do not have permission to share your repository or an assignment is not created as a team assignment, then you may not collaborate on that assignment at the code level.  

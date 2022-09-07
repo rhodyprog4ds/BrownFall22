@@ -466,12 +466,56 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-for-loading-directly-into-a-notebook">
+   Best for loading directly into a notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-sources">
+   General Sources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets-in-many-parts">
+   Datasets in many parts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets-with-time">
+   Datasets with time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#databases">
+   Databases
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -483,6 +527,39 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-for-loading-directly-into-a-notebook">
+   Best for loading directly into a notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-sources">
+   General Sources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets-in-many-parts">
+   Datasets in many parts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets-with-time">
+   Datasets with time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#databases">
+   Databases
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -491,15 +568,57 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="data-sources">
-<h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h1>
+<span id="datasets"></span><h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h1>
+<p>This page is a semi-curated source of datasets for use in assignments.  The different sections have datasets that are good for different assignments.</p>
+<section id="best-for-loading-directly-into-a-notebook">
+<span id="basic-datasets"></span><h2>Best for loading directly into a notebook<a class="headerlink" href="#best-for-loading-directly-into-a-notebook" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.kaggle.com/datasets">Kaggle</a></p></li>
-<li><p><a class="reference external" href="https://datasetsearch.research.google.com/">Google Dataset Search</a></p></li>
-<li><p><a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UCI Data Repository</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data">Tidy Tuesday</a> inside the folder for each year there is a README file with list of the datasets. These are .csv files</p></li>
 <li><p><a class="reference external" href="https://github.com/jdorfman/awesome-json-datasets">Json Datasets</a></p></li>
-<li><p><a class="reference external" href="http://2016.padjo.org/tutorials/sqlite-data-starterpacks/#toc-social-security-administration-baby-names-1980-through-2015">Databases</a></p></li>
+<li><p><a class="reference external" href="https://nces.ed.gov/programs/digest/d19/tables_3.asp">National Center for Education Statistics Digest 2019</a> These data tables are available for download as excel and visible on the page.</p></li>
+<li><p>Lots of wikipedia pages have tables in them.</p></li>
 </ul>
-<p>If you have others please share by creating a pull request or issue on this repo (from the GitHub logo at the top right).</p>
+</section>
+<section id="general-sources">
+<h2>General Sources<a class="headerlink" href="#general-sources" title="Permalink to this headline">#</a></h2>
+<p>These may require some more work</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://insights.stackoverflow.com/survey">Stackoverflow Developer Survey</a> This data comes with readme info all packaged together in a .zip. You’ll need to unzip it first.</p></li>
+<li><p><a class="reference external" href="https://datasetsearch.research.google.com/">Google Dataset Search</a></p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets">Kaggle</a> most Kaggle datasets will require you to download and unzip them first and then you can copy them into your repo folder.</p></li>
+<li><p><a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UCI Data Repository</a> Machine Learning focused datasets, can filter by task</p></li>
+<li><p><a class="reference external" href="https://www.springboard.com/blog/data-science/15-fun-datasets-to-analyze/">A curated list of datasets by task</a> It includes datasets for cleaning, visualization, machine learning, and “data analysis” which would align with EDA in this course.</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets">Hugging Face NLP Datasets</a> lots of text datasets</p></li>
+</ul>
+</section>
+<section id="datasets-in-many-parts">
+<h2>Datasets in many parts<a class="headerlink" href="#datasets-in-many-parts" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-30">Makeup Shades</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-19">Kenya Census</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-02-09">Wealth and Income over time</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-23">UN Votes</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-04-06">Deforestation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-06-01">Survivor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-09-14">Billboard</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-06-23">Caribou Tracking</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-03-16/readme.md">Video games from steam 2021</a> and from <a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-30">2019</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-04-14">BBC Rap Artists</a></p></li>
+</ul>
+</section>
+<section id="datasets-with-time">
+<h2>Datasets with time<a class="headerlink" href="#datasets-with-time" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-02">Superbowl commercials</a></p></li>
+</ul>
+</section>
+<section id="databases">
+<h2>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://2016.padjo.org/tutorials/sqlite-data-starterpacks/">SQLite Databases</a></p></li>
+</ul>
+<p>If you have others please share by creating a pull request or issue on this repo (from the GitHub logo at the top right, <code class="docutils literal notranslate"><span class="pre">suggest</span> <span class="pre">edit</span></code>).</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
