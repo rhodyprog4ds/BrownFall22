@@ -65,7 +65,12 @@ For each skill these are defined in the [Achievement Definition Table](achieveme
 While attending synchronous class sessions, there will be understanding checks and in class exercises.
 Completing in class exercises and correctly answering questions in class can earn level 1 achievements.
 In class questions will be administered through the classroom chat platform Prismia.chat; these records will be used to update your skill progression.
-You can also earn level 1 achievements from adding annotation to a section of the class notes.
+
+
+#### Office Hours
+
+If you miss questions during class, you can make up level 1 achievements in office hours in the following two weeks.  You can earn up to 2 level 1 achievements in a single visit to office hours.  To earn them in office hours, you will be asked similar questions, but have the opportunity to answer verbally.  
+
 
 #### Assignments
 
@@ -77,7 +82,7 @@ If you will skip an assignment, please accept the GitHub assignment and then clo
 ```
 ````
 
-Assignments will each evaluate certain skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills.
+Assignments will each evaluate certain skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills. You can also make up level one achievements in assignments.  
 
 
 #### Portfolio Checks
@@ -90,7 +95,7 @@ The second portfolio check will cover skills FIXME. -->
 The third and fourth portfolio checks will cover all of the skills.
 The fourth will be due during finals. This means that, if you have achieved mastery of all of the skills by the 3rd portfolio check, you do not need to submit the fourth one.
 
-Portfolio prompts will be given throughout the class, some will be strucutred questions, others may be questions that arise in class, for which there is not time to answer.
+Portfolio prompts will be given throughout the class, some will be structured questions, others may be questions that arise in class, for which there is not time to answer.
 
 #### TLDR
 
@@ -101,7 +106,7 @@ You *could* earn a C through in class participation alone, if you make nearly ze
 (grade:calculation)=
 ### Detailed mechanics
 
-On Brightspace there are 45 Grade items that you will get a 0 or a 1 grade for. These will be revealed, so that you can view them as you have an opportunity to demonstrate each one.
+<!-- On Brightspace there are 45 Grade items that you will get a 0 or a 1 grade for. These will be revealed, so that you can view them as you have an opportunity to demonstrate each one. -->
 The table below shows the minimum number of skills at each level to earn each letter grade.  
 
 ```{code-cell} ipython3
@@ -138,7 +143,7 @@ For example, if you achieve level 2 on all of the skills and level 3 on 7 skills
 If you achieve level 3 on 14 of the skills, but only level 1 on one of the skills, that will be a B-, because the minimum number of level 2 achievements for a B is 15. In this scenario the total number of achievements is 14 at level 3, 14 at level 2 and 15 at level 3, because you have to earn achievements within a skill in sequence.
 
 The letter grade can be computed as follows
-
+<!--
 ```{code-cell} ipython3
 
 def compute_grade(num_level1,num_level2,num_level3):
@@ -210,7 +215,7 @@ assert compute_grade(15,15,15) == 'A'
 ```{code-cell} ipython3
 assert compute_grade(15,15,11) == 'A-'
 ```
-
+ -->
 
 +++
 
@@ -237,7 +242,7 @@ In this issue, include:
 This request should be no more than 7 sentences.
 
 
-Portfolio due dates will be announced well in advance and prompts for it will be released weekly.  You should spend some time working on it each week, applying what you've learned so far, from the feedback on previous assignments.  
+Portfolio due dates will be announced well in advance.  You should spend some time working on it each week, applying what you've learned so far and building on the feedback on previous assignments.  
 
 
 ### Grading Examples
@@ -273,10 +278,3 @@ This student was content with getting a B and chose to not submit a portfolio.
 
 In this example, the student struggled to understand in class and on assignments. Assignments were submitted that showed some understanding, but all had some serious mistakes, so only level 1 achievements were earned from assignments.
 The student wanted to get a B and worked hard to get the level 2 achievements on the portfolio checks.
-
-
-## Ram Tokens
-
-Ram Tokens in this course will be used as a currency for extra effort.  You can earn Ram Tokens by doing work that supports your learning or class activities, but do not directly demonstrate achievements. You can spend Ram Tokens to get extra grading.  This will be mostly applicable to Portfolio Checks.  In Checks 3 & 4, some achievements will not be eligible for grading as per the [table](portfolioskills).  However, you can exchange Ram Tokens to make more achievements eligible for assessment.  This system rewards you for putting in consistent effort, even if it takes you many tries to understand a concept.
-
-To accumulate Ram Tokens, you submit a 'Deposit' to the [Ram Token Bank: http://drsmb.co/ramtoken](http://drsmb.co/ramtoken) with a link to what you did to earn a token. To apply Ram tokens for extra grading, submit the same form, with a link to the assignment and add the Ramtoken label to the Feedback PR. 
