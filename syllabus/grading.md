@@ -82,7 +82,11 @@ If you will skip an assignment, please accept the GitHub assignment and then clo
 ```
 ````
 
-Assignments will each evaluate certain skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills. You can also make up level one achievements in assignments.  
+There will be an assignment each week. Assignments will be a chance to analyze data using the new skills and they will build so that you can get continuous practice with the skills. After your assignment is reviewed, you will get qualitative feedback on your work, and an assessment of your demonstration of the targeted skills. In an assignment, you can earn level 1 achievements in the designated skills by including an outline, you can earn level 2 by completing the analysis as prescribed.
+
+Assignments are also an opportunity to get a head start on your portfolio.  You can propose extensions of the analysis and get feedback on that proposal before you implement it. This way you can have more guidance on what goes in your portfolio and do the work for it continually.
+
+Feedback on assignments is designed to be a two way *conversation* about your work to help you become a better data science programmer.  Reading and acknowledging (reply or emoji reaction) your feedback is required. There is a limit of 2 assignments worth of unacknowledged feedback. If you have 2 unacknowledged assignments, your future assignments will not get feedback, they will be considered unsubmitted. 
 
 
 #### Portfolio Checks
@@ -93,7 +97,7 @@ The first two will cover the skills taught up until 1 week before the submission
 <!-- The first portfolio check will cover skills FIXME.
 The second portfolio check will cover skills FIXME. -->
 The third and fourth portfolio checks will cover all of the skills.
-The fourth will be due during finals. This means that, if you have achieved mastery of all of the skills by the 3rd portfolio check, you do not need to submit the fourth one.
+The fourth will be due during finals. This means that, if you have earned all of your targeted achievements by the 3rd portfolio check, you do not need to submit the fourth one.
 
 Portfolio prompts will be given throughout the class, some will be structured questions, others may be questions that arise in class, for which there is not time to answer.
 

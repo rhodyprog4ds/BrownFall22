@@ -45,13 +45,13 @@ We will use this for chatting and in-class understanding checks.
 
 On Prismia, all students see the instructor's messages, but only the Instructor and TA see student responses. 
 
-## Course Manual
+## Course Website
 
 The course manual will have content including the class policies, scheduling, class notes, assignment information, and additional resources.
-This will be linked from Brightspace and available publicly online at [rhodyprog4ds.github.io/BrownFall21/](https://rhodyprog4ds.github.io/BrownFall21/).
+This will be linked from Brightspace and available publicly online at [rhodyprog4ds.github.io/BrownFall22/](https://rhodyprog4ds.github.io/BrownFall22/).
 Links to the course reference text and code documentation will also be included here in the assignments and class notes.
 
-## GitHub Classroom
+## GitHub
 
 You will need a [GitHub](https://github.com/) Account. If you do not already have one, please [create one](https://github.com/signup) by the first day of class. If you have one, but have not used it recently, you may need to update your password and login credentials as the [Authentication rules](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github) changed over the summer.  In order to use the command line with https, you will need to [create a Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) for each device you use. In order to use the command line with SSH, set up your public key.
 
@@ -137,7 +137,12 @@ On Mac,  to install python via environment, [this article may be helpful](https:
 
 ### Textbook
 
-The text for this class is a reference book and will not be a source of assignments. It will be a helpful reference and you may be directed there for answers to questions or alternate explanations ot topics.
+The texts for this class are references and for context and will not be a source of assignments. Both are available free online, but are also relatively affordable if you want a hard copy.  
+
+[Think Like a Data Scientist](https://www.manning.com/books/think-like-a-data-scientist#toc)
+
+
+It will be a helpful reference and you may be directed there for answers to questions or alternate explanations ot topics.
 
 Python for Data Science is available free [online](https://jakevdp.github.io/PythonDataScienceHandbook/):
 
