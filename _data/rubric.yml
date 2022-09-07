@@ -54,6 +54,14 @@
   portfolios: [1,2,4]
   clo: [data]
   assignments: [4,5]
+- skill: Evaluate model performance
+  keyword: evaluate
+  aware: Explain basic performance metrics for different data science tasks
+  compentent: Apply and interpret basic model evaluation metrics to a held out test set
+  mastery: Evaluate a model with multiple metrics and cross validation
+  portfolios: [2,3,4]
+  clo: [model]
+  assignments: [6,7,8,10,11]
 - skill: Apply classification
   keyword: classification
   aware: identify and describe what classification is, apply pre-fit classification models
@@ -61,7 +69,7 @@
   mastery: fit and apply classification models and select appropriate classification models for different contexts
   portfolios: [2,3,4]
   clo: [model]
-  assignments: [6,7,10]
+  assignments: [7,10]
 - skill: Apply Regression
   keyword: regression
   aware: identify what data that can be used for regression looks like
@@ -78,14 +86,6 @@
   portfolios: [2,3,4]
   clo: [model]
   assignments: [9,11]
-- skill: Evaluate model performance
-  keyword: evaluate
-  aware: Explain basic performance metrics for different data science tasks
-  compentent: Apply and interpret basic model evaluation metrics to a held out test set
-  mastery: Evaluate a model with multiple metrics and cross validation
-  portfolios: [2,3,4]
-  clo: [model]
-  assignments: [7,8,10,11]
 - skill: Optimize model parameters
   keyword: optimize
   aware: Identify when model parameters need to be optimized
@@ -102,7 +102,7 @@
   portfolios: [3,4]
   clo: [model, communicate]
   assignments: [11,13]
-- skill: Choose representations and transoform data
+- skill: Choose representations and transform data
   keyword: representation
   aware: Identify options for representing text and categorical data in many contexts
   compentent: Apply at least one representation to transform unstructured  or inappropriately data for model fitting or summarizing
@@ -114,7 +114,7 @@
   keyword: workflow
   aware: Solve well strucutred fully specified problems with a single tool pipeline
   compentent: Solve well-strucutred, open-ended problems, apply common structure to learn new features of standard tools
-  mastery: Independenltly scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools
+  mastery: Independently scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools
   portfolios: [3,4]
   clo: [process, communicate]
   assignments: [10,11,12,13]

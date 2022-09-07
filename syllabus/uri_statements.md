@@ -1,5 +1,25 @@
 # General URI Policies
 
+## COVID/Viral Illness Precautions Statement
+
+The University is committed to delivering its educational mission while protecting the health and safety of our community. As members of the URI community, students are required to comply with standards of conduct and take precautions to keep themselves and others safe.
+
+````{margin}
+```{warning}
+not waived
+```
+````
+
+```{important}
+Masks are required in all classrooms, laboratories, and spaces where direct academic instruction and research are taking place, unless the instructor or staff member expressly waives that requirement.
+```
+
+We strongly recommend surgical or higher grade masks where face coverings are required. Masks should be properly worn, well-fitting, and high quality.
+
+Students who do not comply with the classroom/lab masking requirement will be asked to leave class and will be reported through the Student Conduct process.
+
+Students who are experiencing symptoms of viral illness should NOT go to class/work. Those who test positive for COVID-19 should follow the isolation guidelines from the Rhode Island Department of Health and CDC.
+
 
 ## Anti-Bias  Statement:
 

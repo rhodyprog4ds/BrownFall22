@@ -40,15 +40,15 @@
   gradingTime: 10h
 - week: 6
   clo: modeling
-  topics: Modeling, Naive Bayes, classification performance metrics
-  skills: [classification, evaluate]
+  topics: Modeling,  classification performance metrics, cross validation
+  skills: [ evaluate]
   assignments: [naive-bayes]
   activities: [live coding, exercises]
   completionTime: [2.5h class time;  5 hours programming; 2 hours portfolio work]
   gradingTime:
 - week: 7
   clo: modeling
-  topics: decision trees, cross validation
+  topics: Naive Bayes, decision trees
   skills: [classification, evaluate]
   assignments: [decision-tree]
   activities: [live coding, exercises]
