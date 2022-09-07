@@ -16,6 +16,8 @@ kernelspec:
 
 # Course Communications
 
+We have several different ways to communicate in this course. This section summarizes them
+
 
 ```{code-cell}
 :tags: ["remove-input"]
@@ -30,15 +32,14 @@ help_df = pd.read_csv('../_data/help_hours.csv')
 
 ## Help Hours
 
-
+<!--
 ```{code-cell}
 :tags: ["remove-input"]
 
 help_df.style.hide_index()
-```
+``` -->
 
-
-We have several different ways to communicate in this course. This section summarizes them
+TBD
 
 
 ## To reach out, By usage
