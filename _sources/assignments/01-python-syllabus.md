@@ -35,9 +35,6 @@ To do this click Issues at the top, the green "New Issue" button and then type a
 If you have trouble, check the GitHub FAQ on the left before e-mailing
 ```
 
-```{warning}
-If you have trouble with the (*)d steps, don't worry, we can help work around these later. To help us out, document the errors as bugs on your repository.
-```
 ````
 
 Your task is to:
@@ -54,11 +51,7 @@ Your task is to:
     - a basic function that uses conditionals in python will earn **level 1 python**
 1. Add the line `  - file: about/grading` in your `_toc.yml` file.
 
-````{margin}
-```{note}
-to earn **level 2 python** use pythonic code to write a loop that tests your function's correctness, by iterating over a list or dictionary. You will have many chances to earn level 2 achievement in python so this step is optional.
-```
-````
+
 
 ```{important}
 remember to add, commit, and push your changes so we can see them
@@ -83,6 +76,8 @@ remember to add, commit, and push your changes so we can see them
       letter grade with possible modifier (+/-)
     '''
 ```
+
+## Tips
 
 Here are some sample tests you could run to confirm that your function works correctly:
 ````{margin}
@@ -125,6 +120,30 @@ In your browser, view the `gh-pages` branch to see your compiled submission, as 
 
 There will be a pull request on your repository that is made by GitHub classroom, [request a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review) from @rhodypro4dg/{{ ghinstructors }}.
 
+
+## Thinking Ahead
+
+```{note}
+Thinking Ahead is an optional section you can do to get a head start on the next level achievements
+```
+
+Add a markdown file to your portfolio called `ideas.md` and start answering some of the following questions:
+
+1. Given what you know about the Data Science Process, which steps do you think you will like most? least?
+1. What steps will use the most domain knowledge?
+1. What applications of data science do you have domain knowledge for? 
+
+````{margin}
+```{note}
+to earn **level 2 python** use pythonic code to write a loop that tests your function's correctness, by iterating over a list or dictionary. You will have many chances to earn level 2 achievement in python so this step is optional.
+```
+````
+
+````{margin}
+```{note}
+to earn **level 2 python** use pythonic code to write a loop that tests your function's correctness, by iterating over a list or dictionary. You will have many chances to earn level 2 achievement in python so this step is optional.
+```
+````
 <!-- ## Solutions
 
 One solution is added to the [Detailed Mechanics](grade:calculation) part of the Grading section of the syllabus. -->
