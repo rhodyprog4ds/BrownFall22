@@ -75,7 +75,7 @@ On the {{ bscalendar }} page you can get a feed link to add to the calendar of y
 
 The course will meet {{ time }} in {{ location }}. Every class will include participatory live coding (instructor types code while explaining, students follow along)) instruction and small exercises for you to progress toward level 1 achievements of the new skills introduced in class that day.
 
-Programming assignments that will be due each week Tuesday by 11:59pm.
+Each Assignment will have a deadline posted on the page.  Portfolio deadlines will be announced at least 2 weeks in advance. 
 
 
 
