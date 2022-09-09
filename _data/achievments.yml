@@ -1,0 +1,178 @@
+- python-level1:
+  description: python code that mostly runs, occasional pep8 adherance
+- python-level2:
+  description:  python code that reliably runs, frequent pep8 adherance
+  components:
+    -
+- python-level3:
+  description:  reliable, efficient, pythonic code that consistently adheres to pep8
+  components:
+    -
+- process-level1:
+  description:  Identify basic components of data science
+  components:
+    -
+- process-level2:
+  description:  Describe and define each stage of the data science process
+  components:
+    -
+- process-level3:
+  description:  Compare different ways that data science can facilitate decision making
+  components:
+    -
+- access-level1:
+  description:  load data from at least one format; identify the most common data formats
+  components:
+    -
+- access-level2:
+  description:  Load data for processing from the most common formats; Compare and constrast most common formats
+  components:
+    -
+- access-level3:
+  description:  access data from both common and uncommon formats and identify best practices for formats in different contexts
+  components:
+    -
+- construct-level1:
+  description:  identify what should happen to merge datasets or when they can be merged
+  components:
+    -
+- construct-level2:
+  description:  apply basic merges
+  components:
+    -
+- construct-level3:
+  description:  merge data that is not automatically aligned
+  components:
+    -
+- summarize-level1:
+  description:  Describe the shape and structure of a dataset in basic terms
+  components:
+    -
+- summarize-level2:
+  description:  compute summary statndard statistics of a whole dataset and grouped data
+  components:
+    -
+- summarize-level3:
+  description:  Compute and interpret various summary statistics of subsets of data
+  components:
+    -
+- visualize-level1:
+  description:  identify plot types, generate basic plots from pandas
+  components:
+    -
+- visualize-level2:
+  description:  generate multiple plot types with complete labeling with pandas and seaborn
+  components:
+    -
+- visualize-level3:
+  description:  generate complex plots with pandas and plotting libraries and customize with matplotlib or additional parameters
+  components:
+    -
+- prepare-level1:
+  description:  identify if data is or is not ready for analysis, potential problems with data
+  components:
+    -
+- prepare-level2:
+  description:  apply data reshaping, cleaning, and filtering as directed
+  components:
+    -
+- prepare-level3:
+  description:  apply data reshaping, cleaning, and filtering manipulations reliably and correctly by assessing data as received
+  components:
+    -
+- evaluate-level1:
+  description:  Explain basic performance metrics for different data science tasks
+  components:
+    -
+- evaluate-level2:
+  description:  Apply and interpret basic model evaluation metrics to a held out test set
+  components:
+    -
+- evaluate-level3:
+  description:  Evaluate a model with multiple metrics and cross validation
+  components:
+    -
+- classification-level1:
+  description:  identify and describe what classification is, apply pre-fit classification models
+  components:
+    -
+- classification-level2:
+  description:  fit, apply, and interpret preselected classification model to a dataset
+  components:
+    -
+- classification-level3:
+  description:  fit and apply classification models and select appropriate classification models for different contexts
+  components:
+    -
+- regression-level1:
+  description:  identify what data that can be used for regression looks like
+  components:
+    -
+- regression-level2:
+  description:  fit and interpret linear regression models
+  components:
+    -
+- regression-level3:
+  description:  fit and explain regrularized or nonlinear regression
+  components:
+    -
+- clustering-level1:
+  description:  describe what clustering is
+  components:
+    -
+- clustering-level2:
+  description:  apply basic clustering
+  components:
+    -
+- clustering-level3:
+  description:  apply multiple clustering techniques, and interpret results
+  components:
+    -
+- optimize-level1:
+  description:  Identify when model parameters need to be optimized
+  components:
+    -
+- optimize-level2:
+  description:  Optimize basic model parameters such as model order
+  components:
+    -
+- optimize-level3:
+  description:  Select optimal parameters based of mutiple quanttiateve criteria and automate parameter tuning
+  components:
+    -
+- compare-level1:
+  description:  Qualitatively compare model classes
+  components:
+    -
+- compare-level2:
+  description:  Compare model classes in specific terms and fit models in terms of traditional model performance metrics
+  components:
+    -
+- compare-level3:
+  description:  Evaluate tradeoffs between different model comparison types
+  components:
+    -
+- representation-level1:
+  description:  Identify options for representing text and categorical data in many contexts
+  components:
+    -
+- representation-level2:
+  description:  Apply at least one representation to transform unstructured  or inappropriately data for model fitting or summarizing
+  components:
+    -
+- representation-level3:
+  description:  apply transformations in different contexts OR  compare and contrast multiple representations a single type of data in terms of model performance
+  components:
+    -
+- workflow-level1:
+  description:  Solve well strucutred fully specified problems with a single tool pipeline
+  components:
+    -
+- workflow-level2:
+  description:  Solve well-strucutred, open-ended problems, apply common structure to learn new features of standard tools
+  components:
+    -
+- workflow-level3:
+  description:  Independently scope and solve realistic data science problems OR independently learn releated tools  and describe strengths and weakensses of common tools
+  components:
+    -
