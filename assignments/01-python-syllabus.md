@@ -131,13 +131,9 @@ Add a markdown file to your portfolio called `ideas.md` and start answering some
 
 1. Given what you know about the Data Science Process, which steps do you think you will like most? least?
 1. What steps will use the most domain knowledge?
-1. What applications of data science do you have domain knowledge for? 
+1. What applications of data science do you have domain knowledge for?
 
-````{margin}
-```{note}
-to earn **level 2 python** use pythonic code to write a loop that tests your function's correctness, by iterating over a list or dictionary. You will have many chances to earn level 2 achievement in python so this step is optional.
-```
-````
+
 
 ````{margin}
 ```{note}
