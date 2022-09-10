@@ -110,15 +110,14 @@ assert compute_grade(15,15,6) =='B+'
 
 ### If using GitHub in the browser only
 Create a Jupyter Notebook with your function in a portfolio folder on your computer
-where you will save all of your work for the portfolio.  Then upload it to GitHub.
+where you will save all of your work for the portfolio.  Then upload it to GitHub, 
+[following GitHub instructions for adding a file](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 
 ### If using git offline
 Create a Jupyter Notebook with your function in your portfolio folder, then add,
 commit, and push the changes.
 
 In your browser, view the `gh-pages` branch to see your compiled submission, as `portfolio.pdf` or by viewing your website.
-
-There will be a pull request on your repository that is made by GitHub classroom, [request a review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/requesting-a-pull-request-review) from @rhodypro4dg/{{ ghinstructors }}.
 
 
 ## Thinking Ahead
