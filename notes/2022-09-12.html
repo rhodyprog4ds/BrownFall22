@@ -1,0 +1,1978 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Reading Docstrings, Object Inspection, and Loading Data &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="2. Data Science and Course Logistics" href="2022-09-09.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-09.html">
+   2. Data Science and Course Logistics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-09-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-09-12.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-09-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-09-12.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-09-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-is-a-practice">
+   3.1. Programming is a Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-inspection-in-code">
+     3.1.1. Why inspection in code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#investigating-how-doc-strings-work">
+     3.1.2. Investigating how doc strings work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coffee-data">
+   3.2. Coffee Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-in-data">
+   3.3. Loading in Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#good-code-is-always-relative">
+   3.4. Good Code is always relative
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   3.5. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-the-course">
+     3.5.1. About the Course
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
+       3.5.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-portfolio-checks-work">
+       3.5.1.2. How do portfolio checks work?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-much-stats-will-we-do-in-this-class">
+       3.5.1.3. how much stats will we do in this class?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
+       3.5.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-jupyter">
+     3.5.2. About Jupyter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
+       3.5.2.1. Can you interact with those data tables that we put on jupyter today in real time?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
+       3.5.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
+       3.5.2.3. Can you show how to launch a book another day after we saved it and come back to it?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-just-put-anything-in-the-docstring">
+       3.5.2.4. can you just put anything in the docstring?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
+       3.5.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-considered-scraped-data">
+       3.5.2.6. What is considered scraped data?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-rest-of-this-week">
+     3.5.3. Questions we will answer in the rest of this week
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Reading Docstrings, Object Inspection, and Loading Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-is-a-practice">
+   3.1. Programming is a Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-inspection-in-code">
+     3.1.1. Why inspection in code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#investigating-how-doc-strings-work">
+     3.1.2. Investigating how doc strings work
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coffee-data">
+   3.2. Coffee Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-in-data">
+   3.3. Loading in Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#good-code-is-always-relative">
+   3.4. Good Code is always relative
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   3.5. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-the-course">
+     3.5.1. About the Course
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
+       3.5.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-portfolio-checks-work">
+       3.5.1.2. How do portfolio checks work?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-much-stats-will-we-do-in-this-class">
+       3.5.1.3. how much stats will we do in this class?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
+       3.5.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-jupyter">
+     3.5.2. About Jupyter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
+       3.5.2.1. Can you interact with those data tables that we put on jupyter today in real time?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
+       3.5.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
+       3.5.2.3. Can you show how to launch a book another day after we saved it and come back to it?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-just-put-anything-in-the-docstring">
+       3.5.2.4. can you just put anything in the docstring?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
+       3.5.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-considered-scraped-data">
+       3.5.2.6. What is considered scraped data?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-rest-of-this-week">
+     3.5.3. Questions we will answer in the rest of this week
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="reading-docstrings-object-inspection-and-loading-data">
+<h1><span class="section-number">3. </span>Reading Docstrings, Object Inspection, and Loading Data<a class="headerlink" href="#reading-docstrings-object-inspection-and-loading-data" title="Permalink to this headline">#</a></h1>
+<section id="programming-is-a-practice">
+<h2><span class="section-number">3.1. </span>Programming is a Practice<a class="headerlink" href="#programming-is-a-practice" title="Permalink to this headline">#</a></h2>
+<p>Python has a <code class="docutils literal notranslate"><span class="pre">print</span></code> function and we can use the help in jupyter to learn about
+how to use it in different ways.</p>
+<p>Given this code excerpt, how could you print out “Sarah_Brown”?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;Sarah&#39;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s1">&#39;Brown&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can print the docstring out, as a whole instead of using the shfit + tab to view it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first line says that it can take multiple values, because it says <code class="docutils literal notranslate"><span class="pre">value,</span> <span class="pre">...,</span> <span class="pre">sep</span></code></p>
+<p>It also has a
+keyword argument (must be used like <code class="docutils literal notranslate"><span class="pre">argument=value</span></code> and has a default) described as  <code class="docutils literal notranslate"><span class="pre">sep='</span> <span class="pre">'</span></code>.
+This means that by default it adds a space as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="n">last</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sarah Brown
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="n">last</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sarah_Brown
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_grade</span><span class="p">(</span><span class="n">num_level1</span><span class="p">,</span><span class="n">num_level2</span><span class="p">,</span><span class="n">num_level3</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Computes a grade for CSC/DSP310 from numbers of achievements at each level</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ------------</span>
+<span class="sd">    num_level1 : int</span>
+<span class="sd">      number of level 1 achievements earned</span>
+<span class="sd">    num_level2 : int</span>
+<span class="sd">      number of level 2 achievements earned</span>
+<span class="sd">    num_level3 : int</span>
+<span class="sd">      number of level 3 achievements earned</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    letter_grade : string</span>
+<span class="sd">      letter grade with modifier (+/-)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">num_level1</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">num_level2</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num_level3</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+            <span class="k">elif</span> <span class="n">num_level3</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;A-&#39;</span>
+            <span class="k">elif</span> <span class="n">num_level3</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
+                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B+&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
+        <span class="k">elif</span> <span class="n">num_level2</span> <span class="o">&gt;=</span><span class="mi">10</span><span class="p">:</span>
+            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B-&#39;</span>
+        <span class="k">elif</span> <span class="n">num_level2</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
+            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C+&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C-&#39;</span>
+    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;D+&#39;</span>
+    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+
+
+    <span class="k">return</span> <span class="n">grade</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">3187590259.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">())</span>
+
+<span class="ne">TypeError</span>: compute_grade() missing 3 required positional arguments: &#39;num_level1&#39;, &#39;num_level2&#39;, and &#39;num_level3&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="why-inspection-in-code">
+<h3><span class="section-number">3.1.1. </span>Why inspection in code?<a class="headerlink" href="#why-inspection-in-code" title="Permalink to this headline">#</a></h3>
+<p>Some IDEs give you GUI based tools to inspect objects. We are going to do it programmatically inline with our analyses for two reasons.</p>
+<p>(minor, logistical) it helps make for good notes
+(most importantly) it helps build habits of data science</p>
+</section>
+<section id="investigating-how-doc-strings-work">
+<h3><span class="section-number">3.1.2. </span>Investigating how doc strings work<a class="headerlink" href="#investigating-how-doc-strings-work" title="Permalink to this headline">#</a></h3>
+<p>We can see how the docstring impacts help and how exactly it has to be formatted to become a docstring</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_1</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_1</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">1576687116.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_1</span><span class="p">())</span>
+
+<span class="ne">TypeError</span>: ex_1() missing 1 required positional argument: &#39;a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_2</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="c1">#nis htis a docstring?</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_2</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">3614324986.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_2</span><span class="p">())</span>
+
+<span class="ne">TypeError</span>: ex_2() missing 1 required positional argument: &#39;a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_3</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; this is a docstring&#39;&#39;&#39;</span>
+    <span class="c1">#nis htis a docstring?</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_3</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">980374236.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_3</span><span class="p">())</span>
+
+<span class="ne">TypeError</span>: ex_3() missing 1 required positional argument: &#39;a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_4</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;this is a docstring&quot;&quot;&quot;</span>
+    <span class="c1">#nis htis a docstring?</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_4</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">2845574773.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_4</span><span class="p">())</span>
+
+<span class="ne">TypeError</span>: ex_4() missing 1 required positional argument: &#39;a&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In python, <a class="reference external" href="https://peps.python.org/pep-0257/">PEP 257</a> says how to write a docstring, but it is very broad.</p>
+<p>In Data Science, <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc</a> style docstrings are popular.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> <a class="reference external" href="https://pandas.pydata.org/docs/development/contributing_docstring.html">follows numpydoc</a></p></li>
+<li><p>[Numpy uses it]</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">Scipy</a> <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">follows numpydoc</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="coffee-data">
+<h2><span class="section-number">3.2. </span>Coffee Data<a class="headerlink" href="#coffee-data" title="Permalink to this headline">#</a></h2>
+<p>Structured data is easier to work with than other data.</p>
+<p>We’re going to focus on tabular data for now. At the end of the course, we’ll examine images, which are structured, but more complex and text, which is much less structured.</p>
+<p>We’re going to use a dataset about <a class="reference external" href="https://github.com/jldbc/coffee-quality-database/">coffee quality</a> today.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It’s important to always know where data came from and how it was collected.</p>
+<p>This helps you know what is is useful for and what its limitations are.</p>
+<p>An important research article on documenting datasets for machine learning is called <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/datasheets-for-datasets/">Datasheets for Datasets</a> these researchers also did a <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/understanding-machine-learning-practitioners-data-documentation-perceptions-needs-challenges-and-desiderata/">follow up study</a> to better understand how practitioner use datasheets and decide how to use data.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this type of research is interesting to you, let me know!</p>
+</div>
+</aside>
+<p>How was this dataset collected?</p>
+<ul class="simple">
+<li><p>reviews added to DB</p></li>
+<li><p>then scraped</p></li>
+</ul>
+<p>Where did it come from?</p>
+<ul class="simple">
+<li><p>coffee Quality Institute’s trained reviewers.</p></li>
+</ul>
+<p>what format is it provided in?</p>
+<ul class="simple">
+<li><p>csv (Comma Separated Values)</p></li>
+</ul>
+<p>what other information is in this repository?</p>
+<ul class="simple">
+<li><p>the code to scrape and clean the data</p></li>
+<li><p>the data before cleaning</p></li>
+</ul>
+<p>Get raw url for the dataset click on the raw button on the <a class="reference external" href="https://github.com/jldbc/coffee-quality-database/blob/master/data/robusta_ratings_raw.csv">csv page</a>, then copy the url.
+<img alt="a screenshot from github of the data file page with the raw button circled in pink" src="../_images/gh_raw_file.png" /></p>
+<p>We’ll save that url as a variable to work with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/getting_started/overview.html">the pandas package overview</a> can be a good read if reading more about things helps you understand</p>
+</div>
+</aside>
+</section>
+<section id="loading-in-data">
+<h2><span class="section-number">3.3. </span>Loading in Data<a class="headerlink" href="#loading-in-data" title="Permalink to this headline">#</a></h2>
+<p>We will use a library called Pandas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">import</span></code> keyword is used for loading packages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> is the name of the package that is installed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">as</span></code> keyword allows us to assign an alias (nickname)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd</span></code> is the typical alias for pandas</p></li>
+</ul>
+<p>We can read data in using the read csv file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>1</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Arabica</td>
+      <td>grounds for health admin</td>
+      <td>Guatemala</td>
+      <td>san marcos barrancas "san cristobal cuch</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1600 - 1800 m</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>May 31st, 2011</td>
+      <td>Specialty Coffee Association</td>
+      <td>36d0d00a3724338ba7937c52a378d085f2172daa</td>
+      <td>0878a7d4b9d35ddbf0fe2ce69a2062cceb45a660</td>
+      <td>m</td>
+      <td>1600.00</td>
+      <td>1800.00</td>
+      <td>1700.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Arabica</td>
+      <td>yidnekachew dabessa</td>
+      <td>Ethiopia</td>
+      <td>yidnekachew dabessa coffee plantation</td>
+      <td>NaN</td>
+      <td>wolensu</td>
+      <td>NaN</td>
+      <td>yidnekachew debessa coffee plantation</td>
+      <td>1800-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>March 25th, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1800.00</td>
+      <td>2200.00</td>
+      <td>2000.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>1307</td>
+      <td>Arabica</td>
+      <td>juan carlos garcia lopez</td>
+      <td>Mexico</td>
+      <td>el centenario</td>
+      <td>NaN</td>
+      <td>la esperanza, municipio juchique de ferrer, ve...</td>
+      <td>1104328663</td>
+      <td>terra mia</td>
+      <td>900</td>
+      <td>...</td>
+      <td>None</td>
+      <td>20</td>
+      <td>September 17th, 2013</td>
+      <td>AMECAFE</td>
+      <td>59e396ad6e22a1c22b248f958e1da2bd8af85272</td>
+      <td>0eb4ee5b3f47b20b049548a2fd1e7d4a2b70d0a7</td>
+      <td>m</td>
+      <td>900.00</td>
+      <td>900.00</td>
+      <td>900.00</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>1308</td>
+      <td>Arabica</td>
+      <td>myriam kaplan-pasternak</td>
+      <td>Haiti</td>
+      <td>200 farms</td>
+      <td>NaN</td>
+      <td>coeb koperativ ekselsyo basen (350 members)</td>
+      <td>NaN</td>
+      <td>haiti coffee</td>
+      <td>~350m</td>
+      <td>...</td>
+      <td>Blue-Green</td>
+      <td>16</td>
+      <td>May 24th, 2013</td>
+      <td>Specialty Coffee Association</td>
+      <td>36d0d00a3724338ba7937c52a378d085f2172daa</td>
+      <td>0878a7d4b9d35ddbf0fe2ce69a2062cceb45a660</td>
+      <td>m</td>
+      <td>350.00</td>
+      <td>350.00</td>
+      <td>350.00</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>1309</td>
+      <td>Arabica</td>
+      <td>exportadora atlantic, s.a.</td>
+      <td>Nicaragua</td>
+      <td>finca las marías</td>
+      <td>017-053-0211/ 017-053-0212</td>
+      <td>beneficio atlantic condega</td>
+      <td>017-053-0211/ 017-053-0212</td>
+      <td>exportadora atlantic s.a</td>
+      <td>1100</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>5</td>
+      <td>June 6th, 2018</td>
+      <td>Instituto Hondureño del Café</td>
+      <td>b4660a57e9f8cc613ae5b8f02bfce8634c763ab4</td>
+      <td>7f521ca403540f81ec99daec7da19c2788393880</td>
+      <td>m</td>
+      <td>1100.00</td>
+      <td>1100.00</td>
+      <td>1100.00</td>
+    </tr>
+    <tr>
+      <th>1309</th>
+      <td>1310</td>
+      <td>Arabica</td>
+      <td>juan luis alvarado romero</td>
+      <td>Guatemala</td>
+      <td>finca el limon</td>
+      <td>NaN</td>
+      <td>beneficio serben</td>
+      <td>11/853/165</td>
+      <td>unicafe</td>
+      <td>4650</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>4</td>
+      <td>May 24th, 2013</td>
+      <td>Asociacion Nacional Del Café</td>
+      <td>b1f20fe3a819fd6b2ee0eb8fdc3da256604f1e53</td>
+      <td>724f04ad10ed31dbb9d260f0dfd221ba48be8a95</td>
+      <td>ft</td>
+      <td>1417.32</td>
+      <td>1417.32</td>
+      <td>1417.32</td>
+    </tr>
+    <tr>
+      <th>1310</th>
+      <td>1312</td>
+      <td>Arabica</td>
+      <td>bismarck castro</td>
+      <td>Honduras</td>
+      <td>los hicaques</td>
+      <td>103</td>
+      <td>cigrah s.a de c.v.</td>
+      <td>13-111-053</td>
+      <td>cigrah s.a de c.v</td>
+      <td>1400</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>April 28th, 2018</td>
+      <td>Instituto Hondureño del Café</td>
+      <td>b4660a57e9f8cc613ae5b8f02bfce8634c763ab4</td>
+      <td>7f521ca403540f81ec99daec7da19c2788393880</td>
+      <td>m</td>
+      <td>1400.00</td>
+      <td>1400.00</td>
+      <td>1400.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>1311 rows × 44 columns</p>
+</div></div></div>
+</div>
+<p>This read in the data and prints it out because it is the last line on the cell.
+If we do something else after, it will read it in, but not print it out</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sarah
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to use it, we save the output to a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can check the type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a new type that is provided by the pandas library.  Notice this uses the full libary name, not the alias, because this comes from the code for the library itself, not our current code where pandas as a nickname.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Species</th>
+      <th>Owner</th>
+      <th>Country.of.Origin</th>
+      <th>Farm.Name</th>
+      <th>Lot.Number</th>
+      <th>Mill</th>
+      <th>ICO.Number</th>
+      <th>Company</th>
+      <th>Altitude</th>
+      <th>...</th>
+      <th>Color</th>
+      <th>Category.Two.Defects</th>
+      <th>Expiration</th>
+      <th>Certification.Body</th>
+      <th>Certification.Address</th>
+      <th>Certification.Contact</th>
+      <th>unit_of_measurement</th>
+      <th>altitude_low_meters</th>
+      <th>altitude_high_meters</th>
+      <th>altitude_mean_meters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>0</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>1</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Arabica</td>
+      <td>grounds for health admin</td>
+      <td>Guatemala</td>
+      <td>san marcos barrancas "san cristobal cuch</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1600 - 1800 m</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>May 31st, 2011</td>
+      <td>Specialty Coffee Association</td>
+      <td>36d0d00a3724338ba7937c52a378d085f2172daa</td>
+      <td>0878a7d4b9d35ddbf0fe2ce69a2062cceb45a660</td>
+      <td>m</td>
+      <td>1600.00</td>
+      <td>1800.00</td>
+      <td>1700.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Arabica</td>
+      <td>yidnekachew dabessa</td>
+      <td>Ethiopia</td>
+      <td>yidnekachew dabessa coffee plantation</td>
+      <td>NaN</td>
+      <td>wolensu</td>
+      <td>NaN</td>
+      <td>yidnekachew debessa coffee plantation</td>
+      <td>1800-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>March 25th, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1800.00</td>
+      <td>2200.00</td>
+      <td>2000.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Arabica</td>
+      <td>metad plc</td>
+      <td>Ethiopia</td>
+      <td>metad plc</td>
+      <td>NaN</td>
+      <td>metad plc</td>
+      <td>2014/2015</td>
+      <td>metad agricultural developmet plc</td>
+      <td>1950-2200</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>April 3rd, 2016</td>
+      <td>METAD Agricultural Development plc</td>
+      <td>309fcf77415a3661ae83e027f7e5f05dad786e44</td>
+      <td>19fef5a731de2db57d16da10287413f5f99bc2dd</td>
+      <td>m</td>
+      <td>1950.00</td>
+      <td>2200.00</td>
+      <td>2075.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>1307</td>
+      <td>Arabica</td>
+      <td>juan carlos garcia lopez</td>
+      <td>Mexico</td>
+      <td>el centenario</td>
+      <td>NaN</td>
+      <td>la esperanza, municipio juchique de ferrer, ve...</td>
+      <td>1104328663</td>
+      <td>terra mia</td>
+      <td>900</td>
+      <td>...</td>
+      <td>None</td>
+      <td>20</td>
+      <td>September 17th, 2013</td>
+      <td>AMECAFE</td>
+      <td>59e396ad6e22a1c22b248f958e1da2bd8af85272</td>
+      <td>0eb4ee5b3f47b20b049548a2fd1e7d4a2b70d0a7</td>
+      <td>m</td>
+      <td>900.00</td>
+      <td>900.00</td>
+      <td>900.00</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>1308</td>
+      <td>Arabica</td>
+      <td>myriam kaplan-pasternak</td>
+      <td>Haiti</td>
+      <td>200 farms</td>
+      <td>NaN</td>
+      <td>coeb koperativ ekselsyo basen (350 members)</td>
+      <td>NaN</td>
+      <td>haiti coffee</td>
+      <td>~350m</td>
+      <td>...</td>
+      <td>Blue-Green</td>
+      <td>16</td>
+      <td>May 24th, 2013</td>
+      <td>Specialty Coffee Association</td>
+      <td>36d0d00a3724338ba7937c52a378d085f2172daa</td>
+      <td>0878a7d4b9d35ddbf0fe2ce69a2062cceb45a660</td>
+      <td>m</td>
+      <td>350.00</td>
+      <td>350.00</td>
+      <td>350.00</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>1309</td>
+      <td>Arabica</td>
+      <td>exportadora atlantic, s.a.</td>
+      <td>Nicaragua</td>
+      <td>finca las marías</td>
+      <td>017-053-0211/ 017-053-0212</td>
+      <td>beneficio atlantic condega</td>
+      <td>017-053-0211/ 017-053-0212</td>
+      <td>exportadora atlantic s.a</td>
+      <td>1100</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>5</td>
+      <td>June 6th, 2018</td>
+      <td>Instituto Hondureño del Café</td>
+      <td>b4660a57e9f8cc613ae5b8f02bfce8634c763ab4</td>
+      <td>7f521ca403540f81ec99daec7da19c2788393880</td>
+      <td>m</td>
+      <td>1100.00</td>
+      <td>1100.00</td>
+      <td>1100.00</td>
+    </tr>
+    <tr>
+      <th>1309</th>
+      <td>1310</td>
+      <td>Arabica</td>
+      <td>juan luis alvarado romero</td>
+      <td>Guatemala</td>
+      <td>finca el limon</td>
+      <td>NaN</td>
+      <td>beneficio serben</td>
+      <td>11/853/165</td>
+      <td>unicafe</td>
+      <td>4650</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>4</td>
+      <td>May 24th, 2013</td>
+      <td>Asociacion Nacional Del Café</td>
+      <td>b1f20fe3a819fd6b2ee0eb8fdc3da256604f1e53</td>
+      <td>724f04ad10ed31dbb9d260f0dfd221ba48be8a95</td>
+      <td>ft</td>
+      <td>1417.32</td>
+      <td>1417.32</td>
+      <td>1417.32</td>
+    </tr>
+    <tr>
+      <th>1310</th>
+      <td>1312</td>
+      <td>Arabica</td>
+      <td>bismarck castro</td>
+      <td>Honduras</td>
+      <td>los hicaques</td>
+      <td>103</td>
+      <td>cigrah s.a de c.v.</td>
+      <td>13-111-053</td>
+      <td>cigrah s.a de c.v</td>
+      <td>1400</td>
+      <td>...</td>
+      <td>Green</td>
+      <td>2</td>
+      <td>April 28th, 2018</td>
+      <td>Instituto Hondureño del Café</td>
+      <td>b4660a57e9f8cc613ae5b8f02bfce8634c763ab4</td>
+      <td>7f521ca403540f81ec99daec7da19c2788393880</td>
+      <td>m</td>
+      <td>1400.00</td>
+      <td>1400.00</td>
+      <td>1400.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>1311 rows × 44 columns</p>
+</div></div></div>
+</div>
+<p>If you’re curious about something, try it out, see what happens.  We’re going to use a lot of code inspection tools during class.  These are helpful both for understanding what’s going on, but the advantage to knowing how to get this information programmatically even though a different IDE would give you inspection tools  is that it helps you treat your code as data.</p>
+</section>
+<section id="good-code-is-always-relative">
+<h2><span class="section-number">3.4. </span>Good Code is always relative<a class="headerlink" href="#good-code-is-always-relative" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I added this section as notes, that was not in class today.  I said similar things last week, but this includes more references and context.</p>
+</div>
+<p>In programming for data science, we are often trying to tell a story.</p>
+<div class="tip admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>How might this goal change your code for this class relative to other code
+you have written or could imagine writing?</p>
+</div>
+<p>Python is a fully <a class="reference external" href="https://www.python.org/downloads/source/">open source project</a>
+and as such is governed by <a class="reference external" href="https://www.python.org/community/">community</a> <a class="reference external" href="https://www.python.org/psf/conduct/">standards</a> and <a class="reference external" href="https://www.python.org/dev/peps/">conventions</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Find PEP8 (note that following it is part of earning python achievements)</p>
+</div>
+<p>The <a class="reference external" href="https://docs.python.org/3/">documentation</a> for the full language is online too.</p>
+<p>Guido van Rossum was the first main developer and wrote <a class="reference external" href="https://www.python.org/doc/essays/">essays</a> about python too.</p>
+<p>it’s <a class="reference external" href="https://www.python.org/about/quotes/">pretty popular</a></p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">3.5. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="about-the-course">
+<h3><span class="section-number">3.5.1. </span>About the Course<a class="headerlink" href="#about-the-course" title="Permalink to this headline">#</a></h3>
+<section id="will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
+<h4><span class="section-number">3.5.1.1. </span>Will we further go over how to achieve level 3 achievements with more specificity?<a class="headerlink" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity" title="Permalink to this headline">#</a></h4>
+<p>Right now, you are still only able to earn level 1s and then with assignment 2 you can start earning level 2s.  After that, it will make morse sense to be able to talk about portfolios.</p>
+</section>
+<section id="how-do-portfolio-checks-work">
+<h4><span class="section-number">3.5.1.2. </span>How do portfolio checks work?<a class="headerlink" href="#how-do-portfolio-checks-work" title="Permalink to this headline">#</a></h4>
+<p>At a logistical level, you add files to your portfolio repository by a specific check date and then I grade them.</p>
+</section>
+<section id="how-much-stats-will-we-do-in-this-class">
+<h4><span class="section-number">3.5.1.3. </span>how much stats will we do in this class?<a class="headerlink" href="#how-much-stats-will-we-do-in-this-class" title="Permalink to this headline">#</a></h4>
+<p>Only a little bit.  We wil do some modeling of data and compute basic statistics, but we will not cover the underlying concepts of statistics, much.  However if you know some statistics, you will be able to extend what we cover to use them.</p>
+</section>
+<section id="is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
+<h4><span class="section-number">3.5.1.4. </span>Is there a rate at which we need to complete skill checks if we fall behind?<a class="headerlink" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind" title="Permalink to this headline">#</a></h4>
+<p>Follow the table on the Achievements page for which assignments and portfolio checks have which achievements eligible. Some assignments you can earn only 1-2 achievements others you can earn 4-5 level 2s.  It is not recommended that you skip early chances because there are future chances, though.  However, sometimes if you have an achievement already you can skip a section of an assignment.</p>
+</section>
+</section>
+<section id="about-jupyter">
+<h3><span class="section-number">3.5.2. </span>About Jupyter<a class="headerlink" href="#about-jupyter" title="Permalink to this headline">#</a></h3>
+<section id="can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
+<h4><span class="section-number">3.5.2.1. </span>Can you interact with those data tables that we put on jupyter today in real time?<a class="headerlink" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time" title="Permalink to this headline">#</a></h4>
+<p>Yes, we can manipulate the data, but we read a copy in.  We are not manipulating the version that was on GitHub.</p>
+</section>
+<section id="will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
+<h4><span class="section-number">3.5.2.2. </span>Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?<a class="headerlink" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets" title="Permalink to this headline">#</a></h4>
+<p>Yes, all!</p>
+</section>
+<section id="can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
+<h4><span class="section-number">3.5.2.3. </span>Can you show how to launch a book another day after we saved it and come back to it?<a class="headerlink" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it" title="Permalink to this headline">#</a></h4>
+<p>When you launch your server on the “home” tab you can click on the file name of a previously saved notebook to work on it again.</p>
+</section>
+<section id="can-you-just-put-anything-in-the-docstring">
+<h4><span class="section-number">3.5.2.4. </span>can you just put anything in the docstring?<a class="headerlink" href="#can-you-just-put-anything-in-the-docstring" title="Permalink to this headline">#</a></h4>
+<p>Yes, technically, but you should follow good code style guidelines.</p>
+</section>
+<section id="what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
+<h4><span class="section-number">3.5.2.5. </span>What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?<a class="headerlink" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable" title="Permalink to this headline">#</a></h4>
+<p>It would print it out, but then you don’t have a variable, so you would have to read it in again to be able to manipulate it.</p>
+</section>
+<section id="what-is-considered-scraped-data">
+<h4><span class="section-number">3.5.2.6. </span>What is considered scraped data?<a class="headerlink" href="#what-is-considered-scraped-data" title="Permalink to this headline">#</a></h4>
+<p>Data that is pulled from websites automatically. We will do some web scraping starting this week.</p>
+</section>
+</section>
+<section id="questions-we-will-answer-in-the-rest-of-this-week">
+<h3><span class="section-number">3.5.3. </span>Questions we will answer in the rest of this week<a class="headerlink" href="#questions-we-will-answer-in-the-rest-of-this-week" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>How to view a more detailed look of the data instead of it only showing the first and last few columns</p></li>
+<li><p>Could we retrieve data in all formats with one function?</p></li>
+<li><p>Can we access data like a 2d array?</p></li>
+<li><p>What is the function to check the unique values in a column?</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-09-09.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Data Science and Course Logistics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
