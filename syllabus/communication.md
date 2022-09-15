@@ -32,14 +32,14 @@ help_df = pd.read_csv('../_data/help_hours.csv')
 
 ## Help Hours
 
-<!--
+
 ```{code-cell}
 :tags: ["remove-input"]
 
 help_df.style.hide_index()
-``` -->
+```
 
-TBD
+
 
 
 ## To reach out, By usage
