@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/X2ax0dtQ)
-  date : 2020-09-21
+  date : 2022-09-21
 ---
 # Assignment 2: Practicing Python and Accessing Data
 
@@ -96,7 +96,7 @@ The term iterate is defined in the site glossary.
 ```
 
 ```{hint}
-[DataFrame objects have many input/output methods](https://pandas.pydata.org/docs/reference/io.html) beyond the read methods that we have seen so far, including methods to save a DataFrame to your computer's hard drive. Saving it to your computer makes a local (not on the internet) copy. 
+[DataFrame objects have many input/output methods](https://pandas.pydata.org/docs/reference/io.html) beyond the read methods that we have seen so far, including methods to save a DataFrame to your computer's hard drive. Saving it to your computer makes a local (not on the internet) copy.
 ```
 ````
 Import the list from the `datasets` module you created in the step above.
