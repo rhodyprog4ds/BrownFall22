@@ -1,0 +1,1818 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Iterables and Indexing &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-09.html">
+   2. Data Science and Course Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   3. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   4. Data Frames and other iterables
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-09-16.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-09-16.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-09-16.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-09-16.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-09-16.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics">
+   Logistics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignment">
+     Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grade-tracking">
+     Grade Tracking
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists-of-lists">
+   Lists of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-a-json">
+   Loading a json
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-your-repo-offline">
+   Working with your repo offline
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticate-on-mac">
+     Authenticate on Mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticate-on-windows">
+     Authenticate on Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#work-offline">
+     Work offline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Logistics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#where-do-we-find-the-grading-page">
+       where do we find the grading page?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignemnt">
+     Assignemnt
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
+       what are the keys needed on the dictionaries for the assignment?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
+       do we have to accept assignment 2 anywhere and if so how
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
+       For the purposes of the assignment should we download it locally to work with our notebooks?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#content">
+     Content
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
+       How do you locate a specific row and column from a dataframe?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
+       with data sets if there is an error with formatting and we can modify the original how would we fix it
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
+       Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-we-iterate-through-dictionaries">
+       how can we iterate through dictionaries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
+       What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-exactly-does-json-mean-do">
+       what exactly does json mean / do
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python">
+       are nested lists the only way to create DataFrames in python
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-nested-loops-work-in-the-jupyter-notebook">
+       How do nested loops work in the jupyter notebook
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Iterables and Indexing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics">
+   Logistics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignment">
+     Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grade-tracking">
+     Grade Tracking
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists-of-lists">
+   Lists of lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-a-json">
+   Loading a json
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-your-repo-offline">
+   Working with your repo offline
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticate-on-mac">
+     Authenticate on Mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticate-on-windows">
+     Authenticate on Windows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#work-offline">
+     Work offline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Logistics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#where-do-we-find-the-grading-page">
+       where do we find the grading page?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignemnt">
+     Assignemnt
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
+       what are the keys needed on the dictionaries for the assignment?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
+       do we have to accept assignment 2 anywhere and if so how
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
+       For the purposes of the assignment should we download it locally to work with our notebooks?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#content">
+     Content
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
+       How do you locate a specific row and column from a dataframe?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
+       with data sets if there is an error with formatting and we can modify the original how would we fix it
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
+       Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-can-we-iterate-through-dictionaries">
+       how can we iterate through dictionaries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
+       What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-exactly-does-json-mean-do">
+       what exactly does json mean / do
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python">
+       are nested lists the only way to create DataFrames in python
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-do-nested-loops-work-in-the-jupyter-notebook">
+       How do nested loops work in the jupyter notebook
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="iterables-and-indexing">
+<h1>Iterables and Indexing<a class="headerlink" href="#iterables-and-indexing" title="Permalink to this headline">#</a></h1>
+<section id="logistics">
+<h2>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">#</a></h2>
+<section id="assignment">
+<h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
+<p>On Assignment 2, there’s a script to run to prepare it for grading.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I missed a file in the template, so please create a file called requirements.txt that has the following contents.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+<span class="n">pyppeteer</span>
+<span class="n">pandas</span>
+<span class="n">jupytext</span>
+</pre></div>
+</div>
+</div>
+<p>Correct script file (for .githu/workflows/submit.yml)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">Prepare</span> <span class="ow">and</span> <span class="n">Submit</span>
+<span class="n">on</span><span class="p">:</span>
+  <span class="n">workflow_dispatch</span>
+
+<span class="n">jobs</span><span class="p">:</span>
+  <span class="n">generatereport</span><span class="p">:</span>
+    <span class="n">runs</span><span class="o">-</span><span class="n">on</span><span class="p">:</span> <span class="n">ubuntu</span><span class="o">-</span><span class="n">latest</span>
+    <span class="n">steps</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">uses</span><span class="p">:</span> <span class="n">actions</span><span class="o">/</span><span class="n">checkout</span><span class="nd">@v2</span>
+
+    <span class="c1"># Install dependencies</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Set</span> <span class="n">up</span> <span class="n">Python</span> <span class="mf">3.9</span>
+      <span class="n">uses</span><span class="p">:</span> <span class="n">actions</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">python</span><span class="nd">@v1</span>
+      <span class="k">with</span><span class="p">:</span>
+        <span class="n">python</span><span class="o">-</span><span class="n">version</span><span class="p">:</span> <span class="mf">3.9</span>
+
+    <span class="c1"># install dependencies</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">dependencies</span>
+      <span class="n">run</span><span class="p">:</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+    <span class="c1"># generate the report</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Convert</span> <span class="n">notebooks</span> <span class="n">to</span> <span class="n">md</span> <span class="k">for</span> <span class="n">reading</span>
+      <span class="n">run</span><span class="p">:</span> <span class="o">|</span>
+        <span class="n">jupytext</span> <span class="o">--</span><span class="n">to</span> <span class="n">myst</span> <span class="o">*.</span><span class="n">ipynb</span>
+        <span class="n">jupytext</span> <span class="o">--</span><span class="n">to</span> <span class="n">myst</span> <span class="o">*/*.</span><span class="n">ipynb</span>
+
+    <span class="c1"># compile the pdf</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Build</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">html</span> <span class="n">to</span> <span class="n">pdf</span>
+      <span class="n">run</span><span class="p">:</span> <span class="o">|</span>
+        <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">*.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">builder</span> <span class="n">pdfhtml</span>
+
+    <span class="c1"># start a pull request for it</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">Pull</span> <span class="n">Request</span>
+      <span class="n">uses</span><span class="p">:</span> <span class="n">peter</span><span class="o">-</span><span class="n">evans</span><span class="o">/</span><span class="n">create</span><span class="o">-</span><span class="n">pull</span><span class="o">-</span><span class="n">request</span><span class="nd">@v4</span>
+      <span class="k">with</span><span class="p">:</span>
+        <span class="n">commit</span><span class="o">-</span><span class="n">message</span><span class="p">:</span> <span class="s1">&#39;convert to md&#39;</span>
+        <span class="n">draft</span><span class="p">:</span> <span class="n">false</span>
+        <span class="n">branch</span><span class="p">:</span> <span class="n">published</span>
+        <span class="n">base</span><span class="p">:</span> <span class="n">main</span>
+        <span class="n">title</span><span class="p">:</span> <span class="n">Submission</span>
+</pre></div>
+</div>
+<p>Add this to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_build</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>How to apply these updates:</p>
+<iframe src="https://scribehow.com/embed/Github_Workflow__NV48Md3wQE26wpEj_ijf-A" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<p><a class="reference external" href="https://scribehow.com/shared/Github_Workflow__NV48Md3wQE26wpEj_ijf-A">full view</a></p>
+<p>To run the script</p>
+<iframe src="https://scribehow.com/embed/Manually_Run_GitHub_action__gDGjXhWyTCOr-XoMBqls7w" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<p><a class="reference external" href="https://scribehow.com/shared/Manually_Run_GitHub_action__gDGjXhWyTCOr-XoMBqls7w">see instructions in a full page</a></p>
+</section>
+<section id="grade-tracking">
+<h3>Grade Tracking<a class="headerlink" href="#grade-tracking" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Are these scribe screenshots helpful? do you want more of them?</p>
+</div>
+</aside>
+<p>Create a Project board</p>
+<iframe src="https://scribehow.com/embed/create_a_private_project__nUx_RZSATA6ZfNJsrzO22g" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<p>Then <a class="reference external" href="https://classroom.github.com/a/1jyhkSZP">create your repo</a> and  run the manual workflow on that actions tab to create issues:</p>
+<iframe src="https://scribehow.com/embed/Github_Workflow__RHLqigCcRUGAtEzTW9uoVg" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+</section>
+</section>
+<section id="lists-of-lists">
+<h2>Lists of lists<a class="headerlink" href="#lists-of-lists" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recall how indexing works with negagive numbers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topics</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;what is data science&#39;</span><span class="p">,</span> <span class="s1">&#39;jupyter&#39;</span><span class="p">,</span> <span class="s1">&#39;conditional&#39;</span><span class="p">,</span><span class="s1">&#39;functions&#39;</span><span class="p">,</span> <span class="s1">&#39;lists&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries&#39;</span><span class="p">,</span><span class="s1">&#39;pandas&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topics</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>A list we built together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can remain anonymous (this page &amp; the notes will be fully public)</span>
+<span class="c1"># by attributing it to a celebrity or psuedonym, but include *some* sort of attribution</span>
+<span class="n">sentence_list</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s2">&quot;The class is just starting to feel settled for me. - Dr. Brown&quot;</span><span class="p">,</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Hello, I like sushi! - &quot;</span><span class="p">,</span>
+<span class="s2">&quot;Why squared  aka the mask - is a computer science student.&quot;</span>
+<span class="s2">&quot;Data science is fun&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Hello my fellow gaymers - Sun Tzu&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Soccer is a sport -Obama&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Hello, I love pizza - Bear&quot;</span><span class="p">,</span>
+<span class="s2">&quot;This class is CSC/DSP 310. - Student&quot;</span><span class="p">,</span>
+<span class="s2">&quot;It is 2:21pm -&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Pizza conquers all- Beetlejuice&quot;</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ayyy whaddup wit it - frankie&quot;</span><span class="p">,</span>
+<span class="s2">&quot;This is a sentence - George W Bush&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Steam is the best place to play videogames change my mind. - Todd Howard&quot;</span><span class="p">,</span>
+<span class="s2">&quot;This is a hello -&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Hello how are you -&quot;</span><span class="p">,</span>
+<span class="s2">&quot;The monkey likes bananas. - A banana&quot;</span><span class="p">,</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Just type a random sentence - Rosa Parks&quot;</span><span class="p">,</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;I love CSC. - Everyone&quot;</span><span class="p">,</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;The quick brown fox jumps over the lazy dog - Brendan Chadwick&quot;</span><span class="p">,</span>
+<span class="s2">&quot;I like computers - David&quot;</span><span class="p">,</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Sally sells seashells by the seashore. - Narrator&quot;</span><span class="p">,</span>
+<span class="s2">&quot;I would like to take a nap. - Tom Cruise,&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can confirm this is a list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">sentence_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a list comprehension to remove the empty ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences_clean</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentence_list</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sentences_clean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;The class is just starting to feel settled for me. - Dr. Brown&#39;,
+ &#39;Hello, I like sushi! - &#39;,
+ &#39;Why squared  aka the mask - is a computer science student.Data science is fun&#39;,
+ &#39;Hello my fellow gaymers - Sun Tzu&#39;,
+ &#39;Soccer is a sport -Obama&#39;,
+ &#39;Hello, I love pizza - Bear&#39;,
+ &#39;This class is CSC/DSP 310. - Student&#39;,
+ &#39;It is 2:21pm -&#39;,
+ &#39;Pizza conquers all- Beetlejuice&#39;,
+ &#39;ayyy whaddup wit it - frankie&#39;,
+ &#39;This is a sentence - George W Bush&#39;,
+ &#39;Steam is the best place to play videogames change my mind. - Todd Howard&#39;,
+ &#39;This is a hello -&#39;,
+ &#39;Hello how are you -&#39;,
+ &#39;The monkey likes bananas. - A banana&#39;,
+ &#39;Just type a random sentence - Rosa Parks&#39;,
+ &#39;I love CSC. - Everyone&#39;,
+ &#39;The quick brown fox jumps over the lazy dog - Brendan Chadwick&#39;,
+ &#39;I like computers - David&#39;,
+ &#39;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&#39;,
+ &#39;Sally sells seashells by the seashore. - Narrator&#39;,
+ &#39;I would like to take a nap. - Tom Cruise,&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">split</span></code> method on a string to make a list of lists</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences_clean</span><span class="p">]</span>
+<span class="n">sentence_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;The class is just starting to feel settled for me. &#39;, &#39; Dr. Brown&#39;],
+ [&#39;Hello, I like sushi! &#39;, &#39; &#39;],
+ [&#39;Why squared  aka the mask &#39;,
+  &#39; is a computer science student.Data science is fun&#39;],
+ [&#39;Hello my fellow gaymers &#39;, &#39; Sun Tzu&#39;],
+ [&#39;Soccer is a sport &#39;, &#39;Obama&#39;],
+ [&#39;Hello, I love pizza &#39;, &#39; Bear&#39;],
+ [&#39;This class is CSC/DSP 310. &#39;, &#39; Student&#39;],
+ [&#39;It is 2:21pm &#39;, &#39;&#39;],
+ [&#39;Pizza conquers all&#39;, &#39; Beetlejuice&#39;],
+ [&#39;ayyy whaddup wit it &#39;, &#39; frankie&#39;],
+ [&#39;This is a sentence &#39;, &#39; George W Bush&#39;],
+ [&#39;Steam is the best place to play videogames change my mind. &#39;,
+  &#39; Todd Howard&#39;],
+ [&#39;This is a hello &#39;, &#39;&#39;],
+ [&#39;Hello how are you &#39;, &#39;&#39;],
+ [&#39;The monkey likes bananas. &#39;, &#39; A banana&#39;],
+ [&#39;Just type a random sentence &#39;, &#39; Rosa Parks&#39;],
+ [&#39;I love CSC. &#39;, &#39; Everyone&#39;],
+ [&#39;The quick brown fox jumps over the lazy dog &#39;, &#39; Brendan Chadwick&#39;],
+ [&#39;I like computers &#39;, &#39; David&#39;],
+ [&#39;The fitness gram pacer test is a multi aerobic capacity test &#39;, &#39; Matt 3&#39;],
+ [&#39;Sally sells seashells by the seashore. &#39;, &#39; Narrator&#39;],
+ [&#39;I would like to take a nap. &#39;, &#39; Tom Cruise,&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>then we can use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">DataFrame Constructor</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">sentence_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use head by default for 5</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence</th>
+      <th>attribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The class is just starting to feel settled for...</td>
+      <td>Dr. Brown</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hello, I like sushi!</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Why squared  aka the mask</td>
+      <td>is a computer science student.Data science is...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hello my fellow gaymers</td>
+      <td>Sun Tzu</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Soccer is a sport</td>
+      <td>Obama</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>or pass a nubmer to get a different  number of rows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence</th>
+      <th>attribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The class is just starting to feel settled for...</td>
+      <td>Dr. Brown</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hello, I like sushi!</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Why squared  aka the mask</td>
+      <td>is a computer science student.Data science is...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>the <code class="docutils literal notranslate"><span class="pre">loc</span></code> property can index on rows or columns, but is rows by deault</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sentence       Hello my fellow gaymers 
+attribution                     Sun Tzu
+Name: 3, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can select a range, like in base python with a colon</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence</th>
+      <th>attribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Hello my fellow gaymers</td>
+      <td>Sun Tzu</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Soccer is a sport</td>
+      <td>Obama</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Hello, I love pizza</td>
+      <td>Bear</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="loading-a-json">
+<h2>Loading a json<a class="headerlink" href="#loading-a-json" title="Permalink to this headline">#</a></h2>
+<p>We can load a json using the <code class="docutils literal notranslate"><span class="pre">read_json</span></code> method the same way we used the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhodyprog4ds_gh_events_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">rhodyprog4ds_gh_events_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>type</th>
+      <th>actor</th>
+      <th>repo</th>
+      <th>payload</th>
+      <th>public</th>
+      <th>created_at</th>
+      <th>org</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24062413651</td>
+      <td>ReleaseEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'published', 'release': {'url': 'ht...</td>
+      <td>True</td>
+      <td>2022-09-17 02:20:57+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24062409922</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'c5', 'ref_type': 'tag', 'master_branc...</td>
+      <td>True</td>
+      <td>2022-09-17 02:20:10+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24062408156</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11050969421, 'size': 2, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-17 02:19:49+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24061871790</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'notes916', 'ref_type': 'branch', 'mas...</td>
+      <td>True</td>
+      <td>2022-09-17 00:38:19+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24061861121</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11050612841, 'size': 9, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-17 00:36:35+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>24059301640</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 536680441, 'name': 'rhodyprog4ds/templa...</td>
+      <td>{'push_id': 11049245030, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-16 20:18:40+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>24059131345</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 536680441, 'name': 'rhodyprog4ds/templa...</td>
+      <td>{'push_id': 11049159313, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-16 20:06:52+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24059015304</td>
+      <td>IssueCommentEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'created', 'issue': {'url': 'https:...</td>
+      <td>True</td>
+      <td>2022-09-16 19:59:09+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>24058673898</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11048924194, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-16 19:35:33+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>24058662450</td>
+      <td>IssueCommentEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'created', 'issue': {'url': 'https:...</td>
+      <td>True</td>
+      <td>2022-09-16 19:34:47+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>24058641064</td>
+      <td>PullRequestEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'number': 4, 'pull_reques...</td>
+      <td>True</td>
+      <td>2022-09-16 19:33:23+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>24058630819</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'a2clarify', 'ref_type': 'branch', 'ma...</td>
+      <td>True</td>
+      <td>2022-09-16 19:32:42+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>24057157151</td>
+      <td>IssuesEvent</td>
+      <td>{'id': 54992827, 'login': 'Bchadwick2', 'displ...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'issue': {'url': 'https:/...</td>
+      <td>True</td>
+      <td>2022-09-16 18:05:02+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>24052061068</td>
+      <td>IssuesEvent</td>
+      <td>{'id': 98358114, 'login': 'rafita275', 'displa...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'issue': {'url': 'https:/...</td>
+      <td>True</td>
+      <td>2022-09-16 13:38:54+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>24034548091</td>
+      <td>IssueCommentEvent</td>
+      <td>{'id': 71098478, 'login': 'kevinsock96', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'created', 'issue': {'url': 'https:...</td>
+      <td>True</td>
+      <td>2022-09-15 17:52:37+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>24016882951</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 536680441, 'name': 'rhodyprog4ds/templa...</td>
+      <td>{'push_id': 11027960670, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-15 02:13:40+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>24016090157</td>
+      <td>ReleaseEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'published', 'release': {'url': 'ht...</td>
+      <td>True</td>
+      <td>2022-09-15 00:54:47+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>24015721988</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11027343058, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-15 00:19:16+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>24015702634</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11027333440, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-15 00:17:24+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>24015662961</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11027312165, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-15 00:13:29+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>24015642621</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11027301573, 'size': 2, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-15 00:11:28+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>24015598584</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'c4a2', 'ref_type': 'tag', 'master_bra...</td>
+      <td>True</td>
+      <td>2022-09-15 00:07:06+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>24014420009</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11026656571, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 22:18:13+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24014396114</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 400656699, 'name': 'rhodyprog4ds/rhodyd...</td>
+      <td>{'push_id': 11026644384, 'size': 3, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 22:16:19+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>24014390424</td>
+      <td>IssuesEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'closed', 'issue': {'url': 'https:/...</td>
+      <td>True</td>
+      <td>2022-09-14 22:15:53+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>24014390278</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11026641376, 'size': 3, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 22:15:52+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>24014375736</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11026633773, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 22:14:44+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>24010301489</td>
+      <td>WatchEvent</td>
+      <td>{'id': 65269630, 'login': 'sturtevantma', 'dis...</td>
+      <td>{'id': 400283911, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'started'}</td>
+      <td>True</td>
+      <td>2022-09-14 18:10:41+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>24009764434</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 536680441, 'name': 'rhodyprog4ds/templa...</td>
+      <td>{'push_id': 11024334575, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 17:42:33+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>24009290953</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 536680441, 'name': 'rhodyprog4ds/templa...</td>
+      <td>{'push_id': 11024100357, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-14 17:18:00+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="working-with-your-repo-offline">
+<h2>Working with your repo offline<a class="headerlink" href="#working-with-your-repo-offline" title="Permalink to this headline">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This was not done in class and is optional</p>
+</div>
+<section id="authenticate-on-mac">
+<h3>Authenticate on Mac<a class="headerlink" href="#authenticate-on-mac" title="Permalink to this headline">#</a></h3>
+<p>On macOS install <a class="reference external" href="https://cli.github.com/">GitHub CLI</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">auth</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>use defualts and choose to log in via browser.</p>
+</section>
+<section id="authenticate-on-windows">
+<h3>Authenticate on Windows<a class="headerlink" href="#authenticate-on-windows" title="Permalink to this headline">#</a></h3>
+<p>On winows install <a class="reference external" href="https://gitforwindows.org/">GitBash</a></p>
+<p>Then try to do the clone step and GitBash will help you authenticate</p>
+</section>
+<section id="work-offline">
+<h3>Work offline<a class="headerlink" href="#work-offline" title="Permalink to this headline">#</a></h3>
+<p>Get your repo URL:</p>
+<iframe src="https://scribehow.com/embed/Get_your_repo_URP__83HK6IIFQGyZ63s3rED-hw" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> to where you want to save</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> prog4ds
+git clone https://github.com/rhodyprog4ds/02-loading-data-brownsarahm.git
+</pre></div>
+</div>
+<p>work in the new folder that creates</p>
+<p>When you want to Save</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
+git commit -m <span class="s1">&#39;describe the work you did&#39;</span>
+git push
+</pre></div>
+</div>
+</section>
+</section>
+<section id="questions-after-class">
+<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>Logistics<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<section id="where-do-we-find-the-grading-page">
+<h4>where do we find the grading page?<a class="headerlink" href="#where-do-we-find-the-grading-page" title="Permalink to this headline">#</a></h4>
+<iframe src="https://scribehow.com/embed/Find_your_grade_tracking_project_board__jH1mXUbhQFakUXBZuuk6iw" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+</section>
+</section>
+<section id="assignemnt">
+<h3>Assignemnt<a class="headerlink" href="#assignemnt" title="Permalink to this headline">#</a></h3>
+<section id="what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
+<h4>what are the keys needed on the dictionaries for the assignment?<a class="headerlink" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment" title="Permalink to this headline">#</a></h4>
+<p>See the <code class="docutils literal notranslate"><span class="pre">datasets.py</span></code> file in the template repo</p>
+</section>
+<section id="do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
+<h4>do we have to accept assignment 2 anywhere and if so how<a class="headerlink" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how" title="Permalink to this headline">#</a></h4>
+<p>Yes on the assignment page. The link says “accept the assignment”</p>
+</section>
+<section id="for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
+<h4>For the purposes of the assignment should we download it locally to work with our notebooks?<a class="headerlink" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks" title="Permalink to this headline">#</a></h4>
+<p>Read the instructions carefully on the assignment. It tells you exactly what to do.</p>
+</section>
+</section>
+<section id="content">
+<h3>Content<a class="headerlink" href="#content" title="Permalink to this headline">#</a></h3>
+<section id="how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
+<h4>How do you locate a specific row and column from a dataframe?<a class="headerlink" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code> accepts both, using a comma to separate. The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">docs for <code class="docutils literal notranslate"><span class="pre">loc</span></code></a> have lots of examples.</p>
+</section>
+<section id="with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
+<h4>with data sets if there is an error with formatting and we can modify the original how would we fix it<a class="headerlink" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it" title="Permalink to this headline">#</a></h4>
+<p>Download to a copy where you can edit.</p>
+</section>
+<section id="can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
+<h4>Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12<a class="headerlink" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12" title="Permalink to this headline">#</a></h4>
+<p>Yes, to select multiple nonconsecutive, you pass a list. The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">docs for <code class="docutils literal notranslate"><span class="pre">loc</span></code></a> have lots of examples.</p>
+</section>
+<section id="how-can-we-iterate-through-dictionaries">
+<h4>how can we iterate through dictionaries<a class="headerlink" href="#how-can-we-iterate-through-dictionaries" title="Permalink to this headline">#</a></h4>
+<p>dictionaries have a <code class="docutils literal notranslate"><span class="pre">.items()</span></code> method that pops off tuples of th key and value.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the assignment does not ask you to iterate through a dictionary object, but over a list of dictionaries</p>
+</div>
+</section>
+<section id="what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
+<h4>What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?<a class="headerlink" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets" title="Permalink to this headline">#</a></h4>
+<p>The main difference is the structure.  JSON can hold nested data.  For example look at the GitHub data that we read in in class.</p>
+</section>
+<section id="what-exactly-does-json-mean-do">
+<h4>what exactly does json mean / do<a class="headerlink" href="#what-exactly-does-json-mean-do" title="Permalink to this headline">#</a></h4>
+<p><a class="reference external" href="https://www.json.org/json-en.html">json</a> is a data file format. It is an acronym for JavaScript Object Notation.  It’s a popular format for internet content.</p>
+</section>
+<section id="are-nested-lists-the-only-way-to-create-dataframes-in-python">
+<h4>are nested lists the only way to create DataFrames in python<a class="headerlink" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python" title="Permalink to this headline">#</a></h4>
+<p>nested lists are not the only way to create pandas DataFrames, you can also do that from a Dictionary. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">see in the docs for the constructor</a>.</p>
+</section>
+<section id="how-do-nested-loops-work-in-the-jupyter-notebook">
+<h4>How do nested loops work in the jupyter notebook<a class="headerlink" href="#how-do-nested-loops-work-in-the-jupyter-notebook" title="Permalink to this headline">#</a></h4>
+<p>Python constructs other than display items work just as they do in any other interpretter in a jupyter notebook.  The list comprehension that we saw today also works in base Python.  You can nest list comphrehenions in different ways depending on your goal.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
