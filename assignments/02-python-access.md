@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/X2ax0dtQ)
-  date : 2020-09-21
+  date : 2022-09-21
 ---
 # Assignment 2: Practicing Python and Accessing Data
 
@@ -64,6 +64,14 @@ In your notebook, create a markdown cell for each notebook that includes:
 - a "more info" link to where someone can learn about the dataset
 - 1-2 questions you would like to answer with that dataset.
 
+```{important}
+After finding datasets, how to do the rest of these steps can be found within the course site (notes and glossary) or the pandas documentation.  
+
+Learning to use the documentation effectively is important; libraries will change over time and random pages on the internet will not be updated accordingly, but in a well maintained library the documentation will get upated with changes.
+
+```
+
+
 ## Store them for loading
 
 Create a list of dictionaries in `datasets.py`, so that there is one dictionary for each dataset. Each dictionary should have the following keys:
@@ -82,10 +90,20 @@ Create a list of dictionaries in `datasets.py`, so that there is one dictionary 
 
 ## Make a dataset about your datasets
 
-Import the list from the `datasets` module you created in the step above.
-Then iterate over the list of dictionaries, and:  
+````{margin}
+```{note}
+The term iterate is defined in the site glossary.
+```
 
-1. save it to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
+```{hint}
+[DataFrame objects have many input/output methods](https://pandas.pydata.org/docs/reference/io.html) beyond the read methods that we have seen so far, including methods to save a DataFrame to your computer's hard drive. Saving it to your computer makes a local (not on the internet) copy.
+```
+````
+Import the list from the `datasets` module you created in the step above.
+Then {term}`iterate` over the list of dictionaries, and:  
+
+1. load each dataset
+1. save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
 1. record attributes about the dataset as in the table below in a list of lists or dictionary
 1. Use that to create a DataFrame with columns that match the rows of the following table.
 
