@@ -634,7 +634,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-2-practicing-python-and-accessing-data">
 <h1><span class="section-number">2. </span>Assignment 2: Practicing Python and Accessing Data<a class="headerlink" href="#assignment-2-practicing-python-and-accessing-data" title="Permalink to this headline">#</a></h1>
-<p>due : 2020-09-21</p>
+<p>due : 2022-09-21</p>
 <section id="setting">
 <h2><span class="section-number">2.1. </span>Setting<a class="headerlink" href="#setting" title="Permalink to this headline">#</a></h2>
 <p>Next week, we are going to learn about summarizing data. In this assignment, you are going to build a small dataset about datasets. In class next week, we will combine all of your datasets about datasets together in order to be able to answer questions like:</p>
@@ -699,6 +699,11 @@ Skills (max level)</p></th>
 <li><p>a “more info” link to where someone can learn about the dataset</p></li>
 <li><p>1-2 questions you would like to answer with that dataset.</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>After finding datasets, how to do the rest of these steps can be found within the course site (notes and glossary) or the pandas documentation.</p>
+<p>Learning to use the documentation effectively is important; libraries will change over time and random pages on the internet will not be updated accordingly, but in a well maintained library the documentation will get upated with changes.</p>
+</div>
 </section>
 <section id="store-them-for-loading">
 <h2><span class="section-number">2.4. </span>Store them for loading<a class="headerlink" href="#store-them-for-loading" title="Permalink to this headline">#</a></h2>
@@ -706,10 +711,22 @@ Skills (max level)</p></th>
 </section>
 <section id="make-a-dataset-about-your-datasets">
 <h2><span class="section-number">2.5. </span>Make a dataset about your datasets<a class="headerlink" href="#make-a-dataset-about-your-datasets" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term iterate is defined in the site glossary.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/reference/io.html">DataFrame objects have many input/output methods</a> beyond the read methods that we have seen so far, including methods to save a DataFrame to your computer’s hard drive. Saving it to your computer makes a local (not on the internet) copy.</p>
+</div>
+</aside>
 <p>Import the list from the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> module you created in the step above.
-Then iterate over the list of dictionaries, and:</p>
+Then <a class="reference internal" href="../resources/glossary.html#term-iterate"><span class="xref std std-term">iterate</span></a> over the list of dictionaries, and:</p>
 <ol class="simple">
-<li><p>save it to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.</p></li>
+<li><p>load each dataset</p></li>
+<li><p>save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.</p></li>
 <li><p>record attributes about the dataset as in the table below in a list of lists or dictionary</p></li>
 <li><p>Use that to create a DataFrame with columns that match the rows of the following table.</p></li>
 </ol>
