@@ -744,7 +744,7 @@ and extracting basic information about them.</p>
 <p>Import the list from the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> module you created in the step above.
 Then <a class="reference internal" href="../resources/glossary.html#term-iterate"><span class="xref std std-term">iterate</span></a> over the list of dictionaries, and:</p>
 <ol class="simple">
-<li><p>load each dataset</p></li>
+<li><p>load each dataset from the url</p></li>
 <li><p>save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.</p></li>
 <li><p>record attributes about the dataset as in the table below in a list of lists or dictionary</p></li>
 <li><p>Use that to create a DataFrame with columns that match the rows of the following table.</p></li>
@@ -776,23 +776,27 @@ Then <a class="reference internal" href="../resources/glossary.html#term-iterate
 </section>
 <section id="explore-your-datasets">
 <h2><span class="section-number">2.6. </span>Explore Your Datasets<a class="headerlink" href="#explore-your-datasets" title="Permalink to this headline">#</a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Notice that I refer to loading the datasets in two different ways, once from a URL, once from  a relative path. What does that mean about the way that you can store it for use while you iterate?</p>
+</div>
 <p>For one dataset that includes nonnumerical data:</p>
 <ul class="simple">
-<li><p>read it in from your local csv using a relative path</p></li>
+<li><p>load it in from your local csv using a relative path</p></li>
 <li><p>display the heading and the last 4 rows</p></li>
 <li><p>make a numpy array of only the numerical data and save it to a new variable (select these programmatically)</p></li>
 <li><p>was the format that the data was provided in a good format? why or why not?</p></li>
 </ul>
 <p>For any other dataset:</p>
 <ul class="simple">
-<li><p>read it in from your local csv using a relative path</p></li>
+<li><p>load it in from your local csv using a relative path</p></li>
 <li><p>display the heading with the first three rows</p></li>
 <li><p>display the datatype for each column</p></li>
 <li><p>Are there any variables where pandas may have read in the data as a datatype that’s not what you expect (eg a numerical column mistaken for strings)? If so, investigate and try to figure out why.</p></li>
 </ul>
 <p>For the third dataset:</p>
 <ul class="simple">
-<li><p>read it in from your local csv using a relative path</p></li>
+<li><p>load it in from your local csv using a relative path</p></li>
 <li><p>display the first 3 multiples of 3 rows (eg 3,6,9) of the data for two columns of your choice</p></li>
 </ul>
 </section>
