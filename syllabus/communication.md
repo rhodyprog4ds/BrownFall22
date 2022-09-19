@@ -14,7 +14,7 @@ kernelspec:
 
 
 
-# Course Communications
+# Help Hours and Course Communications
 
 We have several different ways to communicate in this course. This section summarizes them
 
