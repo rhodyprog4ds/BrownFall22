@@ -101,7 +101,7 @@ The term iterate is defined in the site glossary.
 Import the list from the `datasets` module you created in the step above.
 Then {term}`iterate` over the list of dictionaries, and:  
 
-1. load each dataset
+1. load each dataset from the url
 1. save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
 1. record attributes about the dataset as in the table below in a list of lists or dictionary
 1. Use that to create a DataFrame with columns that match the rows of the following table.
@@ -123,21 +123,28 @@ Then {term}`iterate` over the list of dictionaries, and:
 
 ## Explore Your Datasets
 
+
+```{hint}
+Notice that I refer to loading the datasets in two different ways, once from a URL, once from  a relative path. What does that mean about the way that you can store it for use while you iterate?
+```
+
+
+
 For one dataset that includes nonnumerical data:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the heading and the last 4 rows
 - make a numpy array of only the numerical data and save it to a new variable (select these programmatically)
 - was the format that the data was provided in a good format? why or why not?
 
 
 For any other dataset:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the heading with the first three rows
 - display the datatype for each column
 - Are there any variables where pandas may have read in the data as a datatype that's not what you expect (eg a numerical column mistaken for strings)? If so, investigate and try to figure out why.
 
 For the third dataset:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the first 3 multiples of 3 rows (eg 3,6,9) of the data for two columns of your choice
 
 ## Exploring data files
