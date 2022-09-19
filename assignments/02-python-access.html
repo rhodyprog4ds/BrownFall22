@@ -709,6 +709,24 @@ and extracting basic information about them.</p>
 <section id="store-them-for-loading">
 <h2><span class="section-number">2.4. </span>Store them for loading<a class="headerlink" href="#store-them-for-loading" title="Permalink to this headline">#</a></h2>
 <p>Create a list of dictionaries in <code class="docutils literal notranslate"><span class="pre">datasets.py</span></code>, so that there is one dictionary for each dataset. Each dictionary should have the following keys:</p>
+<table class="table" id="id2">
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">Meta Data Description of the dictionary to create</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></td>
+<td><p>with the url</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short_name</span></code></p></td>
+<td><p>a short name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">load_function</span></code></p></td>
+<td><p>(the actual function handle) what function should be used to load the data into a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="make-a-dataset-about-your-datasets">
 <h2><span class="section-number">2.5. </span>Make a dataset about your datasets<a class="headerlink" href="#make-a-dataset-about-your-datasets" title="Permalink to this headline">#</a></h2>
@@ -731,6 +749,30 @@ Then <a class="reference internal" href="../resources/glossary.html#term-iterate
 <li><p>record attributes about the dataset as in the table below in a list of lists or dictionary</p></li>
 <li><p>Use that to create a DataFrame with columns that match the rows of the following table.</p></li>
 </ol>
+<table class="table" id="id3">
+<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">Meta Data Description of the DataFrame to build</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>a short name for the dataset</p></td>
+</tr>
+<tr class="row-even"><td><p>source</p></td>
+<td><p>a url to where you found the data</p></td>
+</tr>
+<tr class="row-odd"><td><p>num_rows</p></td>
+<td><p>number of rows in the dataset</p></td>
+</tr>
+<tr class="row-even"><td><p>num_columns</p></td>
+<td><p>number of columns in the dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p>num_numerical</p></td>
+<td><p>number of numerical variables in the dataset</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="explore-your-datasets">
 <h2><span class="section-number">2.6. </span>Explore Your Datasets<a class="headerlink" href="#explore-your-datasets" title="Permalink to this headline">#</a></h2>
