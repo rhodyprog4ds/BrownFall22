@@ -77,15 +77,14 @@ Learning to use the documentation effectively is important; libraries will chang
 Create a list of dictionaries in `datasets.py`, so that there is one dictionary for each dataset. Each dictionary should have the following keys:
 
 ```{list-table} Meta Data Description of the dictionary to create
-:header-rows:0
+:header-rows: 0
 
-*- `url`
+* - `url`
   - with the url
 * - `short_name`
   - a short name
 * - `load_function`
   - (the actual function handle) what function should be used to load the data into a `pandas.DataFrame`.
-
 ```
 
 ## Make a dataset about your datasets
@@ -108,7 +107,7 @@ Then {term}`iterate` over the list of dictionaries, and:
 1. Use that to create a DataFrame with columns that match the rows of the following table.
 
 ```{list-table} Meta Data Description of the DataFrame to build
-:header-rows:0
+:header-rows: 0
 
 * - name
   - a short name for the dataset
