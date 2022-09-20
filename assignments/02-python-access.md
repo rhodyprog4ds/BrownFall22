@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/X2ax0dtQ)
-  date : 2020-09-21
+  date : 2022-09-21
 ---
 # Assignment 2: Practicing Python and Accessing Data
 
@@ -30,23 +30,23 @@ and extracting basic information about them.
 :header-rows: 1
 
 * - Task
-    Skills (max level)
+  - Skills (max level)
 * - identify possible uses for data in a data science pipeline
-    [process (1)]
+  - [process (1)]
 * - load data from one file format
-    [ access (1)]
+  - [ access (1)]
 * - load data from at least two of  (.csv, .tsv, .dat, database, .json)
-    [access (2)]
+  - [access (2)]
 * - compare the data formats
-    [ access (2)]
+  - [ access (2)]
 * - complete the assignment in python
-    [python (1)]
+  - [python (1)]
 * - use python data types (eg dictionaries) to prepare information about datasets
-    [python (2)]
+  - [python (2)]
 * - use informative variable names, pythonic iteration, and other common PEP 8 conventions
-    [python (2)]
+  - [python (2)]
 * - display DataFrame properties
-    [summarize (1)]
+  - [summarize (1)]
 ```
 
 
@@ -58,39 +58,56 @@ First, {{ accept_assignment }}. It contains a notebook with some template struct
 
 Find 3 datasets of interest to you that are provided in at least two different file formats. Choose datasets that are not too big, so that they do not take more than a few second to load. At least one dataset, must have non numerical (eg string or boolean) data in at least 1 column.
 
-In your notebook, create a markdown cell for each dataset that includes:
+In your notebook, create a markdown cell for each notebook that includes:
 - heading of the dataset's name
 - a 1-2 sentence summary of what the dataset contains and why it was collected
 - a "more info" link to where someone can learn about the dataset
 - 1-2 questions you would like to answer with that dataset.
+
+```{important}
+After finding datasets, how to do the rest of these steps can be found within the course site (notes and glossary) or the pandas documentation.  
+
+Learning to use the documentation effectively is important; libraries will change over time and random pages on the internet will not be updated accordingly, but in a well maintained library the documentation will get upated with changes.
+
+```
+
 
 ## Store them for loading
 
 Create a list of dictionaries in `datasets.py`, so that there is one dictionary for each dataset. Each dictionary should have the following keys:
 
 ```{list-table} Meta Data Description of the dictionary to create
-:header-rows:0
+:header-rows: 0
 
-*- `url`
+* - `url`
   - with the url
 * - `short_name`
   - a short name
 * - `load_function`
   - (the actual function handle) what function should be used to load the data into a `pandas.DataFrame`.
-
 ```
 
 ## Make a dataset about your datasets
 
-Import the list from the `datasets` module you created in the step above.
-Then iterate over the list of dictionaries, and:  
+````{margin}
+```{note}
+The term iterate is defined in the site glossary.
+```
 
-1. save it to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
+```{hint}
+[DataFrame objects have many input/output methods](https://pandas.pydata.org/docs/reference/io.html) beyond the read methods that we have seen so far, including methods to save a DataFrame to your computer's hard drive. Saving it to your computer makes a local (not on the internet) copy.
+```
+````
+Import the list from the `datasets` module you created in the step above.
+Then {term}`iterate` over the list of dictionaries, and:  
+
+1. load each dataset from the url
+1. save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
 1. record attributes about the dataset as in the table below in a list of lists or dictionary
 1. Use that to create a DataFrame with columns that match the rows of the following table.
 
 ```{list-table} Meta Data Description of the DataFrame to build
-:header-rows:0
+:header-rows: 0
 
 * - name
   - a short name for the dataset
@@ -106,21 +123,28 @@ Then iterate over the list of dictionaries, and:
 
 ## Explore Your Datasets
 
+
+```{hint}
+Notice that I refer to loading the datasets in two different ways, once from a URL, once from  a relative path. What does that mean about the way that you can store it for use while you iterate?
+```
+
+
+
 For one dataset that includes nonnumerical data:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the heading and the last 4 rows
 - make a numpy array of only the numerical data and save it to a new variable (select these programmatically)
 - was the format that the data was provided in a good format? why or why not?
 
 
 For any other dataset:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the heading with the first three rows
 - display the datatype for each column
 - Are there any variables where pandas may have read in the data as a datatype that's not what you expect (eg a numerical column mistaken for strings)? If so, investigate and try to figure out why.
 
 For the third dataset:
-- read it in from your local csv using a relative path
+- load it in from your local csv using a relative path
 - display the first 3 multiples of 3 rows (eg 3,6,9) of the data for two columns of your choice
 
 ## Exploring data files
