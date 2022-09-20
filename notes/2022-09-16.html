@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="next" title="6. Getting Started with Exploratory Data Analysis" href="2022-09-19.html" />
     <link rel="prev" title="4. Data Frames and other iterables" href="2022-09-14.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -189,6 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    5. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   6. Getting Started with Exploratory Data Analysis
   </a>
  </li>
 </ul>
@@ -1334,6 +1339,61 @@ Name: 3, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>24101876231</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'c6', 'ref_type': 'tag', 'master_branc...</td>
+      <td>True</td>
+      <td>2022-09-20 02:05:09+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24101872270</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11073696388, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-20 02:04:47+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24101419562</td>
+      <td>IssuesEvent</td>
+      <td>{'id': 90429575, 'login': 'cyrcaleb', 'display...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'issue': {'url': 'https:/...</td>
+      <td>True</td>
+      <td>2022-09-20 01:20:56+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24101141904</td>
+      <td>IssuesEvent</td>
+      <td>{'id': 71098478, 'login': 'kevinsock96', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'issue': {'url': 'https:/...</td>
+      <td>True</td>
+      <td>2022-09-20 00:52:52+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24096932666</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11071126471, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-19 19:38:45+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>5</th>
       <td>24096888630</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1344,7 +1404,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>6</th>
       <td>24092403361</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1355,7 +1415,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>7</th>
       <td>24092347576</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1366,7 +1426,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>8</th>
       <td>24092347921</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1377,7 +1437,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>9</th>
       <td>24092330373</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1388,7 +1448,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>10</th>
       <td>24092330505</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1399,7 +1459,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>11</th>
       <td>24092330511</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1410,7 +1470,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>12</th>
       <td>24092299023</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1421,7 +1481,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>13</th>
       <td>24091945863</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1432,7 +1492,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>14</th>
       <td>24091896284</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1443,7 +1503,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>15</th>
       <td>24091895896</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1454,7 +1514,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>16</th>
       <td>24077000169</td>
       <td>IssuesEvent</td>
       <td>{'id': 98483722, 'login': 'dsdelgiudice', 'dis...</td>
@@ -1465,7 +1525,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>17</th>
       <td>24076672027</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1476,7 +1536,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>18</th>
       <td>24076652788</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1487,7 +1547,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>19</th>
       <td>24076652819</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1498,7 +1558,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>20</th>
       <td>24076648531</td>
       <td>IssuesEvent</td>
       <td>{'id': 51104723, 'login': 'MAlbanese713', 'dis...</td>
@@ -1509,7 +1569,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>21</th>
       <td>24075445242</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 101525187, 'login': 'sdzwil', 'display_...</td>
@@ -1520,7 +1580,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>22</th>
       <td>24073938452</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 98358114, 'login': 'rafita275', 'displa...</td>
@@ -1531,7 +1591,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>23</th>
       <td>24073925635</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 98358114, 'login': 'rafita275', 'displa...</td>
@@ -1542,7 +1602,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>24</th>
       <td>24073310220</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1553,7 +1613,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>25</th>
       <td>24073220158</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1564,7 +1624,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>26</th>
       <td>24073206158</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1575,7 +1635,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>27</th>
       <td>24073206067</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1586,7 +1646,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>28</th>
       <td>24073206030</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1597,7 +1657,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>29</th>
       <td>24073206024</td>
       <td>PullRequestEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1607,68 +1667,13 @@ Name: 3, dtype: object
       <td>2022-09-18 13:02:05+00:00</td>
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
-    <tr>
-      <th>25</th>
-      <td>24070211645</td>
-      <td>ForkEvent</td>
-      <td>{'id': 71098478, 'login': 'kevinsock96', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'forkee': {'id': 537992078, 'node_id': 'R_kgD...</td>
-      <td>True</td>
-      <td>2022-09-18 03:42:06+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>24070072018</td>
-      <td>IssueCommentEvent</td>
-      <td>{'id': 101525187, 'login': 'sdzwil', 'display_...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'created', 'issue': {'url': 'https:...</td>
-      <td>True</td>
-      <td>2022-09-18 03:07:54+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>24070067663</td>
-      <td>IssuesEvent</td>
-      <td>{'id': 101525187, 'login': 'sdzwil', 'display_...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'reopened', 'issue': {'url': 'https...</td>
-      <td>True</td>
-      <td>2022-09-18 03:06:52+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>24069834642</td>
-      <td>IssuesEvent</td>
-      <td>{'id': 101525187, 'login': 'sdzwil', 'display_...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'closed', 'issue': {'url': 'https:/...</td>
-      <td>True</td>
-      <td>2022-09-18 02:11:50+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>24069814208</td>
-      <td>IssuesEvent</td>
-      <td>{'id': 101525187, 'login': 'sdzwil', 'display_...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'opened', 'issue': {'url': 'https:/...</td>
-      <td>True</td>
-      <td>2022-09-18 02:07:04+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </section>
 <section id="working-with-your-repo-offline">
-<h2><span class="section-number">5.4. </span>Working with your repo offline<a class="headerlink" href="#working-with-your-repo-offline" title="Permalink to this headline">#</a></h2>
+<span id="ghoffline"></span><h2><span class="section-number">5.4. </span>Working with your repo offline<a class="headerlink" href="#working-with-your-repo-offline" title="Permalink to this headline">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This was not done in class and is optional</p>
@@ -1804,10 +1809,10 @@ git push
             <p class="prev-next-title"><span class="section-number">4. </span>Data Frames and other iterables</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-09-19.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Getting Started with Exploratory Data Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
