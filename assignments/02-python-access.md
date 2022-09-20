@@ -58,7 +58,7 @@ First, {{ accept_assignment }}. It contains a notebook with some template struct
 
 Find 3 datasets of interest to you that are provided in at least two different file formats. Choose datasets that are not too big, so that they do not take more than a few second to load. At least one dataset, must have non numerical (eg string or boolean) data in at least 1 column.
 
-In your notebook, create a markdown cell for each notebook that includes:
+In your notebook, create a markdown cell for each dataset that includes:
 - heading of the dataset's name
 - a 1-2 sentence summary of what the dataset contains and why it was collected
 - a "more info" link to where someone can learn about the dataset
