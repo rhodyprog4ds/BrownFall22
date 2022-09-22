@@ -3,6 +3,7 @@ substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/X2ax0dtQ)
   date : 2022-09-21
+
 ---
 # Assignment 2: Practicing Python and Accessing Data
 
@@ -47,6 +48,7 @@ and extracting basic information about them.
   - [python (2)]
 * - display DataFrame properties
   - [summarize (1)]
+
 ```
 
 
@@ -58,11 +60,13 @@ First, {{ accept_assignment }}. It contains a notebook with some template struct
 
 Find 3 datasets of interest to you that are provided in at least two different file formats. Choose datasets that are not too big, so that they do not take more than a few second to load. At least one dataset, must have non numerical (eg string or boolean) data in at least 1 column.
 
+
 In your notebook, create a markdown cell for each dataset that includes:
 - heading of the dataset's name
 - a 1-2 sentence summary of what the dataset contains and why it was collected
 - a "more info" link to where someone can learn about the dataset
 - 1-2 questions you would like to answer with that dataset.
+
 
 ```{important}
 After finding datasets, how to do the rest of these steps can be found within the course site (notes and glossary) or the pandas documentation.  
@@ -70,6 +74,7 @@ After finding datasets, how to do the rest of these steps can be found within th
 Learning to use the documentation effectively is important; libraries will change over time and random pages on the internet will not be updated accordingly, but in a well maintained library the documentation will get upated with changes.
 
 ```
+
 
 
 ## Store them for loading
@@ -89,6 +94,7 @@ Create a list of dictionaries in `datasets.py`, so that there is one dictionary 
 
 ## Make a dataset about your datasets
 
+
 ````{margin}
 ```{note}
 The term iterate is defined in the site glossary.
@@ -103,6 +109,7 @@ Then {term}`iterate` over the list of dictionaries, and:
 
 1. load each dataset from the url
 1. save the dataset to a local csv using the short name you provided for the dataset as the file name, without writing the index column to the file.
+
 1. record attributes about the dataset as in the table below in a list of lists or dictionary
 1. Use that to create a DataFrame with columns that match the rows of the following table.
 
@@ -138,6 +145,7 @@ For one dataset that includes nonnumerical data:
 
 
 For any other dataset:
+
 - load it in from your local csv using a relative path
 - display the heading with the first three rows
 - display the datatype for each column
