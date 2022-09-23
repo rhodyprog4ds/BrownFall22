@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualization &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>7. Visualization &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="6. Getting Started with Exploratory Data Analysis" href="2022-09-19.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -163,10 +165,40 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-07.html">
    1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-09.html">
+   2. Data Science and Course Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   3. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   4. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   5. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   6. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Visualization
   </a>
  </li>
 </ul>
@@ -544,66 +576,66 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-note-on-viewing-output">
-   A note on viewing output
+   7.1. A note on viewing output
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-from-monday">
-   Review from Monday
+   7.2. Review from Monday
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-two-datasets">
-   Comparing two datasets
+   7.3. Comparing two datasets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-in-python">
-   Plotting in Python
+   7.4. Plotting in Python
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-are-flavor-and-balance-related">
-     how are flavor and balance related?
+     7.4.1. how are flavor and balance related?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#things-you-want-to-know-more-about">
-   Things you want to know more about
+   7.5. Things you want to know more about
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-touch-friday">
-     Things we will touch Friday
+     7.5.1. Things we will touch Friday
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-that-you-could-study-for-level-3">
-     Things that you could study for level 3
+     7.5.2. Things that you could study for level 3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-do-later">
-     Things we will do later
+     7.5.3. Things we will do later
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plotting-data-from-multiple-datasets-on-the-same-graphs-considering-they-share-the-same-data-points">
-       Plotting data from multiple datasets on the same graphs (considering they share the same data points)
+       7.5.3.1. Plotting data from multiple datasets on the same graphs (considering they share the same data points)
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#graphing-lines-of-best-fit-onto-graphs-but-not-just-linear-models-quadratic-or-other-types-as-well">
-     Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)
+     7.5.4. Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-remove-outliers-or-other-data">
-     How to remove outliers or other data.
+     7.5.5. How to remove outliers or other data.
     </a>
    </li>
   </ul>
@@ -629,66 +661,66 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-note-on-viewing-output">
-   A note on viewing output
+   7.1. A note on viewing output
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-from-monday">
-   Review from Monday
+   7.2. Review from Monday
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-two-datasets">
-   Comparing two datasets
+   7.3. Comparing two datasets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-in-python">
-   Plotting in Python
+   7.4. Plotting in Python
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-are-flavor-and-balance-related">
-     how are flavor and balance related?
+     7.4.1. how are flavor and balance related?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#things-you-want-to-know-more-about">
-   Things you want to know more about
+   7.5. Things you want to know more about
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-touch-friday">
-     Things we will touch Friday
+     7.5.1. Things we will touch Friday
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-that-you-could-study-for-level-3">
-     Things that you could study for level 3
+     7.5.2. Things that you could study for level 3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-do-later">
-     Things we will do later
+     7.5.3. Things we will do later
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plotting-data-from-multiple-datasets-on-the-same-graphs-considering-they-share-the-same-data-points">
-       Plotting data from multiple datasets on the same graphs (considering they share the same data points)
+       7.5.3.1. Plotting data from multiple datasets on the same graphs (considering they share the same data points)
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#graphing-lines-of-best-fit-onto-graphs-but-not-just-linear-models-quadratic-or-other-types-as-well">
-     Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)
+     7.5.4. Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-remove-outliers-or-other-data">
-     How to remove outliers or other data.
+     7.5.5. How to remove outliers or other data.
     </a>
    </li>
   </ul>
@@ -704,7 +736,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualization">
-<h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -713,7 +745,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="a-note-on-viewing-output">
-<h2>A note on viewing output<a class="headerlink" href="#a-note-on-viewing-output" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1. </span>A note on viewing output<a class="headerlink" href="#a-note-on-viewing-output" title="Permalink to this headline">#</a></h2>
 <p>When we create a variable and then put that on the last line of a cell, jupyter
 <em>displays</em> it.</p>
 <div class="cell docutils container">
@@ -760,7 +792,7 @@ method, jupyter uses that, and then your brownser uses html to render the object
 in a more visually appealing way.</p>
 </section>
 <section id="review-from-monday">
-<h2>Review from Monday<a class="headerlink" href="#review-from-monday" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2. </span>Review from Monday<a class="headerlink" href="#review-from-monday" title="Permalink to this headline">#</a></h2>
 <p>We will load the robusta data briefly again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1062,14 +1094,14 @@ a smoothed out histogram.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3360</span>             <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
 <span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
@@ -1080,17 +1112,17 @@ a smoothed out histogram.</p>
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1891</span><span class="o">/</span><span class="mf">2132958936.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1892</span><span class="o">/</span><span class="mf">2132958936.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3456</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">3457</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">3458</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3459</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">3460</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3363</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
@@ -1105,7 +1137,7 @@ a smoothed out histogram.</p>
 <p>It tries to look for a <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html#hierarchical-indexing-multiindex">multiindex</a>, but we do not have one so it fails.  THe second square brackets, makes it a list of names to use and  pandas looks for them sequentially.</p>
 </section>
 <section id="comparing-two-datasets">
-<h2>Comparing two datasets<a class="headerlink" href="#comparing-two-datasets" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3. </span>Comparing two datasets<a class="headerlink" href="#comparing-two-datasets" title="Permalink to this headline">#</a></h2>
 <p>we’re going to work with the arabica data today, because it’s a little bigger
 and more interesting for plotting</p>
 <div class="cell docutils container">
@@ -1189,7 +1221,7 @@ and more interesting for plotting</p>
 </div>
 </section>
 <section id="plotting-in-python">
-<h2>Plotting in Python<a class="headerlink" href="#plotting-in-python" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.4. </span>Plotting in Python<a class="headerlink" href="#plotting-in-python" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/">matplotlib</a>: low level plotting tools</p></li>
 <li><p><a class="reference external" href="https://seaborn.pydata.org/index.html">seaborn</a>: high level plotting with opinionated defaults</p></li>
@@ -1219,7 +1251,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5d66b86a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4c2eb2b410&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_28_1.png" src="../_images/2022-09-21_28_1.png" />
@@ -1234,38 +1266,38 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1891</span><span class="o">/</span><span class="mf">3047069671.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1892</span><span class="o">/</span><span class="mf">3047069671.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Moutfeel&#39;</span><span class="p">)</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/seaborn/distributions.py</span> in <span class="ni">displot</span><span class="nt">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/seaborn/distributions.py</span> in <span class="ni">displot</span><span class="nt">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2131</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">_DistributionFacetPlotter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">2132</span>         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
 <span class="ne">-&gt; </span><span class="mi">2133</span>         <span class="n">variables</span><span class="o">=</span><span class="n">_DistributionFacetPlotter</span><span class="o">.</span><span class="n">get_semantics</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
 <span class="g g-Whitespace">   </span><span class="mi">2134</span>     <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2135</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/seaborn/distributions.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/seaborn/distributions.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">111</span> 
 <span class="ne">--&gt; </span><span class="mi">112</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">113</span> 
 <span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="nd">@property</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">638</span>         <span class="c1"># information for numeric axes would be information about log scales.</span>
 <span class="g g-Whitespace">    </span><span class="mi">639</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_var_ordered</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>  <span class="c1"># alt., used DefaultDict</span>
 <span class="ne">--&gt; </span><span class="mi">640</span>         <span class="bp">self</span><span class="o">.</span><span class="n">assign_variables</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">641</span> 
 <span class="g g-Whitespace">    </span><span class="mi">642</span>         <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_semantic_mappings</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">assign_variables</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span>             <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">701</span>             <span class="n">plot_data</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables_longform</span><span class="p">(</span>
 <span class="ne">--&gt; </span><span class="mi">702</span>                 <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">variables</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">703</span>             <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">704</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">_assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/seaborn/_oldcore.py</span> in <span class="ni">_assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">936</span> 
 <span class="g g-Whitespace">    </span><span class="mi">937</span>                 <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Could not interpret value `</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">` for parameter `</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">`&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">938</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1279,7 +1311,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 <p>to plot these together with seaborn we have to transform the DataFrame, so we will see that next year.</p>
 <section id="how-are-flavor-and-balance-related">
-<h3>how are flavor and balance related?<a class="headerlink" href="#how-are-flavor-and-balance-related" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.4.1. </span>how are flavor and balance related?<a class="headerlink" href="#how-are-flavor-and-balance-related" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">)</span>
@@ -1335,7 +1367,7 @@ line.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5d65c01ed0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4c2df00290&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_37_1.png" src="../_images/2022-09-21_37_1.png" />
@@ -1351,7 +1383,7 @@ line.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5d5b9e4210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4c239db0d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_39_1.png" src="../_images/2022-09-21_39_1.png" />
@@ -1360,16 +1392,16 @@ line.</p>
 </section>
 </section>
 <section id="things-you-want-to-know-more-about">
-<h2>Things you want to know more about<a class="headerlink" href="#things-you-want-to-know-more-about" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.5. </span>Things you want to know more about<a class="headerlink" href="#things-you-want-to-know-more-about" title="Permalink to this headline">#</a></h2>
 <section id="things-we-will-touch-friday">
-<h3>Things we will touch Friday<a class="headerlink" href="#things-we-will-touch-friday" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>Things we will touch Friday<a class="headerlink" href="#things-we-will-touch-friday" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>more parameters and capabilities for seaborn</p></li>
 <li><p>how to analyze a graph</p></li>
 </ul>
 </section>
 <section id="things-that-you-could-study-for-level-3">
-<h3>Things that you could study for level 3<a class="headerlink" href="#things-that-you-could-study-for-level-3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.2. </span>Things that you could study for level 3<a class="headerlink" href="#things-that-you-could-study-for-level-3" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>The little details about the plot functions</p></li>
 <li><p>More things that you can do with seaborn, like how to manipulate the scatterplots more</p></li>
@@ -1378,18 +1410,18 @@ line.</p>
 </ul>
 </section>
 <section id="things-we-will-do-later">
-<h3>Things we will do later<a class="headerlink" href="#things-we-will-do-later" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.3. </span>Things we will do later<a class="headerlink" href="#things-we-will-do-later" title="Permalink to this headline">#</a></h3>
 <section id="plotting-data-from-multiple-datasets-on-the-same-graphs-considering-they-share-the-same-data-points">
-<h4>Plotting data from multiple datasets on the same graphs (considering they share the same data points)<a class="headerlink" href="#plotting-data-from-multiple-datasets-on-the-same-graphs-considering-they-share-the-same-data-points" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">7.5.3.1. </span>Plotting data from multiple datasets on the same graphs (considering they share the same data points)<a class="headerlink" href="#plotting-data-from-multiple-datasets-on-the-same-graphs-considering-they-share-the-same-data-points" title="Permalink to this headline">#</a></h4>
 <p>This will require being able to combine datasets into a single DataFrame, because a single plot funciton will require</p>
 </section>
 </section>
 <section id="graphing-lines-of-best-fit-onto-graphs-but-not-just-linear-models-quadratic-or-other-types-as-well">
-<h3>Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)<a class="headerlink" href="#graphing-lines-of-best-fit-onto-graphs-but-not-just-linear-models-quadratic-or-other-types-as-well" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.4. </span>Graphing lines of best fit onto graphs (but not just linear models, quadratic or other types as well)<a class="headerlink" href="#graphing-lines-of-best-fit-onto-graphs-but-not-just-linear-models-quadratic-or-other-types-as-well" title="Permalink to this headline">#</a></h3>
 <p>We will learn how to fit models in general when we get to regression, but ultimately quadratic and other polynomial plots will also be a level 3 exploration you can do. We will get you to the point in class of all the pieces, but you will have to swap in some alternative parametrs</p>
 </section>
 <section id="how-to-remove-outliers-or-other-data">
-<h3>How to remove outliers or other data.<a class="headerlink" href="#how-to-remove-outliers-or-other-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.5.5. </span>How to remove outliers or other data.<a class="headerlink" href="#how-to-remove-outliers-or-other-data" title="Permalink to this headline">#</a></h3>
 <p>When we saw indexing we got really close to this, and we will do more when we clean data next week.</p>
 </section>
 </section>
@@ -1422,6 +1454,20 @@ line.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-09-19.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Getting Started with Exploratory Data Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

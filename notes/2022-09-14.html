@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Frames and other iterables &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>4. Data Frames and other iterables &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Iterables and Indexing" href="2022-09-16.html" />
+    <link rel="prev" title="3. Reading Docstrings, Object Inspection, and Loading Data" href="2022-09-12.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -163,10 +165,40 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-07.html">
    1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-09.html">
+   2. Data Science and Course Logistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   3. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   5. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   6. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   7. Visualization
   </a>
  </li>
 </ul>
@@ -544,42 +576,42 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examining-the-structure-of-a-data-frame">
-   Examining the Structure of a Data Frame
+   4.1. Examining the Structure of a Data Frame
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extracting-parts-of-data-frames">
-   Extracting Parts of Data Frames
+   4.2. Extracting Parts of Data Frames
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-data-from-websites">
-   Reading data from websites
+   4.3. Reading data from websites
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pythonic-loops">
-   Pythonic Loops
+   4.4. Pythonic Loops
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types-solution">
-   Types Solution
+   4.5. Types Solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   4.6. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-dictionary-in-python">
-     what is a dictionary in python?
+     4.6.1. what is a dictionary in python?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-see-unique-values-in-a-column">
-     How to see unique values in a column
+     4.6.2. How to see unique values in a column
     </a>
    </li>
   </ul>
@@ -605,42 +637,42 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examining-the-structure-of-a-data-frame">
-   Examining the Structure of a Data Frame
+   4.1. Examining the Structure of a Data Frame
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extracting-parts-of-data-frames">
-   Extracting Parts of Data Frames
+   4.2. Extracting Parts of Data Frames
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-data-from-websites">
-   Reading data from websites
+   4.3. Reading data from websites
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pythonic-loops">
-   Pythonic Loops
+   4.4. Pythonic Loops
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types-solution">
-   Types Solution
+   4.5. Types Solution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   4.6. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-dictionary-in-python">
-     what is a dictionary in python?
+     4.6.1. what is a dictionary in python?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-see-unique-values-in-a-column">
-     How to see unique values in a column
+     4.6.2. How to see unique values in a column
     </a>
    </li>
   </ul>
@@ -656,7 +688,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="data-frames-and-other-iterables">
-<h1>Data Frames and other iterables<a class="headerlink" href="#data-frames-and-other-iterables" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Data Frames and other iterables<a class="headerlink" href="#data-frames-and-other-iterables" title="Permalink to this headline">#</a></h1>
 <p>Today, we’re going to explore <a class="reference internal" href="../resources/glossary.html#term-DataFrame"><span class="xref std std-term">DataFrame</span></a>s in greater detail. We’ll continue using
 that same coffee dataset.</p>
 <div class="cell docutils container">
@@ -1694,7 +1726,7 @@ that same coffee dataset.</p>
 </div>
 </div>
 <section id="examining-the-structure-of-a-data-frame">
-<h2>Examining the Structure of a Data Frame<a class="headerlink" href="#examining-the-structure-of-a-data-frame" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Examining the Structure of a Data Frame<a class="headerlink" href="#examining-the-structure-of-a-data-frame" title="Permalink to this headline">#</a></h2>
 <p>I told you this was a DataFrame, but we can check with type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2525,7 +2557,7 @@ that same coffee dataset.</p>
 <p>Now it’s neater</p>
 </section>
 <section id="extracting-parts-of-data-frames">
-<h2>Extracting Parts of Data Frames<a class="headerlink" href="#extracting-parts-of-data-frames" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>Extracting Parts of Data Frames<a class="headerlink" href="#extracting-parts-of-data-frames" title="Permalink to this headline">#</a></h2>
 <p>We can look at the first 5 rows with <code class="docutils literal notranslate"><span class="pre">head</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2963,14 +2995,14 @@ Name: Species, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3360</span>             <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
 <span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.Int64HashTable.get_item</span><span class="nt">()</span>
 
@@ -2981,38 +3013,38 @@ Name: Species, dtype: object
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1825</span><span class="o">/</span><span class="mf">2325123020.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1822</span><span class="o">/</span><span class="mf">2325123020.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">    </span><span class="mi">929</span> 
 <span class="g g-Whitespace">    </span><span class="mi">930</span>             <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">931</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">932</span> 
 <span class="g g-Whitespace">    </span><span class="mi">933</span>     <span class="k">def</span> <span class="nf">_is_scalar_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getitem_axis</span><span class="nt">(self, key, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1162</span>         <span class="c1"># fall thru to straight lookup</span>
 <span class="g g-Whitespace">   </span><span class="mi">1163</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1164</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_label</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1165</span> 
 <span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">def</span> <span class="nf">_get_slice_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slice_obj</span><span class="p">:</span> <span class="nb">slice</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">_get_label</span><span class="nt">(self, label, axis)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexing.py</span> in <span class="ni">_get_label</span><span class="nt">(self, label, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1111</span>     <span class="k">def</span> <span class="nf">_get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1112</span>         <span class="c1"># GH#5667 this will fail if the label is not present in the axis.</span>
 <span class="ne">-&gt; </span><span class="mi">1113</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1114</span> 
 <span class="g g-Whitespace">   </span><span class="mi">1115</span>     <span class="k">def</span> <span class="nf">_handle_lowerdim_multi_index_axis0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tup</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">xs</span><span class="nt">(self, key, axis, level, drop_level)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/generic.py</span> in <span class="ni">xs</span><span class="nt">(self, key, axis, level, drop_level)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3774</span>                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected label or tuple of labels, got </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
 <span class="g g-Whitespace">   </span><span class="mi">3775</span>         <span class="k">else</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3776</span>             <span class="n">loc</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3777</span> 
 <span class="g g-Whitespace">   </span><span class="mi">3778</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.7.14/x64/lib/python3.7/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3363</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
@@ -3026,7 +3058,7 @@ Name: Species, dtype: object
 </div>
 </section>
 <section id="reading-data-from-websites">
-<h2>Reading data from websites<a class="headerlink" href="#reading-data-from-websites" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Reading data from websites<a class="headerlink" href="#reading-data-from-websites" title="Permalink to this headline">#</a></h2>
 <p>We’ll first read from the course website.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3093,7 +3125,7 @@ their own documentation gets updated at the same time the code does.</p>
 </div>
 </section>
 <section id="pythonic-loops">
-<h2>Pythonic Loops<a class="headerlink" href="#pythonic-loops" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4. </span>Pythonic Loops<a class="headerlink" href="#pythonic-loops" title="Permalink to this headline">#</a></h2>
 <p>In Python, loops do not require an iterator variable.  It has an interable object and a loop variable.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">loop_variable</span> <span class="ow">in</span> <span class="n">iterable_object</span><span class="p">:</span>
     <span class="c1"># loop body</span>
@@ -3140,7 +3172,7 @@ H
 </div>
 </section>
 <section id="types-solution">
-<h2>Types Solution<a class="headerlink" href="#types-solution" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5. </span>Types Solution<a class="headerlink" href="#types-solution" title="Permalink to this headline">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>I am using bad variable names here <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> ,… because these are only as options for a question and we will not use them again</p>
@@ -3238,7 +3270,7 @@ H
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1825</span><span class="o">/</span><span class="mf">2343856410.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1822</span><span class="o">/</span><span class="mf">2343856410.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span> <span class="o">=</span> <span class="s1">&#39;a b c d e&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">d</span>
 
@@ -3256,7 +3288,7 @@ H
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1825</span><span class="o">/</span><span class="mf">2049116839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1822</span><span class="o">/</span><span class="mf">2049116839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;d&#39; is not defined
@@ -3266,9 +3298,9 @@ H
 </div>
 </section>
 <section id="questions-after-class">
-<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="what-is-a-dictionary-in-python">
-<h3>what is a dictionary in python?<a class="headerlink" href="#what-is-a-dictionary-in-python" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.6.1. </span>what is a dictionary in python?<a class="headerlink" href="#what-is-a-dictionary-in-python" title="Permalink to this headline">#</a></h3>
 <p>a dictionary is a datatype from base python that stores key, value pairs.</p>
 <p>For example</p>
 <div class="cell docutils container">
@@ -3304,7 +3336,7 @@ H
 </div>
 </section>
 <section id="how-to-see-unique-values-in-a-column">
-<h3>How to see unique values in a column<a class="headerlink" href="#how-to-see-unique-values-in-a-column" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.6.2. </span>How to see unique values in a column<a class="headerlink" href="#how-to-see-unique-values-in-a-column" title="Permalink to this headline">#</a></h3>
 <p>We will get to this soon! We got the first part, picking out a single column to look at, we will see the method for that probably on Monday, but maybe on Friday.</p>
 </section>
 </section>
@@ -3337,6 +3369,20 @@ H
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-09-12.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Reading Docstrings, Object Inspection, and Loading Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2022-09-16.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Iterables and Indexing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
