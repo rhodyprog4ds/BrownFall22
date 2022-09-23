@@ -1,8 +1,8 @@
 ---
 substitutions:
   accept_assignment: |
-    [Template repo for submission]()
-  date : 2022-09-28 11:59pm
+    [Template repo for submission](https://classroom.github.com/a/p4hfsMTX)
+  date : 2022-09-28
 ---
 
 # Assignment 3: Exploratory Data Analysis
@@ -15,32 +15,17 @@ __Due:{{ date }} __
 
 This week your goal is to do a small exploratory data analysis for two datasets of your choice.
 
-```{list-table} plot basic views of data and generate descriptive statistics and basic plots
-:header-rows: 1
+eligible skills:
+- summarize
+- visualize
+- access
 
-* - task
-  - skill (max level)
-* - compute and display overall statistics
-  - summarize (2)
-* - compute and display individual statistics of a datasets
-  - summarize (2)
-* - group a data set by a variable and compute summary statics
-  - summarize (2)
-* - plot two different pairwise relationships
-  - visualize (2)
-* - interpret the statistics and plots
-  - summarize (2), visualize (2)
-* - load data from at least two different file types
-  - access (2)
-* - compare and contrast the file types and/or sources
-  - access (2)
-* - match questions appropriate to the dataset and match plots and stats
-  - process (1)
-```
+See detailed checklists for more on the skills.
 
 ## Choose Datasets
 
-Each Dataset must have at least three variables, but can have more. Both datasets
+Each Dataset must have at least three variables, but can have more and more will
+ likely make the assignment easier. Both datasets
 must have multiple types of variables. These can be datasets you used last week,
 if they meet the criteria below.
 
@@ -54,8 +39,8 @@ must include at least:
 ### Dataset 2 (d2)
 
 must include at least:
-- two categorical variables and
-- one continuous valued variable
+- one continuous valued variable and
+- two categorical variables
 
 
 ## EDA
@@ -70,7 +55,7 @@ For **each** dataset, in a dedicated notebook, complete the following:
     - shape
     - columns
     - variable types
-    - overall summary statisics
+    - overall summary statistics
 1. Write a short description of what the data contains and what it could be used for
 1. Ask and answer 4 questions by using and interpreting statistics and visualizations as appropriate. Include a heading for each question using a markdown cell and H2:`##`. Make sure your analyses meet the criteria in the check lists below.
 1. Describe what, if anything might need to be done to clean or prepare this data for further analysis in a finale `## Future analysis` markdown cell in your notebook.
@@ -96,6 +81,7 @@ make sure that your `dataset_01.ipynb` has:
 
 
 ### Dataset 2 Checklist
+make sure that your `dataset_02.ipynb` has:
 
 - two individual summary statistics for one variable
 - one summary statistic grouped by two categorical variables
@@ -124,9 +110,11 @@ In your review:
 - Use inline comments to denote places that are confusing or if you see solutions to problems your classmate could not solve
 - Use the template below for your summary review
 
+Complete the review on the Submission PR. 
+
 ### Review Questions
 
-
+Consider the following questions while reading and then use the template below (copy & pasted into the summary review)
 1. How was the analysis overall to read? easy? hard? cohesive? jumpy?
 1. Did the data summaries tell you enough about the data to understand the analysis and anticipate what kinds of questions could be answered? If not, what questions do you still have about the data?
 1. Do the questions make sense based on the data? Are they interesting questions? What could improve the questions
@@ -136,6 +124,7 @@ In your review:
 1. What additional analysis might make the analysis more compelling and clear?
 
 
+Template:
 ```
 <!-- delete sections that are not needed -->
 ## Overall  
@@ -144,7 +133,8 @@ This analysis was ...
 
 ## Data Summaries
 
-- [ ] complete
+- [ ] describes data structurally
+- [ ] describes uses of data
 
 To understand this analysis I still need to know ...
 
@@ -157,6 +147,8 @@ To understand this analysis I still need to know ...
 
 ## Areas of improvement
 
+<!-- provide specific advise based -->
+
 ```
 
 
@@ -168,7 +160,7 @@ Respond to your review either inline comments, replies, or by updating your anal
 
 ````{margin}
 ```{warning}
-This section is not required, but is intended to help you get started thinking
+Remember the Think Ahead box is not required, but is intended to help you get started thinking
 about ideas for your portfolio.  If you complete it, we'll give your feedback to
 help shape your ideas to get to level 3 achievements.  If you want to focus only
 on level 2 at this moment in time, feel free to skip this part.
