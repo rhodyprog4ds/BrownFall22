@@ -1,8 +1,8 @@
 ---
 substitutions:
   accept_assignment: |
-    [Template repo for submission](https://classroom.github.com/a/p4hfsMTX)
-  date : 2022-09-28
+    [Template repo for submission]()
+  date : 2022-09-28 11:59pm
 ---
 
 # Assignment 3: Exploratory Data Analysis
@@ -15,17 +15,14 @@ __Due:{{ date }} __
 
 This week your goal is to do a small exploratory data analysis for two datasets of your choice.
 
-eligible skills:
+Eligible Skills:
 - summarize
 - visualize
 - access
 
-See detailed checklists for more on the skills.
-
 ## Choose Datasets
 
-Each Dataset must have at least three variables, but can have more and more will
- likely make the assignment easier. Both datasets
+Each Dataset must have at least three variables, but can have more. Both datasets
 must have multiple types of variables. These can be datasets you used last week,
 if they meet the criteria below.
 
@@ -39,8 +36,8 @@ must include at least:
 ### Dataset 2 (d2)
 
 must include at least:
-- one continuous valued variable and
-- two categorical variables
+- two categorical variables and
+- one continuous valued variable
 
 
 ## EDA
@@ -55,7 +52,7 @@ For **each** dataset, in a dedicated notebook, complete the following:
     - shape
     - columns
     - variable types
-    - overall summary statistics
+    - overall summary statisics
 1. Write a short description of what the data contains and what it could be used for
 1. Ask and answer 4 questions by using and interpreting statistics and visualizations as appropriate. Include a heading for each question using a markdown cell and H2:`##`. Make sure your analyses meet the criteria in the check lists below.
 1. Describe what, if anything might need to be done to clean or prepare this data for further analysis in a finale `## Future analysis` markdown cell in your notebook.
@@ -81,7 +78,6 @@ make sure that your `dataset_01.ipynb` has:
 
 
 ### Dataset 2 Checklist
-make sure that your `dataset_02.ipynb` has:
 
 - two individual summary statistics for one variable
 - one summary statistic grouped by two categorical variables
@@ -100,21 +96,27 @@ Be sure to start early and use help hours to make sure you have a plan for all o
 This is optional, but if you do a review, you only need to do one analysis each.
 ```
 
+```{warning}
+Be familiar with the [collaboration](collaboration) policy before you choose to go this route
+```
+
+[get group permissions in advance](https://github.com/rhodyprog4ds/fall-22-discuss-share-community/discussions/7)
 
 With a partner (or group of 3 where person 1 review's 2 work, 2 reviews 3, and 3 reviews 1) read
 your partner's notebook and complete a peer review on their pull request.  You can do peer review
 when you have done most of your analysis, and explanation, even if some parts of the code do not
-work.
+work. After you each do your reviews, update your own analysis.
+
+### Review
 
 In your review:
 - Use inline comments to denote places that are confusing or if you see solutions to problems your classmate could not solve
+- keep the questions below in mind
 - Use the template below for your summary review
 
-Complete the review on the Submission PR. 
+#### Review Questions
 
-### Review Questions
 
-Consider the following questions while reading and then use the template below (copy & pasted into the summary review)
 1. How was the analysis overall to read? easy? hard? cohesive? jumpy?
 1. Did the data summaries tell you enough about the data to understand the analysis and anticipate what kinds of questions could be answered? If not, what questions do you still have about the data?
 1. Do the questions make sense based on the data? Are they interesting questions? What could improve the questions
@@ -123,8 +125,8 @@ Consider the following questions while reading and then use the template below (
 1. What could be done to make the explanations more clear and complete?
 1. What additional analysis might make the analysis more compelling and clear?
 
+#### Review Template
 
-Template:
 ```
 <!-- delete sections that are not needed -->
 ## Overall  
@@ -133,8 +135,7 @@ This analysis was ...
 
 ## Data Summaries
 
-- [ ] describes data structurally
-- [ ] describes uses of data
+- [ ] complete
 
 To understand this analysis I still need to know ...
 
@@ -147,20 +148,18 @@ To understand this analysis I still need to know ...
 
 ## Areas of improvement
 
-<!-- provide specific advise based -->
-
 ```
 
 
 ### Response
 
-Respond to your review either inline comments, replies, or by updating your analysis accordingly.
+Respond to your review either inline comments, replies, and by updating your analysis accordingly.
 
 
 
 ````{margin}
 ```{warning}
-Remember the Think Ahead box is not required, but is intended to help you get started thinking
+This section is not required, but is intended to help you get started thinking
 about ideas for your portfolio.  If you complete it, we'll give your feedback to
 help shape your ideas to get to level 3 achievements.  If you want to focus only
 on level 2 at this moment in time, feel free to skip this part.
