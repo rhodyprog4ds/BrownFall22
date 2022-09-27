@@ -206,6 +206,11 @@ const thebe_selector_output = ".output, .cell_output"
    8. More EDA
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   9. Intro to Data Cleaning
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -602,92 +607,87 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-the-direct-data-url">
-   3.3. Getting the direct data URL
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-in-data">
-   3.4. Loading in Data
+   3.3. Loading in Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#good-code-is-always-relative">
-   3.5. Good Code is always relative
+   3.4. Good Code is always relative
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   3.6. Questions After Class
+   3.5. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#about-the-course">
-     3.6.1. About the Course
+     3.5.1. About the Course
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
-       3.6.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
+       3.5.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-portfolio-checks-work">
-       3.6.1.2. How do portfolio checks work?
+       3.5.1.2. How do portfolio checks work?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-much-stats-will-we-do-in-this-class">
-       3.6.1.3. how much stats will we do in this class?
+       3.5.1.3. how much stats will we do in this class?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
-       3.6.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
+       3.5.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#about-jupyter">
-     3.6.2. About Jupyter
+     3.5.2. About Jupyter
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
-       3.6.2.1. Can you interact with those data tables that we put on jupyter today in real time?
+       3.5.2.1. Can you interact with those data tables that we put on jupyter today in real time?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
-       3.6.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
+       3.5.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
-       3.6.2.3. Can you show how to launch a book another day after we saved it and come back to it?
+       3.5.2.3. Can you show how to launch a book another day after we saved it and come back to it?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-just-put-anything-in-the-docstring">
-       3.6.2.4. can you just put anything in the docstring?
+       3.5.2.4. can you just put anything in the docstring?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
-       3.6.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
+       3.5.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-is-considered-scraped-data">
-       3.6.2.6. What is considered scraped data?
+       3.5.2.6. What is considered scraped data?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-rest-of-this-week">
-     3.6.3. Questions we will answer in the rest of this week
+     3.5.3. Questions we will answer in the rest of this week
     </a>
    </li>
   </ul>
@@ -734,92 +734,87 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-the-direct-data-url">
-   3.3. Getting the direct data URL
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-in-data">
-   3.4. Loading in Data
+   3.3. Loading in Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#good-code-is-always-relative">
-   3.5. Good Code is always relative
+   3.4. Good Code is always relative
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   3.6. Questions After Class
+   3.5. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#about-the-course">
-     3.6.1. About the Course
+     3.5.1. About the Course
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
-       3.6.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
+       3.5.1.1. Will we further go over how to achieve level 3 achievements with more specificity?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-portfolio-checks-work">
-       3.6.1.2. How do portfolio checks work?
+       3.5.1.2. How do portfolio checks work?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-much-stats-will-we-do-in-this-class">
-       3.6.1.3. how much stats will we do in this class?
+       3.5.1.3. how much stats will we do in this class?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
-       3.6.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
+       3.5.1.4. Is there a rate at which we need to complete skill checks if we fall behind?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#about-jupyter">
-     3.6.2. About Jupyter
+     3.5.2. About Jupyter
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
-       3.6.2.1. Can you interact with those data tables that we put on jupyter today in real time?
+       3.5.2.1. Can you interact with those data tables that we put on jupyter today in real time?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
-       3.6.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
+       3.5.2.2. Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
-       3.6.2.3. Can you show how to launch a book another day after we saved it and come back to it?
+       3.5.2.3. Can you show how to launch a book another day after we saved it and come back to it?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-just-put-anything-in-the-docstring">
-       3.6.2.4. can you just put anything in the docstring?
+       3.5.2.4. can you just put anything in the docstring?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
-       3.6.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
+       3.5.2.5. What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-is-considered-scraped-data">
-       3.6.2.6. What is considered scraped data?
+       3.5.2.6. What is considered scraped data?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-rest-of-this-week">
-     3.6.3. Questions we will answer in the rest of this week
+     3.5.3. Questions we will answer in the rest of this week
     </a>
    </li>
   </ul>
@@ -984,7 +979,7 @@ This means that by default it adds a space as above.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">3187590259.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1786</span><span class="o">/</span><span class="mf">3187590259.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: compute_grade() missing 3 required positional arguments: &#39;num_level1&#39;, &#39;num_level2&#39;, and &#39;num_level3&#39;
@@ -1018,7 +1013,7 @@ This means that by default it adds a space as above.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">1576687116.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1786</span><span class="o">/</span><span class="mf">1576687116.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_1</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_1() missing 1 required positional argument: &#39;a&#39;
@@ -1044,7 +1039,7 @@ This means that by default it adds a space as above.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">3614324986.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1786</span><span class="o">/</span><span class="mf">3614324986.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_2</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_2() missing 1 required positional argument: &#39;a&#39;
@@ -1071,7 +1066,7 @@ This means that by default it adds a space as above.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">980374236.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1786</span><span class="o">/</span><span class="mf">980374236.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_3</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_3() missing 1 required positional argument: &#39;a&#39;
@@ -1098,7 +1093,7 @@ This means that by default it adds a space as above.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">2845574773.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1786</span><span class="o">/</span><span class="mf">2845574773.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_4</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_4() missing 1 required positional argument: &#39;a&#39;
@@ -1154,10 +1149,8 @@ This means that by default it adds a space as above.</p>
 <li><p>the code to scrape and clean the data</p></li>
 <li><p>the data before cleaning</p></li>
 </ul>
-</section>
-<section id="getting-the-direct-data-url">
-<h2><span class="section-number">3.3. </span>Getting the direct data URL<a class="headerlink" href="#getting-the-direct-data-url" title="Permalink to this headline">#</a></h2>
-<iframe src="https://scribehow.com/embed/Get_a_datafile_from_GitHub__W8QQLpLgQ_WGv6Tp77pbCg" width="640" height="640" allowfullscreen frameborder="0"></iframe>
+<p>Get raw url for the dataset click on the raw button on the <a class="reference external" href="https://github.com/jldbc/coffee-quality-database/blob/master/data/robusta_ratings_raw.csv">csv page</a>, then copy the url.
+<img alt="a screenshot from github of the data file page with the raw button circled in pink" src="../_images/gh_raw_file.png" /></p>
 <p>We’ll save that url as a variable to work with it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1175,7 +1168,7 @@ This means that by default it adds a space as above.</p>
 </aside>
 </section>
 <section id="loading-in-data">
-<h2><span class="section-number">3.4. </span>Loading in Data<a class="headerlink" href="#loading-in-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3. </span>Loading in Data<a class="headerlink" href="#loading-in-data" title="Permalink to this headline">#</a></h2>
 <p>We will use a library called Pandas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1875,7 +1868,7 @@ If we do something else after, it will read it in, but not print it out</p>
 <p>If you’re curious about something, try it out, see what happens.  We’re going to use a lot of code inspection tools during class.  These are helpful both for understanding what’s going on, but the advantage to knowing how to get this information programmatically even though a different IDE would give you inspection tools  is that it helps you treat your code as data.</p>
 </section>
 <section id="good-code-is-always-relative">
-<h2><span class="section-number">3.5. </span>Good Code is always relative<a class="headerlink" href="#good-code-is-always-relative" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4. </span>Good Code is always relative<a class="headerlink" href="#good-code-is-always-relative" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>I added this section as notes, that was not in class today.  I said similar things last week, but this includes more references and context.</p>
@@ -1897,55 +1890,55 @@ and as such is governed by <a class="reference external" href="https://www.pytho
 <p>it’s <a class="reference external" href="https://www.python.org/about/quotes/">pretty popular</a></p>
 </section>
 <section id="questions-after-class">
-<h2><span class="section-number">3.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="about-the-course">
-<h3><span class="section-number">3.6.1. </span>About the Course<a class="headerlink" href="#about-the-course" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.1. </span>About the Course<a class="headerlink" href="#about-the-course" title="Permalink to this headline">#</a></h3>
 <section id="will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity">
-<h4><span class="section-number">3.6.1.1. </span>Will we further go over how to achieve level 3 achievements with more specificity?<a class="headerlink" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.1.1. </span>Will we further go over how to achieve level 3 achievements with more specificity?<a class="headerlink" href="#will-we-further-go-over-how-to-achieve-level-3-achievements-with-more-specificity" title="Permalink to this headline">#</a></h4>
 <p>Right now, you are still only able to earn level 1s and then with assignment 2 you can start earning level 2s.  After that, it will make morse sense to be able to talk about portfolios.</p>
 </section>
 <section id="how-do-portfolio-checks-work">
-<h4><span class="section-number">3.6.1.2. </span>How do portfolio checks work?<a class="headerlink" href="#how-do-portfolio-checks-work" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.1.2. </span>How do portfolio checks work?<a class="headerlink" href="#how-do-portfolio-checks-work" title="Permalink to this headline">#</a></h4>
 <p>At a logistical level, you add files to your portfolio repository by a specific check date and then I grade them.</p>
 </section>
 <section id="how-much-stats-will-we-do-in-this-class">
-<h4><span class="section-number">3.6.1.3. </span>how much stats will we do in this class?<a class="headerlink" href="#how-much-stats-will-we-do-in-this-class" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.1.3. </span>how much stats will we do in this class?<a class="headerlink" href="#how-much-stats-will-we-do-in-this-class" title="Permalink to this headline">#</a></h4>
 <p>Only a little bit.  We wil do some modeling of data and compute basic statistics, but we will not cover the underlying concepts of statistics, much.  However if you know some statistics, you will be able to extend what we cover to use them.</p>
 </section>
 <section id="is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind">
-<h4><span class="section-number">3.6.1.4. </span>Is there a rate at which we need to complete skill checks if we fall behind?<a class="headerlink" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.1.4. </span>Is there a rate at which we need to complete skill checks if we fall behind?<a class="headerlink" href="#is-there-a-rate-at-which-we-need-to-complete-skill-checks-if-we-fall-behind" title="Permalink to this headline">#</a></h4>
 <p>Follow the table on the Achievements page for which assignments and portfolio checks have which achievements eligible. Some assignments you can earn only 1-2 achievements others you can earn 4-5 level 2s.  It is not recommended that you skip early chances because there are future chances, though.  However, sometimes if you have an achievement already you can skip a section of an assignment.</p>
 </section>
 </section>
 <section id="about-jupyter">
-<h3><span class="section-number">3.6.2. </span>About Jupyter<a class="headerlink" href="#about-jupyter" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.2. </span>About Jupyter<a class="headerlink" href="#about-jupyter" title="Permalink to this headline">#</a></h3>
 <section id="can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time">
-<h4><span class="section-number">3.6.2.1. </span>Can you interact with those data tables that we put on jupyter today in real time?<a class="headerlink" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.1. </span>Can you interact with those data tables that we put on jupyter today in real time?<a class="headerlink" href="#can-you-interact-with-those-data-tables-that-we-put-on-jupyter-today-in-real-time" title="Permalink to this headline">#</a></h4>
 <p>Yes, we can manipulate the data, but we read a copy in.  We are not manipulating the version that was on GitHub.</p>
 </section>
 <section id="will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets">
-<h4><span class="section-number">3.6.2.2. </span>Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?<a class="headerlink" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.2. </span>Will we eventually learn how to filter data in order to separate different names of data, or perform mathematical operations on the datasets?<a class="headerlink" href="#will-we-eventually-learn-how-to-filter-data-in-order-to-separate-different-names-of-data-or-perform-mathematical-operations-on-the-datasets" title="Permalink to this headline">#</a></h4>
 <p>Yes, all!</p>
 </section>
 <section id="can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it">
-<h4><span class="section-number">3.6.2.3. </span>Can you show how to launch a book another day after we saved it and come back to it?<a class="headerlink" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.3. </span>Can you show how to launch a book another day after we saved it and come back to it?<a class="headerlink" href="#can-you-show-how-to-launch-a-book-another-day-after-we-saved-it-and-come-back-to-it" title="Permalink to this headline">#</a></h4>
 <p>When you launch your server on the “home” tab you can click on the file name of a previously saved notebook to work on it again.</p>
 </section>
 <section id="can-you-just-put-anything-in-the-docstring">
-<h4><span class="section-number">3.6.2.4. </span>can you just put anything in the docstring?<a class="headerlink" href="#can-you-just-put-anything-in-the-docstring" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.4. </span>can you just put anything in the docstring?<a class="headerlink" href="#can-you-just-put-anything-in-the-docstring" title="Permalink to this headline">#</a></h4>
 <p>Yes, technically, but you should follow good code style guidelines.</p>
 </section>
 <section id="what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable">
-<h4><span class="section-number">3.6.2.5. </span>What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?<a class="headerlink" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.5. </span>What would happen if we just call ‘pd.read_csv(coffe_data_url)’ instead of storing it in a variable and then call the variable?<a class="headerlink" href="#what-would-happen-if-we-just-call-pd-read-csv-coffe-data-url-instead-of-storing-it-in-a-variable-and-then-call-the-variable" title="Permalink to this headline">#</a></h4>
 <p>It would print it out, but then you don’t have a variable, so you would have to read it in again to be able to manipulate it.</p>
 </section>
 <section id="what-is-considered-scraped-data">
-<h4><span class="section-number">3.6.2.6. </span>What is considered scraped data?<a class="headerlink" href="#what-is-considered-scraped-data" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">3.5.2.6. </span>What is considered scraped data?<a class="headerlink" href="#what-is-considered-scraped-data" title="Permalink to this headline">#</a></h4>
 <p>Data that is pulled from websites automatically. We will do some web scraping starting this week.</p>
 </section>
 </section>
 <section id="questions-we-will-answer-in-the-rest-of-this-week">
-<h3><span class="section-number">3.6.3. </span>Questions we will answer in the rest of this week<a class="headerlink" href="#questions-we-will-answer-in-the-rest-of-this-week" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3. </span>Questions we will answer in the rest of this week<a class="headerlink" href="#questions-we-will-answer-in-the-rest-of-this-week" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>How to view a more detailed look of the data instead of it only showing the first and last few columns</p></li>
 <li><p>Could we retrieve data in all formats with one function?</p></li>
