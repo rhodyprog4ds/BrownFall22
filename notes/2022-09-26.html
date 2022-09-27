@@ -584,82 +584,70 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   9. Intro to Data Cleaning
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   9.1. Tidy Data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cleaning-data">
-   10. Cleaning Data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidying-data">
+   9.2. Tidying Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tidy-data">
-     10.1. Tidy Data
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-data">
+   9.3. Filtering Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   9.4. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
+     9.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tidying-data">
-     10.2. Tidying Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
+     9.4.2. Can we clean data within any row of the data as long as there is a column name for it?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtering-data">
-     10.3. Filtering Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
+     9.4.3. How to clean larger datasets
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#questions-after-class">
-     10.4. Questions after class
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
+     9.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-       10.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-       10.4.2. Can we clean data within any row of the data as long as there is a column name for it?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
-       10.4.3. How to clean larger datasets
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-       10.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-       10.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-       10.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-       10.4.7. Are there any packages we may utilize that help us clean data more effectively?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
-       10.4.8. Things we will do later this week:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#next-week">
-       10.4.9. Next week
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
+     9.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
+     9.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
+     9.4.7. Are there any packages we may utilize that help us clean data more effectively?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
+     9.4.8. Things we will do later this week:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-week">
+     9.4.9. Next week
+    </a>
    </li>
   </ul>
  </li>
@@ -682,82 +670,70 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   9. Intro to Data Cleaning
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   9.1. Tidy Data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cleaning-data">
-   10. Cleaning Data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidying-data">
+   9.2. Tidying Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tidy-data">
-     10.1. Tidy Data
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-data">
+   9.3. Filtering Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   9.4. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
+     9.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tidying-data">
-     10.2. Tidying Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
+     9.4.2. Can we clean data within any row of the data as long as there is a column name for it?
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtering-data">
-     10.3. Filtering Data
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
+     9.4.3. How to clean larger datasets
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#questions-after-class">
-     10.4. Questions after class
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
+     9.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-       10.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-       10.4.2. Can we clean data within any row of the data as long as there is a column name for it?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
-       10.4.3. How to clean larger datasets
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-       10.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-       10.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-       10.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-       10.4.7. Are there any packages we may utilize that help us clean data more effectively?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
-       10.4.8. Things we will do later this week:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#next-week">
-       10.4.9. Next week
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
+     9.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
+     9.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
+     9.4.7. Are there any packages we may utilize that help us clean data more effectively?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
+     9.4.8. Things we will do later this week:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-week">
+     9.4.9. Next week
+    </a>
    </li>
   </ul>
  </li>
@@ -773,9 +749,6 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="intro-to-data-cleaning">
 <h1><span class="section-number">9. </span>Intro to Data Cleaning<a class="headerlink" href="#intro-to-data-cleaning" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="cleaning-data">
-<h1><span class="section-number">10. </span>Cleaning Data<a class="headerlink" href="#cleaning-data" title="Permalink to this headline">#</a></h1>
 <p>This week, we’ll be cleaning data.</p>
 <p>Cleaning data is <strong>labor intensive</strong> and requires making <em>subjective</em> choices.<br />
 We’ll focus on, and assess you on, manipulating data correctly, making reasonable
@@ -798,7 +771,7 @@ this week:</p>
 </div>
 </div>
 <section id="tidy-data">
-<h2><span class="section-number">10.1. </span>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.1. </span>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h2>
 <p>Read in the three csv files described below and store them in a list of dataFrames</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1204,7 +1177,7 @@ dtype: float64
 <p>The original <a class="reference external" href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a> paper is worth reading to build a deeper understanding of these ideas.</p>
 </section>
 <section id="tidying-data">
-<h2><span class="section-number">10.2. </span>Tidying Data<a class="headerlink" href="#tidying-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.2. </span>Tidying Data<a class="headerlink" href="#tidying-data" title="Permalink to this headline">#</a></h2>
 <p>Let’s reshape the first one to match the tidy one. First, we
 will save it to a DataFrame, this makes things easier to read
 and enables us to use the built in help in jupyter, because it can’t check types too many levels into a data structure.</p>
@@ -1471,7 +1444,7 @@ and enables us to use the built in help in jupyter, because it can’t check typ
   
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe259363790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f12348b29d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-26_33_2.png" src="../_images/2022-09-26_33_2.png" />
@@ -1479,7 +1452,7 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </div>
 </section>
 <section id="filtering-data">
-<h2><span class="section-number">10.3. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.3. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high_prod</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">250</span><span class="p">]</span>
@@ -1768,36 +1741,36 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </div>
 </section>
 <section id="questions-after-class">
-<h2><span class="section-number">10.4. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-<h3><span class="section-number">10.4.1. </span>In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?<a class="headerlink" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.1. </span>In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?<a class="headerlink" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb" title="Permalink to this headline">#</a></h3>
 <p>We can have multiple variables as the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> so that the dataset would have 4 columns instead of 3.</p>
 </section>
 <section id="can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-<h3><span class="section-number">10.4.2. </span>Can we clean data within any row of the data as long as there is a column name for it?<a class="headerlink" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.2. </span>Can we clean data within any row of the data as long as there is a column name for it?<a class="headerlink" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it" title="Permalink to this headline">#</a></h3>
 <p>Yes</p>
 </section>
 <section id="how-to-clean-larger-datasets">
-<h3><span class="section-number">10.4.3. </span>How to clean larger datasets<a class="headerlink" href="#how-to-clean-larger-datasets" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.3. </span>How to clean larger datasets<a class="headerlink" href="#how-to-clean-larger-datasets" title="Permalink to this headline">#</a></h3>
 <p>Everything we will learn will work in any context that you can load the dataset into RAM on the computer you are working on; or process it in batches.</p>
 </section>
 <section id="with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-<h3><span class="section-number">10.4.4. </span>with very large data sets, how can you tell id there are missing values or incorrect types present?<a class="headerlink" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.4. </span>with very large data sets, how can you tell id there are missing values or incorrect types present?<a class="headerlink" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present" title="Permalink to this headline">#</a></h3>
 <p>We use ways of checking the values, like the <code class="docutils literal notranslate"><span class="pre">info</span></code> method to check the whole column.</p>
 </section>
 <section id="are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-<h3><span class="section-number">10.4.5. </span>Are there any prebuilt methods to identify and remove extreme outliers?<a class="headerlink" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.5. </span>Are there any prebuilt methods to identify and remove extreme outliers?<a class="headerlink" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers" title="Permalink to this headline">#</a></h3>
 <p>There may be, that is a good thing to look in the documentation for.  However, typically the definition of an outlier is best made within context, so the filtering strategy that we just used would be the way to remove them, after doign some EDA.</p>
 </section>
 <section id="is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-<h3><span class="section-number">10.4.6. </span>Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?<a class="headerlink" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.6. </span>Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?<a class="headerlink" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned" title="Permalink to this headline">#</a></h3>
 <p>It’s “clean” when it will work for the analysis you want to do. This means clean enough for one analysis may not be enough for another goal.  Domain expertise is alwasy important.</p>
 </section>
 <section id="are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-<h3><span class="section-number">10.4.7. </span>Are there any packages we may utilize that help us clean data more effectively?<a class="headerlink" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.7. </span>Are there any packages we may utilize that help us clean data more effectively?<a class="headerlink" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="things-we-will-do-later-this-week">
-<h3><span class="section-number">10.4.8. </span>Things we will do later this week:<a class="headerlink" href="#things-we-will-do-later-this-week" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.8. </span>Things we will do later this week:<a class="headerlink" href="#things-we-will-do-later-this-week" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>adding more data to a DataFrame in jupyter notebook?</p></li>
 <li><p>replace values</p></li>
@@ -1805,7 +1778,7 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </ul>
 </section>
 <section id="next-week">
-<h3><span class="section-number">10.4.9. </span>Next week<a class="headerlink" href="#next-week" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.4.9. </span>Next week<a class="headerlink" href="#next-week" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>What is the difference between different types of merging data frames (inner, outer, left, right, etc)?</p></li>
 </ul>
