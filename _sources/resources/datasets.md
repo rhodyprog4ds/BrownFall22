@@ -10,6 +10,10 @@ This page is a semi-curated source of datasets for use in assignments.  The diff
 - [Json Datasets](https://github.com/jdorfman/awesome-json-datasets)
 - [National Center for Education Statistics Digest 2019](https://nces.ed.gov/programs/digest/d19/tables_3.asp) These data tables are available for download as excel and visible on the page.
 - Lots of wikipedia pages have tables in them.
+- [Messy Artists](https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/messy_artist.csv) .csv file, that needs to be cleaned, containing data on artists
+- [Messy Wheels](https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/messy_wheels.csv) .csv file, that needs to be cleaned, containing data on various wheel attractions around the globe
+- [Clean Artists](https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/clean_artist.csv) .csv file, already cleaned, containing data on artists
+- [Clean Wheels](https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/clean_wheels.csv), .csv file, already cleaned, containing data on various wheel attractions around the globe
 
 
 ## General Sources
