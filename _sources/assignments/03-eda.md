@@ -1,7 +1,7 @@
 ---
 substitutions:
   accept_assignment: |
-    [Template repo for submission]()
+    [Template repo for submission](https://classroom.github.com/a/p4hfsMTX)
   date : 2022-09-28 11:59pm
 ---
 
