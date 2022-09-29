@@ -7,7 +7,7 @@ This page is a semi-curated source of datasets for use in assignments.  The diff
 (basic-datasets)=
 ## Best for loading directly into a notebook
 - [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data) inside the folder for each year there is a README file with list of the datasets. These are .csv files
-- [Json Datasets](https://github.com/jdorfman/awesome-json-datasets)
+- [Json Datasets](https://github.com/jdorfman/awesome-json-datasets) **warning some of these require API calls and that is not recommended until at least A4**
 - [National Center for Education Statistics Digest 2019](https://nces.ed.gov/programs/digest/d19/tables_3.asp) These data tables are available for download as excel and visible on the page.
 - Lots of wikipedia pages have tables in them.
 - [Messy Artists](https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/messy_artist.csv) .csv file, that needs to be cleaned, containing data on artists

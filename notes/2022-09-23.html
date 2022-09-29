@@ -211,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
    9. Intro to Data Cleaning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   10. Fixing Data representations
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -881,7 +886,7 @@ looking ad a plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7992064b90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e523a290&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_11_1.png" src="../_images/2022-09-23_11_1.png" />
@@ -895,7 +900,7 @@ looking ad a plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f799207f390&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e4e7c650&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_13_1.png" src="../_images/2022-09-23_13_1.png" />
@@ -941,7 +946,7 @@ looking ad a plot.</p>
 <img alt="split-apply-combine image showing one data table, it split into 3 part, the sum applied to each part, and the sums combined back into one table" src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/03.08-split-apply-combine.png" /></p>
 <p>Groupby splits the whole dataframe into parts where each part has the same value for <code class="docutils literal notranslate"><span class="pre">Country.of.Origin</span></code> and then after that, we extracted the <code class="docutils literal notranslate"><span class="pre">Number.of.Bags</span></code> column, took the sum (within each separate group) and then put it all back together in one table (in this case, a <code class="docutils literal notranslate"><span class="pre">Series</span></code> becuase we picked one variable out)</p>
 <section id="how-does-groupby-work">
-<h3><span class="section-number">8.2.1. </span>How does Groupby Work?<a class="headerlink" href="#how-does-groupby-work" title="Permalink to this headline">#</a></h3>
+<span id="groupby-detail"></span><h3><span class="section-number">8.2.1. </span>How does Groupby Work?<a class="headerlink" href="#how-does-groupby-work" title="Permalink to this headline">#</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This is more details with code examples on how the groupby works.  If you want
@@ -958,7 +963,7 @@ these notes as a notebook.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f7991f2b8d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f90e4d30a50&gt;
 </pre></div>
 </div>
 </div>
@@ -1297,7 +1302,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7991b83910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e4ce77d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_29_1.png" src="../_images/2022-09-23_29_1.png" />
@@ -1311,7 +1316,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7991a8fcd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e523a850&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_30_1.png" src="../_images/2022-09-23_30_1.png" />
@@ -1325,7 +1330,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7991b83290&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e4b62d10&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_31_1.png" src="../_images/2022-09-23_31_1.png" />
@@ -1470,7 +1475,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f79916c4890&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e4af3b50&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_38_1.png" src="../_images/2022-09-23_38_1.png" />
@@ -1602,7 +1607,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f79916c46d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e44a6ed0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_44_1.png" src="../_images/2022-09-23_44_1.png" />
@@ -1676,7 +1681,7 @@ memory usage: 359.5+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7991726b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e4675dd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_46_1.png" src="../_images/2022-09-23_46_1.png" />
@@ -1731,7 +1736,7 @@ Related but not the same.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f799035c5d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e3385cd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_52_1.png" src="../_images/2022-09-23_52_1.png" />
@@ -1747,7 +1752,7 @@ Related but not the same.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f79901a0850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e331b190&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_54_1.png" src="../_images/2022-09-23_54_1.png" />
@@ -1763,7 +1768,7 @@ Related but not the same.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7990167390&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f90e33bb250&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_56_1.png" src="../_images/2022-09-23_56_1.png" />
