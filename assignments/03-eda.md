@@ -100,7 +100,9 @@ This is optional, but if you do a review, you only need to do one analysis each.
 Be familiar with the [collaboration](collaboration) policy before you choose to go this route
 ```
 
+```{important}
 [get group permissions in advance](https://github.com/rhodyprog4ds/fall-22-discuss-share-community/discussions/7)
+```
 
 With a partner (or group of 3 where person 1 review's 2 work, 2 reviews 3, and 3 reviews 1) read
 your partner's notebook and complete a peer review on their pull request.  You can do peer review
