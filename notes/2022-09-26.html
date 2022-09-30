@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Intro to Data Cleaning &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>8. Intro to Data Cleaning &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Fixing Data representations" href="2022-09-28.html" />
-    <link rel="prev" title="8. More EDA" href="2022-09-23.html" />
+    <link rel="next" title="9. Fixing Data representations" href="2022-09-28.html" />
+    <link rel="prev" title="7. More EDA" href="2022-09-23.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -172,48 +172,48 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2022-09-09.html">
-   2. Data Science and Course Logistics
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="2022-09-12.html">
-   3. Reading Docstrings, Object Inspection, and Loading Data
+   2. Reading Docstrings, Object Inspection, and Loading Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-14.html">
-   4. Data Frames and other iterables
+   3. Data Frames and other iterables
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-16.html">
-   5. Iterables and Indexing
+   4. Iterables and Indexing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-19.html">
-   6. Getting Started with Exploratory Data Analysis
+   5. Getting Started with Exploratory Data Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-21.html">
-   7. Visualization
+   6. Visualization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-23.html">
-   8. More EDA
+   7. More EDA
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   9. Intro to Data Cleaning
+   8. Intro to Data Cleaning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-28.html">
-   10. Fixing Data representations
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
   </a>
  </li>
 </ul>
@@ -601,67 +601,67 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidy-data">
-   9.1. Tidy Data
+   8.1. Tidy Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidying-data">
-   9.2. Tidying Data
+   8.2. Tidying Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtering-data">
-   9.3. Filtering Data
+   8.3. Filtering Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   9.4. Questions after class
+   8.4. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-     9.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
+     8.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-     9.4.2. Can we clean data within any row of the data as long as there is a column name for it?
+     8.4.2. Can we clean data within any row of the data as long as there is a column name for it?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
-     9.4.3. How to clean larger datasets
+     8.4.3. How to clean larger datasets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-     9.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
+     8.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-     9.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
+     8.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-     9.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
+     8.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-     9.4.7. Are there any packages we may utilize that help us clean data more effectively?
+     8.4.7. Are there any packages we may utilize that help us clean data more effectively?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
-     9.4.8. Things we will do later this week:
+     8.4.8. Things we will do later this week:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#next-week">
-     9.4.9. Next week
+     8.4.9. Next week
     </a>
    </li>
   </ul>
@@ -687,67 +687,67 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidy-data">
-   9.1. Tidy Data
+   8.1. Tidy Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidying-data">
-   9.2. Tidying Data
+   8.2. Tidying Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtering-data">
-   9.3. Filtering Data
+   8.3. Filtering Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   9.4. Questions after class
+   8.4. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-     9.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
+     8.4.1. In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-     9.4.2. Can we clean data within any row of the data as long as there is a column name for it?
+     8.4.2. Can we clean data within any row of the data as long as there is a column name for it?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-clean-larger-datasets">
-     9.4.3. How to clean larger datasets
+     8.4.3. How to clean larger datasets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-     9.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
+     8.4.4. with very large data sets, how can you tell id there are missing values or incorrect types present?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-     9.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
+     8.4.5. Are there any prebuilt methods to identify and remove extreme outliers?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-     9.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
+     8.4.6. Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-     9.4.7. Are there any packages we may utilize that help us clean data more effectively?
+     8.4.7. Are there any packages we may utilize that help us clean data more effectively?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#things-we-will-do-later-this-week">
-     9.4.8. Things we will do later this week:
+     8.4.8. Things we will do later this week:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#next-week">
-     9.4.9. Next week
+     8.4.9. Next week
     </a>
    </li>
   </ul>
@@ -763,7 +763,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="intro-to-data-cleaning">
-<h1><span class="section-number">9. </span>Intro to Data Cleaning<a class="headerlink" href="#intro-to-data-cleaning" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Intro to Data Cleaning<a class="headerlink" href="#intro-to-data-cleaning" title="Permalink to this headline">#</a></h1>
 <p>This week, we’ll be cleaning data.</p>
 <p>Cleaning data is <strong>labor intensive</strong> and requires making <em>subjective</em> choices.<br />
 We’ll focus on, and assess you on, manipulating data correctly, making reasonable
@@ -786,7 +786,7 @@ this week:</p>
 </div>
 </div>
 <section id="tidy-data">
-<h2><span class="section-number">9.1. </span>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1. </span>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h2>
 <p>Read in the three csv files described below and store them in a list of dataFrames</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,7 +1015,7 @@ this week:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/2274987639.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying &#39;numeric_only=None&#39; is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/2274987639.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying &#39;numeric_only=None&#39; is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   df_list[0].mean()
 </pre></div>
 </div>
@@ -1034,7 +1034,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/1371725361.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with &#39;numeric_only=None&#39;) is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/1371725361.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with &#39;numeric_only=None&#39;) is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
   df_list[0].mean(axis=1)
 </pre></div>
 </div>
@@ -1055,7 +1055,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/1105758803.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying &#39;numeric_only=None&#39; is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/1105758803.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying &#39;numeric_only=None&#39; is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
   df_list[1].mean()
 </pre></div>
 </div>
@@ -1075,7 +1075,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/1112167831.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with &#39;numeric_only=None&#39;) is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/1112167831.py:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with &#39;numeric_only=None&#39;) is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
   df_list[1].mean(axis=1)
 </pre></div>
 </div>
@@ -1094,7 +1094,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/906930014.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/906930014.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   df_list[2].groupby(&#39;person&#39;).mean()
 </pre></div>
 </div>
@@ -1147,7 +1147,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/2480310521.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/2480310521.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   df_list[2].groupby(&#39;treatment&#39;).mean()
 </pre></div>
 </div>
@@ -1192,7 +1192,7 @@ dtype: float64
 <p>The original <a class="reference external" href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a> paper is worth reading to build a deeper understanding of these ideas.</p>
 </section>
 <section id="tidying-data">
-<h2><span class="section-number">9.2. </span>Tidying Data<a class="headerlink" href="#tidying-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2. </span>Tidying Data<a class="headerlink" href="#tidying-data" title="Permalink to this headline">#</a></h2>
 <p>Let’s reshape the first one to match the tidy one. First, we
 will save it to a DataFrame, this makes things easier to read
 and enables us to use the built in help in jupyter, because it can’t check types too many levels into a data structure.</p>
@@ -1455,19 +1455,19 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1960/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1955/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
   sns.displot(data=coffee_tall, x=&#39;value&#39;,hue=&#39;Country.of.Origin&#39;,
-/tmp/ipykernel_1960/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
+/tmp/ipykernel_1955/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
   sns.displot(data=coffee_tall, x=&#39;value&#39;,hue=&#39;Country.of.Origin&#39;,
-/tmp/ipykernel_1960/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
+/tmp/ipykernel_1955/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
   sns.displot(data=coffee_tall, x=&#39;value&#39;,hue=&#39;Country.of.Origin&#39;,
-/tmp/ipykernel_1960/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
+/tmp/ipykernel_1955/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
   sns.displot(data=coffee_tall, x=&#39;value&#39;,hue=&#39;Country.of.Origin&#39;,
-/tmp/ipykernel_1960/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
+/tmp/ipykernel_1955/3603277008.py:1: UserWarning: Dataset has 0 variance; skipping density estimate. Pass `warn_singular=False` to disable this warning.
   sns.displot(data=coffee_tall, x=&#39;value&#39;,hue=&#39;Country.of.Origin&#39;,
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe021d85a60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f276dd37be0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-26_33_2.png" src="../_images/2022-09-26_33_2.png" />
@@ -1475,7 +1475,7 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </div>
 </section>
 <section id="filtering-data">
-<h2><span class="section-number">9.3. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.3. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high_prod</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">250</span><span class="p">]</span>
@@ -1764,36 +1764,36 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </div>
 </section>
 <section id="questions-after-class">
-<h2><span class="section-number">9.4. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.4. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb">
-<h3><span class="section-number">9.4.1. </span>In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?<a class="headerlink" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.1. </span>In the data we had about treatment a and treatment b.  Say there was another column that provided information about the age of the people.  Could we create another value variable to or would we put it in the value_vars list along with treatment a and treatmentb?<a class="headerlink" href="#in-the-data-we-had-about-treatment-a-and-treatment-b-say-there-was-another-column-that-provided-information-about-the-age-of-the-people-could-we-create-another-value-variable-to-or-would-we-put-it-in-the-value-vars-list-along-with-treatment-a-and-treatmentb" title="Permalink to this headline">#</a></h3>
 <p>We can have multiple variables as the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> so that the dataset would have 4 columns instead of 3.</p>
 </section>
 <section id="can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it">
-<h3><span class="section-number">9.4.2. </span>Can we clean data within any row of the data as long as there is a column name for it?<a class="headerlink" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.2. </span>Can we clean data within any row of the data as long as there is a column name for it?<a class="headerlink" href="#can-we-clean-data-within-any-row-of-the-data-as-long-as-there-is-a-column-name-for-it" title="Permalink to this headline">#</a></h3>
 <p>Yes</p>
 </section>
 <section id="how-to-clean-larger-datasets">
-<h3><span class="section-number">9.4.3. </span>How to clean larger datasets<a class="headerlink" href="#how-to-clean-larger-datasets" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.3. </span>How to clean larger datasets<a class="headerlink" href="#how-to-clean-larger-datasets" title="Permalink to this headline">#</a></h3>
 <p>Everything we will learn will work in any context that you can load the dataset into RAM on the computer you are working on; or process it in batches.</p>
 </section>
 <section id="with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present">
-<h3><span class="section-number">9.4.4. </span>with very large data sets, how can you tell id there are missing values or incorrect types present?<a class="headerlink" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.4. </span>with very large data sets, how can you tell id there are missing values or incorrect types present?<a class="headerlink" href="#with-very-large-data-sets-how-can-you-tell-id-there-are-missing-values-or-incorrect-types-present" title="Permalink to this headline">#</a></h3>
 <p>We use ways of checking the values, like the <code class="docutils literal notranslate"><span class="pre">info</span></code> method to check the whole column.</p>
 </section>
 <section id="are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers">
-<h3><span class="section-number">9.4.5. </span>Are there any prebuilt methods to identify and remove extreme outliers?<a class="headerlink" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.5. </span>Are there any prebuilt methods to identify and remove extreme outliers?<a class="headerlink" href="#are-there-any-prebuilt-methods-to-identify-and-remove-extreme-outliers" title="Permalink to this headline">#</a></h3>
 <p>There may be, that is a good thing to look in the documentation for.  However, typically the definition of an outlier is best made within context, so the filtering strategy that we just used would be the way to remove them, after doign some EDA.</p>
 </section>
 <section id="is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned">
-<h3><span class="section-number">9.4.6. </span>Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?<a class="headerlink" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.6. </span>Is there a specific metric to which a dataset must meet to consider it ‘cleaned’?<a class="headerlink" href="#is-there-a-specific-metric-to-which-a-dataset-must-meet-to-consider-it-cleaned" title="Permalink to this headline">#</a></h3>
 <p>It’s “clean” when it will work for the analysis you want to do. This means clean enough for one analysis may not be enough for another goal.  Domain expertise is alwasy important.</p>
 </section>
 <section id="are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively">
-<h3><span class="section-number">9.4.7. </span>Are there any packages we may utilize that help us clean data more effectively?<a class="headerlink" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.7. </span>Are there any packages we may utilize that help us clean data more effectively?<a class="headerlink" href="#are-there-any-packages-we-may-utilize-that-help-us-clean-data-more-effectively" title="Permalink to this headline">#</a></h3>
 </section>
 <section id="things-we-will-do-later-this-week">
-<h3><span class="section-number">9.4.8. </span>Things we will do later this week:<a class="headerlink" href="#things-we-will-do-later-this-week" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.8. </span>Things we will do later this week:<a class="headerlink" href="#things-we-will-do-later-this-week" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>adding more data to a DataFrame in jupyter notebook?</p></li>
 <li><p>replace values</p></li>
@@ -1801,7 +1801,7 @@ and enables us to use the built in help in jupyter, because it can’t check typ
 </ul>
 </section>
 <section id="next-week">
-<h3><span class="section-number">9.4.9. </span>Next week<a class="headerlink" href="#next-week" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.4.9. </span>Next week<a class="headerlink" href="#next-week" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>What is the difference between different types of merging data frames (inner, outer, left, right, etc)?</p></li>
 </ul>
@@ -1840,13 +1840,13 @@ and enables us to use the built in help in jupyter, because it can’t check typ
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8. </span>More EDA</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>More EDA</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2022-09-28.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Fixing Data representations</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Fixing Data representations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

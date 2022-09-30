@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5. Iterables and Indexing &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>4. Iterables and Indexing &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Getting Started with Exploratory Data Analysis" href="2022-09-19.html" />
-    <link rel="prev" title="4. Data Frames and other iterables" href="2022-09-14.html" />
+    <link rel="next" title="5. Getting Started with Exploratory Data Analysis" href="2022-09-19.html" />
+    <link rel="prev" title="3. Data Frames and other iterables" href="2022-09-14.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -172,48 +172,48 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2022-09-09.html">
-   2. Data Science and Course Logistics
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="2022-09-12.html">
-   3. Reading Docstrings, Object Inspection, and Loading Data
+   2. Reading Docstrings, Object Inspection, and Loading Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-14.html">
-   4. Data Frames and other iterables
+   3. Data Frames and other iterables
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Iterables and Indexing
+   4. Iterables and Indexing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-19.html">
-   6. Getting Started with Exploratory Data Analysis
+   5. Getting Started with Exploratory Data Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-21.html">
-   7. Visualization
+   6. Visualization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-23.html">
-   8. More EDA
+   7. More EDA
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-26.html">
-   9. Intro to Data Cleaning
+   8. Intro to Data Cleaning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-28.html">
-   10. Fixing Data representations
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
   </a>
  </li>
 </ul>
@@ -601,135 +601,135 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistics">
-   5.1. Logistics
+   4.1. Logistics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignment">
-     5.1.1. Assignment
+     4.1.1. Assignment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#grade-tracking">
-     5.1.2. Grade Tracking
+     4.1.2. Grade Tracking
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lists-of-lists">
-   5.2. Lists of lists
+   4.2. Lists of lists
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-a-json">
-   5.3. Loading a json
+   4.3. Loading a json
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-your-repo-offline">
-   5.4. Working with your repo offline
+   4.4. Working with your repo offline
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#authenticate-on-mac">
-     5.4.1. Authenticate on Mac
+     4.4.1. Authenticate on Mac
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#authenticate-on-windows">
-     5.4.2. Authenticate on Windows
+     4.4.2. Authenticate on Windows
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#work-offline">
-     5.4.3. Work offline
+     4.4.3. Work offline
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   5.5. Questions After Class
+   4.5. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     5.5.1. Logistics
+     4.5.1. Logistics
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#where-do-we-find-the-grading-page">
-       5.5.1.1. where do we find the grading page?
+       4.5.1.1. where do we find the grading page?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignemnt">
-     5.5.2. Assignemnt
+     4.5.2. Assignemnt
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
-       5.5.2.1. what are the keys needed on the dictionaries for the assignment?
+       4.5.2.1. what are the keys needed on the dictionaries for the assignment?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
-       5.5.2.2. do we have to accept assignment 2 anywhere and if so how
+       4.5.2.2. do we have to accept assignment 2 anywhere and if so how
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
-       5.5.2.3. For the purposes of the assignment should we download it locally to work with our notebooks?
+       4.5.2.3. For the purposes of the assignment should we download it locally to work with our notebooks?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#content">
-     5.5.3. Content
+     4.5.3. Content
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
-       5.5.3.1. How do you locate a specific row and column from a dataframe?
+       4.5.3.1. How do you locate a specific row and column from a dataframe?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
-       5.5.3.2. with data sets if there is an error with formatting and we can modify the original how would we fix it
+       4.5.3.2. with data sets if there is an error with formatting and we can modify the original how would we fix it
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
-       5.5.3.3. Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
+       4.5.3.3. Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-can-we-iterate-through-dictionaries">
-       5.5.3.4. how can we iterate through dictionaries
+       4.5.3.4. how can we iterate through dictionaries
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
-       5.5.3.5. What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
+       4.5.3.5. What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-exactly-does-json-mean-do">
-       5.5.3.6. what exactly does json mean / do
+       4.5.3.6. what exactly does json mean / do
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python">
-       5.5.3.7. are nested lists the only way to create DataFrames in python
+       4.5.3.7. are nested lists the only way to create DataFrames in python
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-nested-loops-work-in-the-jupyter-notebook">
-       5.5.3.8. How do nested loops work in the jupyter notebook
+       4.5.3.8. How do nested loops work in the jupyter notebook
       </a>
      </li>
     </ul>
@@ -757,135 +757,135 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistics">
-   5.1. Logistics
+   4.1. Logistics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignment">
-     5.1.1. Assignment
+     4.1.1. Assignment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#grade-tracking">
-     5.1.2. Grade Tracking
+     4.1.2. Grade Tracking
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lists-of-lists">
-   5.2. Lists of lists
+   4.2. Lists of lists
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-a-json">
-   5.3. Loading a json
+   4.3. Loading a json
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-your-repo-offline">
-   5.4. Working with your repo offline
+   4.4. Working with your repo offline
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#authenticate-on-mac">
-     5.4.1. Authenticate on Mac
+     4.4.1. Authenticate on Mac
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#authenticate-on-windows">
-     5.4.2. Authenticate on Windows
+     4.4.2. Authenticate on Windows
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#work-offline">
-     5.4.3. Work offline
+     4.4.3. Work offline
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   5.5. Questions After Class
+   4.5. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     5.5.1. Logistics
+     4.5.1. Logistics
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#where-do-we-find-the-grading-page">
-       5.5.1.1. where do we find the grading page?
+       4.5.1.1. where do we find the grading page?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignemnt">
-     5.5.2. Assignemnt
+     4.5.2. Assignemnt
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
-       5.5.2.1. what are the keys needed on the dictionaries for the assignment?
+       4.5.2.1. what are the keys needed on the dictionaries for the assignment?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
-       5.5.2.2. do we have to accept assignment 2 anywhere and if so how
+       4.5.2.2. do we have to accept assignment 2 anywhere and if so how
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
-       5.5.2.3. For the purposes of the assignment should we download it locally to work with our notebooks?
+       4.5.2.3. For the purposes of the assignment should we download it locally to work with our notebooks?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#content">
-     5.5.3. Content
+     4.5.3. Content
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
-       5.5.3.1. How do you locate a specific row and column from a dataframe?
+       4.5.3.1. How do you locate a specific row and column from a dataframe?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
-       5.5.3.2. with data sets if there is an error with formatting and we can modify the original how would we fix it
+       4.5.3.2. with data sets if there is an error with formatting and we can modify the original how would we fix it
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
-       5.5.3.3. Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
+       4.5.3.3. Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-can-we-iterate-through-dictionaries">
-       5.5.3.4. how can we iterate through dictionaries
+       4.5.3.4. how can we iterate through dictionaries
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
-       5.5.3.5. What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
+       4.5.3.5. What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-exactly-does-json-mean-do">
-       5.5.3.6. what exactly does json mean / do
+       4.5.3.6. what exactly does json mean / do
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python">
-       5.5.3.7. are nested lists the only way to create DataFrames in python
+       4.5.3.7. are nested lists the only way to create DataFrames in python
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-nested-loops-work-in-the-jupyter-notebook">
-       5.5.3.8. How do nested loops work in the jupyter notebook
+       4.5.3.8. How do nested loops work in the jupyter notebook
       </a>
      </li>
     </ul>
@@ -903,11 +903,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="iterables-and-indexing">
-<h1><span class="section-number">5. </span>Iterables and Indexing<a class="headerlink" href="#iterables-and-indexing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Iterables and Indexing<a class="headerlink" href="#iterables-and-indexing" title="Permalink to this headline">#</a></h1>
 <section id="logistics">
-<h2><span class="section-number">5.1. </span>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">#</a></h2>
 <section id="assignment">
-<h3><span class="section-number">5.1.1. </span>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
 <p>On Assignment 2, there’s a script to run to prepare it for grading.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -974,7 +974,7 @@ title="Print to PDF"
 <p><a class="reference external" href="https://scribehow.com/shared/Manually_Run_GitHub_action__gDGjXhWyTCOr-XoMBqls7w">see instructions in a full page</a></p>
 </section>
 <section id="grade-tracking">
-<h3><span class="section-number">5.1.2. </span>Grade Tracking<a class="headerlink" href="#grade-tracking" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>Grade Tracking<a class="headerlink" href="#grade-tracking" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -989,7 +989,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="lists-of-lists">
-<h2><span class="section-number">5.2. </span>Lists of lists<a class="headerlink" href="#lists-of-lists" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>Lists of lists<a class="headerlink" href="#lists-of-lists" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1327,7 +1327,7 @@ Name: 3, dtype: object
 </div>
 </section>
 <section id="loading-a-json">
-<h2><span class="section-number">5.3. </span>Loading a json<a class="headerlink" href="#loading-a-json" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Loading a json<a class="headerlink" href="#loading-a-json" title="Permalink to this headline">#</a></h2>
 <p>We can load a json using the <code class="docutils literal notranslate"><span class="pre">read_json</span></code> method the same way we used the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,6 +1374,83 @@ Name: 3, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>24334241241</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11192055912, 'size': 3, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-30 23:36:58+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24334241185</td>
+      <td>PullRequestEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'closed', 'number': 19, 'pull_reque...</td>
+      <td>True</td>
+      <td>2022-09-30 23:36:58+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24334240240</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11192055328, 'size': 5, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-30 23:36:49+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24334240185</td>
+      <td>PullRequestEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'closed', 'number': 20, 'pull_reque...</td>
+      <td>True</td>
+      <td>2022-09-30 23:36:49+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24334202689</td>
+      <td>PullRequestEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'action': 'opened', 'number': 20, 'pull_reque...</td>
+      <td>True</td>
+      <td>2022-09-30 23:31:52+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>24334196575</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11192030439, 'size': 3, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-30 23:31:04+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>24334092452</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11191970471, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-09-30 23:17:54+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>7</th>
       <td>24334066051</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1384,7 +1461,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>8</th>
       <td>24334050746</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1395,7 +1472,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>9</th>
       <td>24333803467</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1406,7 +1483,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>10</th>
       <td>24333777364</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1417,7 +1494,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>11</th>
       <td>24333777314</td>
       <td>PullRequestEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1428,7 +1505,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>12</th>
       <td>24333768489</td>
       <td>PullRequestEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1439,7 +1516,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>13</th>
       <td>24333768476</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1450,7 +1527,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>14</th>
       <td>24333647592</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1461,7 +1538,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>15</th>
       <td>24331367491</td>
       <td>PullRequestEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1472,7 +1549,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>16</th>
       <td>24331367430</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1483,7 +1560,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>17</th>
       <td>24330759704</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1494,7 +1571,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>18</th>
       <td>24330696234</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1505,7 +1582,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>19</th>
       <td>24329329690</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1516,7 +1593,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>20</th>
       <td>24329320274</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1527,7 +1604,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>21</th>
       <td>24312792732</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1538,7 +1615,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>22</th>
       <td>24312761770</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1549,7 +1626,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>23</th>
       <td>24312761572</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1560,7 +1637,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>24</th>
       <td>24312742223</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1571,7 +1648,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>25</th>
       <td>24312725531</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1582,7 +1659,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>26</th>
       <td>24312720704</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1593,7 +1670,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>27</th>
       <td>24312709037</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1604,7 +1681,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>28</th>
       <td>24312313298</td>
       <td>IssuesEvent</td>
       <td>{'id': 54992827, 'login': 'Bchadwick2', 'displ...</td>
@@ -1615,7 +1692,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>29</th>
       <td>24311054847</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1625,96 +1702,19 @@ Name: 3, dtype: object
       <td>2022-09-29 22:28:43+00:00</td>
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
-    <tr>
-      <th>23</th>
-      <td>24311031239</td>
-      <td>CreateEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'ref': 'a4', 'ref_type': 'tag', 'master_branc...</td>
-      <td>True</td>
-      <td>2022-09-29 22:26:43+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>24288739906</td>
-      <td>ReleaseEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'published', 'release': {'url': 'ht...</td>
-      <td>True</td>
-      <td>2022-09-29 02:32:12+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>24288731615</td>
-      <td>CreateEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'ref': 'c10', 'ref_type': 'tag', 'master_bran...</td>
-      <td>True</td>
-      <td>2022-09-29 02:31:23+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>24288711404</td>
-      <td>PushEvent</td>
-      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11169460936, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-09-29 02:29:34+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>24288681299</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11169445176, 'size': 2, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-09-29 02:26:45+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>24288620658</td>
-      <td>PushEvent</td>
-      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11169413015, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-09-29 02:21:13+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>24288587636</td>
-      <td>IssuesEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'closed', 'issue': {'url': 'https:/...</td>
-      <td>True</td>
-      <td>2022-09-29 02:18:13+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </section>
 <section id="working-with-your-repo-offline">
-<span id="ghoffline"></span><h2><span class="section-number">5.4. </span>Working with your repo offline<a class="headerlink" href="#working-with-your-repo-offline" title="Permalink to this headline">#</a></h2>
+<span id="ghoffline"></span><h2><span class="section-number">4.4. </span>Working with your repo offline<a class="headerlink" href="#working-with-your-repo-offline" title="Permalink to this headline">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This was not done in class and is optional</p>
 </div>
 <section id="authenticate-on-mac">
-<h3><span class="section-number">5.4.1. </span>Authenticate on Mac<a class="headerlink" href="#authenticate-on-mac" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>Authenticate on Mac<a class="headerlink" href="#authenticate-on-mac" title="Permalink to this headline">#</a></h3>
 <p>On macOS install <a class="reference external" href="https://cli.github.com/">GitHub CLI</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">auth</span> <span class="n">login</span>
 </pre></div>
@@ -1722,12 +1722,12 @@ Name: 3, dtype: object
 <p>use defualts and choose to log in via browser.</p>
 </section>
 <section id="authenticate-on-windows">
-<h3><span class="section-number">5.4.2. </span>Authenticate on Windows<a class="headerlink" href="#authenticate-on-windows" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>Authenticate on Windows<a class="headerlink" href="#authenticate-on-windows" title="Permalink to this headline">#</a></h3>
 <p>On winows install <a class="reference external" href="https://gitforwindows.org/">GitBash</a></p>
 <p>Then try to do the clone step and GitBash will help you authenticate</p>
 </section>
 <section id="work-offline">
-<h3><span class="section-number">5.4.3. </span>Work offline<a class="headerlink" href="#work-offline" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.3. </span>Work offline<a class="headerlink" href="#work-offline" title="Permalink to this headline">#</a></h3>
 <p>Get your repo URL:</p>
 <iframe src="https://scribehow.com/embed/Get_your_repo_URP__83HK6IIFQGyZ63s3rED-hw" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 <p><code class="docutils literal notranslate"><span class="pre">cd</span></code> to where you want to save</p>
@@ -1745,45 +1745,45 @@ git push
 </section>
 </section>
 <section id="questions-after-class">
-<h2><span class="section-number">5.5. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="id1">
-<h3><span class="section-number">5.5.1. </span>Logistics<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.1. </span>Logistics<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <section id="where-do-we-find-the-grading-page">
-<h4><span class="section-number">5.5.1.1. </span>where do we find the grading page?<a class="headerlink" href="#where-do-we-find-the-grading-page" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.1.1. </span>where do we find the grading page?<a class="headerlink" href="#where-do-we-find-the-grading-page" title="Permalink to this headline">#</a></h4>
 <iframe src="https://scribehow.com/embed/Find_your_grade_tracking_project_board__jH1mXUbhQFakUXBZuuk6iw" width="640" height="640" allowfullscreen frameborder="0"></iframe>
 </section>
 </section>
 <section id="assignemnt">
-<h3><span class="section-number">5.5.2. </span>Assignemnt<a class="headerlink" href="#assignemnt" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.2. </span>Assignemnt<a class="headerlink" href="#assignemnt" title="Permalink to this headline">#</a></h3>
 <section id="what-are-the-keys-needed-on-the-dictionaries-for-the-assignment">
-<h4><span class="section-number">5.5.2.1. </span>what are the keys needed on the dictionaries for the assignment?<a class="headerlink" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.2.1. </span>what are the keys needed on the dictionaries for the assignment?<a class="headerlink" href="#what-are-the-keys-needed-on-the-dictionaries-for-the-assignment" title="Permalink to this headline">#</a></h4>
 <p>See the <code class="docutils literal notranslate"><span class="pre">datasets.py</span></code> file in the template repo</p>
 </section>
 <section id="do-we-have-to-accept-assignment-2-anywhere-and-if-so-how">
-<h4><span class="section-number">5.5.2.2. </span>do we have to accept assignment 2 anywhere and if so how<a class="headerlink" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.2.2. </span>do we have to accept assignment 2 anywhere and if so how<a class="headerlink" href="#do-we-have-to-accept-assignment-2-anywhere-and-if-so-how" title="Permalink to this headline">#</a></h4>
 <p>Yes on the assignment page. The link says “accept the assignment”</p>
 </section>
 <section id="for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks">
-<h4><span class="section-number">5.5.2.3. </span>For the purposes of the assignment should we download it locally to work with our notebooks?<a class="headerlink" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.2.3. </span>For the purposes of the assignment should we download it locally to work with our notebooks?<a class="headerlink" href="#for-the-purposes-of-the-assignment-should-we-download-it-locally-to-work-with-our-notebooks" title="Permalink to this headline">#</a></h4>
 <p>Read the instructions carefully on the assignment. It tells you exactly what to do.</p>
 </section>
 </section>
 <section id="content">
-<h3><span class="section-number">5.5.3. </span>Content<a class="headerlink" href="#content" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.3. </span>Content<a class="headerlink" href="#content" title="Permalink to this headline">#</a></h3>
 <section id="how-do-you-locate-a-specific-row-and-column-from-a-dataframe">
-<h4><span class="section-number">5.5.3.1. </span>How do you locate a specific row and column from a dataframe?<a class="headerlink" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.1. </span>How do you locate a specific row and column from a dataframe?<a class="headerlink" href="#how-do-you-locate-a-specific-row-and-column-from-a-dataframe" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">.loc</span></code> accepts both, using a comma to separate. The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">docs for <code class="docutils literal notranslate"><span class="pre">loc</span></code></a> have lots of examples.</p>
 </section>
 <section id="with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it">
-<h4><span class="section-number">5.5.3.2. </span>with data sets if there is an error with formatting and we can modify the original how would we fix it<a class="headerlink" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.2. </span>with data sets if there is an error with formatting and we can modify the original how would we fix it<a class="headerlink" href="#with-data-sets-if-there-is-an-error-with-formatting-and-we-can-modify-the-original-how-would-we-fix-it" title="Permalink to this headline">#</a></h4>
 <p>Download to a copy where you can edit.</p>
 </section>
 <section id="can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12">
-<h4><span class="section-number">5.5.3.3. </span>Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12<a class="headerlink" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.3. </span>Can you use .loc to pull out multiple rows that aren’t next to each other. For example, if I wanted to view rows 3, 8 and 12<a class="headerlink" href="#can-you-use-loc-to-pull-out-multiple-rows-that-arent-next-to-each-other-for-example-if-i-wanted-to-view-rows-3-8-and-12" title="Permalink to this headline">#</a></h4>
 <p>Yes, to select multiple nonconsecutive, you pass a list. The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">docs for <code class="docutils literal notranslate"><span class="pre">loc</span></code></a> have lots of examples.</p>
 </section>
 <section id="how-can-we-iterate-through-dictionaries">
-<h4><span class="section-number">5.5.3.4. </span>how can we iterate through dictionaries<a class="headerlink" href="#how-can-we-iterate-through-dictionaries" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.4. </span>how can we iterate through dictionaries<a class="headerlink" href="#how-can-we-iterate-through-dictionaries" title="Permalink to this headline">#</a></h4>
 <p>dictionaries have a <code class="docutils literal notranslate"><span class="pre">.items()</span></code> method that pops off tuples of th key and value.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1791,19 +1791,19 @@ git push
 </div>
 </section>
 <section id="what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets">
-<h4><span class="section-number">5.5.3.5. </span>What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?<a class="headerlink" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.5. </span>What is the main differnce between JSON and csv files; does one allocate more memory / store larger sets?<a class="headerlink" href="#what-is-the-main-differnce-between-json-and-csv-files-does-one-allocate-more-memory-store-larger-sets" title="Permalink to this headline">#</a></h4>
 <p>The main difference is the structure.  JSON can hold nested data.  For example look at the GitHub data that we read in in class.</p>
 </section>
 <section id="what-exactly-does-json-mean-do">
-<h4><span class="section-number">5.5.3.6. </span>what exactly does json mean / do<a class="headerlink" href="#what-exactly-does-json-mean-do" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.6. </span>what exactly does json mean / do<a class="headerlink" href="#what-exactly-does-json-mean-do" title="Permalink to this headline">#</a></h4>
 <p><a class="reference external" href="https://www.json.org/json-en.html">json</a> is a data file format. It is an acronym for JavaScript Object Notation.  It’s a popular format for internet content.</p>
 </section>
 <section id="are-nested-lists-the-only-way-to-create-dataframes-in-python">
-<h4><span class="section-number">5.5.3.7. </span>are nested lists the only way to create DataFrames in python<a class="headerlink" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.7. </span>are nested lists the only way to create DataFrames in python<a class="headerlink" href="#are-nested-lists-the-only-way-to-create-dataframes-in-python" title="Permalink to this headline">#</a></h4>
 <p>nested lists are not the only way to create pandas DataFrames, you can also do that from a Dictionary. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">see in the docs for the constructor</a>.</p>
 </section>
 <section id="how-do-nested-loops-work-in-the-jupyter-notebook">
-<h4><span class="section-number">5.5.3.8. </span>How do nested loops work in the jupyter notebook<a class="headerlink" href="#how-do-nested-loops-work-in-the-jupyter-notebook" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.5.3.8. </span>How do nested loops work in the jupyter notebook<a class="headerlink" href="#how-do-nested-loops-work-in-the-jupyter-notebook" title="Permalink to this headline">#</a></h4>
 <p>Python constructs other than display items work just as they do in any other interpretter in a jupyter notebook.  The list comprehension that we saw today also works in base Python.  You can nest list comphrehenions in different ways depending on your goal.</p>
 </section>
 </section>
@@ -1841,13 +1841,13 @@ git push
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>Data Frames and other iterables</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Data Frames and other iterables</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2022-09-19.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Getting Started with Exploratory Data Analysis</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Getting Started with Exploratory Data Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

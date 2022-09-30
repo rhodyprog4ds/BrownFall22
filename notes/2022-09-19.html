@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Getting Started with Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>5. Getting Started with Exploratory Data Analysis &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Visualization" href="2022-09-21.html" />
-    <link rel="prev" title="5. Iterables and Indexing" href="2022-09-16.html" />
+    <link rel="next" title="6. Visualization" href="2022-09-21.html" />
+    <link rel="prev" title="4. Iterables and Indexing" href="2022-09-16.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -172,48 +172,48 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2022-09-09.html">
-   2. Data Science and Course Logistics
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="2022-09-12.html">
-   3. Reading Docstrings, Object Inspection, and Loading Data
+   2. Reading Docstrings, Object Inspection, and Loading Data
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-14.html">
-   4. Data Frames and other iterables
+   3. Data Frames and other iterables
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-16.html">
-   5. Iterables and Indexing
+   4. Iterables and Indexing
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   6. Getting Started with Exploratory Data Analysis
+   5. Getting Started with Exploratory Data Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-21.html">
-   7. Visualization
+   6. Visualization
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-23.html">
-   8. More EDA
+   7. More EDA
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-26.html">
-   9. Intro to Data Cleaning
+   8. Intro to Data Cleaning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-28.html">
-   10. Fixing Data representations
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
   </a>
  </li>
 </ul>
@@ -601,99 +601,99 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#staying-organized">
-   6.1. Staying Organized
+   5.1. Staying Organized
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-data-and-examining-structure">
-   6.2. Loading Data and Examining Structure
+   5.2. Loading Data and Examining Structure
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-statistics">
-   6.3. Summary Statistics
+   5.3. Summary Statistics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#describing-nonnumerical-variables">
-   6.4. Describing Nonnumerical Variables
+   5.4. Describing Nonnumerical Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-plotting">
-   6.5. Basic Plotting
+   5.5. Basic Plotting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matching-questions-to-summary-statistics">
-   6.6. Matching Questions to Summary Statistics
+   5.6. Matching Questions to Summary Statistics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   6.7. Questions after class
+   5.7. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-arrays-be-used-in-jupyter-notebook">
-     6.7.1. Can arrays be used in Jupyter Notebook?
+     5.7.1. Can arrays be used in Jupyter Notebook?
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#why-did-coffee-df-country-of-origin-max-say-vietnam">
-       6.7.1.1. why did coffee_df[‘Country.of.Origin’].max() say vietnam?
+       5.7.1.1. why did coffee_df[‘Country.of.Origin’].max() say vietnam?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#why-in-the-groupby-function-the-first-column-is-in-between-parenthesis-nd-the-second-one-between-brackets">
-       6.7.1.2. Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?
+       5.7.1.2. Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#a-quick-recap-of-how-info-counts-non-null-and-dtype-for-each-column-would-be-great-thanks">
-       6.7.1.3. A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!
+       5.7.1.3. A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-plot-a-graph-that-uses-two-columns-in-a-dataset">
-       6.7.1.4. Can you plot a graph that uses two columns in a dataset?
+       5.7.1.4. Can you plot a graph that uses two columns in a dataset?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#are-there-any-other-data-types-as-important-as-dataframes-in-pandas">
-       6.7.1.5. Are there any other data types as important as dataframes in pandas?
+       5.7.1.5. Are there any other data types as important as dataframes in pandas?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-be-utilizing-any-other-packages-libraries-mentioned-than-the-ones-for-visualizing-data-that-we-talked-about-today">
-       6.7.1.6. Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?
+       5.7.1.6. Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#when-displaying-two-categories-like-we-did-at-the-end-could-you-measure-a-different-thing-for-each-category-like-count-for-one-and-mean-for-the-other">
-       6.7.1.7. When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?
+       5.7.1.7. When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-in-depth-will-we-go-with-graphing-data-and-looking-at-it-systemically-to-find-patterns">
-       6.7.1.8. How in depth will we go with graphing data and looking at it systemically to find patterns?
+       5.7.1.8. How in depth will we go with graphing data and looking at it systemically to find patterns?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignment">
-     6.7.2. Assignment
+     5.7.2. Assignment
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#for-assignment-2-how-do-i-find-appropriate-datasets-online">
-       6.7.2.1. For assignment 2, how do I find appropriate datasets online?
+       5.7.2.1. For assignment 2, how do I find appropriate datasets online?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-you-import-a-py-file-from-github-is-there-a-way-to-do-that-without-downloading-it-locally">
-       6.7.2.2. How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?
+       5.7.2.2. How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?
       </a>
      </li>
     </ul>
@@ -721,99 +721,99 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#staying-organized">
-   6.1. Staying Organized
+   5.1. Staying Organized
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-data-and-examining-structure">
-   6.2. Loading Data and Examining Structure
+   5.2. Loading Data and Examining Structure
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-statistics">
-   6.3. Summary Statistics
+   5.3. Summary Statistics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#describing-nonnumerical-variables">
-   6.4. Describing Nonnumerical Variables
+   5.4. Describing Nonnumerical Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-plotting">
-   6.5. Basic Plotting
+   5.5. Basic Plotting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matching-questions-to-summary-statistics">
-   6.6. Matching Questions to Summary Statistics
+   5.6. Matching Questions to Summary Statistics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   6.7. Questions after class
+   5.7. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-arrays-be-used-in-jupyter-notebook">
-     6.7.1. Can arrays be used in Jupyter Notebook?
+     5.7.1. Can arrays be used in Jupyter Notebook?
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#why-did-coffee-df-country-of-origin-max-say-vietnam">
-       6.7.1.1. why did coffee_df[‘Country.of.Origin’].max() say vietnam?
+       5.7.1.1. why did coffee_df[‘Country.of.Origin’].max() say vietnam?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#why-in-the-groupby-function-the-first-column-is-in-between-parenthesis-nd-the-second-one-between-brackets">
-       6.7.1.2. Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?
+       5.7.1.2. Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#a-quick-recap-of-how-info-counts-non-null-and-dtype-for-each-column-would-be-great-thanks">
-       6.7.1.3. A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!
+       5.7.1.3. A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#can-you-plot-a-graph-that-uses-two-columns-in-a-dataset">
-       6.7.1.4. Can you plot a graph that uses two columns in a dataset?
+       5.7.1.4. Can you plot a graph that uses two columns in a dataset?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#are-there-any-other-data-types-as-important-as-dataframes-in-pandas">
-       6.7.1.5. Are there any other data types as important as dataframes in pandas?
+       5.7.1.5. Are there any other data types as important as dataframes in pandas?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#will-we-be-utilizing-any-other-packages-libraries-mentioned-than-the-ones-for-visualizing-data-that-we-talked-about-today">
-       6.7.1.6. Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?
+       5.7.1.6. Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#when-displaying-two-categories-like-we-did-at-the-end-could-you-measure-a-different-thing-for-each-category-like-count-for-one-and-mean-for-the-other">
-       6.7.1.7. When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?
+       5.7.1.7. When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-in-depth-will-we-go-with-graphing-data-and-looking-at-it-systemically-to-find-patterns">
-       6.7.1.8. How in depth will we go with graphing data and looking at it systemically to find patterns?
+       5.7.1.8. How in depth will we go with graphing data and looking at it systemically to find patterns?
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assignment">
-     6.7.2. Assignment
+     5.7.2. Assignment
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#for-assignment-2-how-do-i-find-appropriate-datasets-online">
-       6.7.2.1. For assignment 2, how do I find appropriate datasets online?
+       5.7.2.1. For assignment 2, how do I find appropriate datasets online?
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-you-import-a-py-file-from-github-is-there-a-way-to-do-that-without-downloading-it-locally">
-       6.7.2.2. How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?
+       5.7.2.2. How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?
       </a>
      </li>
     </ul>
@@ -831,7 +831,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-exploratory-data-analysis">
-<h1><span class="section-number">6. </span>Getting Started with Exploratory Data Analysis<a class="headerlink" href="#getting-started-with-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5. </span>Getting Started with Exploratory Data Analysis<a class="headerlink" href="#getting-started-with-exploratory-data-analysis" title="Permalink to this headline">#</a></h1>
 <p>Now we get to start actual data science!</p>
 <p>Our goal this week is to explore the actual data, the values, in a dataset to get a basic idea of what is in the data.</p>
 <p>Summarizing and Visualizing Data are <strong>very</strong> important</p>
@@ -855,14 +855,14 @@ title="Print to PDF"
 </div>
 </div>
 <section id="staying-organized">
-<h2><span class="section-number">6.1. </span>Staying Organized<a class="headerlink" href="#staying-organized" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1. </span>Staying Organized<a class="headerlink" href="#staying-organized" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>See the new <a class="reference internal" href="../resources/organization.html#resource-file-structure"><span class="std std-ref">File structure</span></a> section.</p></li>
 <li><p>Be sure to accept assignments and close the feedback PR if you will not work on them</p></li>
 </ul>
 </section>
 <section id="loading-data-and-examining-structure">
-<h2><span class="section-number">6.2. </span>Loading Data and Examining Structure<a class="headerlink" href="#loading-data-and-examining-structure" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2. </span>Loading Data and Examining Structure<a class="headerlink" href="#loading-data-and-examining-structure" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
@@ -1053,7 +1053,7 @@ memory usage: 9.6+ KB
 </div>
 </section>
 <section id="summary-statistics">
-<h2><span class="section-number">6.3. </span>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3. </span>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">#</a></h2>
 <p>Now, we can actually start to analyze the data itself.</p>
 <p>The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html"><code class="docutils literal notranslate"><span class="pre">describe</span></code></a> method provides us with a set of summary statistics that broadly
 describe the data overall.</p>
@@ -1390,7 +1390,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 </div>
 </section>
 <section id="describing-nonnumerical-variables">
-<h2><span class="section-number">6.4. </span>Describing Nonnumerical Variables<a class="headerlink" href="#describing-nonnumerical-variables" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4. </span>Describing Nonnumerical Variables<a class="headerlink" href="#describing-nonnumerical-variables" title="Permalink to this headline">#</a></h2>
 <p>There are different columns in the describe than the the whole dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1516,7 +1516,7 @@ Name: Country.of.Origin, dtype: object
 </div>
 </section>
 <section id="basic-plotting">
-<h2><span class="section-number">6.5. </span>Basic Plotting<a class="headerlink" href="#basic-plotting" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.5. </span>Basic Plotting<a class="headerlink" href="#basic-plotting" title="Permalink to this headline">#</a></h2>
 <p>Pandas give us basic plotting capability built right into DataFrames.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1547,7 +1547,7 @@ Name: Country.of.Origin, dtype: object
 </div>
 </section>
 <section id="matching-questions-to-summary-statistics">
-<h2><span class="section-number">6.6. </span>Matching Questions to Summary Statistics<a class="headerlink" href="#matching-questions-to-summary-statistics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.6. </span>Matching Questions to Summary Statistics<a class="headerlink" href="#matching-questions-to-summary-statistics" title="Permalink to this headline">#</a></h2>
 <p>When we brainstorm more questions that we can answer with summary statistics or that we might want to ask of this data, the ones that come to mind are often actually dependent on two variables. For example are two scores correlated? or what country has the highest rated coffe on <code class="docutils literal notranslate"><span class="pre">Flavor</span></code>?</p>
 <p>We’ll come back to more detailed questions like this on Friday, but to start we can look at how numerical variables vary by categorical (nonnumerical) variables by grouping the data.</p>
 <p>Above we saw which country had the most ratings (remember one row is one rating), but what if we wanted to see the mean number of bags per country?</p>
@@ -1575,16 +1575,16 @@ Name: Number.of.Bags, dtype: float64
 </div>
 </section>
 <section id="questions-after-class">
-<h2><span class="section-number">6.7. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
 <section id="can-arrays-be-used-in-jupyter-notebook">
-<h3><span class="section-number">6.7.1. </span>Can arrays be used in Jupyter Notebook?<a class="headerlink" href="#can-arrays-be-used-in-jupyter-notebook" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.7.1. </span>Can arrays be used in Jupyter Notebook?<a class="headerlink" href="#can-arrays-be-used-in-jupyter-notebook" title="Permalink to this headline">#</a></h3>
 <p>Jupyter runs a fully powered python interpreter, so all python can work inside it.</p>
 <section id="why-did-coffee-df-country-of-origin-max-say-vietnam">
-<h4><span class="section-number">6.7.1.1. </span>why did coffee_df[‘Country.of.Origin’].max() say vietnam?<a class="headerlink" href="#why-did-coffee-df-country-of-origin-max-say-vietnam" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.1. </span>why did coffee_df[‘Country.of.Origin’].max() say vietnam?<a class="headerlink" href="#why-did-coffee-df-country-of-origin-max-say-vietnam" title="Permalink to this headline">#</a></h4>
 <p>That applies a the <code class="docutils literal notranslate"><span class="pre">max</span></code> function to the <code class="docutils literal notranslate"><span class="pre">'Country.of.Origin'</span></code> column, without counting how many times the values occur.</p>
 </section>
 <section id="why-in-the-groupby-function-the-first-column-is-in-between-parenthesis-nd-the-second-one-between-brackets">
-<h4><span class="section-number">6.7.1.2. </span>Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?<a class="headerlink" href="#why-in-the-groupby-function-the-first-column-is-in-between-parenthesis-nd-the-second-one-between-brackets" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.2. </span>Why, in the groupby function the first column is in between parenthesis nd the second one between brackets?<a class="headerlink" href="#why-in-the-groupby-function-the-first-column-is-in-between-parenthesis-nd-the-second-one-between-brackets" title="Permalink to this headline">#</a></h4>
 <p>The inside parenthesis is the parameter of the groupby function, we could instead do it this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1971,23 +1971,23 @@ Name: Number.of.Bags, dtype: float64
 </div>
 </section>
 <section id="a-quick-recap-of-how-info-counts-non-null-and-dtype-for-each-column-would-be-great-thanks">
-<h4><span class="section-number">6.7.1.3. </span>A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!<a class="headerlink" href="#a-quick-recap-of-how-info-counts-non-null-and-dtype-for-each-column-would-be-great-thanks" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.3. </span>A quick recap of how .info() counts non-null and dtype for each column would be great. Thanks!<a class="headerlink" href="#a-quick-recap-of-how-info-counts-non-null-and-dtype-for-each-column-would-be-great-thanks" title="Permalink to this headline">#</a></h4>
 <p>above</p>
 </section>
 <section id="can-you-plot-a-graph-that-uses-two-columns-in-a-dataset">
-<h4><span class="section-number">6.7.1.4. </span>Can you plot a graph that uses two columns in a dataset?<a class="headerlink" href="#can-you-plot-a-graph-that-uses-two-columns-in-a-dataset" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.4. </span>Can you plot a graph that uses two columns in a dataset?<a class="headerlink" href="#can-you-plot-a-graph-that-uses-two-columns-in-a-dataset" title="Permalink to this headline">#</a></h4>
 <p>Yes, we will see that on Wednesday.</p>
 </section>
 <section id="are-there-any-other-data-types-as-important-as-dataframes-in-pandas">
-<h4><span class="section-number">6.7.1.5. </span>Are there any other data types as important as dataframes in pandas?<a class="headerlink" href="#are-there-any-other-data-types-as-important-as-dataframes-in-pandas" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.5. </span>Are there any other data types as important as dataframes in pandas?<a class="headerlink" href="#are-there-any-other-data-types-as-important-as-dataframes-in-pandas" title="Permalink to this headline">#</a></h4>
 <p>DataFrames are the main type provided by pandas, there are also Series which is conceptually a single column, groupby objects which is basically a list of (DataFrame,label) tuples, and some indexing, but all of these exist to support creating and operating on DataFrames.</p>
 </section>
 <section id="will-we-be-utilizing-any-other-packages-libraries-mentioned-than-the-ones-for-visualizing-data-that-we-talked-about-today">
-<h4><span class="section-number">6.7.1.6. </span>Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?<a class="headerlink" href="#will-we-be-utilizing-any-other-packages-libraries-mentioned-than-the-ones-for-visualizing-data-that-we-talked-about-today" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.6. </span>Will we be utilizing any other packages /libraries mentioned than the ones for visualizing data that we talked about today?<a class="headerlink" href="#will-we-be-utilizing-any-other-packages-libraries-mentioned-than-the-ones-for-visualizing-data-that-we-talked-about-today" title="Permalink to this headline">#</a></h4>
 <p>We will use pandas for basic plots and seaborn for more advanced plots.  There are other libraries for visualization like plotly for interactive plots, but those are more advanced than we need or for specialized use cases. However, the way these type of libraries are designed, is that the special use case ones are for when the basic ones do not do what you need and they often have common patterns.</p>
 </section>
 <section id="when-displaying-two-categories-like-we-did-at-the-end-could-you-measure-a-different-thing-for-each-category-like-count-for-one-and-mean-for-the-other">
-<h4><span class="section-number">6.7.1.7. </span>When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?<a class="headerlink" href="#when-displaying-two-categories-like-we-did-at-the-end-could-you-measure-a-different-thing-for-each-category-like-count-for-one-and-mean-for-the-other" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.7. </span>When displaying two categories like we did at the end could you measure a different thing for each category? Like count for one and mean for the other?<a class="headerlink" href="#when-displaying-two-categories-like-we-did-at-the-end-could-you-measure-a-different-thing-for-each-category-like-count-for-one-and-mean-for-the-other" title="Permalink to this headline">#</a></h4>
 <p>Yes! We will likely not do this in class, but it is a small extension from what we have covered and uses the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.aggregate.html">pandas aggregrate</a> method.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -1995,18 +1995,18 @@ Name: Number.of.Bags, dtype: float64
 </div>
 </section>
 <section id="how-in-depth-will-we-go-with-graphing-data-and-looking-at-it-systemically-to-find-patterns">
-<h4><span class="section-number">6.7.1.8. </span>How in depth will we go with graphing data and looking at it systemically to find patterns?<a class="headerlink" href="#how-in-depth-will-we-go-with-graphing-data-and-looking-at-it-systemically-to-find-patterns" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.1.8. </span>How in depth will we go with graphing data and looking at it systemically to find patterns?<a class="headerlink" href="#how-in-depth-will-we-go-with-graphing-data-and-looking-at-it-systemically-to-find-patterns" title="Permalink to this headline">#</a></h4>
 <p>At some level, that is what we sill do for the rest of the semester.  We will not cover everything there is to know about graphing, there are whole courses on data visualization. Most of the pattern-finding we will do is machine learning.</p>
 </section>
 </section>
 <section id="assignment">
-<h3><span class="section-number">6.7.2. </span>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.7.2. </span>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
 <section id="for-assignment-2-how-do-i-find-appropriate-datasets-online">
-<h4><span class="section-number">6.7.2.1. </span>For assignment 2, how do I find appropriate datasets online?<a class="headerlink" href="#for-assignment-2-how-do-i-find-appropriate-datasets-online" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.2.1. </span>For assignment 2, how do I find appropriate datasets online?<a class="headerlink" href="#for-assignment-2-how-do-i-find-appropriate-datasets-online" title="Permalink to this headline">#</a></h4>
 <p>I collated the ones that I recommend on the <a class="reference internal" href="../resources/datasets.html#datasets"><span class="std std-ref">datasets</span></a> page.  Then find something that is of interest to you.</p>
 </section>
 <section id="how-do-you-import-a-py-file-from-github-is-there-a-way-to-do-that-without-downloading-it-locally">
-<h4><span class="section-number">6.7.2.2. </span>How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?<a class="headerlink" href="#how-do-you-import-a-py-file-from-github-is-there-a-way-to-do-that-without-downloading-it-locally" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">5.7.2.2. </span>How do you import a .py file from GitHub? Is there a way to do that without downloading it locally?<a class="headerlink" href="#how-do-you-import-a-py-file-from-github-is-there-a-way-to-do-that-without-downloading-it-locally" title="Permalink to this headline">#</a></h4>
 <p>It does need to be local in order to import it as a module.</p>
 <p>Ideally, you will work with all of your assignment repos locally either following the instructions in <a class="reference internal" href="2022-09-16.html#ghoffline"><span class="std std-ref">the notes from last class</span></a></p>
 </section>
@@ -2045,13 +2045,13 @@ Name: Number.of.Bags, dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5. </span>Iterables and Indexing</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Iterables and Indexing</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2022-09-21.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Visualization</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Visualization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
