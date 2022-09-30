@@ -154,6 +154,7 @@ The objective of your portfolio submissions is to earn Level 3 achievements. The
 rubric_df[portfolio_cols]
 ```
 
+(checklists)=
 
 ### Detailed Checklists
 
@@ -162,22 +163,27 @@ rubric_df[portfolio_cols]
 
 ach = yml_df('../_data/achievments.yml')
 
-entry = '#### **{name}** \n_{description}_ \n\n{components_checklist}'
+entry = '#### **{name}**\n  \n_{description}_ \n\n{components_checklist}'
 
 def issue_action_str(row):
     rep_dict = {}
     if type(row['components']) ==list:
-        rep_dict['components_checklist'] = '\n- '.join(['']+row['components'])
+        rep_dict['components_checklist'] = '\n- [ ] '.join(['']+row['components'])
     else:
         rep_dict['components_checklist'] = ''
 
     rep_dict['name'] = row['name']
     rep_dict['description'] = row['description']
-    return entry.format_map(rep_dict)
+    return entry.format_map(rep_dict) + '\n'
 
 checklist_list = ach.apply(issue_action_str,axis=1).values
 all_checklists = '\n\n'.join(list(checklist_list))
 
-display(Markdown(all_checklists))
+# display(Markdown(all_checklists))
+with open('achmd.md','w') as f:
+    f.write(all_checklists)
+```
 
+
+```{include} achmd.md
 ```

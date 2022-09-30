@@ -48,6 +48,7 @@ parse:
     - replacements
     - smartquotes
     - substitution
+    - tasklist
   myst_substitutions:
     time: MWF 2-2:50pm
     location: Ranger 302
