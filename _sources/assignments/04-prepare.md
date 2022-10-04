@@ -31,7 +31,7 @@ Some examples:
 - a column that was continuous, but more interesting as a categorical
 - too many header rows
 
-```{amdonition} Think Ahead
+```{admonition} Think Ahead
 
 _this box is not required, but ideas for portfolio_
 cleaning a dataset to make it able to answer questions that were not possible could satisfy the level 3 prepare requirements.
