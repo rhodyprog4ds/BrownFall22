@@ -25,6 +25,7 @@ parts:
     - file: notes/2022-09-26
     - file: notes/2022-09-28
     - file: notes/2022-09-30
+    - file: notes/2022-10-03
   - caption: Assignments
     numbered: True
     chapters:
@@ -47,6 +48,7 @@ parts:
     chapters:
     - file: resources/glossary
     - file: resources/python
+    - file: resources/operations
     - file: resources/cheatsheet
     - file: resources/datasets
     - file: resources/tips
