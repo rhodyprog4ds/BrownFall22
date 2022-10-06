@@ -64,3 +64,8 @@ Read example data cleaning notes or scripts. To do this find at least one datase
 1. What are 3 common problems to look for in a dataset?
 1. For a specific of your choice give an example of a question that would require making different choices than were made. Include a bit about the data, what was done, the question, what would need to be done instead and justification.
 1. Explain in your own words, with a concrete example, how domain expertise can help you when cleaning data. Use either a made up example or one that you read about.
+
+
+```{important}
+Remember to run the ["Submit" Workflow](submitaction) from the actions tab of your repository. [see how on the How tos page](submitaction)
+```
