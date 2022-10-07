@@ -33,6 +33,12 @@ Write a blog post styled Notebook that compares or analyzes something, for examp
 - describe best practices you've learned and show why they're good with examples
 
 
+## Diagrams and images
+
+Produce diagrams that illustrates a concept (this might be a part of a skill).
+Provide a good description of what it is and what code accompanies it.  
+
+
 ### Correction & Reflection
 
 If you had trouble with an assignment so far, you can revise what you submitted and resubmit it, with reflections and explanation of what you were confused about, what you tried initially, how you eventually figured it out, and explains the correct answer. Then go a little deeper in exploring the topic in that context to also earn level 3.
