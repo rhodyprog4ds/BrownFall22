@@ -27,6 +27,7 @@ These may require some more work
 - [A curated list of datasets by task](https://www.springboard.com/blog/data-science/15-fun-datasets-to-analyze/) It includes datasets for cleaning, visualization, machine learning, and "data analysis" which would align with EDA in this course.
 - [Hugging Face NLP Datasets](https://huggingface.co/datasets) lots of text datasets
 
+(dataparts)=
 ## Datasets in many parts
 - [Makeup Shades](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-30)
 - [Kenya Census](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-01-19)

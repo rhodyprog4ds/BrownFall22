@@ -9,20 +9,44 @@ substitutions:
 {{accept_assignment}}
 __Due: {{ date }}__
 
-Eligible skills:
-- access
-- python
-- prepare
-- construct
-- summarize
-- visualize
+Eligible skills: (links to checklists)
+- **first chance** construct [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#construct-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#construct-level2)
+- (last assignment*) access [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#access-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#access-level2)
+- (last assignment*) python [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#python-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#python-level2)
+- (last assignment*) prepare [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#prepare-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#prepare-level2)
+- summarize [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#summarize-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#summarize-level2)
+- visualize [1](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#visualize-level1) and [2](https://rhodyprog4ds.github.io/BrownFall22/syllabus/achievements.html#visualize-level2)
+
+````{margin}
+[let me know](https://forms.gle/L98QtzUYNQYHy7bK7) if listing the skills this way
+is better for you
+````
+these skills will be eligible in future portfolio checks, but not future assignments
+
+
 
 ## Constructing Datasets
 
 ```{hint}
-there is a section of datasets that are provided in multiple parts
+there is a [section of datasets ](dataparts) that are provided in multiple parts
 ```
 
+
+````{margin}
+```{admonition} If you get really stuck finding data
+You could also demonstrate understanding of how merges work by converting a dataset
+that is provided as a single table with redundant information into a number of
+smaller tables and putting them *into* a database instead of taking data *from*
+a database.
+```
+
+```{important}
+I want you to learn and I need evidence that you have learned to give you credit
+for it (first achievements then a semester grade).  It is not important to me
+exactly **how* you provide me that evidence. We grade by looking at the
+checklists for the corresponding skills.
+```
+````
 Your goal is to programmatically construct three (3) ready to analyze datasets from multiple sources.
 
 - Each dataset must combine at least 2 source tables(minimum 4 total source tables).
@@ -63,12 +87,4 @@ Use pythonic naming conventions throughout, AND:
 
 ```{admonition} Thinking Ahead
 Compare the level 2 skill definitions to level 3, how could you extend and adapt what you've done to meet level 3?
-```
-
-
-
-```{admonition} Thinking Ahead
-You could also demonstrate understanding of how merges work by converting a dataset
-that is provided as a single table with redundant information into a number of
-smaller tables in a database.
 ```
