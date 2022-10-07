@@ -1,0 +1,1884 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>13. Getting Data from Databases &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="12. Web Scraping" href="2022-10-05.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   13. Getting Data from Databases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-10-07.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-10-07.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-10-07.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-10-07.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-10-07.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-database">
+   13.1. What is a Database?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-a-database-from-python">
+   13.2. Accessing a Database from Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#querying-with-pandas">
+   13.3. Querying with pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times">
+     13.3.1. Which player was traded the most during the 2018 season? How many times?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-multiple-merges">
+     13.3.2. Using multiple merges
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   13.4. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-other-sql-keywords-in-the-queries-are-there-ex-select-from-where">
+     13.4.1. What other SQL ‘keywords’ in the queries are there? ex: SELECT, FROM, WHERE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-will-you-talk-about-on-monday">
+     13.4.2. what will you talk about on Monday
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-it-viable-to-utilize-sqlite-for-all-big-datasets-for-example-genomics-data">
+     13.4.3. Is it viable to utilize sqlite for all big datasets? For example genomics data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-merge-data-together-with-sqlite">
+     13.4.4. How to merge data together with sqlite?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-you-need-to-put-sql-code-in-caps">
+     13.4.5. Do you need to put SQL code in caps?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Data from Databases</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-database">
+   13.1. What is a Database?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-a-database-from-python">
+   13.2. Accessing a Database from Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#querying-with-pandas">
+   13.3. Querying with pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times">
+     13.3.1. Which player was traded the most during the 2018 season? How many times?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-multiple-merges">
+     13.3.2. Using multiple merges
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   13.4. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-other-sql-keywords-in-the-queries-are-there-ex-select-from-where">
+     13.4.1. What other SQL ‘keywords’ in the queries are there? ex: SELECT, FROM, WHERE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-will-you-talk-about-on-monday">
+     13.4.2. what will you talk about on Monday
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-it-viable-to-utilize-sqlite-for-all-big-datasets-for-example-genomics-data">
+     13.4.3. Is it viable to utilize sqlite for all big datasets? For example genomics data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-merge-data-together-with-sqlite">
+     13.4.4. How to merge data together with sqlite?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-you-need-to-put-sql-code-in-caps">
+     13.4.5. Do you need to put SQL code in caps?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-data-from-databases">
+<h1><span class="section-number">13. </span>Getting Data from Databases<a class="headerlink" href="#getting-data-from-databases" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Your first portfolio check is due October 17th.  Submitting something for this check is important.  You can treat it like a draft to get feedback and then you will be able to revise for the next one to improve your work if needed.</p>
+</div>
+<section id="what-is-a-database">
+<h2><span class="section-number">13.1. </span>What is a Database?<a class="headerlink" href="#what-is-a-database" title="Permalink to this headline">#</a></h2>
+<p>A common attitude in Data Science is:</p>
+<blockquote>
+<div><p>If your data fits in memory there is no advantage to putting it in a database: it will only be slower and more frustrating.     —<a class="reference external" href="https://dbplyr.tidyverse.org/articles/dbplyr.html"> Hadley Wickham</a></p>
+</div></blockquote>
+<p>Businesses and research organizations nearly always have too much data to feasibly work without a database.
+Instead, they use different tools which are designed to scale to very large amounts of data. These tools are largely databases like Snowflake or Google’s BigQuery and distributed computing frameworks like Apache Spark.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We are going to focus on the case of getting data out of a Database so that you
+can use it and making sure you know what a Database is.</p>
+<p>You could spend a whole semester on databases:</p>
+<ul class="simple">
+<li><p>CSC436 covers how to implement them in detail (recommended, but requires CSC212)</p></li>
+<li><p>BAI456 only how to use them (counts for DS majors, but if you want to
+understand them deeper, the CSC one is recommended)</p></li>
+</ul>
+</div>
+<p>For the purpose of this class the key attributes of a database are:</p>
+<ul class="simple">
+<li><p>it is a collection of tables</p></li>
+<li><p>the data is accessed live from disk (not RAM)</p></li>
+<li><p>you send a query to the database to get the data (or your answer)</p></li>
+</ul>
+<p>Databases can be designed in many different ways.  For examples two popular ones.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sqlite.org/index.html">SQLite</a> is optimized for transactional workloads, which means a high volume of requests that involving inserting or reading a couple things. This is good for eg a webserver.</p></li>
+<li><p><a class="reference external" href="https://duckdb.org/">DuckDB</a> is optimized for analytical workloads, which means a small number of requests that each require reading many records in the database. This is better for eg: data science</p></li>
+</ul>
+<p><strong>Experimenting with <a class="reference external" href="https://duckdb.org/docs/guides/python/install">DuckDB</a> is a way to earn construct level 3</strong></p>
+</section>
+<section id="accessing-a-database-from-python">
+<h2><span class="section-number">13.2. </span>Accessing a Database from Python<a class="headerlink" href="#accessing-a-database-from-python" title="Permalink to this headline">#</a></h2>
+<p>We will use pandas again, as well as the <code class="docutils literal notranslate"><span class="pre">request</span></code> module from the <code class="docutils literal notranslate"><span class="pre">urllib</span></code>
+package and <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>.</p>
+<p>Off the shelf, pandas cannot read databased by default. We’ll use the
+<a class="reference external" href="https://docs.python.org/3/library/sqlite3.html"><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code></a> library, but there
+are others, depending on the type of database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we need to download the database to work with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s1">&#39;https://github.com/rhodyprog4ds/rhodyds/raw/main/data/nba1819.db&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;nba1819.db&#39;, &lt;http.client.HTTPMessage at 0x7fe2d952b160&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we set up a connection, that links the the notebook to the database.
+To use it, we add a cursor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use execute to pass SQL queries through the cursor to the database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlite3.Cursor at 0x7fe2d952c180&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we use <code class="docutils literal notranslate"><span class="pre">fetchall</span></code> to get the the results of the query.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;teams&#39;,),
+ (&#39;conferences&#39;,),
+ (&#39;playerGameStats2018&#39;,),
+ (&#39;playerGameStats2019&#39;,),
+ (&#39;teamGameStats2018&#39;,),
+ (&#39;teamGameStats2019&#39;,),
+ (&#39;playerTeams2018&#39;,),
+ (&#39;playerTeams2019&#39;,),
+ (&#39;teamDailyRankings2018&#39;,),
+ (&#39;teamDailyRankings2019&#39;,),
+ (&#39;playerNames&#39;,)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we fetch again, there is nothing to fetch.  Fetch pulls what was queued by
+execute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can run another query with execute then fetch that result.  This query gives
+us the column names.</p>
+<p>The schema of a database is the description of its setup and layout. The <code class="docutils literal notranslate"><span class="pre">*</span></code> means to get all.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM INFORMATION_SCHEMA.COLUMNS &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM INFORMATION_SCHEMA.COLUMNS &quot;</span><span class="p">)</span>
+
+<span class="ne">OperationalError</span>: no such table: INFORMATION_SCHEMA.COLUMNS
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we use <code class="docutils literal notranslate"><span class="pre">fetchall</span></code> to get the the results of the query.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="querying-with-pandas">
+<h2><span class="section-number">13.3. </span>Querying with pandas<a class="headerlink" href="#querying-with-pandas" title="Permalink to this headline">#</a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">pd.read_sql</span></code> to send queries, get the result sand transform them
+into a DataFrame all at once</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM teams&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>LEAGUE_ID</th>
+      <th>TEAM_ID</th>
+      <th>MIN_YEAR</th>
+      <th>MAX_YEAR</th>
+      <th>ABBREVIATION</th>
+      <th>NICKNAME</th>
+      <th>YEARFOUNDED</th>
+      <th>CITY</th>
+      <th>ARENA</th>
+      <th>ARENACAPACITY</th>
+      <th>OWNER</th>
+      <th>GENERALMANAGER</th>
+      <th>HEADCOACH</th>
+      <th>DLEAGUEAFFILIATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1610612737</td>
+      <td>1949</td>
+      <td>2019</td>
+      <td>ATL</td>
+      <td>Hawks</td>
+      <td>1949</td>
+      <td>Atlanta</td>
+      <td>State Farm Arena</td>
+      <td>18729.0</td>
+      <td>Tony Ressler</td>
+      <td>Travis Schlenk</td>
+      <td>Lloyd Pierce</td>
+      <td>Erie Bayhawks</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1610612738</td>
+      <td>1946</td>
+      <td>2019</td>
+      <td>BOS</td>
+      <td>Celtics</td>
+      <td>1946</td>
+      <td>Boston</td>
+      <td>TD Garden</td>
+      <td>18624.0</td>
+      <td>Wyc Grousbeck</td>
+      <td>Danny Ainge</td>
+      <td>Brad Stevens</td>
+      <td>Maine Red Claws</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1610612740</td>
+      <td>2002</td>
+      <td>2019</td>
+      <td>NOP</td>
+      <td>Pelicans</td>
+      <td>2002</td>
+      <td>New Orleans</td>
+      <td>Smoothie King Center</td>
+      <td>NaN</td>
+      <td>Tom Benson</td>
+      <td>Trajan Langdon</td>
+      <td>Alvin Gentry</td>
+      <td>No Affiliate</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0</td>
+      <td>1610612741</td>
+      <td>1966</td>
+      <td>2019</td>
+      <td>CHI</td>
+      <td>Bulls</td>
+      <td>1966</td>
+      <td>Chicago</td>
+      <td>United Center</td>
+      <td>21711.0</td>
+      <td>Jerry Reinsdorf</td>
+      <td>Gar Forman</td>
+      <td>Jim Boylen</td>
+      <td>Windy City Bulls</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1610612742</td>
+      <td>1980</td>
+      <td>2019</td>
+      <td>DAL</td>
+      <td>Mavericks</td>
+      <td>1980</td>
+      <td>Dallas</td>
+      <td>American Airlines Center</td>
+      <td>19200.0</td>
+      <td>Mark Cuban</td>
+      <td>Donnie Nelson</td>
+      <td>Rick Carlisle</td>
+      <td>Texas Legends</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>0</td>
+      <td>1610612743</td>
+      <td>1976</td>
+      <td>2019</td>
+      <td>DEN</td>
+      <td>Nuggets</td>
+      <td>1976</td>
+      <td>Denver</td>
+      <td>Pepsi Center</td>
+      <td>19099.0</td>
+      <td>Stan Kroenke</td>
+      <td>Tim Connelly</td>
+      <td>Michael Malone</td>
+      <td>No Affiliate</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>0</td>
+      <td>1610612745</td>
+      <td>1967</td>
+      <td>2019</td>
+      <td>HOU</td>
+      <td>Rockets</td>
+      <td>1967</td>
+      <td>Houston</td>
+      <td>Toyota Center</td>
+      <td>18104.0</td>
+      <td>Tilman Fertitta</td>
+      <td>Daryl Morey</td>
+      <td>Mike D'Antoni</td>
+      <td>Rio Grande Valley Vipers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>0</td>
+      <td>1610612746</td>
+      <td>1970</td>
+      <td>2019</td>
+      <td>LAC</td>
+      <td>Clippers</td>
+      <td>1970</td>
+      <td>Los Angeles</td>
+      <td>Staples Center</td>
+      <td>19060.0</td>
+      <td>Steve Ballmer</td>
+      <td>Michael Winger</td>
+      <td>Doc Rivers</td>
+      <td>Agua Caliente Clippers of Ontario</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>0</td>
+      <td>1610612747</td>
+      <td>1948</td>
+      <td>2019</td>
+      <td>LAL</td>
+      <td>Lakers</td>
+      <td>1948</td>
+      <td>Los Angeles</td>
+      <td>Staples Center</td>
+      <td>19060.0</td>
+      <td>Jerry Buss Family Trust</td>
+      <td>Rob Pelinka</td>
+      <td>Frank Vogel</td>
+      <td>South Bay Lakers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>0</td>
+      <td>1610612748</td>
+      <td>1988</td>
+      <td>2019</td>
+      <td>MIA</td>
+      <td>Heat</td>
+      <td>1988</td>
+      <td>Miami</td>
+      <td>AmericanAirlines Arena</td>
+      <td>19600.0</td>
+      <td>Micky Arison</td>
+      <td>Pat Riley</td>
+      <td>Erik Spoelstra</td>
+      <td>Sioux Falls Skyforce</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>0</td>
+      <td>1610612749</td>
+      <td>1968</td>
+      <td>2019</td>
+      <td>MIL</td>
+      <td>Bucks</td>
+      <td>1968</td>
+      <td>Milwaukee</td>
+      <td>Fiserv Forum</td>
+      <td>17500.0</td>
+      <td>Wesley Edens &amp; Marc Lasry</td>
+      <td>Jon Horst</td>
+      <td>Mike Budenholzer</td>
+      <td>Wisconsin Herd</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>0</td>
+      <td>1610612750</td>
+      <td>1989</td>
+      <td>2019</td>
+      <td>MIN</td>
+      <td>Timberwolves</td>
+      <td>1989</td>
+      <td>Minnesota</td>
+      <td>Target Center</td>
+      <td>19356.0</td>
+      <td>Glen Taylor</td>
+      <td>Scott Layden</td>
+      <td>Ryan Saunders</td>
+      <td>Iowa Wolves</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>0</td>
+      <td>1610612751</td>
+      <td>1976</td>
+      <td>2019</td>
+      <td>BKN</td>
+      <td>Nets</td>
+      <td>1976</td>
+      <td>Brooklyn</td>
+      <td>Barclays Center</td>
+      <td>NaN</td>
+      <td>Joe Tsai</td>
+      <td>Sean Marks</td>
+      <td>Kenny Atkinson</td>
+      <td>Long Island Nets</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>13</td>
+      <td>0</td>
+      <td>1610612752</td>
+      <td>1946</td>
+      <td>2019</td>
+      <td>NYK</td>
+      <td>Knicks</td>
+      <td>1946</td>
+      <td>New York</td>
+      <td>Madison Square Garden</td>
+      <td>19763.0</td>
+      <td>Cablevision (James Dolan)</td>
+      <td>Steve Mills</td>
+      <td>David Fizdale</td>
+      <td>Westchester Knicks</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>14</td>
+      <td>0</td>
+      <td>1610612753</td>
+      <td>1989</td>
+      <td>2019</td>
+      <td>ORL</td>
+      <td>Magic</td>
+      <td>1989</td>
+      <td>Orlando</td>
+      <td>Amway Center</td>
+      <td>0.0</td>
+      <td>Rick DeVos</td>
+      <td>John Hammond</td>
+      <td>Steve Clifford</td>
+      <td>Lakeland Magic</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>15</td>
+      <td>0</td>
+      <td>1610612754</td>
+      <td>1976</td>
+      <td>2019</td>
+      <td>IND</td>
+      <td>Pacers</td>
+      <td>1976</td>
+      <td>Indiana</td>
+      <td>Bankers Life Fieldhouse</td>
+      <td>18345.0</td>
+      <td>Herb Simon</td>
+      <td>Kevin Pritchard</td>
+      <td>Nate McMillan</td>
+      <td>Fort Wayne Mad Ants</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16</td>
+      <td>0</td>
+      <td>1610612755</td>
+      <td>1949</td>
+      <td>2019</td>
+      <td>PHI</td>
+      <td>76ers</td>
+      <td>1949</td>
+      <td>Philadelphia</td>
+      <td>Wells Fargo Center</td>
+      <td>NaN</td>
+      <td>Joshua Harris</td>
+      <td>Elton Brand</td>
+      <td>Brett Brown</td>
+      <td>Delaware Blue Coats</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>17</td>
+      <td>0</td>
+      <td>1610612756</td>
+      <td>1968</td>
+      <td>2019</td>
+      <td>PHX</td>
+      <td>Suns</td>
+      <td>1968</td>
+      <td>Phoenix</td>
+      <td>Talking Stick Resort Arena</td>
+      <td>NaN</td>
+      <td>Robert Sarver</td>
+      <td>James Jones</td>
+      <td>Monty Williams</td>
+      <td>Northern Arizona Suns</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>18</td>
+      <td>0</td>
+      <td>1610612757</td>
+      <td>1970</td>
+      <td>2019</td>
+      <td>POR</td>
+      <td>Trail Blazers</td>
+      <td>1970</td>
+      <td>Portland</td>
+      <td>Moda Center</td>
+      <td>19980.0</td>
+      <td>Paul Allen</td>
+      <td>Neil Olshey</td>
+      <td>Terry Stotts</td>
+      <td>No Affiliate</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>19</td>
+      <td>0</td>
+      <td>1610612758</td>
+      <td>1948</td>
+      <td>2019</td>
+      <td>SAC</td>
+      <td>Kings</td>
+      <td>1948</td>
+      <td>Sacramento</td>
+      <td>Golden 1 Center</td>
+      <td>17500.0</td>
+      <td>Vivek Ranadive</td>
+      <td>Vlade Divac</td>
+      <td>Luke Walton</td>
+      <td>Stockton Kings</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>20</td>
+      <td>0</td>
+      <td>1610612759</td>
+      <td>1976</td>
+      <td>2019</td>
+      <td>SAS</td>
+      <td>Spurs</td>
+      <td>1976</td>
+      <td>San Antonio</td>
+      <td>AT&amp;T Center</td>
+      <td>18694.0</td>
+      <td>Peter Holt</td>
+      <td>Brian Wright</td>
+      <td>Gregg Popovich</td>
+      <td>Austin Spurs</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>21</td>
+      <td>0</td>
+      <td>1610612760</td>
+      <td>1967</td>
+      <td>2019</td>
+      <td>OKC</td>
+      <td>Thunder</td>
+      <td>1967</td>
+      <td>Oklahoma City</td>
+      <td>Chesapeake Energy Arena</td>
+      <td>19163.0</td>
+      <td>Clay Bennett</td>
+      <td>Sam Presti</td>
+      <td>Billy Donovan</td>
+      <td>Oklahoma City Blue</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>22</td>
+      <td>0</td>
+      <td>1610612761</td>
+      <td>1995</td>
+      <td>2019</td>
+      <td>TOR</td>
+      <td>Raptors</td>
+      <td>1995</td>
+      <td>Toronto</td>
+      <td>Scotiabank Arena</td>
+      <td>19800.0</td>
+      <td>Maple Leaf Sports and Entertainment</td>
+      <td>Masai Ujiri</td>
+      <td>Nick Nurse</td>
+      <td>Raptors 905</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>23</td>
+      <td>0</td>
+      <td>1610612762</td>
+      <td>1974</td>
+      <td>2019</td>
+      <td>UTA</td>
+      <td>Jazz</td>
+      <td>1974</td>
+      <td>Utah</td>
+      <td>Vivint Smart Home Arena</td>
+      <td>20148.0</td>
+      <td>Greg Miller</td>
+      <td>Dennis Lindsey</td>
+      <td>Quin Snyder</td>
+      <td>Salt Lake City Stars</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>24</td>
+      <td>0</td>
+      <td>1610612763</td>
+      <td>1995</td>
+      <td>2019</td>
+      <td>MEM</td>
+      <td>Grizzlies</td>
+      <td>1995</td>
+      <td>Memphis</td>
+      <td>FedExForum</td>
+      <td>18119.0</td>
+      <td>Robert Pera</td>
+      <td>Zach Kleiman</td>
+      <td>Taylor Jenkins</td>
+      <td>Memphis Hustle</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>25</td>
+      <td>0</td>
+      <td>1610612764</td>
+      <td>1961</td>
+      <td>2019</td>
+      <td>WAS</td>
+      <td>Wizards</td>
+      <td>1961</td>
+      <td>Washington</td>
+      <td>Capital One Arena</td>
+      <td>20647.0</td>
+      <td>Ted Leonsis</td>
+      <td>Tommy Sheppard</td>
+      <td>Scott Brooks</td>
+      <td>Capital City Go-Go</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>26</td>
+      <td>0</td>
+      <td>1610612765</td>
+      <td>1948</td>
+      <td>2019</td>
+      <td>DET</td>
+      <td>Pistons</td>
+      <td>1948</td>
+      <td>Detroit</td>
+      <td>Little Caesars Arena</td>
+      <td>21000.0</td>
+      <td>Tom Gores</td>
+      <td>Ed Stefanski</td>
+      <td>Dwane Casey</td>
+      <td>Grand Rapids Drive</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>27</td>
+      <td>0</td>
+      <td>1610612766</td>
+      <td>1988</td>
+      <td>2019</td>
+      <td>CHA</td>
+      <td>Hornets</td>
+      <td>1988</td>
+      <td>Charlotte</td>
+      <td>Spectrum Center</td>
+      <td>19026.0</td>
+      <td>Michael Jordan</td>
+      <td>Mitch Kupchak</td>
+      <td>James Borrego</td>
+      <td>Greensboro Swarm</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>28</td>
+      <td>0</td>
+      <td>1610612739</td>
+      <td>1970</td>
+      <td>2019</td>
+      <td>CLE</td>
+      <td>Cavaliers</td>
+      <td>1970</td>
+      <td>Cleveland</td>
+      <td>Quicken Loans Arena</td>
+      <td>20562.0</td>
+      <td>Dan Gilbert</td>
+      <td>Koby Altman</td>
+      <td>John Beilein</td>
+      <td>Canton Charge</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>29</td>
+      <td>0</td>
+      <td>1610612744</td>
+      <td>1946</td>
+      <td>2019</td>
+      <td>GSW</td>
+      <td>Warriors</td>
+      <td>1946</td>
+      <td>Golden State</td>
+      <td>Chase Center</td>
+      <td>19596.0</td>
+      <td>Joe Lacob</td>
+      <td>Bob Myers</td>
+      <td>Steve Kerr</td>
+      <td>Santa Cruz Warriors</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">*</span></code> to get all of the columns and <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> to reduce the number of rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span><span class="n">sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM teams LIMIT 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>LEAGUE_ID</th>
+      <th>TEAM_ID</th>
+      <th>MIN_YEAR</th>
+      <th>MAX_YEAR</th>
+      <th>ABBREVIATION</th>
+      <th>NICKNAME</th>
+      <th>YEARFOUNDED</th>
+      <th>CITY</th>
+      <th>ARENA</th>
+      <th>ARENACAPACITY</th>
+      <th>OWNER</th>
+      <th>GENERALMANAGER</th>
+      <th>HEADCOACH</th>
+      <th>DLEAGUEAFFILIATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1610612737</td>
+      <td>1949</td>
+      <td>2019</td>
+      <td>ATL</td>
+      <td>Hawks</td>
+      <td>1949</td>
+      <td>Atlanta</td>
+      <td>State Farm Arena</td>
+      <td>18729.0</td>
+      <td>Tony Ressler</td>
+      <td>Travis Schlenk</td>
+      <td>Lloyd Pierce</td>
+      <td>Erie Bayhawks</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1610612738</td>
+      <td>1946</td>
+      <td>2019</td>
+      <td>BOS</td>
+      <td>Celtics</td>
+      <td>1946</td>
+      <td>Boston</td>
+      <td>TD Garden</td>
+      <td>18624.0</td>
+      <td>Wyc Grousbeck</td>
+      <td>Danny Ainge</td>
+      <td>Brad Stevens</td>
+      <td>Maine Red Claws</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1610612740</td>
+      <td>2002</td>
+      <td>2019</td>
+      <td>NOP</td>
+      <td>Pelicans</td>
+      <td>2002</td>
+      <td>New Orleans</td>
+      <td>Smoothie King Center</td>
+      <td>NaN</td>
+      <td>Tom Benson</td>
+      <td>Trajan Langdon</td>
+      <td>Alvin Gentry</td>
+      <td>No Affiliate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="which-player-was-traded-the-most-during-the-2018-season-how-many-times">
+<h3><span class="section-number">13.3.1. </span>Which player was traded the most during the 2018 season? How many times?<a class="headerlink" href="#which-player-was-traded-the-most-during-the-2018-season-how-many-times" title="Permalink to this headline">#</a></h3>
+<p>Note that the NBA Data is a little complicated for the questions we were asking
+because there is one row in players per team a played for per season.  SO if a
+player was traded (changed teams), they are in there multiple times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM playerTeams2018 LIMIT 1&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>TEAM_ID</th>
+      <th>PLAYER_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1610612761</td>
+      <td>202695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_ID FROM playerTeams2018 &quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can use value counts</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PLAYER_ID
+1629150      4
+202325       3
+203092       3
+201160       3
+202328       3
+1626150      3
+1628393      3
+202083       3
+202692       3
+203477       3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can get the player’s name from the player name <strong>remember our first query told us all the tables</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_NAME FROM playerNames WHERE PLAYER_ID = 1629150&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PLAYER_NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Emanuel Terry</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="using-multiple-merges">
+<h3><span class="section-number">13.3.2. </span>Using multiple merges<a class="headerlink" href="#using-multiple-merges" title="Permalink to this headline">#</a></h3>
+<p>In the NBA, there are 30 teams organized into two conferences: East and West;
+the <code class="docutils literal notranslate"><span class="pre">conferences</span></code> table has the columns <code class="docutils literal notranslate"><span class="pre">TEAM_ID</span></code> and <code class="docutils literal notranslate"><span class="pre">CONFERENCE</span></code></p>
+<p>build a Dataframe that could answer the question:</p>
+<p>Did more players who changed teams from the 2018 season to the 2019 season stay
+in the same conferences or switch conferences?</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I am going to fill this in later: get notified by commenting on <a class="reference external" href="https://github.com/rhodyprog4ds/BrownFall22/issues/26">the issue</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get conferences</span>
+
+<span class="c1"># get 2018 players</span>
+
+<span class="c1"># add conferences to 2018 players wiht a left merge on teams</span>
+
+
+<span class="c1"># get 2019 players</span>
+
+<span class="c1"># add conference</span>
+
+<span class="c1"># inner merge the two tables and add suffixes to conference</span>
+
+<span class="c1"># subset the dataframe with only rows where 18 &amp; 19 conference are diff</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remmber you have a choice to focus on web scraping <em>or</em> databases for assignment 5.<br />
+You can then do the other or learn more about the same one for your portfolio.</p>
+</div>
+</section>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">13.4. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="what-other-sql-keywords-in-the-queries-are-there-ex-select-from-where">
+<h3><span class="section-number">13.4.1. </span>What other SQL ‘keywords’ in the queries are there? ex: SELECT, FROM, WHERE<a class="headerlink" href="#what-other-sql-keywords-in-the-queries-are-there-ex-select-from-where" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://www.w3schools.com/sql/sql_quickref.asp">quick reference</a></p>
+</section>
+<section id="what-will-you-talk-about-on-monday">
+<h3><span class="section-number">13.4.2. </span>what will you talk about on Monday<a class="headerlink" href="#what-will-you-talk-about-on-monday" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="is-it-viable-to-utilize-sqlite-for-all-big-datasets-for-example-genomics-data">
+<h3><span class="section-number">13.4.3. </span>Is it viable to utilize sqlite for all big datasets? For example genomics data?<a class="headerlink" href="#is-it-viable-to-utilize-sqlite-for-all-big-datasets-for-example-genomics-data" title="Permalink to this headline">#</a></h3>
+<p>I am going to ask around more about the common formats for genomics data.  I
+know that sometimes it is provided in plain text files, but it is not used by
+loading it all into RAM, <a class="reference external" href="https://datacarpentry.org/wrangling-genomics/02-quality-control/index.html">for example this lesson</a>
+works with the raw genomics data using bash scripts.</p>
+</section>
+<section id="how-to-merge-data-together-with-sqlite">
+<h3><span class="section-number">13.4.4. </span>How to merge data together with sqlite?<a class="headerlink" href="#how-to-merge-data-together-with-sqlite" title="Permalink to this headline">#</a></h3>
+<p>You can use the same <em>types</em> of merges we have seen directly in the database by
+passign them as your query.</p>
+</section>
+<section id="do-you-need-to-put-sql-code-in-caps">
+<h3><span class="section-number">13.4.5. </span>Do you need to put SQL code in caps?<a class="headerlink" href="#do-you-need-to-put-sql-code-in-caps" title="Permalink to this headline">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I have put one hot encoding in my notes to come back to it in two weeks during
+classificaiton, but we are giving you credit on A4 even if that is missed. I covered
+the apply and splitting a column differntly this year that led to fewer of you getting
+<em>very</em> confused, but also meant we did not get to one hot encoding, but I missed that
+it was still in a4.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-10-05.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>Web Scraping</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
