@@ -1,3 +1,4 @@
+(check1ideas)=
 # Portfolio Check 1 Ideas
 
 Remember you'll be graded against the [rubric] and the [achievement checklists], but these are ideas for the structure.
@@ -31,12 +32,6 @@ Make a detailed reference with code outputs on a topic or a few topics.
 Write a blog post styled Notebook that compares or analyzes something, for example:
 - how do different ways of loading data compare
 - describe best practices you've learned and show why they're good with examples
-
-
-## Diagrams and images
-
-Produce diagrams that illustrates a concept (this might be a part of a skill).
-Provide a good description of what it is and what code accompanies it.  
 
 
 ### Correction & Reflection
