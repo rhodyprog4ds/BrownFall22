@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>14. Intro to Machine Learning: Evaluation &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="13. Getting Data from Databases" href="2022-10-07.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-07.html">
+   13. Getting Data from Databases
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   14. Intro to Machine Learning: Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-10-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-10-12.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-10-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-10-12.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-10-12.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-ml">
+   14.1. What is ML?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-algorithms-propublicas-compas-audit">
+   14.2. Evaluating Algorithms: Propublica’s COMPAS Audit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propublica-compas-data">
+   14.3. Propublica COMPAS Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-hot-encoding">
+   14.4. One-hot Encoding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics-in-sklearn">
+   14.5. Performance Metrics in sklearn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   14.6. Questions after class
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Intro to Machine Learning: Evaluation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-ml">
+   14.1. What is ML?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluating-algorithms-propublicas-compas-audit">
+   14.2. Evaluating Algorithms: Propublica’s COMPAS Audit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propublica-compas-data">
+   14.3. Propublica COMPAS Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-hot-encoding">
+   14.4. One-hot Encoding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics-in-sklearn">
+   14.5. Performance Metrics in sklearn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   14.6. Questions after class
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-machine-learning-evaluation">
+<h1><span class="section-number">14. </span>Intro to Machine Learning: Evaluation<a class="headerlink" href="#intro-to-machine-learning-evaluation" title="Permalink to this headline">#</a></h1>
+<p>This week we are going to start learning about machine learning.</p>
+<p>We are going to do this by looking at how to tell if machine learning has worked.</p>
+<p>This is because:</p>
+<ul class="simple">
+<li><p>you have to check if one worked after you build one</p></li>
+<li><p>if you do not check carefully, it might only sometimes work</p></li>
+<li><p>gives you a chance to learn <em>only</em> evaluation instead of evaluation + an ML task</p></li>
+</ul>
+<p>We are going to do this by auditing an algorithm that was built with machine learning.</p>
+<section id="what-is-ml">
+<h2><span class="section-number">14.1. </span>What is ML?<a class="headerlink" href="#what-is-ml" title="Permalink to this headline">#</a></h2>
+<p>First, what is an Algorithm?</p>
+<blockquote>
+<div><p>An algorithm is a set of ordered steps to complete a task.</p>
+</div></blockquote>
+<p>Note that when people outside of CS talk about algorithms that impact people’s lives these are often <em>not written directly by people</em> anymore.  THey are often the result of machine learning.</p>
+<p>In machine learning, people write an algorithm for how to write an algorithm based on data.  This often comes in the form of a statitistical model of some sort</p>
+<!-- (eg AOC in Congress; the Twitter algorithm; etc)
+ -->
+<p>When we <em>do</em> machine learning, this can also be called:</p>
+<ul class="simple">
+<li><p>data mining</p></li>
+<li><p>pattern recognition</p></li>
+<li><p>modeling</p></li>
+</ul>
+<p>because we are looking for patterns in the data and typically then planning to
+use those patterns to make predictions or automate a task.</p>
+<p>Each of these terms does have slightly different meanings and usage, but
+sometimes they’re used close to exchangeably.</p>
+</section>
+<section id="evaluating-algorithms-propublicas-compas-audit">
+<h2><span class="section-number">14.2. </span>Evaluating Algorithms: Propublica’s COMPAS Audit<a class="headerlink" href="#evaluating-algorithms-propublicas-compas-audit" title="Permalink to this headline">#</a></h2>
+<p>We are going to replicate the audit from ProPublica <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Machine Bias</a></p>
+<p>Propublica started the COMPAS Debate with the article <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencin">Machine Bias</a>.  With their article, they also released details of their methodology and their <a class="reference external" href="https://github.com/propublica/compas-analysis">data and code</a>.  This presents a real data set that can be used for research on how data is used in a criminal justice setting without researchers having to perform their own requests for information, so it has been used and reused a lot of times.</p>
+</section>
+<section id="propublica-compas-data">
+<h2><span class="section-number">14.3. </span>Propublica COMPAS Data<a class="headerlink" href="#propublica-compas-data" title="Permalink to this headline">#</a></h2>
+<p>The dataset consists of COMPAS scores assigned to defendants over two years 2013-2014 in Broward County, Florida, it was released by Propublica in a <a class="reference external" href="https://github.com/propublica/compas-analysis/">GitHub Repository</a>. These scores are determined by a proprietary algorithm designed to evaluate a persons recidivism risk - the likelihood that they will reoffend. Risk scoring algorithms are widely used by judges to inform their sentencing and bail decisions in the criminal justice system in the United States.</p>
+<p>The journalists collected, for each person arreste din 2013 and 2014:</p>
+<ul class="simple">
+<li><p>basic demographics</p></li>
+<li><p>details about what they were charged with and priors</p></li>
+<li><p>the COMPAS score assigned to them</p></li>
+<li><p>if they had actually been re-arrested within 2 years of their arrest</p></li>
+</ul>
+<p>This means that we have what the COMPAS algorithm predicted (in the form of a score from 1-10) and what actually happened (re-arrested or not). We can then measure how well the algorithm worked, in practice, in the real world.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re going to work with a cleaned copy of the data released by Propublica that also has a minimal subset of features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_clean_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;</span>
+<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">compas_clean_url</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>c_charge_degree</th>
+      <th>race</th>
+      <th>age_cat</th>
+      <th>score_text</th>
+      <th>sex</th>
+      <th>priors_count</th>
+      <th>days_b_screening_arrest</th>
+      <th>decile_score</th>
+      <th>is_recid</th>
+      <th>two_year_recid</th>
+      <th>c_jail_in</th>
+      <th>c_jail_out</th>
+      <th>length_of_stay</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>34</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>25 - 45</td>
+      <td>Low</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-01-26 03:45:27</td>
+      <td>2013-02-05 05:36:53</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>Less than 25</td>
+      <td>Low</td>
+      <td>Male</td>
+      <td>4</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-04-13 04:58:34</td>
+      <td>2013-04-14 07:02:04</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>41</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Medium</td>
+      <td>Male</td>
+      <td>14</td>
+      <td>-1.0</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2014-02-18 05:08:24</td>
+      <td>2014-02-24 12:18:30</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>39</td>
+      <td>M</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Low</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2014-03-15 05:35:34</td>
+      <td>2014-03-18 04:28:46</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>27</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Low</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2013-11-25 06:31:06</td>
+      <td>2013-11-26 08:26:57</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here is an explanation of these features:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code>: defendant’s age</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_charge_degree</span></code>: degree charged (Misdemeanor of Felony)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">race</span></code>: defendant’s race</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">age_cat</span></code>: defendant’s age quantized in “less than 25”, “25-45”, or “over 45”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_text</span></code>: COMPAS score: ‘low’(1 to 5), ‘medium’ (5 to 7), and ‘high’ (8 to 10).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sex</span></code>: defendant’s gender</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">priors_count</span></code>: number of prior charges</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">days_b_screening_arrest</span></code>: number of days between charge date and arrest where defendant was screened for compas score</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decile_score</span></code>: COMPAS score from 1 to 10 (low risk to high risk)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_recid</span></code>: if the defendant recidivized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">two_year_recid</span></code>: if the defendant within two years</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_jail_in</span></code>: date defendant was imprisoned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_jail_out</span></code>: date defendant was released from jail</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length_of_stay</span></code>: length of jail stay</p></li>
+</ul>
+</section>
+<section id="one-hot-encoding">
+<h2><span class="section-number">14.4. </span>One-hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
+<p>We will audit first to see how good the algorithm is by treating the predictions as either high or not high.  One way we can get to that point is to transform the <code class="docutils literal notranslate"><span class="pre">score_text</span></code> column from one column with three values, to 3 binary columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">compas_df</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>c_charge_degree</th>
+      <th>race</th>
+      <th>age_cat</th>
+      <th>sex</th>
+      <th>priors_count</th>
+      <th>days_b_screening_arrest</th>
+      <th>decile_score</th>
+      <th>is_recid</th>
+      <th>two_year_recid</th>
+      <th>c_jail_in</th>
+      <th>c_jail_out</th>
+      <th>length_of_stay</th>
+      <th>score_text_High</th>
+      <th>score_text_Low</th>
+      <th>score_text_Medium</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>34</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-01-26 03:45:27</td>
+      <td>2013-02-05 05:36:53</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>Less than 25</td>
+      <td>Male</td>
+      <td>4</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-04-13 04:58:34</td>
+      <td>2013-04-14 07:02:04</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>41</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>14</td>
+      <td>-1.0</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2014-02-18 05:08:24</td>
+      <td>2014-02-24 12:18:30</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>39</td>
+      <td>M</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2014-03-15 05:35:34</td>
+      <td>2014-03-18 04:28:46</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>27</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2013-11-25 06:31:06</td>
+      <td>2013-11-26 08:26:57</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note the last 3 columns</p>
+</section>
+<section id="performance-metrics-in-sklearn">
+<h2><span class="section-number">14.5. </span>Performance Metrics in sklearn<a class="headerlink" href="#performance-metrics-in-sklearn" title="Permalink to this headline">#</a></h2>
+<p>The first thing we usually check is the accuracy: the percentage of all samples that are correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6288366805608185
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the wikipedia page for confusion matrix is a really good reference</p>
+</div>
+</aside>
+<p>However this does not tell us anything about what <em>types</em> of mistakes the algorithm made.  The type of mistake often matters in terms of how we trust or deploy an algorithm.  We use a <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a> to describe the performance in more detail.</p>
+<p>A confusion matrix counts the number of samples of each <em>true</em> category that wre predicted to be in each category. In this case we have a binary prediction problem: people either are re-arrested (truth) or not and were given a high score or not(prediction).  In binary problems we adopt a common language of labeling one outcome/predicted value positive and the other negative.  We do this not based on the social value of the outcome, but on the numerical encoding.</p>
+<p>In this data, being re-arrested is indicated by a 1 in the <code class="docutils literal notranslate"><span class="pre">two_year_recid</span></code> column, so this is the <em>positive class</em> and not being re-arrested is 0, so the <em>negative class</em>.  Similarly a high score is 1, so that’s the <em>positive prediction</em> and not high is 0, so that is the a <em>negative prediction</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>these terms can be used in any sort of detection problem, whether machine learning is used or not</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> provides a <code class="docutils literal notranslate"><span class="pre">[confusion</span> <span class="pre">matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)</span></code> function that we can use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2523,  272],
+       [1687,  796]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this is binary problem we have 4 possible outcomes:</p>
+<ul class="simple">
+<li><p>true negatives(<span class="math notranslate nohighlight">\(C_{0,0}\)</span>): did not get a high score and were not re-arrested</p></li>
+<li><p>false negatives(<span class="math notranslate nohighlight">\(C_{1,0}\)</span>):: did not get a high score and were re-arrested</p></li>
+<li><p>false positives(<span class="math notranslate nohighlight">\(C_{0,1}\)</span>):: got a high score and were not re-arrested</p></li>
+<li><p>true positives(<span class="math notranslate nohighlight">\(C_{1,1}\)</span>):: got a high score and were re-arrested</p></li>
+</ul>
+<p>With these we can revisit accuracy:</p>
+<div class="math notranslate nohighlight">
+\[ A = \frac{C_{0,0} + C_{1,1}}{C_{0,0}+ C_{1,0} + C_{0,1} + C_{1,1}} \]</div>
+<p>and we can define new scores. Two common ones in CS are recall and precision.</p>
+<p>Recall is:</p>
+<div class="math notranslate nohighlight">
+\[ R = \frac{C_{1,1}}{C_{1,0} + C_{1,1}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3205799436165928
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is, among the truly positive class how many were correctly predicted?  In COMPAS, it’s the percentage of the re-arrested people who got a high score.</p>
+<p>Precision is
+$<span class="math notranslate nohighlight">\( P = \frac{C_{1,1}}{C_{0,1} + C_{1,1}} \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7453183520599251
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is, among the positive predictions, what percentage was correct.  In COPMAS, that is among the people who got a high score, what percentage were re-arrested.</p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">14.6. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<p>All were clarifying details that I expanded above.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-10-07.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>Getting Data from Databases</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
