@@ -96,7 +96,7 @@ Portfolio check 1 will assess the following *new* achievements in addition to an
 ```{code-cell} ipython3
 :tags: [remove-input]
 
-portfolio_df['Level 3'][portfolio_df['P2']==1].reset_index().set_index('keyword')
+portfolio_df['Level 3'][portfolio_df['P1']==1].reset_index().set_index('keyword')
 ```
 
 
