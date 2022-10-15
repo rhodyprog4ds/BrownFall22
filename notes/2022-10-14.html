@@ -1,0 +1,1397 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>15. Performance Metrics continued &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="14. Intro to Machine Learning: Evaluation" href="2022-10-12.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-07.html">
+   13. Getting Data from Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-12.html">
+   14. Intro to Machine Learning: Evaluation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   15. Performance Metrics continued
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-10-14.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-10-14.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-10-14.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-10-14.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-10-14.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics">
+   15.1. Logistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#completing-the-compas-audit">
+   15.2. Completing the COMPAS Audit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#per-group-scores-with-groupby">
+   15.3. Per Group scores with groupby
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-aif360">
+   15.4. Using AIF360
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   15.5. Questions After Class
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Performance Metrics continued</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics">
+   15.1. Logistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#completing-the-compas-audit">
+   15.2. Completing the COMPAS Audit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#per-group-scores-with-groupby">
+   15.3. Per Group scores with groupby
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-aif360">
+   15.4. Using AIF360
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   15.5. Questions After Class
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="performance-metrics-continued">
+<h1><span class="section-number">15. </span>Performance Metrics continued<a class="headerlink" href="#performance-metrics-continued" title="Permalink to this headline">#</a></h1>
+<section id="logistics">
+<h2><span class="section-number">15.1. </span>Logistics<a class="headerlink" href="#logistics" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>A6 posted ASAP!  (I promise it will be straightforward in terms of the actual code; you do need to carefully interpret though)</p></li>
+<li><p>a5 grading is behind, but if it’s not done by early tomorrow (eg 10am) then I’ll extend the portfolio deadline accordingly</p></li>
+<li><p><a class="reference external" href="https://forms.gle/BdgHf8zHcXoUcw9E8">Mid Semester Feedback</a></p></li>
+</ul>
+</section>
+<section id="completing-the-compas-audit">
+<h2><span class="section-number">15.2. </span>Completing the COMPAS Audit<a class="headerlink" href="#completing-the-compas-audit" title="Permalink to this headline">#</a></h2>
+<p>Let’s start where we left off, plus some additional imports</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I used a <a class="reference external" href="https://jupyterbook.org/en/stable/reference/cheatsheet.html#tags">tag</a> on this cell in the notes so that the output with warning is not shown here.</p>
+</div>
+</aside>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">skmetrics</span>
+<span class="kn">from</span> <span class="nn">aif360</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">fairmetrics</span>
+<span class="kn">from</span> <span class="nn">aif360.datasets</span> <span class="kn">import</span> <span class="n">BinaryLabelDataset</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">compas_clean_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;</span>
+<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">compas_clean_url</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+
+<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">compas_df</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text&#39;</span><span class="p">],)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">skmetrics</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">aif360</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">fairmetrics</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">aif360.datasets</span> <span class="kn">import</span> <span class="n">BinaryLabelDataset</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;aif360&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We’ll get a warning which is <strong>okay</strong> but if you run again it will go away.</p>
+</div>
+<p>to review:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice today we imported the sklearn.metrics module with an alias.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>More common is to use medium or high to check accuracy (or not low) we can calulate tihs by either summing two or inverting. We’ll do it as not low for now, to review using apply.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>A good exercise to review data manipulation is to try creating the <code class="docutils literal notranslate"><span class="pre">score_text_MedHigh</span></code> column by adding the other two together (because medium or high if they’re booleans is the same as medium + high if they’re ints)</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_Low&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
+<span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+             <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">int_not</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_Low&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>              <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see this gives us a slightly higher score, but still not that great.</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">int_not</span></code> <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>function
+</pre></div>
+</div>
+</div>
+</div>
+<p>it is equivalent as the following, but a more compact notation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">int_not_f</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It flips a 0 to a 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>and th eother way</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;score_text_Medium&#39;</span><span class="p">)[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;score_text_Medium&#39;</span><span class="p">)[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_race</span> <span class="o">=</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;race&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_race</span> <span class="o">=</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;race&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="per-group-scores-with-groupby">
+<h2><span class="section-number">15.3. </span>Per Group scores with groupby<a class="headerlink" href="#per-group-scores-with-groupby" title="Permalink to this headline">#</a></h2>
+<p>To groupby and then do the score, we can use a lambda again, with apply</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acc_fx</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+             <span class="n">d</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+
+<span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">acc_fx</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>              <span class="n">d</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case it gives a series, but with <code class="docutils literal notranslate"><span class="pre">reset_index</span></code> we can make it a DataFrame and then rename the column to label it as accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;accuracy&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;accuracy&#39;</span><span class="p">})</span>
+
+<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>That lambda + apply is equivalent to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_acc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">race</span><span class="p">,</span> <span class="n">rdf</span> <span class="ow">in</span> <span class="n">compas_race</span><span class="p">:</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+             <span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+    <span class="n">race_acc</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">race</span><span class="p">,</span><span class="n">acc</span><span class="p">])</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">race_acc</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">race_acc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">for</span> <span class="n">race</span><span class="p">,</span> <span class="n">rdf</span> <span class="ow">in</span> <span class="n">compas_race</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">acc</span> <span class="o">=</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>              <span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">race_acc</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">race</span><span class="p">,</span><span class="n">acc</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-aif360">
+<h2><span class="section-number">15.4. </span>Using AIF360<a class="headerlink" href="#using-aif360" title="Permalink to this headline">#</a></h2>
+<p>The AIF360 package implements fairness metrics, some of which are derived from metrics we have seen and some others. <a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html#aif360.metrics.ClassificationMetric">the documentation</a> has the full list in a summary table with English explanations and details with most equations.</p>
+<p>However, it has a few requirements:</p>
+<ul class="simple">
+<li><p>its constructor takes two <code class="docutils literal notranslate"><span class="pre">BinaryLabelDataset</span></code> objects</p></li>
+<li><p>these objects must be the same except for the label column</p></li>
+<li><p>the constructor for <code class="docutils literal notranslate"><span class="pre">BinaryLabelDataset</span></code> only accepts all numerical DataFrames</p></li>
+</ul>
+<p>So, we have some preparation to do.</p>
+<p>First, we’ll make a numerical copy of the <code class="docutils literal notranslate"><span class="pre">compas_df</span></code> columns that we need. The only nonnumerical column that we need is race, wo we’ll make a <code class="docutils literal notranslate"><span class="pre">dict</span></code> to replace that/</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_num_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)}</span>
+<span class="n">race_num_map</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">race_num_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)}</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">race_num_map</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>and here we select columns and replace the values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span>
+<span class="n">num_compas</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="n">required_cols</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">race_num_map</span><span class="p">)</span>
+<span class="n">num_compas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">num_compas</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="n">required_cols</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">race_num_map</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we will make two versions, one with race &amp; the ground truth and ht eother with race &amp; the predictions. It’s easiest to drop the column we don’t want.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_compas_true</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<span class="n">num_compas_pred</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">num_compas_true</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">num_compas_pred</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;num_compas&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we make the <a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.BinaryLabelDataset.html#aif360.datasets.BinaryLabelDataset"><code class="docutils literal notranslate"><span class="pre">BinaryLabelDataset</span></code></a> objects, this type comes from AIF360 too.  Basically, it is a DataFrame with extra attributes; some specific and some inherited from <a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.StructuredDataset.html#aif360.datasets.StructuredDataset"><code class="docutils literal notranslate"><span class="pre">StructuredDataset</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here we want actual favorable outcome</span>
+<span class="n">broward_true</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_true</span><span class="p">,</span>
+          <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+         <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+<span class="n">compas_predictions</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_pred</span><span class="p">,</span>
+          <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">],</span>
+         <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># here we want actual favorable outcome</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">broward_true</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_true</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>           <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>          <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">compas_predictions</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_pred</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>           <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>          <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;BinaryLabelDataset&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>remember, you can inspect <em>any</em> object using the <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> attribute</p>
+</div>
+<p>This type also has an <code class="docutils literal notranslate"><span class="pre">ignore_fields</span></code> column for when comparisons are made, since the requirement is that only the <em>content</em> of the label column is different, but in our case also the label names are different, we have to tell it that that’s okay.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_predictions</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
+<span class="n">broward_true</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_predictions</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">broward_true</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_predictions&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can instantiate our metric object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span> <span class="o">=</span> <span class="n">fairmetrics</span><span class="o">.</span><span class="n">ClassificationMetric</span><span class="p">(</span><span class="n">broward_true</span><span class="p">,</span>
+                           <span class="n">compas_predictions</span><span class="p">,</span>
+                 <span class="n">unprivileged_groups</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
+                <span class="n">privileged_groups</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span> <span class="o">=</span> <span class="n">fairmetrics</span><span class="o">.</span><span class="n">ClassificationMetric</span><span class="p">(</span><span class="n">broward_true</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                            <span class="n">compas_predictions</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                  <span class="n">unprivileged_groups</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>                 <span class="n">privileged_groups</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}])</span>
+
+<span class="ne">NameError</span>: name &#39;fairmetrics&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>And finally we can compute! First, we can verify that we get the same accuracy as before</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the aif360 metrics, they have one parameter, <code class="docutils literal notranslate"><span class="pre">privleged</span></code> with a defautl value of <code class="docutils literal notranslate"><span class="pre">None</span></code> when it’s none it computes th ewhole dataset.  When <code class="docutils literal notranslate"><span class="pre">True</span></code> it compues only the priveleged group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here that is Caucasion people.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">False</span></code> it’s the unpriveleged group, here African American</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also compute other scores.  Many fairness scores are ratios of the un priveleged group’s score to the privleged group’s score.</p>
+<p>In Disparate Impact the ratio is of the positive outcome, independent of the predictor.  So this is the ratio of the % of Black people not rearrested to % of white people rearrested.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">disparate_impact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">disparate_impact</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The courts use an “80%” rule saying that if this ratio is above .8 for things like employment, it’s close enough. T</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">error_rate_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">error_rate_ratio</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also do ratios of the scores.  This is where the journalists <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">found bias</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_positive_rate_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_positive_rate_ratio</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Black people were given a low score and then re-arrested only a little more than half as often as white people.  (White people were give an low score and rearrested almost twice as often)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_negative_rate_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_negative_rate_ratio</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Black people were given a high score and not rearrested almost twice as often as white people.</p>
+<p>So while the accuracy was similar (see error rate ratio) for Black and White people; the algorithm makes the opposite types of errors.</p>
+<p>After the journalists published the piece, the people who made COMPAS countered with a technical report, arguing that that the journalists had measured fairness incorrectly.</p>
+<p>The journalists two measures false positive rate and false negative rate use the true outcomes as the denominator.</p>
+<p>The <a class="reference external" href="https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/">COMPAS creators argued</a> that the model should be evaluated in terms of if a given score means the same thing across races; using the prediction as the denominator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_omission_rate_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_omission_rate_ratio</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_discovery_rate_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_discovery_rate_ratio</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>On these two metrics, the ratio is closer to 1 and much less disparate.</p>
+<p>The creators thought it was important for the score to mean the same thing for every person assigned a score. The journalists thought it was more important for the algorithm to have the same impact of different groups of people.<br />
+Ideally, we would like the score to both mean the same thing for different people and to have the same impact.</p>
+<p>Researchers established that these are mutually exclusive, provably.  We cannot have both, so it is very important to think about what the performance metrics mean and how your algorithm will be used in order to choose how to prepare a model.  We will train models starting next week, but knowing these goals in advance is essential.</p>
+<p>Importantly, this is not a statistical, computational choice that data can answer for us. This is about <em>human</em> values (and to some extent the law; certain domains have legal protections that require a specific condition).</p>
+<p>The Fair Machine Learning book’s classificaiton Chapter has a <a class="reference external" href="https://fairmlbook.org/classification.html#relationships-between-criteria">section on relationships between criteria</a> with the proofs.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We used ProPublica’s COMPAS dataset to replicate (parts of, with different tools) their analysis. That is, they collected the dataset in order to audit the COMPAS algorithm and we used it for the same purpose (and to learn model evaluation).  This dataset is not designed for <em>training</em> models, even though it has been used as such many times.  This is <a class="reference external" href="https://openreview.net/pdf?id=qeM58whnpXM">not the best way</a> to use this dataset and for future assignments I do not recommend using this dataset.</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are interested in fairness in ML, that is what my research is. Aiden has been working on a project with me since summer and I’ll be taking new students in the spring.  Students who have completed this course are excellent candidates to join my lab.  Let me know if you are interested!</p>
+</div>
+</aside>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">15.5. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<p>Today’s questions were only clarifying, so hopefully re-reading the notes is enough.  If not, post a question as an issue!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-10-12.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">14. </span>Intro to Machine Learning: Evaluation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
