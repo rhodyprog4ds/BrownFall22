@@ -759,16 +759,28 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">skmetrics</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">aif360</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">fairmetrics</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">aif360.datasets</span> <span class="kn">import</span> <span class="n">BinaryLabelDataset</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;aif360&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;tempeh&#39;: LawSchoolGPADataset will be unavailable. To install, run:
+pip install &#39;aif360[LawSchoolGPA]&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;tensorflow&#39;: AdversarialDebiasing will be unavailable. To install, run:
+pip install &#39;aif360[AdversarialDebiasing]&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;tensorflow&#39;: AdversarialDebiasing will be unavailable. To install, run:
+pip install &#39;aif360[AdversarialDebiasing]&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;fairlearn&#39;: ExponentiatedGradientReduction will be unavailable. To install, run:
+pip install &#39;aif360[Reductions]&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;fairlearn&#39;: GridSearchReduction will be unavailable. To install, run:
+pip install &#39;aif360[Reductions]&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:No module named &#39;fairlearn&#39;: GridSearchReduction will be unavailable. To install, run:
+pip install &#39;aif360[Reductions]&#39;
 </pre></div>
 </div>
 </div>
@@ -785,15 +797,160 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>c_charge_degree</th>
+      <th>race</th>
+      <th>age_cat</th>
+      <th>sex</th>
+      <th>priors_count</th>
+      <th>days_b_screening_arrest</th>
+      <th>decile_score</th>
+      <th>is_recid</th>
+      <th>two_year_recid</th>
+      <th>c_jail_in</th>
+      <th>c_jail_out</th>
+      <th>length_of_stay</th>
+      <th>score_text_High</th>
+      <th>score_text_Low</th>
+      <th>score_text_Medium</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>34</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-01-26 03:45:27</td>
+      <td>2013-02-05 05:36:53</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24</td>
+      <td>F</td>
+      <td>African-American</td>
+      <td>Less than 25</td>
+      <td>Male</td>
+      <td>4</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2013-04-13 04:58:34</td>
+      <td>2013-04-14 07:02:04</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>41</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>14</td>
+      <td>-1.0</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2014-02-18 05:08:24</td>
+      <td>2014-02-24 12:18:30</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>39</td>
+      <td>M</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2014-03-15 05:35:34</td>
+      <td>2014-03-18 04:28:46</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>27</td>
+      <td>F</td>
+      <td>Caucasian</td>
+      <td>25 - 45</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>-1.0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2013-11-25 06:31:06</td>
+      <td>2013-11-26 08:26:57</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Notice today we imported the sklearn.metrics module with an alias.</p>
 <div class="cell docutils container">
@@ -803,12 +960,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6288366805608185
 </pre></div>
 </div>
 </div>
@@ -828,15 +980,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">int_not</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_Low&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>              <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6582038651004168
 </pre></div>
 </div>
 </div>
@@ -897,12 +1041,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;score_text_Medium&#39;</span><span class="p">)[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>score_text_Medium
+0    1
+1    5
+Name: decile_score, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -910,16 +1052,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_race</span> <span class="o">=</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;race&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_race</span> <span class="o">=</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;race&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -938,14 +1070,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">acc_fx</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>              <span class="n">d</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span>
-
-<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>race
+African-American    0.649134
+Caucasian           0.671897
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -958,15 +1086,42 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;accuracy&#39;</span><span class="p">})</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>race</th>
+      <th>accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>African-American</td>
+      <td>0.649134</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Caucasian</td>
+      <td>0.671897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>That lambda + apply is equivalent to:</p>
 <div class="cell docutils container">
@@ -982,19 +1137,42 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">race_acc</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">for</span> <span class="n">race</span><span class="p">,</span> <span class="n">rdf</span> <span class="ow">in</span> <span class="n">compas_race</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">acc</span> <span class="o">=</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>              <span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">race_acc</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">race</span><span class="p">,</span><span class="n">acc</span><span class="p">])</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;compas_race&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>race</th>
+      <th>accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>African-American</td>
+      <td>0.649134</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Caucasian</td>
+      <td>0.671897</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="using-aif360">
@@ -1016,13 +1194,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">race_num_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)}</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">race_num_map</span>
-
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;African-American&#39;: 0, &#39;Caucasian&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -1037,34 +1209,57 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">num_compas</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="n">required_cols</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">race_num_map</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;compas_df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>race</th>
+      <th>two_year_recid</th>
+      <th>score_text_MedHigh</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Next we will make two versions, one with race &amp; the ground truth and ht eother with race &amp; the predictions. It’s easiest to drop the column we don’t want.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_compas_true</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
 <span class="n">num_compas_pred</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">num_compas_true</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">num_compas_pred</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;num_compas&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1082,22 +1277,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># here we want actual favorable outcome</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">broward_true</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_true</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>           <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>          <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">compas_predictions</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_pred</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>           <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>          <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;BinaryLabelDataset&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-try-it-yourself admonition">
 <p class="admonition-title">Try it Yourself</p>
@@ -1108,17 +1287,6 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_predictions</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
 <span class="n">broward_true</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_predictions</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">broward_true</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;compas_predictions&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1133,19 +1301,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span> <span class="o">=</span> <span class="n">fairmetrics</span><span class="o">.</span><span class="n">ClassificationMetric</span><span class="p">(</span><span class="n">broward_true</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>                            <span class="n">compas_predictions</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                  <span class="n">unprivileged_groups</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                 <span class="n">privileged_groups</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}])</span>
-
-<span class="ne">NameError</span>: name &#39;fairmetrics&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>And finally we can compute! First, we can verify that we get the same accuracy as before</p>
 <div class="cell docutils container">
@@ -1155,12 +1310,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6582038651004168
 </pre></div>
 </div>
 </div>
@@ -1173,12 +1323,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6718972895863052
 </pre></div>
 </div>
 </div>
@@ -1192,12 +1337,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6491338582677165
 </pre></div>
 </div>
 </div>
@@ -1211,12 +1351,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">disparate_impact</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6336457196581771
 </pre></div>
 </div>
 </div>
@@ -1229,12 +1364,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">error_rate_ratio</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0693789798014377
 </pre></div>
 </div>
 </div>
@@ -1247,12 +1377,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_positive_rate_ratio</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5737241916634204
 </pre></div>
 </div>
 </div>
@@ -1265,12 +1390,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_negative_rate_ratio</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9232342111919953
 </pre></div>
 </div>
 </div>
@@ -1287,12 +1407,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_omission_rate_ratio</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8649767923408909
 </pre></div>
 </div>
 </div>
@@ -1304,12 +1419,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_discovery_rate_ratio</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;compas_fair_scorer&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2118532033913119
 </pre></div>
 </div>
 </div>
