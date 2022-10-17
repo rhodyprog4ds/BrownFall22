@@ -141,8 +141,6 @@
 - name: evaluate-level2
   description:  Apply and interpret basic model evaluation metrics to a held out test set
   components:
-    - create test train splits
-    - describe why test train splits are important
     - apply at least three performance metrics to models
     - choose at least one appropriate metric for each modeling task
     - interpret at least three metrics
@@ -150,6 +148,7 @@
   description:  Evaluate a model with multiple metrics and cross validation
   components:
     - explain cross validation
+    - explain importance of held out test and validation data
     - describe why cross vaidation is important
     - idenitfy appropriate metrics for different types of modeling tasks
     - use multiple metriccs together to create a more complete description of a model's performance
@@ -159,9 +158,11 @@
     - describe what classification is
     - describe what a dataset must look like for classifcation
     - identify appliations of classifcation in the real world
+    - describe set up for a classification problem (tes,train)
 - name: classification-level2
   description:  fit, apply, and interpret preselected classification model to a dataset
   components:
+    - split data for training and testing
     - fit a classification model
     - apply a classification model to obtain predictions
     - interpret the predictions of a classification model
@@ -183,6 +184,7 @@
 - name: regression-level2
   description:  fit and interpret linear regression models
   components:
+    - split data for training and testing
     - fit univariate linear regression models
     - interpret linear regression models
     - fit multivariate linear regression models
@@ -201,6 +203,7 @@
   components:
     - fit Kmeans
     - interpret kmeans
+    - evaluate clustering models
 - name: clustering-level3
   description:  apply multiple clustering techniques, and interpret results
   components:
