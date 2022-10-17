@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/u-lzA1BJ)
-  date : 2020-10-20 7pm
+  date : 2020-10-20 
 ---
 
 # Assignment 6: Auditing Algorithms
