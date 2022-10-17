@@ -68,12 +68,12 @@ Use functions and loops to build a dataset about the performance of the differen
   - score
   - value
   - subset
-* - >=10k
+* - `>=10k`
   - LR
   - accuracy
   - .873
   - overall
-* - >=20k
+* - `>=20k`
   - RPR
   - false_pos_rate
   - .873
