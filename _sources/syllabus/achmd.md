@@ -231,8 +231,6 @@ _Explain basic performance metrics for different data science tasks_
 _Apply and interpret basic model evaluation metrics to a held out test set_ 
 
 
-- [ ] create test train splits
-- [ ] describe why test train splits are important
 - [ ] apply at least three performance metrics to models
 - [ ] choose at least one appropriate metric for each modeling task
 - [ ] interpret at least three metrics
@@ -244,6 +242,7 @@ _Evaluate a model with multiple metrics and cross validation_
 
 
 - [ ] explain cross validation
+- [ ] explain importance of held out test and validation data
 - [ ] describe why cross vaidation is important
 - [ ] idenitfy appropriate metrics for different types of modeling tasks
 - [ ] use multiple metriccs together to create a more complete description of a model's performance
@@ -257,6 +256,7 @@ _identify and describe what classification is, apply pre-fit classification mode
 - [ ] describe what classification is
 - [ ] describe what a dataset must look like for classifcation
 - [ ] identify appliations of classifcation in the real world
+- [ ] describe set up for a classification problem (tes,train)
 
 
 #### **classification-level2**
@@ -264,6 +264,7 @@ _identify and describe what classification is, apply pre-fit classification mode
 _fit, apply, and interpret preselected classification model to a dataset_ 
 
 
+- [ ] split data for training and testing
 - [ ] fit a classification model
 - [ ] apply a classification model to obtain predictions
 - [ ] interpret the predictions of a classification model
@@ -297,6 +298,7 @@ _identify what data that can be used for regression looks like_
 _fit and interpret linear regression models_ 
 
 
+- [ ] split data for training and testing
 - [ ] fit univariate linear regression models
 - [ ] interpret linear regression models
 - [ ] fit multivariate linear regression models
@@ -327,6 +329,7 @@ _apply basic clustering_
 
 - [ ] fit Kmeans
 - [ ] interpret kmeans
+- [ ] evaluate clustering models
 
 
 #### **clustering-level3**

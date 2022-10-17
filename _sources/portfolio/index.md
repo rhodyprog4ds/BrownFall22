@@ -85,10 +85,10 @@ You can view a (fake) example [in this repository](https://github.com/rhodyprog4
 <!-- ### Portfolio 1 -->
 
 
-Portfolio 1 will be due October 17th.  
+Portfolio 1 will be due October 19th.  
 
 ```{important}
-start early, assignment 5 and 6 will be due on Wednesdays like regular the week before and of this deadline. You will get feedback on Assignment 5 by Friday so that you can use that to update your porfolio on the construct achievements. Assignment 6 will be a little shorter than some others.  
+start early, assignment 5 and 6 will be due on Wednesdays like regular the week before and of this deadline. You will get feedback on Assignment 5 by Friday so that you can use that to update your portfolio on the construct achievements. Assignment 6 will be a little shorter than some others.  
 ```
 
 Portfolio check 1 will assess the following *new* achievements in addition to an a chance to make up any that you have missed:
