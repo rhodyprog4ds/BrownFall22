@@ -142,7 +142,8 @@
   description:  Apply and interpret basic model evaluation metrics to a held out test set
   components:
     - apply at least three performance metrics to models
-    - choose at least one appropriate metric for each modeling task
+    - apply metrics to subsets of data
+    - apply disparity metrics 
     - interpret at least three metrics
 - name: evaluate-level3
   description:  Evaluate a model with multiple metrics and cross validation
