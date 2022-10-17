@@ -232,7 +232,8 @@ _Apply and interpret basic model evaluation metrics to a held out test set_
 
 
 - [ ] apply at least three performance metrics to models
-- [ ] choose at least one appropriate metric for each modeling task
+- [ ] apply metrics to subsets of data
+- [ ] apply disparity metrics
 - [ ] interpret at least three metrics
 
 
