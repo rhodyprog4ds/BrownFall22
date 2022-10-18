@@ -35,7 +35,6 @@ execute:
   allow_errors              : true
 
 
-
 parse:
   myst_enable_extensions: # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
     - amsmath
