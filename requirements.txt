@@ -8,4 +8,3 @@ seaborn
 xlrd
 sklearn
 aif360
-nb-mermaid
