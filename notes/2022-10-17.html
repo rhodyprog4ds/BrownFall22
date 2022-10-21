@@ -1,0 +1,1497 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>16. Modeling and Naive Bayes &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="15. Performance Metrics continued" href="2022-10-14.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-07.html">
+   13. Getting Data from Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-12.html">
+   14. Intro to Machine Learning: Evaluation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-14.html">
+   15. Performance Metrics continued
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   16. Modeling and Naive Bayes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/06-evaluate.html">
+   6. Assignment 6: Auditing Algorithms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-10-17.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-10-17.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-10-17.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-10-17.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-10-17.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-model">
+   16.1. What is a Model?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-in-machine-learning">
+   16.2. Models in Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-machine-learning">
+   16.3. Types of Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supervised-learning">
+   16.4. Supervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-pipeline">
+   16.5. Machine Learning Pipeline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iris-dataset">
+   16.6. Iris Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-test-and-train">
+   16.7. Creating test and train
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instantiating-our-model-object">
+   16.8. Instantiating our Model Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   16.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-any-extra-material-where-we-can-learn-a-better-understanding-oh-how-to-do-the-predictions-and-models">
+     16.9.1. is there any extra material where we can learn a better understanding oh how to do the predictions and models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-good-introductions-to-scikitlearn-that-you-are-aware-of">
+     16.9.2. Are there any good introductions to ScikitLearn that you are aware of?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-confusion-matrix">
+     16.9.3. What is a confusion matrix?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-use-machine-learning-for-any-type-of-data">
+     16.9.4. Can you use machine learning for any type of data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-check-how-well-the-model-did-using-the-y-test-df">
+     16.9.5. Can we check how well the model did using the y_test df?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-want-to-know-more-about-the-the-test-train-split-function">
+     16.9.6. I want to know more about the the test_train_split() function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-we-use-the-comparison-stuff-weve-been-learning-to-test-the-ml-algorithm">
+     16.9.7. Could we use the comparison stuff we’ve been learning to test the ML algorithm?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-should-we-set-the-random-set-we-had-for-x-test-to-a-specific-group">
+     16.9.8. How should we set the random set we had for x_test to a specific group?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#not-a-question-but-were-using-the-iris-dataset-in-my-programming-with-r-class-too">
+     16.9.9. Not a question but we’re using the iris dataset in my programming with R class too!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modeling and Naive Bayes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-model">
+   16.1. What is a Model?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-in-machine-learning">
+   16.2. Models in Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-machine-learning">
+   16.3. Types of Machine Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#supervised-learning">
+   16.4. Supervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-pipeline">
+   16.5. Machine Learning Pipeline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iris-dataset">
+   16.6. Iris Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-test-and-train">
+   16.7. Creating test and train
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instantiating-our-model-object">
+   16.8. Instantiating our Model Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   16.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-any-extra-material-where-we-can-learn-a-better-understanding-oh-how-to-do-the-predictions-and-models">
+     16.9.1. is there any extra material where we can learn a better understanding oh how to do the predictions and models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-good-introductions-to-scikitlearn-that-you-are-aware-of">
+     16.9.2. Are there any good introductions to ScikitLearn that you are aware of?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-confusion-matrix">
+     16.9.3. What is a confusion matrix?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-use-machine-learning-for-any-type-of-data">
+     16.9.4. Can you use machine learning for any type of data?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-check-how-well-the-model-did-using-the-y-test-df">
+     16.9.5. Can we check how well the model did using the y_test df?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-want-to-know-more-about-the-the-test-train-split-function">
+     16.9.6. I want to know more about the the test_train_split() function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-we-use-the-comparison-stuff-weve-been-learning-to-test-the-ml-algorithm">
+     16.9.7. Could we use the comparison stuff we’ve been learning to test the ML algorithm?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-should-we-set-the-random-set-we-had-for-x-test-to-a-specific-group">
+     16.9.8. How should we set the random set we had for x_test to a specific group?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#not-a-question-but-were-using-the-iris-dataset-in-my-programming-with-r-class-too">
+     16.9.9. Not a question but we’re using the iris dataset in my programming with R class too!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-and-naive-bayes">
+<h1><span class="section-number">16. </span>Modeling and Naive Bayes<a class="headerlink" href="#modeling-and-naive-bayes" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to give <a class="reference external" href="https://forms.gle/g9ztHZaFSrmVnGTg8">feedback on the course so far</a>.  This feedback helps me make adjustments to the course if needed.  Even if things are good for you right now, letting me know helps me keep emphasis on the things that are helping.</p>
+<p>The form requires you to be logged into you URI Google account, but does not share your e-mail with me in the results. It is required so that people not at URI do not complete the form.</p>
+</div>
+<p>We’re going to approach machine learning from the perspective of <em>modeling</em> for
+a few reasons:</p>
+<ul class="simple">
+<li><p>model based machine learning streamlines understanding the big picture</p></li>
+<li><p>the model way of interpreting it aligns well with using sklearn</p></li>
+<li><p>thinking in terms of models aligns with incorporating domain expertise, as in our data science definition</p></li>
+</ul>
+<p>this <a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/05/Bishop-MBML-2012.pdf">paper</a> by Christopher M. Bishop, a senior ML researcher who also wrote one of a the widely preferred
+graduate level ML textbooks, details advantages of a model based perspective and
+a more mathematical version of a model based approach to machine learning. He is a co-author on an introductory text book <a class="reference external" href="https://mbmlbook.com/toc.html">Model Based ML</a></p>
+<p>In CSC461: Machine Learning, you can encounter an <em>algorithm</em> focused approach
+to machine learning, but I think having the model based perspective first helps
+you avoid common pitfalls.</p>
+<p>Remmeber our overview of ML:</p>
+<p><img alt="Ml overview: training data goes into the learning algorithm, which outputs the prediction algorithm. the prediciton algorithm takes a sampleand outputs a prediction" src="../_images/MLdataflow.svg" /></p>
+<section id="what-is-a-model">
+<h2><span class="section-number">16.1. </span>What is a Model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this headline">#</a></h2>
+<p>A model is a simplified representation of some part of the world. A famous quote about models is:</p>
+<blockquote class="epigraph">
+<div><p>All models are wrong, but some are useful
+–<a class="reference external" href="https://en.wikipedia.org/wiki/All_models_are_wrong">George Box</a>[^wiki]</p>
+</div></blockquote>
+<p>In machine learning, we use models, that are generally <em>statistical</em> models.</p>
+<p>A statistical model is a mathematical model that embodies a set of statistical assumptions concerning the generation of sample data (and similar data from a larger population). A statistical model represents, often in considerably idealized form, the data-generating process
+<a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_model#:~:text=A%20statistical%20model%20is%20a,%2C%20the%20data%2Dgenerating%20process.">wikipedia</a></p>
+<p>read more in the<a class="reference external" href="http://www.mbmlbook.com/LearningSkills_A_model_is_a_set_of_assumptions.html">Model Based Machine Learning Book</a></p>
+</section>
+<section id="models-in-machine-learning">
+<h2><span class="section-number">16.2. </span>Models in Machine Learning<a class="headerlink" href="#models-in-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>Starting from a dataset, we first make an additional designation about how we will use the different variables (columns). We will call most of them the <em>features</em>, which we denote mathematically with <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and we’ll choose one to be the <em>target</em> or <em>labels</em>, denoted by <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
+<p>The core assumption for just about all machine learning is that there exists some function <span class="math notranslate nohighlight">\(f\)</span> so that for the <span class="math notranslate nohighlight">\(i\)</span>th sample</p>
+<div class="math notranslate nohighlight">
+\[
+  y_i = f(\mathbf{x}_i)
+\]</div>
+<p><span class="math notranslate nohighlight">\(i\)</span> would be the index of a DataFrame</p>
+<p>Example models are (informally):</p>
+<ul class="simple">
+<li><p>we can describe the data as a set of blobs</p></li>
+<li><p>we can describe the rule to separate classes as a flow chart</p></li>
+<li><p>we can describe the rule to separate as a curved line</p></li>
+</ul>
+</section>
+<section id="types-of-machine-learning">
+<h2><span class="section-number">16.3. </span>Types of Machine Learning<a class="headerlink" href="#types-of-machine-learning" title="Permalink to this headline">#</a></h2>
+<p>Then with different additional assumptions we get different types of machine learning:</p>
+<ul class="simple">
+<li><p>if both features (<span class="math notranslate nohighlight">\(\mathbf{X}\)</span>) and target (<span class="math notranslate nohighlight">\(\mathbf{y}\)</span>) are observed (contained in our dataset) it’s <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning"><strong>supervised learning</strong></a> <a class="reference external" href="https://scikit-learn.org/stable/supervised_learning.html">code</a></p></li>
+<li><p>if only the features (<span class="math notranslate nohighlight">\(\mathbf{X}\)</span>) are observed, it’s <a class="reference external" href="https://en.wikipedia.org/wiki/Unsupervised_learning"><strong>unsupervised learning</strong></a> <a class="reference external" href="https://scikit-learn.org/stable/unsupervised_learning.html">code</a></p></li>
+</ul>
+<!--
+```{mermaid}
+flowchart TD
+    fq{Do you have features?}
+    sup[supervised learning]
+    un[unsupervised learning]
+    ml -- yes --> sup
+<p>–&gt;</p>
+</section>
+<section id="supervised-learning">
+<h2><span class="section-number">16.4. </span>Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">#</a></h2>
+<p>we’ll focus on supervised learning first.  we can take that same core assumption and use it with additional information about our target variable to determine learning <strong>task</strong> we are working to do.</p>
+<div class="math notranslate nohighlight">
+\[
+  y_i = f(\mathbf{x}_i)
+\]</div>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(y_i\)</span> are discrete (eg flower species) we are doing <strong>classification</strong></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(y_i\)</span> are continuous (eg height) we are doing <strong>regression</strong></p></li>
+</ul>
+<p><img alt="flowchart for above definitions" src="../_images/mltypes.svg" /></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html">sklearn provides a popular flowchart</a> for choosing a specific model</p>
+</div>
+</section>
+<section id="machine-learning-pipeline">
+<h2><span class="section-number">16.5. </span>Machine Learning Pipeline<a class="headerlink" href="#machine-learning-pipeline" title="Permalink to this headline">#</a></h2>
+<p>To do machine learning we start with <strong>training data</strong> which we put as input to the <strong>learning algorithm</strong>. A learning algorithm might be a generic optimization procedure or a specialized procedure for a specific model. The learning algorithm outputs a trained <strong>model</strong> or the parameters of the model. When we deploy a model we pair the <strong>fit model</strong> with a <strong>prediction algorithm</strong> or <strong>decision</strong> algorithm to evaluate a new sample in the world.</p>
+<p>In experimenting and design, we need <strong>testing data</strong> to evaluate how well our learning algorithm understood the world.  We need to use previously unseen data, because if we don’t we can’t tell if the prediction algorithm is using a rule that the learning algorithm produced or just looking up from a lookup table the result.  This can be thought of like the difference between memorization and understanding.</p>
+<p>When the model does well on the training data, but not on test data, we say that it does not generalize well.</p>
+<p><img alt="data splits in ML; features, target, training and test" src="img/mlsplits" /></p>
+</section>
+<section id="iris-dataset">
+<h2><span class="section-number">16.6. </span>Iris Dataset<a class="headerlink" href="#iris-dataset" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re trying to build an automatic flower classifier that, for measurements of a new flower returns the predicted species. To do this, we have a DataFrame with columns for species, petal width, petal length, sepal length, and sepal width. The species is what type of flower it is the petal and sepal are parts of the flower.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can look at this data using a pair plot. It plots each pair of numerical variables in a grid of scatterplots and on the diagonal (where it would be a variable with itself) shows the distribution of that variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris_df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd7419e4640&gt;
+</pre></div>
+</div>
+<img alt="../_images/2022-10-17_5_1.png" src="../_images/2022-10-17_5_1.png" />
+</div>
+</div>
+<p>This data is reasonably <strong>separable</strong> beacuse the different species (indicated with colors in the plot) do not overlap much.   We see that the features are distributed sort of like a normal, or Gaussian, distribution.  In 2D a Gaussian distribution is like a hill, so we expect to see more points near the center and fewer on the edge of circle-ish blobs.  These blobs are slightly live ovals, but not too skew.</p>
+</section>
+<section id="creating-test-and-train">
+<h2><span class="section-number">16.7. </span>Creating test and train<a class="headerlink" href="#creating-test-and-train" title="Permalink to this headline">#</a></h2>
+<p>To do machine learning, we split the data both sample wise (rows if tidy) and variable-wise (columns if tidy). First, we’ll designate the columns to use as features and as the target.</p>
+<p>The features are the input that we wish to use to predict the target.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,]</span>
+<span class="n">target_var</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we’ll use a sklearn function to split the data randomly into test and train portions.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here i set the random state. This means that the site will always have the same result even when this notebook is run over and over again.</p>
+<p>Try downloading it (or adding <code class="docutils literal notranslate"><span class="pre">random_state</span></code> to your own code) and running it on your own computer.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="n">feature_vars</span><span class="p">],</span><span class="n">iris_df</span><span class="p">[</span><span class="n">target_var</span><span class="p">],</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<!-- ```{code-cell} ipython3
+xy_traintest = train_test_split(iris_df[feature_vars],iris_df[target_var])
+```
+
+```{code-cell} ipython3
+def tts():
+    return X_train, X_test,
+```
+
+```{code-cell} ipython3
+type(xy_traintest)
+```
+
+```{code-cell} ipython3
+xy_traintest[0].shape
+```
+-->
+<p>We can see by default how many samples it puts in each set</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(112, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also see that it picks a random subset by the index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>61</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>4.2</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>5.8</td>
+      <td>2.6</td>
+      <td>4.0</td>
+      <td>1.2</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>6.8</td>
+      <td>3.0</td>
+      <td>5.5</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>6.9</td>
+      <td>3.1</td>
+      <td>5.1</td>
+      <td>2.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="instantiating-our-model-object">
+<h2><span class="section-number">16.8. </span>Instantiating our Model Object<a class="headerlink" href="#instantiating-our-model-object" title="Permalink to this headline">#</a></h2>
+<p>This is the <em>model</em>.  In <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> they call these objects <a class="reference external" href="https://scikit-learn.org/stable/tutorial/statistical_inference/settings.html#estimators-objects">estimator</a>. All estimators have a similar usage.  First we instantiate the object and set any <em>hyperparameters</em>.</p>
+<p>Instantiating the object says we are assuming a particular type of model.  In this case <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html">Gaussian Naive Bayes</a>.  This sets several assumptions in one form:</p>
+<ul class="simple">
+<li><p>we assume data are Gaussian (normally) distributed</p></li>
+<li><p>the features are uncorrelated/independent (Naive)</p></li>
+<li><p>the best way to predict is to find the highest probability (Bayes)</p></li>
+</ul>
+<p>this is one example of a <a class="reference external" href="https://en.wikipedia.org/wiki/Bayes_estimator">Bayes Estimator</a></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p><em>All of this is beyond the scope of this course, but may be of interest</em>
+The Scikit Learn <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">User Guide</a> is
+a really good place to learn the details of machine learning.  It is
+high quality documentation from both a statistical and computer science
+perspective of every element of the library.</p>
+<p>The sklearn <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html">API</a> describes
+how the library is structured and organized. Because the library is so popular
+(and it’s pretty well architected from a software perspective as well) if you
+are developing new machine learning techniques it’s good to make them sklearn
+compatible.</p>
+<p>For example, IBM’s <a class="reference external" href="https://aif360.readthedocs.io/en/latest/index.html">AIF360</a> is a package for doing fair machine learning which has a
+[sklearn compatible interface(<a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/sklearn.html">https://aif360.readthedocs.io/en/latest/modules/sklearn.html</a>). Scikit Learn documentation also includes a
+<a class="reference external" href="https://scikit-learn.org/stable/related_projects.html">related projects</a> page.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point the object is not very interesting</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;priors&#39;: None, &#39;var_smoothing&#39;: 1e-09}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fit method uses the data to learn the model’s parameters.  In this case, a Gaussian distribution is characterized by  a mean and variance; so the GNB classifier is characterized by one mean and one variance for each class (in 4d, like our data)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
+</div>
+<p>The attributes of the <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-estimators">estimator object</a> (<code class="docutils literal notranslate"><span class="pre">gbn</span></code>) describe the data (eg the class list) and the model’s parameters. The <code class="docutils literal notranslate"><span class="pre">theta_</span></code> (<span class="math notranslate nohighlight">\(\theta\)</span>)
+represents the mean and the <code class="docutils literal notranslate"><span class="pre">sigma_</span></code> (<span class="math notranslate nohighlight">\(\sigma\)</span>) represents the variance of the
+distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;priors&#39;: None,
+ &#39;var_smoothing&#39;: 1e-09,
+ &#39;classes_&#39;: array([&#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39;], dtype=&#39;&lt;U10&#39;),
+ &#39;feature_names_in_&#39;: array([&#39;sepal_length&#39;, &#39;sepal_width&#39;, &#39;petal_length&#39;, &#39;petal_width&#39;],
+       dtype=object),
+ &#39;n_features_in_&#39;: 4,
+ &#39;epsilon_&#39;: 3.2135586734693885e-09,
+ &#39;theta_&#39;: array([[4.9972973 , 3.38918919, 1.45405405, 0.24054054],
+        [5.91764706, 2.75882353, 4.19117647, 1.30882353],
+        [6.66341463, 2.9902439 , 5.58292683, 2.03902439]]),
+ &#39;var_&#39;: array([[0.12242513, 0.14474799, 0.01978087, 0.01159971],
+        [0.2649827 , 0.11124568, 0.22139274, 0.0408045 ],
+        [0.4071981 , 0.11453897, 0.30483046, 0.06579417]]),
+ &#39;class_count_&#39;: array([37., 34., 41.]),
+ &#39;class_prior_&#39;: array([0.33035714, 0.30357143, 0.36607143])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we fit, we can predict</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;virginica&#39;, &#39;versicolor&#39;, &#39;setosa&#39;, &#39;virginica&#39;, &#39;setosa&#39;,
+       &#39;virginica&#39;, &#39;setosa&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;,
+       &#39;virginica&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;,
+       &#39;versicolor&#39;, &#39;setosa&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;, &#39;setosa&#39;,
+       &#39;setosa&#39;, &#39;virginica&#39;, &#39;versicolor&#39;, &#39;setosa&#39;, &#39;setosa&#39;,
+       &#39;virginica&#39;, &#39;setosa&#39;, &#39;setosa&#39;, &#39;versicolor&#39;, &#39;versicolor&#39;,
+       &#39;setosa&#39;, &#39;virginica&#39;, &#39;versicolor&#39;, &#39;setosa&#39;, &#39;virginica&#39;,
+       &#39;virginica&#39;, &#39;versicolor&#39;, &#39;setosa&#39;, &#39;versicolor&#39;], dtype=&#39;&lt;U10&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>we get one prediciton for each sample.</p>
+<p>Estimator objects also have a score method.  If the estimator is a classifier, that score is accuracy.  We will see that for other types of estimators it is different types.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also compute a confusion matrix as we did last week (see those notes).  Now it is 3x3 though because we have 3 species instead of two outcomes like the COMPAS predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[13,  0,  0],
+       [ 0, 16,  0],
+       [ 0,  0,  9]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">16.9. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="is-there-any-extra-material-where-we-can-learn-a-better-understanding-oh-how-to-do-the-predictions-and-models">
+<h3><span class="section-number">16.9.1. </span>is there any extra material where we can learn a better understanding oh how to do the predictions and models<a class="headerlink" href="#is-there-any-extra-material-where-we-can-learn-a-better-understanding-oh-how-to-do-the-predictions-and-models" title="Permalink to this headline">#</a></h3>
+<p>The Scikit Learn <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">User Guide</a> is a good place, as is the <a class="reference external" href="https://mbmlbook.com/toc.html">Model Based ML</a></p>
+</section>
+<section id="are-there-any-good-introductions-to-scikitlearn-that-you-are-aware-of">
+<h3><span class="section-number">16.9.2. </span>Are there any good introductions to ScikitLearn that you are aware of?<a class="headerlink" href="#are-there-any-good-introductions-to-scikitlearn-that-you-are-aware-of" title="Permalink to this headline">#</a></h3>
+<p>Scikit Learn <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">User Guide</a> is the best one and they have a large example gallery.</p>
+</section>
+<section id="what-is-a-confusion-matrix">
+<h3><span class="section-number">16.9.3. </span>What is a confusion matrix?<a class="headerlink" href="#what-is-a-confusion-matrix" title="Permalink to this headline">#</a></h3>
+<p>Notes from <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall22/notes/2022-10-12.html#performance-metrics-in-sklearn">last wed</a> go over that.</p>
+</section>
+<section id="can-you-use-machine-learning-for-any-type-of-data">
+<h3><span class="section-number">16.9.4. </span>Can you use machine learning for any type of data?<a class="headerlink" href="#can-you-use-machine-learning-for-any-type-of-data" title="Permalink to this headline">#</a></h3>
+<p>Yes the features for example could be an image instead of four numbers.  It could also be text.  The basic ideas are the same for more complex data, so we are going to spend a lot of time building your understanding of what ML <em>is</em> on simple data. Past students have successfully applied ML in more complex data after this course because once you have a good understanding of the core ideas, applying it to other forms of data is easier to learn on your own.</p>
+</section>
+<section id="can-we-check-how-well-the-model-did-using-the-y-test-df">
+<h3><span class="section-number">16.9.5. </span>Can we check how well the model did using the y_test df?<a class="headerlink" href="#can-we-check-how-well-the-model-did-using-the-y-test-df" title="Permalink to this headline">#</a></h3>
+<p>we could compare them directly or using <code class="docutils literal notranslate"><span class="pre">score</span></code> that does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114    True
+62     True
+33     True
+107    True
+7      True
+100    True
+40     True
+86     True
+76     True
+71     True
+134    True
+51     True
+73     True
+54     True
+63     True
+37     True
+78     True
+90     True
+45     True
+16     True
+121    True
+66     True
+24     True
+8      True
+126    True
+22     True
+44     True
+97     True
+93     True
+26     True
+137    True
+84     True
+27     True
+127    True
+132    True
+59     True
+18     True
+83     True
+Name: species, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use any of the other metrics we saw, we’ll practice more on Wednesday</p>
+</section>
+<section id="i-want-to-know-more-about-the-the-test-train-split-function">
+<h3><span class="section-number">16.9.6. </span>I want to know more about the the test_train_split() function<a class="headerlink" href="#i-want-to-know-more-about-the-the-test-train-split-function" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">the docs</a> are a good place to start.</p>
+</section>
+<section id="could-we-use-the-comparison-stuff-weve-been-learning-to-test-the-ml-algorithm">
+<h3><span class="section-number">16.9.7. </span>Could we use the comparison stuff we’ve been learning to test the ML algorithm?<a class="headerlink" href="#could-we-use-the-comparison-stuff-weve-been-learning-to-test-the-ml-algorithm" title="Permalink to this headline">#</a></h3>
+<p>Yes!!</p>
+</section>
+<section id="how-should-we-set-the-random-set-we-had-for-x-test-to-a-specific-group">
+<h3><span class="section-number">16.9.8. </span>How should we set the random set we had for x_test to a specific group?<a class="headerlink" href="#how-should-we-set-the-random-set-we-had-for-x-test-to-a-specific-group" title="Permalink to this headline">#</a></h3>
+<p>the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#:~:text=the%20test%20size.-,random_state,-int%2C%20RandomState%20instance"><code class="docutils literal notranslate"><span class="pre">random_state</span></code></a> parameter will fix it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If I misunderstood this question, post an issue</p>
+</div>
+</section>
+<section id="not-a-question-but-were-using-the-iris-dataset-in-my-programming-with-r-class-too">
+<h3><span class="section-number">16.9.9. </span>Not a question but we’re using the iris dataset in my programming with R class too!<a class="headerlink" href="#not-a-question-but-were-using-the-iris-dataset-in-my-programming-with-r-class-too" title="Permalink to this headline">#</a></h3>
+<p>The iris dataset is a very popular easy to use dataset.  It is good for this case because it fits the criteria of a simple classifier.  It comes from the <a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">UC Irvine Machine Learning Repository</a> a large collection of good datasets for machine learning, you can learn more about it <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/iris">on its page there</a>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-10-14.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">15. </span>Performance Metrics continued</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
