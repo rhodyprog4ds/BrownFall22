@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="next" title="18. Decision Trees" href="2022-10-21.html" />
     <link rel="prev" title="16. Modeling and Naive Bayes" href="2022-10-17.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -251,6 +251,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    17. Classification with Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-21.html">
+   18. Decision Trees
   </a>
  </li>
 </ul>
@@ -1056,7 +1061,7 @@ as list of lists.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">sigma_</span><span class="p">)]),</span>
+         <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">var_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">sigma_</span><span class="p">)]),</span>
          <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_vars</span><span class="p">)</span>
 <span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
 </pre></div>
@@ -1076,7 +1081,7 @@ as list of lists.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f42e36c6610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fefb47a9610&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_18_1.png" src="../_images/2022-10-19_18_1.png" />
@@ -1105,7 +1110,7 @@ That means that the naive assumption doesn’t hold perfectly on this data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f42de1507f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fefaed97e20&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_20_1.png" src="../_images/2022-10-19_20_1.png" />
@@ -1368,7 +1373,7 @@ forms of color blindness.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f42ddd90820&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fefaee970d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_36_1.png" src="../_images/2022-10-19_36_1.png" />
@@ -1591,10 +1596,10 @@ forms of color blindness.</p>
             <p class="prev-next-title"><span class="section-number">16. </span>Modeling and Naive Bayes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-10-21.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Decision Trees</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
