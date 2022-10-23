@@ -6,7 +6,7 @@ substitutions:
 ---
 
 
-# Assignment 7
+# Assignment 7: Classification
 
 {{accept_assignment}}
 __Due: {{ date }}__
@@ -50,7 +50,7 @@ Use the UCI ML repository
     - (DT) Is this an interpretable number of levels?
     - (GNB) do the parameters fit the data well?
     - (GNB) do the parameters generate similar synthetic data
-1. Repeat the split, train, and test steps 5 times, save the scores into a dataframe. Compute the mean and std of the scores.
+1. Repeat the split, train, and test steps 5 times to use 5 different random splits of the data, save the scores into a dataframe. Compute the mean and std of the scores.
 
     - Is the performance consistent enough you trust it?
 1. Interpret the model and its performance in terms of the application. Example questions to consider in your response include
