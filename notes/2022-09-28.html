@@ -261,6 +261,11 @@ const thebe_selector_output = ".output, .cell_output"
    19. Feedback &amp; Regression
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-26.html">
+   20. Interpretting Regression
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1056,16 +1061,16 @@ for evidence of learning and assess that.  There is not a single ‚Äúright‚Äù ans
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174     70 kg
-170     60 kg
-1264    69 kg
-982      1 kg
-669      1 kg
-161     1 lbs
-295     60 kg
-1262     2 kg
-1149     2 kg
-84      70 kg
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>448     60 kg
+421     60 kg
+1239     2 kg
+8       60 kg
+591     60 kg
+14      60 kg
+1081     2 kg
+1109     1 kg
+948     70 kg
+272      1 kg
 Name: Bag.Weight, dtype: object
 </pre></div>
 </div>
@@ -1080,7 +1085,7 @@ Name: Bag.Weight, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.strings.accessor.StringMethods at 0x7f8b2c492d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.strings.accessor.StringMethods at 0x7efbfcb2ee80&gt;
 </pre></div>
 </div>
 </div>
@@ -1093,16 +1098,16 @@ Name: Bag.Weight, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>537      [60, kg]
-545      [60, kg]
-330       [1, kg]
-64     [100, lbs]
-180      [66, kg]
-792    [100, lbs]
-392      [70, kg]
-147      [60, kg]
-902      [60, kg]
-17            [6]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>692      [1, kg]
+106     [70, kg]
+71      [60, kg]
+213     [69, kg]
+1211     [1, kg]
+559     [50, kg]
+1057     [1, kg]
+790      [2, kg]
+1199     [2, kg]
+156     [60, kg]
 Name: Bag.Weight, dtype: object
 </pre></div>
 </div>
@@ -1695,6 +1700,39 @@ Name: Bag.Weight, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>24856357670</td>
+      <td>CreateEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'ref': 'c21', 'ref_type': 'tag', 'master_bran...</td>
+      <td>True</td>
+      <td>2022-10-27 02:54:24+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24856351571</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11463176210, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-10-27 02:53:51+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24805302379</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11437393104, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-10-25 03:34:05+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>24805268963</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1705,7 +1743,7 @@ Name: Bag.Weight, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>24805254724</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1713,39 +1751,6 @@ Name: Bag.Weight, dtype: object
       <td>{'ref': 'c20', 'ref_type': 'tag', 'master_bran...</td>
       <td>True</td>
       <td>2022-10-25 03:29:48+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>24805246446</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11437362263, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-10-25 03:29:06+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>24793846528</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 400656699, 'name': 'rhodyprog4ds/rhodyd...</td>
-      <td>{'push_id': 11431689614, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-10-24 15:37:17+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24793837530</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 400656699, 'name': 'rhodyprog4ds/rhodyd...</td>
-      <td>{'push_id': 11431685367, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-10-24 15:36:55+00:00</td>
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
   </tbody>
@@ -1898,12 +1903,12 @@ dtype: object
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1925,12 +1930,12 @@ dtype: object
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1952,6 +1957,15 @@ dtype: object
     </tr>
     <tr>
       <th>8</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>9</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -1960,22 +1974,13 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>98483722</td>
-      <td>dsdelgiudice</td>
-      <td>dsdelgiudice</td>
-      <td></td>
-      <td>https://api.github.com/users/dsdelgiudice</td>
-      <td>https://avatars.githubusercontent.com/u/98483722?</td>
-    </tr>
-    <tr>
       <th>10</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>11</th>
@@ -1988,30 +1993,30 @@ dtype: object
     </tr>
     <tr>
       <th>12</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>98483722</td>
+      <td>dsdelgiudice</td>
+      <td>dsdelgiudice</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/dsdelgiudice</td>
+      <td>https://avatars.githubusercontent.com/u/98483722?</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-    </tr>
-    <tr>
-      <th>14</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>15</th>
@@ -2033,21 +2038,21 @@ dtype: object
     </tr>
     <tr>
       <th>17</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-    </tr>
-    <tr>
-      <th>18</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>19</th>
@@ -2069,21 +2074,21 @@ dtype: object
     </tr>
     <tr>
       <th>21</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-    </tr>
-    <tr>
-      <th>22</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>23</th>
@@ -2105,12 +2110,12 @@ dtype: object
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
     </tr>
     <tr>
       <th>26</th>
@@ -2474,11 +2479,11 @@ dtype: object
       <th>id</th>
       <th>name</th>
       <th>url</th>
-      <th>action</th>
+      <th>ref</th>
       <th>...</th>
-      <th>head</th>
-      <th>before</th>
       <th>commits</th>
+      <th>action</th>
+      <th>release</th>
       <th>issue</th>
       <th>comment</th>
       <th>id</th>
@@ -2500,7 +2505,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>c21</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2524,9 +2529,9 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '1cc70cd69fbdfa4aad73fba4e2fc9cf4e87b...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2539,20 +2544,20 @@ dtype: object
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>a874c2850e2972581fb3dea5ba6376c89046e01d</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>[{'sha': '3476fad41c0e546ffdac6298354239c82b5e...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2569,14 +2574,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>a4368fa754508bb1a3912331f96d960be5b36b26</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2593,14 +2598,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>c20</td>
       <td>...</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>5b68d5f8fca57cb482ecb437161f8aafa2b2776b</td>
-      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2611,20 +2616,20 @@ dtype: object
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>10e1b725fde3178d923641886bd28bd595888320</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2641,15 +2646,15 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2665,14 +2670,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2683,6 +2688,30 @@ dtype: object
     </tr>
     <tr>
       <th>8</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>9</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -2692,34 +2721,10 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>98483722</td>
-      <td>dsdelgiudice</td>
-      <td>dsdelgiudice</td>
-      <td></td>
-      <td>https://api.github.com/users/dsdelgiudice</td>
-      <td>https://avatars.githubusercontent.com/u/98483722?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>opened</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -2731,20 +2736,20 @@ dtype: object
     </tr>
     <tr>
       <th>10</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2764,13 +2769,13 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -2779,21 +2784,21 @@ dtype: object
     </tr>
     <tr>
       <th>12</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>98483722</td>
+      <td>dsdelgiudice</td>
+      <td>dsdelgiudice</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/dsdelgiudice</td>
+      <td>https://avatars.githubusercontent.com/u/98483722?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>opened</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2803,20 +2808,20 @@ dtype: object
     </tr>
     <tr>
       <th>13</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
+      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2827,20 +2832,20 @@ dtype: object
     </tr>
     <tr>
       <th>14</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2860,13 +2865,13 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>c19</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -2884,12 +2889,12 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2899,6 +2904,30 @@ dtype: object
     </tr>
     <tr>
       <th>17</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>18</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -2910,35 +2939,11 @@ dtype: object
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -2956,12 +2961,12 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2980,9 +2985,9 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2995,6 +3000,30 @@ dtype: object
     </tr>
     <tr>
       <th>21</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>22</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3006,33 +3035,9 @@ dtype: object
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>9d17f577e84647d78d6a029fedfeac39a9bed750</td>
-      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3052,11 +3057,11 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>c18</td>
       <td>...</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>894431119709f8844997b9483ede1ab5b8abe305</td>
-      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3076,9 +3081,9 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3091,18 +3096,18 @@ dtype: object
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3124,11 +3129,11 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>33c1d0bf9b0469e735955a6bd940ab26dde979b8</td>
-      <td>e39fb145c848ed101485f8de225648bbaef689d4</td>
-      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3145,14 +3150,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>c23b4fccfc23141df23a7cf947fb3062d7972fd4</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>[{'sha': 'c23b4fccfc23141df23a7cf947fb3062d797...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3169,14 +3174,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>a7</td>
       <td>...</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>[{'sha': 'fd8d22d9706d47e62d52d5081a742931507a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3193,14 +3198,14 @@ dtype: object
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/notes1019</td>
       <td>...</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>513c218ba8230bc980eb993f73e8d5ae679934e9</td>
-      <td>[{'sha': 'de3facda51c4b03583b93572ed84a5573ecf...</td>
+      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3293,11 +3298,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <th>repo_id</th>
       <th>repo_name</th>
       <th>repo_url</th>
-      <th>payload_action</th>
+      <th>payload_ref</th>
       <th>...</th>
-      <th>payload_head</th>
-      <th>payload_before</th>
       <th>payload_commits</th>
+      <th>payload_action</th>
+      <th>payload_release</th>
       <th>payload_issue</th>
       <th>payload_comment</th>
       <th>org_id</th>
@@ -3319,7 +3324,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>c21</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3343,9 +3348,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '1cc70cd69fbdfa4aad73fba4e2fc9cf4e87b...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3358,20 +3363,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>a874c2850e2972581fb3dea5ba6376c89046e01d</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>[{'sha': '3476fad41c0e546ffdac6298354239c82b5e...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3388,14 +3393,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>a4368fa754508bb1a3912331f96d960be5b36b26</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3412,14 +3417,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>c20</td>
       <td>...</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>5b68d5f8fca57cb482ecb437161f8aafa2b2776b</td>
-      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3430,20 +3435,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>10e1b725fde3178d923641886bd28bd595888320</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3460,15 +3465,15 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3484,14 +3489,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3502,6 +3507,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>8</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>9</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3511,34 +3540,10 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>98483722</td>
-      <td>dsdelgiudice</td>
-      <td>dsdelgiudice</td>
-      <td></td>
-      <td>https://api.github.com/users/dsdelgiudice</td>
-      <td>https://avatars.githubusercontent.com/u/98483722?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>opened</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -3550,20 +3555,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>10</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3583,13 +3588,13 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -3598,21 +3603,21 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>12</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>98483722</td>
+      <td>dsdelgiudice</td>
+      <td>dsdelgiudice</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/dsdelgiudice</td>
+      <td>https://avatars.githubusercontent.com/u/98483722?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>opened</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3622,20 +3627,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>13</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
+      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3646,20 +3651,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>14</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3679,13 +3684,13 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>c19</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -3703,12 +3708,12 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3718,6 +3723,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>17</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>18</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3729,35 +3758,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -3775,12 +3780,12 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3799,9 +3804,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3814,6 +3819,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>21</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>22</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3825,33 +3854,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>9d17f577e84647d78d6a029fedfeac39a9bed750</td>
-      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3871,11 +3876,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>c18</td>
       <td>...</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>894431119709f8844997b9483ede1ab5b8abe305</td>
-      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3895,9 +3900,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3910,18 +3915,18 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3943,11 +3948,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>33c1d0bf9b0469e735955a6bd940ab26dde979b8</td>
-      <td>e39fb145c848ed101485f8de225648bbaef689d4</td>
-      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3964,14 +3969,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>c23b4fccfc23141df23a7cf947fb3062d7972fd4</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>[{'sha': 'c23b4fccfc23141df23a7cf947fb3062d797...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3988,14 +3993,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>a7</td>
       <td>...</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>[{'sha': 'fd8d22d9706d47e62d52d5081a742931507a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4012,14 +4017,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/notes1019</td>
       <td>...</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>513c218ba8230bc980eb993f73e8d5ae679934e9</td>
-      <td>[{'sha': 'de3facda51c4b03583b93572ed84a5573ecf...</td>
+      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4070,11 +4075,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <th>repo_id</th>
       <th>repo_name</th>
       <th>repo_url</th>
-      <th>payload_action</th>
+      <th>payload_ref</th>
       <th>...</th>
-      <th>payload_head</th>
-      <th>payload_before</th>
       <th>payload_commits</th>
+      <th>payload_action</th>
+      <th>payload_release</th>
       <th>payload_issue</th>
       <th>payload_comment</th>
       <th>org_id</th>
@@ -4096,7 +4101,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>c21</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4120,9 +4125,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '1cc70cd69fbdfa4aad73fba4e2fc9cf4e87b...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4135,20 +4140,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>a874c2850e2972581fb3dea5ba6376c89046e01d</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>[{'sha': '3476fad41c0e546ffdac6298354239c82b5e...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4165,14 +4170,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>a4368fa754508bb1a3912331f96d960be5b36b26</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4189,14 +4194,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>400656699</td>
-      <td>rhodyprog4ds/rhodyds</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>c20</td>
       <td>...</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>5b68d5f8fca57cb482ecb437161f8aafa2b2776b</td>
-      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4207,20 +4212,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>10e1b725fde3178d923641886bd28bd595888320</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4237,15 +4242,15 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4261,14 +4266,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>400656699</td>
+      <td>rhodyprog4ds/rhodyds</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/rhodyds</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4279,6 +4284,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>8</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>9</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -4288,34 +4317,10 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>98483722</td>
-      <td>dsdelgiudice</td>
-      <td>dsdelgiudice</td>
-      <td></td>
-      <td>https://api.github.com/users/dsdelgiudice</td>
-      <td>https://avatars.githubusercontent.com/u/98483722?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>opened</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -4327,20 +4332,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>10</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4360,13 +4365,13 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -4375,21 +4380,21 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>12</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>98483722</td>
+      <td>dsdelgiudice</td>
+      <td>dsdelgiudice</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/dsdelgiudice</td>
+      <td>https://avatars.githubusercontent.com/u/98483722?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>opened</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4399,20 +4404,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>13</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
+      <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4423,20 +4428,20 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>14</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4456,13 +4461,13 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>created</td>
+      <td>c19</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -4480,12 +4485,12 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>closed</td>
+      <td>refs/heads/main</td>
       <td>...</td>
+      <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4495,6 +4500,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>17</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>18</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -4506,35 +4535,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -4552,12 +4557,12 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4576,9 +4581,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4591,6 +4596,30 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>21</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/gh-pages</td>
+      <td>...</td>
+      <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>22</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -4602,33 +4631,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>9d17f577e84647d78d6a029fedfeac39a9bed750</td>
-      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4648,11 +4653,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>c18</td>
       <td>...</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>894431119709f8844997b9483ede1ab5b8abe305</td>
-      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4672,9 +4677,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>published</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4687,18 +4692,18 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/gh-pages</td>
       <td>...</td>
-      <td>NaN</td>
+      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4720,11 +4725,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>refs/heads/main</td>
       <td>...</td>
-      <td>33c1d0bf9b0469e735955a6bd940ab26dde979b8</td>
-      <td>e39fb145c848ed101485f8de225648bbaef689d4</td>
-      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4741,14 +4746,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>c23b4fccfc23141df23a7cf947fb3062d7972fd4</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>[{'sha': 'c23b4fccfc23141df23a7cf947fb3062d797...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4765,14 +4770,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>a7</td>
       <td>...</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>[{'sha': 'fd8d22d9706d47e62d52d5081a742931507a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4789,14 +4794,14 @@ name prepended to the new name. This will help us distinguish between the differ
       <td></td>
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>305547008</td>
-      <td>rhodyprog4ds/07-decision-tree</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/07-d...</td>
-      <td>NaN</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>refs/heads/notes1019</td>
       <td>...</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>513c218ba8230bc980eb993f73e8d5ae679934e9</td>
-      <td>[{'sha': 'de3facda51c4b03583b93572ed84a5573ecf...</td>
+      <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4849,213 +4854,213 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
   <tbody>
     <tr>
       <th>0</th>
+      <td>24856357670</td>
+      <td>CreateEvent</td>
+      <td>True</td>
+      <td>2022-10-27 02:54:24+00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24856351571</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-27 02:53:51+00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24805302379</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-25 03:34:05+00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>24805268963</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-10-25 03:31:02+00:00</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>24805254724</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-10-25 03:29:48+00:00</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>5</th>
       <td>24805246446</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-25 03:29:06+00:00</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>6</th>
       <td>24793846528</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-24 15:37:17+00:00</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>24793837530</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-24 15:36:55+00:00</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>8</th>
       <td>24777217095</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-23 21:46:44+00:00</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>9</th>
       <td>24777190924</td>
       <td>IssuesEvent</td>
       <td>True</td>
       <td>2022-10-23 21:42:12+00:00</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>10</th>
       <td>24777190862</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-23 21:42:11+00:00</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>11</th>
       <td>24777180320</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
       <td>2022-10-23 21:40:25+00:00</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>12</th>
       <td>24776701703</td>
       <td>IssuesEvent</td>
       <td>True</td>
       <td>2022-10-23 20:23:36+00:00</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>13</th>
       <td>24762087672</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-22 03:21:55+00:00</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>14</th>
       <td>24762067339</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-10-22 03:18:15+00:00</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>15</th>
       <td>24762064367</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-10-22 03:17:44+00:00</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>16</th>
       <td>24762062369</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-22 03:17:20+00:00</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>24747346193</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 10:50:17+00:00</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>24747273356</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
       <td>2022-10-21 10:46:30+00:00</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>24747273462</td>
       <td>IssuesEvent</td>
       <td>True</td>
       <td>2022-10-21 10:46:31+00:00</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>20</th>
       <td>24747260625</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 10:45:52+00:00</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>21</th>
       <td>24739040568</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 02:18:16+00:00</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>22</th>
       <td>24739017877</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-10-21 02:16:11+00:00</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>23</th>
       <td>24739003719</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-10-21 02:14:56+00:00</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>24</th>
       <td>24738997837</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 02:14:25+00:00</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>25</th>
       <td>24738459816</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 01:26:01+00:00</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>26</th>
       <td>24738412984</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 01:21:42+00:00</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>27</th>
       <td>24738263061</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-10-21 01:08:34+00:00</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>28</th>
       <td>24738254655</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-10-21 01:07:50+00:00</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>29</th>
       <td>24738252014</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-10-21 01:07:38+00:00</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>24738190920</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:02:09+00:00</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>24738181196</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:01:17+00:00</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>24738170146</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:00:19+00:00</td>
     </tr>
   </tbody>
 </table>
@@ -5100,9 +5105,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <th>actor_url</th>
       <th>actor_avatar_url</th>
       <th>...</th>
-      <th>payload_head</th>
-      <th>payload_before</th>
       <th>payload_commits</th>
+      <th>payload_action</th>
+      <th>payload_release</th>
       <th>payload_issue</th>
       <th>payload_comment</th>
       <th>org_id</th>
@@ -5115,10 +5120,10 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
   <tbody>
     <tr>
       <th>0</th>
-      <td>24805268963</td>
-      <td>ReleaseEvent</td>
+      <td>24856357670</td>
+      <td>CreateEvent</td>
       <td>True</td>
-      <td>2022-10-25 03:31:02+00:00</td>
+      <td>2022-10-27 02:54:24+00:00</td>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -5139,6 +5144,78 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
     </tr>
     <tr>
       <th>1</th>
+      <td>24856351571</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-27 02:53:51+00:00</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>...</td>
+      <td>[{'sha': '1cc70cd69fbdfa4aad73fba4e2fc9cf4e87b...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24805302379</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-25 03:34:05+00:00</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>...</td>
+      <td>[{'sha': '3476fad41c0e546ffdac6298354239c82b5e...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24805268963</td>
+      <td>ReleaseEvent</td>
+      <td>True</td>
+      <td>2022-10-25 03:31:02+00:00</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>4</th>
       <td>24805254724</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5162,7 +5239,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>5</th>
       <td>24805246446</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5174,9 +5251,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>a874c2850e2972581fb3dea5ba6376c89046e01d</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
       <td>[{'sha': 'a874c2850e2972581fb3dea5ba6376c89046...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5186,7 +5263,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>6</th>
       <td>24793846528</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5198,9 +5275,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>a4368fa754508bb1a3912331f96d960be5b36b26</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
       <td>[{'sha': 'a4368fa754508bb1a3912331f96d960be5b3...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5210,7 +5287,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>24793837530</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5222,9 +5299,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>01c050eb9570b1d607ac420d16019e5e635ab351</td>
-      <td>5b68d5f8fca57cb482ecb437161f8aafa2b2776b</td>
       <td>[{'sha': '01c050eb9570b1d607ac420d16019e5e635a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5234,7 +5311,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>8</th>
       <td>24777217095</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5246,9 +5323,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>...</td>
-      <td>10e1b725fde3178d923641886bd28bd595888320</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
       <td>[{'sha': '10e1b725fde3178d923641886bd28bd59588...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5258,7 +5335,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>9</th>
       <td>24777190924</td>
       <td>IssuesEvent</td>
       <td>True</td>
@@ -5271,7 +5348,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -5282,7 +5359,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>10</th>
       <td>24777190862</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5294,9 +5371,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>6d333300c226e2d90aaf339cebebd4e4afb88574</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
       <td>[{'sha': '6d333300c226e2d90aaf339cebebd4e4afb8...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5306,7 +5383,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>11</th>
       <td>24777180320</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
@@ -5319,7 +5396,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
@@ -5330,7 +5407,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>12</th>
       <td>24776701703</td>
       <td>IssuesEvent</td>
       <td>True</td>
@@ -5343,7 +5420,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/98483722?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>opened</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -5354,7 +5431,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>13</th>
       <td>24762087672</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5366,9 +5443,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>...</td>
-      <td>0e5f6cb0834c221648dc8ddf854923af5bd62b8a</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
       <td>[{'sha': '0e5f6cb0834c221648dc8ddf854923af5bd6...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5378,7 +5455,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>14</th>
       <td>24762067339</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5391,8 +5468,8 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5402,7 +5479,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>15</th>
       <td>24762064367</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5426,7 +5503,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>16</th>
       <td>24762062369</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5438,9 +5515,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>17c96f6288369bb8dd63cfb54c47d1ce12c97253</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
       <td>[{'sha': '17c96f6288369bb8dd63cfb54c47d1ce12c9...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5450,7 +5527,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>24747346193</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5462,9 +5539,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>...</td>
-      <td>d56372a843b7cb1b1fbab8617f7a09c50c45d26a</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
       <td>[{'sha': 'd56372a843b7cb1b1fbab8617f7a09c50c45...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5474,7 +5551,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>24747273356</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
@@ -5487,7 +5564,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>created</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
@@ -5498,7 +5575,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>24747273462</td>
       <td>IssuesEvent</td>
       <td>True</td>
@@ -5511,7 +5588,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>closed</td>
       <td>NaN</td>
       <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
@@ -5522,7 +5599,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>20</th>
       <td>24747260625</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5534,9 +5611,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>9a41c987910d282b54e979ecd000971aca204b59</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
       <td>[{'sha': '9a41c987910d282b54e979ecd000971aca20...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5546,7 +5623,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>21</th>
       <td>24739040568</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5558,9 +5635,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>...</td>
-      <td>f4fa8a786bae6f6d86d15308b612c17e9ba5feb3</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
       <td>[{'sha': 'f4fa8a786bae6f6d86d15308b612c17e9ba5...</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5570,7 +5647,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>22</th>
       <td>24739017877</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5583,8 +5660,8 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -5594,7 +5671,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>23</th>
       <td>24739003719</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5618,7 +5695,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>24</th>
       <td>24738997837</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5630,79 +5707,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>caf5c5330d031fe9b493866bd5e18da23f600438</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
       <td>[{'sha': 'caf5c5330d031fe9b493866bd5e18da23f60...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>24738459816</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:26:01+00:00</td>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>...</td>
-      <td>cf274fd556a0f3759db1824eeda5f1c599d612d4</td>
-      <td>9d17f577e84647d78d6a029fedfeac39a9bed750</td>
-      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>24738412984</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:21:42+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>a099db5653ae1d55d0c3cb019f70539f60727e84</td>
-      <td>894431119709f8844997b9483ede1ab5b8abe305</td>
-      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>24738263061</td>
-      <td>ReleaseEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:08:34+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -5715,6 +5720,78 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
     </tr>
     <tr>
       <th>25</th>
+      <td>24738459816</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-21 01:26:01+00:00</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>...</td>
+      <td>[{'sha': 'cf274fd556a0f3759db1824eeda5f1c599d6...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>24738412984</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-10-21 01:21:42+00:00</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>...</td>
+      <td>[{'sha': 'a099db5653ae1d55d0c3cb019f70539f6072...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>24738263061</td>
+      <td>ReleaseEvent</td>
+      <td>True</td>
+      <td>2022-10-21 01:08:34+00:00</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>published</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>28</th>
       <td>24738254655</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5738,7 +5815,7 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>29</th>
       <td>24738252014</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5750,81 +5827,9 @@ First we can make a DataFrame that‚Äôs just the columns not on the list that we‚
       <td>https://api.github.com/users/brownsarahm</td>
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>...</td>
-      <td>33c1d0bf9b0469e735955a6bd940ab26dde979b8</td>
-      <td>e39fb145c848ed101485f8de225648bbaef689d4</td>
       <td>[{'sha': '33c1d0bf9b0469e735955a6bd940ab26dde9...</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>24738190920</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:02:09+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>c23b4fccfc23141df23a7cf947fb3062d7972fd4</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>[{'sha': 'c23b4fccfc23141df23a7cf947fb3062d797...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>24738181196</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:01:17+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>fd8d22d9706d47e62d52d5081a742931507af988</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>[{'sha': 'fd8d22d9706d47e62d52d5081a742931507a...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>24738170146</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-10-21 01:00:19+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>de3facda51c4b03583b93572ed84a5573ecfaa6d</td>
-      <td>513c218ba8230bc980eb993f73e8d5ae679934e9</td>
-      <td>[{'sha': 'de3facda51c4b03583b93572ed84a5573ecf...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
