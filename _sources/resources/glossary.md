@@ -17,7 +17,7 @@ Contribute glossary items and  links for further reading using the suggest an ed
   a python library used to assist in web scraping, it pulls data from html and xml files that can be parsed in a variety of different ways using different methods.
 
 corpus
-  (NLP) a set of documents for analysis 
+  (NLP) a set of documents for analysis
 
 [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
   a data structure provided by pandas for tabular data in python.
@@ -58,6 +58,9 @@ kernel
 
 repository
   a project folder with tracking information in it in the form of a .git file
+
+residual
+  the errors in a regression problem; calculated by taking the difference between the true and predicted values
 
 suffix
   additional part of the name that gets added to end of a name in a merge operation
