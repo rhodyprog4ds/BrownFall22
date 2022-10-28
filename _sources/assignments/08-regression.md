@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/d3KTEeJg)
-  date : 2020-11-03 11:59pm
+  date : 2022-11-02 
 ---
 
 # Assignment 8: Linear Regression
