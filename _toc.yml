@@ -45,6 +45,7 @@ parts:
     - file: assignments/05-construct
     - file: assignments/06-evaluate
     - file: assignments/07-classification
+    - file: assignments/08-regression
   - caption: Portfolio
     chapters:
       - file: portfolio/index
