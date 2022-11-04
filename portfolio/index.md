@@ -84,19 +84,22 @@ You can view a (fake) example [in this repository](https://github.com/rhodyprog4
 
 <!-- ### Portfolio 1 -->
 
+- Portfolio Check 2 is due November 14
+- Portfolio check 3 is due December 6
+- Portfolio check 4 is due December 19
 
-Portfolio 1 will be due October 19th.  
+
 
 ```{important}
-start early, assignment 5 and 6 will be due on Wednesdays like regular the week before and of this deadline. You will get feedback on Assignment 5 by Friday so that you can use that to update your portfolio on the construct achievements. Assignment 6 will be a little shorter than some others.  
+start early, assignment 9 and 10 will be due on Wednesdays like regular the week before and of this deadline. You will get feedback on Assignment 9 by Friday so that you can use that to update your portfolio on the construct achievements.
 ```
 
-Portfolio check 1 will assess the following *new* achievements in addition to an a chance to make up any that you have missed:
+Portfolio check 2 will assess the following *new* achievements in addition to an a chance to make up any that you have missed:
 
 ```{code-cell} ipython3
 :tags: [remove-input]
 
-portfolio_df['Level 3'][portfolio_df['P1']==1].reset_index().set_index('keyword')
+portfolio_df['Level 3'][portfolio_df['P2']==1].reset_index().set_index('keyword')
 ```
 
 
