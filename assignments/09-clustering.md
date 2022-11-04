@@ -24,9 +24,7 @@ Eligible skills: (links to checklists)
 
 - [2022-10-31](../notes/2022-10-31)
 - [2022-11-02](../notes/2022-11-02)
-- [2022-11-04]()
-
-
+- [2022-11-04](../notes/2022-11-04)
 
 
 ## Instructions
