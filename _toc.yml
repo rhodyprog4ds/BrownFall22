@@ -39,6 +39,7 @@ parts:
     - file: notes/2022-10-31
     - file: notes/2022-11-02
     - file: notes/2022-11-04
+    - file: notes/2022-11-07
   - caption: Assignments
     numbered: True
     chapters:
@@ -50,6 +51,7 @@ parts:
     - file: assignments/06-evaluate
     - file: assignments/07-classification
     - file: assignments/08-regression
+    - file: assignments/09-clustering
   - caption: Portfolio
     chapters:
       - file: portfolio/index
