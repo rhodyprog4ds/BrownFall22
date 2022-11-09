@@ -956,7 +956,7 @@ each section gets used for testing.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.93333333, 1.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.96666667, 1.        ])
 </pre></div>
 </div>
 </div>
@@ -983,7 +983,7 @@ to get a single estimate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.96
 </pre></div>
 </div>
 </div>
@@ -1326,10 +1326,10 @@ The dictionary has the parameter names as the keys and the values are the values
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00165982, 0.00152879, 0.00153675, 0.00152178]),
- &#39;std_fit_time&#39;: array([2.61898111e-04, 1.68832679e-05, 2.72255227e-05, 1.45074522e-05]),
- &#39;mean_score_time&#39;: array([0.00113802, 0.00109692, 0.0010941 , 0.00109386]),
- &#39;std_score_time&#39;: array([7.44766216e-05, 1.87739455e-05, 8.94879928e-06, 9.38654885e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.0016983 , 0.00145798, 0.00148625, 0.00148325]),
+ &#39;std_fit_time&#39;: array([4.55281746e-04, 2.08167684e-05, 2.02559841e-05, 5.28923974e-06]),
+ &#39;mean_score_time&#39;: array([0.00107102, 0.00103707, 0.00103121, 0.00103736]),
+ &#39;std_score_time&#39;: array([8.19442124e-05, 2.64192745e-05, 2.06484255e-05, 1.44387992e-05]),
  &#39;param_max_depth&#39;: masked_array(data=[2, 3, 4, 5],
               mask=[False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1341,11 +1341,11 @@ The dictionary has the parameter names as the keys and the values are the values
  &#39;split0_test_score&#39;: array([0.93333333, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split1_test_score&#39;: array([0.96666667, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split2_test_score&#39;: array([0.9       , 0.93333333, 0.9       , 0.9       ]),
- &#39;split3_test_score&#39;: array([0.86666667, 0.93333333, 0.96666667, 0.93333333]),
+ &#39;split3_test_score&#39;: array([0.86666667, 0.93333333, 0.93333333, 1.        ]),
  &#39;split4_test_score&#39;: array([1., 1., 1., 1.]),
- &#39;mean_test_score&#39;: array([0.93333333, 0.96      , 0.96      , 0.95333333]),
- &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03265986, 0.03399346]),
- &#39;rank_test_score&#39;: array([4, 2, 1, 3], dtype=int32)}
+ &#39;mean_test_score&#39;: array([0.93333333, 0.96      , 0.95333333, 0.96666667]),
+ &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03399346, 0.03651484]),
+ &#39;rank_test_score&#39;: array([4, 2, 3, 1], dtype=int32)}
 </pre></div>
 </div>
 </div>
@@ -1395,10 +1395,10 @@ The dictionary has the parameter names as the keys and the values are the values
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001660</td>
-      <td>0.000262</td>
-      <td>0.001138</td>
-      <td>0.000074</td>
+      <td>0.001698</td>
+      <td>0.000455</td>
+      <td>0.001071</td>
+      <td>0.000082</td>
       <td>2</td>
       <td>{'max_depth': 2}</td>
       <td>0.933333</td>
@@ -1412,10 +1412,10 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001529</td>
-      <td>0.000017</td>
-      <td>0.001097</td>
-      <td>0.000019</td>
+      <td>0.001458</td>
+      <td>0.000021</td>
+      <td>0.001037</td>
+      <td>0.000026</td>
       <td>3</td>
       <td>{'max_depth': 3}</td>
       <td>0.966667</td>
@@ -1429,29 +1429,12 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001537</td>
-      <td>0.000027</td>
-      <td>0.001094</td>
-      <td>0.000009</td>
+      <td>0.001486</td>
+      <td>0.000020</td>
+      <td>0.001031</td>
+      <td>0.000021</td>
       <td>4</td>
       <td>{'max_depth': 4}</td>
-      <td>0.966667</td>
-      <td>0.966667</td>
-      <td>0.900000</td>
-      <td>0.966667</td>
-      <td>1.0</td>
-      <td>0.960000</td>
-      <td>0.032660</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.001522</td>
-      <td>0.000015</td>
-      <td>0.001094</td>
-      <td>0.000009</td>
-      <td>5</td>
-      <td>{'max_depth': 5}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.900000</td>
@@ -1460,6 +1443,23 @@ The dictionary has the parameter names as the keys and the values are the values
       <td>0.953333</td>
       <td>0.033993</td>
       <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.001483</td>
+      <td>0.000005</td>
+      <td>0.001037</td>
+      <td>0.000014</td>
+      <td>5</td>
+      <td>{'max_depth': 5}</td>
+      <td>0.966667</td>
+      <td>0.966667</td>
+      <td>0.900000</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+      <td>0.966667</td>
+      <td>0.036515</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -1571,10 +1571,10 @@ The dictionary has the parameter names as the keys and the values are the values
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.006941</td>
-      <td>0.001218</td>
-      <td>0.001142</td>
-      <td>0.000066</td>
+      <td>0.005873</td>
+      <td>0.000638</td>
+      <td>0.001064</td>
+      <td>0.000021</td>
       <td>2</td>
       <td>{'n_clusters': 2}</td>
       <td>-13.417292</td>
@@ -1588,9 +1588,9 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>1</th>
-      <td>0.008966</td>
-      <td>0.000285</td>
-      <td>0.001099</td>
+      <td>0.007892</td>
+      <td>0.000188</td>
+      <td>0.001073</td>
       <td>0.000021</td>
       <td>3</td>
       <td>{'n_clusters': 3}</td>
@@ -1605,27 +1605,27 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>2</th>
-      <td>0.010258</td>
-      <td>0.000095</td>
-      <td>0.001146</td>
-      <td>0.000035</td>
+      <td>0.009161</td>
+      <td>0.000297</td>
+      <td>0.001044</td>
+      <td>0.000015</td>
       <td>4</td>
       <td>{'n_clusters': 4}</td>
       <td>-9.062000</td>
-      <td>-11.307917</td>
+      <td>-11.602296</td>
       <td>-13.714817</td>
       <td>-17.596427</td>
       <td>-15.673617</td>
-      <td>-13.470956</td>
-      <td>3.034743</td>
+      <td>-13.529831</td>
+      <td>2.994800</td>
       <td>4</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.011539</td>
-      <td>0.000176</td>
-      <td>0.001090</td>
-      <td>0.000017</td>
+      <td>0.010326</td>
+      <td>0.000333</td>
+      <td>0.001040</td>
+      <td>0.000013</td>
       <td>5</td>
       <td>{'n_clusters': 5}</td>
       <td>-9.062000</td>
@@ -1639,36 +1639,36 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>4</th>
-      <td>0.013275</td>
-      <td>0.000329</td>
-      <td>0.001083</td>
-      <td>0.000010</td>
+      <td>0.012183</td>
+      <td>0.000697</td>
+      <td>0.001066</td>
+      <td>0.000041</td>
       <td>6</td>
       <td>{'n_clusters': 6}</td>
       <td>-9.062000</td>
-      <td>-9.866154</td>
-      <td>-10.996277</td>
+      <td>-8.024337</td>
+      <td>-10.840587</td>
       <td>-12.698270</td>
-      <td>-11.476818</td>
-      <td>-10.819904</td>
-      <td>1.264181</td>
+      <td>-11.495341</td>
+      <td>-10.424107</td>
+      <td>1.679705</td>
       <td>2</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.014920</td>
-      <td>0.000255</td>
-      <td>0.001234</td>
-      <td>0.000093</td>
+      <td>0.013410</td>
+      <td>0.000859</td>
+      <td>0.001073</td>
+      <td>0.000035</td>
       <td>7</td>
       <td>{'n_clusters': 7}</td>
       <td>-9.062000</td>
-      <td>-7.229627</td>
-      <td>-10.500941</td>
+      <td>-6.880162</td>
+      <td>-9.066973</td>
       <td>-12.183027</td>
       <td>-11.084948</td>
-      <td>-10.012109</td>
-      <td>1.717425</td>
+      <td>-9.655422</td>
+      <td>1.834820</td>
       <td>1</td>
     </tr>
   </tbody>
