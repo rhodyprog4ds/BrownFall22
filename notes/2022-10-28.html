@@ -288,6 +288,11 @@ const thebe_selector_output = ".output, .cell_output"
    30. Clutering Evalutation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-07.html">
+   31. ML Task Review Cross Validation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -333,6 +338,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../assignments/08-regression.html">
    8. Assignment 8: Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/09-clustering.html">
+   9. Assignment 9
   </a>
  </li>
 </ul>
@@ -962,7 +972,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa0488d2640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f636b4c2bb0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_10_1.png" src="../_images/2022-10-28_10_1.png" />
@@ -1091,7 +1101,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa044b21cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f63646788b0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_22_1.png" src="../_images/2022-10-28_22_1.png" />
@@ -1157,7 +1167,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa048873fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6356f00670&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_30_1.png" src="../_images/2022-10-28_30_1.png" />
@@ -1225,7 +1235,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa03aa2a280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f635b529340&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_36_1.png" src="../_images/2022-10-28_36_1.png" />
@@ -1278,7 +1288,7 @@ First, we instantiate.</p>
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa03a865700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f635b380ac0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_41_2.png" src="../_images/2022-10-28_41_2.png" />
@@ -1412,7 +1422,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa03a8febb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f635b4f6dc0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_53_1.png" src="../_images/2022-10-28_53_1.png" />
@@ -1445,7 +1455,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa0362a2f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6356da5e50&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_56_1.png" src="../_images/2022-10-28_56_1.png" />
@@ -1463,7 +1473,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa03620da00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6356d124f0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_58_1.png" src="../_images/2022-10-28_58_1.png" />
@@ -1504,7 +1514,7 @@ First, we instantiate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa036170be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6356c7c7c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_61_1.png" src="../_images/2022-10-28_61_1.png" />

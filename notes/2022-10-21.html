@@ -286,6 +286,11 @@ const thebe_selector_output = ".output, .cell_output"
    30. Clutering Evalutation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-07.html">
+   31. ML Task Review Cross Validation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -331,6 +336,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../assignments/08-regression.html">
    8. Assignment 8: Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/09-clustering.html">
+   9. Assignment 9
   </a>
  </li>
 </ul>
@@ -863,7 +873,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3dc4d14c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa41c8b9100&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_6_1.png" src="../_images/2022-10-21_6_1.png" />
@@ -934,7 +944,7 @@ title="Print to PDF"
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3b5a22d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3f8e557c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_12_2.png" src="../_images/2022-10-21_12_2.png" />
@@ -951,7 +961,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa39d486ac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3dc863b20&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_14_1.png" src="../_images/2022-10-21_14_1.png" />
@@ -983,7 +993,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa39d5091f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3dc608ac0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_17_1.png" src="../_images/2022-10-21_17_1.png" />
@@ -1014,7 +1024,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa39d515a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3ddb9c280&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_19_1.png" src="../_images/2022-10-21_19_1.png" />
@@ -1334,9 +1344,9 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>95</th>
-      <td>1.88</td>
-      <td>5.81</td>
+      <th>67</th>
+      <td>1.61</td>
+      <td>5.66</td>
     </tr>
     <tr>
       <th>64</th>
@@ -1344,19 +1354,19 @@ title="Print to PDF"
       <td>5.16</td>
     </tr>
     <tr>
-      <th>91</th>
-      <td>6.13</td>
-      <td>1.90</td>
+      <th>73</th>
+      <td>6.34</td>
+      <td>5.66</td>
     </tr>
     <tr>
-      <th>195</th>
-      <td>1.84</td>
-      <td>6.63</td>
+      <th>19</th>
+      <td>6.27</td>
+      <td>1.99</td>
     </tr>
     <tr>
-      <th>57</th>
-      <td>2.41</td>
-      <td>1.28</td>
+      <th>193</th>
+      <td>1.71</td>
+      <td>6.91</td>
     </tr>
   </tbody>
 </table>
@@ -1395,29 +1405,29 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>147</th>
-      <td>6.23</td>
-      <td>5.56</td>
+      <th>1</th>
+      <td>2.22</td>
+      <td>2.39</td>
     </tr>
     <tr>
-      <th>45</th>
-      <td>2.23</td>
-      <td>2.55</td>
+      <th>132</th>
+      <td>6.66</td>
+      <td>5.20</td>
     </tr>
     <tr>
-      <th>76</th>
-      <td>2.58</td>
-      <td>1.82</td>
+      <th>96</th>
+      <td>5.81</td>
+      <td>7.02</td>
     </tr>
     <tr>
-      <th>32</th>
-      <td>2.56</td>
-      <td>1.79</td>
+      <th>44</th>
+      <td>5.53</td>
+      <td>1.78</td>
     </tr>
     <tr>
-      <th>128</th>
-      <td>5.49</td>
-      <td>1.72</td>
+      <th>38</th>
+      <td>5.63</td>
+      <td>6.58</td>
     </tr>
   </tbody>
 </table>
