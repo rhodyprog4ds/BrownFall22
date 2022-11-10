@@ -22,6 +22,11 @@ Assignments 7-9 help you think through what machine learning tasks are.
 Extend those ideas by adding additional experiments based on your own questions
 or the questions in your feedback.
 
+````{margin}
+```{tip}
+If you are short on time these achievements are easiest to combine with the optimize, compare, representation and workflow in the next portfolio
+```
+````
 
 ## Build a data set for Prediction
 
@@ -41,6 +46,7 @@ Create datasets that violate assumptions of a model we have learned.  The
 
 ## Process level 3
 
+
 Process level 3 is a little different than most of the others.  You may be able
 to work it into an analysis notebook, but likely, you'll need to do one of the
 following.
@@ -57,7 +63,7 @@ understanding of process.
 
 ### Media Review
 
-Watch/listen/read to an episode of a high quality[^hq] podcast or other type of meida
+Watch/listen/read to an episode of a high quality[^hq] podcast or other type of media
 and write a blog style summary and review. Highlight what you learned and how it
 relates to topics covered in class.
 
