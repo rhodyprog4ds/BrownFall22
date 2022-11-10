@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Model Optimization &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>32. Model Optimization &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="31. ML Task Review Cross Validation" href="2022-11-07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -163,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-07.html">
    1. Welcome to Programming to Data Science
@@ -287,6 +289,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="2022-11-07.html">
    31. ML Task Review Cross Validation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   32. Model Optimization
   </a>
  </li>
 </ul>
@@ -690,12 +697,73 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   32.1. Model validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#impact-of-cv-parameters">
+   32.2. Impact of CV parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-searches">
+   32.3. Other searches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   32.4. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-cross-validation-do-that-clustering-doesnt">
+     32.4.1. What does cross-validation do that clustering doesn’t?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-grid-search-commonly-used-or-is-it-too-expensive-for-more-realistically-sized-datasets">
+     32.4.2. Is grid search commonly used or is it too expensive for more realistically sized datasets?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-gini-and-entropy">
+     32.4.3. What is the difference between gini and entropy?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-it-more-accurate-to-do-cross-vaididation-or-test-train-split">
+     32.4.4. Is it more accurate to do cross vaididation or test_train_split?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -707,6 +775,56 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   32.1. Model validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#impact-of-cv-parameters">
+   32.2. Impact of CV parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-searches">
+   32.3. Other searches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   32.4. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-cross-validation-do-that-clustering-doesnt">
+     32.4.1. What does cross-validation do that clustering doesn’t?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-grid-search-commonly-used-or-is-it-too-expensive-for-more-realistically-sized-datasets">
+     32.4.2. Is grid search commonly used or is it too expensive for more realistically sized datasets?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-gini-and-entropy">
+     32.4.3. What is the difference between gini and entropy?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-it-more-accurate-to-do-cross-vaididation-or-test-train-split">
+     32.4.4. Is it more accurate to do cross vaididation or test_train_split?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -715,7 +833,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="model-optimization">
-<h1>Model Optimization<a class="headerlink" href="#model-optimization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">32. </span>Model Optimization<a class="headerlink" href="#model-optimization" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember that best is context dependent and relative.  The best accuracy might not be the best overall. Automatic optimization can only find the best thing in terms of a single score.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -732,6 +854,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section id="model-validation">
+<h2><span class="section-number">32.1. </span>Model validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">#</a></h2>
+<p>We will work with the iris data again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
@@ -744,13 +869,24 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>We will still use the test train split to keep our test data separate from the data that we use to find our preferred parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span>
+                                                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p>the criteria are discussed <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation">in the mathematical formulation</a> of the sklearn documentation</p>
+</div>
+</aside>
+<p>Today we will optimize a decision tree over three parameters. One is the criterion, which is how it decides where to create thresholds in parameters. Gini is the default and it computes how concentrated each class is at that node, another is entropy, entropy is, generally how random something is.  Intuitively these do similar things, which makes sense because they are two ways to make the same choice, but they have slightly different calculations.</p>
+<p>The other two parameters we have seen some before. Max depth is the height of the tree and min smaples per leaf makes it keeps the leaf sizes small.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
@@ -760,13 +896,15 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>We will fit it with default CV settings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>then we can fit</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
@@ -774,14 +912,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=10, estimator=DecisionTreeClassifier(),
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(estimator=DecisionTreeClassifier(),
              param_grid={&#x27;criterion&#x27;: [&#x27;gini&#x27;, &#x27;entropy&#x27;],
                          &#x27;max_depth&#x27;: [2, 3, 4],
-                         &#x27;min_samples_leaf&#x27;: [2, 4, 6, 8, 10, 12, 14, 16, 18]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=10, estimator=DecisionTreeClassifier(),
+                         &#x27;min_samples_leaf&#x27;: [2, 4, 6, 8, 10, 12, 14, 16, 18]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(estimator=DecisionTreeClassifier(),
              param_grid={&#x27;criterion&#x27;: [&#x27;gini&#x27;, &#x27;entropy&#x27;],
                          &#x27;max_depth&#x27;: [2, 3, 4],
                          &#x27;min_samples_leaf&#x27;: [2, 4, 6, 8, 10, 12, 14, 16, 18]})</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
+<p>we can use ti to get predictions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">dt_opt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">)</span>
@@ -789,6 +928,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>we can also score it as regular.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
@@ -796,11 +936,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
 </div>
+<p>we can also see the best parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_params_</span>
@@ -808,14 +949,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 4}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
 </div>
+<p>we can look at the overall results this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_5cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<span class="n">dt_5cv_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -848,14 +991,9 @@ title="Print to PDF"
       <th>params</th>
       <th>split0_test_score</th>
       <th>split1_test_score</th>
-      <th>...</th>
+      <th>split2_test_score</th>
       <th>split3_test_score</th>
       <th>split4_test_score</th>
-      <th>split5_test_score</th>
-      <th>split6_test_score</th>
-      <th>split7_test_score</th>
-      <th>split8_test_score</th>
-      <th>split9_test_score</th>
       <th>mean_test_score</th>
       <th>std_test_score</th>
       <th>rank_test_score</th>
@@ -864,1329 +1002,416 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002921</td>
-      <td>0.000839</td>
-      <td>0.002038</td>
-      <td>0.000460</td>
+      <td>0.001644</td>
+      <td>0.000248</td>
+      <td>0.001076</td>
+      <td>0.000072</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
+      <td>0.956522</td>
+      <td>0.913043</td>
       <td>1.0</td>
       <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.002600</td>
-      <td>0.000482</td>
-      <td>0.001795</td>
-      <td>0.000244</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>4</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.002409</td>
-      <td>0.000310</td>
-      <td>0.001776</td>
-      <td>0.000267</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>6</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.002556</td>
-      <td>0.000303</td>
-      <td>0.001787</td>
-      <td>0.000150</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>8</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.002290</td>
-      <td>0.000128</td>
-      <td>0.001625</td>
-      <td>0.000112</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>10</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.002603</td>
-      <td>0.000561</td>
-      <td>0.001753</td>
-      <td>0.000239</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>12</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.002493</td>
-      <td>0.000264</td>
-      <td>0.001830</td>
-      <td>0.000584</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>14</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.002248</td>
-      <td>0.000461</td>
-      <td>0.001777</td>
-      <td>0.000355</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>16</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.002164</td>
-      <td>0.000117</td>
-      <td>0.001511</td>
-      <td>0.000110</td>
-      <td>gini</td>
-      <td>2</td>
-      <td>18</td>
-      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.002529</td>
-      <td>0.000203</td>
-      <td>0.001731</td>
-      <td>0.000168</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>2</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.750000</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>0.929545</td>
-      <td>0.093403</td>
+      <td>0.954545</td>
+      <td>0.94664</td>
+      <td>0.033305</td>
       <td>5</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>0.002310</td>
-      <td>0.000121</td>
-      <td>0.002424</td>
-      <td>0.002094</td>
+      <th>1</th>
+      <td>0.001415</td>
+      <td>0.000008</td>
+      <td>0.001019</td>
+      <td>0.000018</td>
       <td>gini</td>
-      <td>3</td>
-      <td>4</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>0.937879</td>
-      <td>0.079729</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>0.002352</td>
-      <td>0.000272</td>
-      <td>0.001747</td>
-      <td>0.000289</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>6</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>0.937879</td>
-      <td>0.079729</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>0.002349</td>
-      <td>0.000333</td>
-      <td>0.001630</td>
-      <td>0.000141</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>8</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>0.002285</td>
-      <td>0.000179</td>
-      <td>0.001603</td>
-      <td>0.000102</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>10</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>0.002508</td>
-      <td>0.000245</td>
-      <td>0.002010</td>
-      <td>0.000366</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>12</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>0.002303</td>
-      <td>0.000133</td>
-      <td>0.001690</td>
-      <td>0.000139</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>14</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>0.002468</td>
-      <td>0.000574</td>
-      <td>0.001628</td>
-      <td>0.000134</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>16</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>0.002408</td>
-      <td>0.000409</td>
-      <td>0.001764</td>
-      <td>0.000242</td>
-      <td>gini</td>
-      <td>3</td>
-      <td>18</td>
-      <td>{'criterion': 'gini', 'max_depth': 3, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>0.002219</td>
-      <td>0.000208</td>
-      <td>0.001608</td>
-      <td>0.000106</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>2</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.750000</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.911364</td>
-      <td>0.086513</td>
-      <td>53</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>0.002301</td>
-      <td>0.000095</td>
-      <td>0.001654</td>
-      <td>0.000136</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>4</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>0.937879</td>
-      <td>0.079729</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>0.002201</td>
-      <td>0.000198</td>
-      <td>0.001574</td>
-      <td>0.000121</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>6</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>0.937879</td>
-      <td>0.079729</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>0.002217</td>
-      <td>0.000164</td>
-      <td>0.001746</td>
-      <td>0.000211</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>8</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>0.002419</td>
-      <td>0.000187</td>
-      <td>0.001756</td>
-      <td>0.000168</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>10</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>0.002403</td>
-      <td>0.000179</td>
-      <td>0.001715</td>
-      <td>0.000119</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>12</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>0.002315</td>
-      <td>0.000127</td>
-      <td>0.001680</td>
-      <td>0.000143</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>14</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>0.002326</td>
-      <td>0.000178</td>
-      <td>0.001668</td>
-      <td>0.000122</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>16</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>0.002222</td>
-      <td>0.000061</td>
-      <td>0.001671</td>
-      <td>0.000119</td>
-      <td>gini</td>
-      <td>4</td>
-      <td>18</td>
-      <td>{'criterion': 'gini', 'max_depth': 4, 'min_sam...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>0.002203</td>
-      <td>0.000117</td>
-      <td>0.001656</td>
-      <td>0.000145</td>
-      <td>entropy</td>
-      <td>2</td>
-      <td>2</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>0.002369</td>
-      <td>0.000465</td>
-      <td>0.001757</td>
-      <td>0.000131</td>
-      <td>entropy</td>
       <td>2</td>
       <td>4</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.956522</td>
+      <td>0.913043</td>
       <td>1.0</td>
       <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
+      <td>0.954545</td>
+      <td>0.94664</td>
+      <td>0.033305</td>
+      <td>5</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>0.002378</td>
-      <td>0.000174</td>
-      <td>0.001677</td>
-      <td>0.000201</td>
-      <td>entropy</td>
+      <th>2</th>
+      <td>0.001429</td>
+      <td>0.000010</td>
+      <td>0.001015</td>
+      <td>0.000017</td>
+      <td>gini</td>
       <td>2</td>
       <td>6</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.956522</td>
+      <td>0.913043</td>
       <td>1.0</td>
       <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
+      <td>0.954545</td>
+      <td>0.94664</td>
+      <td>0.033305</td>
+      <td>5</td>
     </tr>
     <tr>
-      <th>30</th>
-      <td>0.002425</td>
-      <td>0.000337</td>
-      <td>0.002233</td>
-      <td>0.001140</td>
-      <td>entropy</td>
+      <th>3</th>
+      <td>0.001401</td>
+      <td>0.000016</td>
+      <td>0.001004</td>
+      <td>0.000015</td>
+      <td>gini</td>
       <td>2</td>
       <td>8</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.956522</td>
+      <td>0.913043</td>
       <td>1.0</td>
       <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
+      <td>0.954545</td>
+      <td>0.94664</td>
+      <td>0.033305</td>
+      <td>5</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>0.002684</td>
-      <td>0.001223</td>
-      <td>0.001881</td>
-      <td>0.000515</td>
-      <td>entropy</td>
+      <th>4</th>
+      <td>0.001428</td>
+      <td>0.000024</td>
+      <td>0.001016</td>
+      <td>0.000016</td>
+      <td>gini</td>
       <td>2</td>
       <td>10</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>0.002474</td>
-      <td>0.000427</td>
-      <td>0.001811</td>
-      <td>0.000357</td>
-      <td>entropy</td>
-      <td>2</td>
-      <td>12</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>0.002590</td>
-      <td>0.000506</td>
-      <td>0.001902</td>
-      <td>0.000384</td>
-      <td>entropy</td>
-      <td>2</td>
-      <td>14</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>0.002163</td>
-      <td>0.000124</td>
-      <td>0.001598</td>
-      <td>0.000092</td>
-      <td>entropy</td>
-      <td>2</td>
-      <td>16</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>0.002675</td>
-      <td>0.000822</td>
-      <td>0.001705</td>
-      <td>0.000220</td>
-      <td>entropy</td>
-      <td>2</td>
-      <td>18</td>
-      <td>{'criterion': 'entropy', 'max_depth': 2, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>0.002351</td>
-      <td>0.000155</td>
-      <td>0.001721</td>
-      <td>0.000180</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>2</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.750000</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.920455</td>
-      <td>0.090482</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>0.002353</td>
-      <td>0.000434</td>
-      <td>0.001709</td>
-      <td>0.000331</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>4</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.928788</td>
-      <td>0.077273</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>0.002211</td>
-      <td>0.000153</td>
-      <td>0.001895</td>
-      <td>0.000714</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>6</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.928788</td>
-      <td>0.077273</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>0.002375</td>
-      <td>0.000443</td>
-      <td>0.001635</td>
-      <td>0.000118</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>8</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>0.002250</td>
-      <td>0.000231</td>
-      <td>0.001717</td>
-      <td>0.000294</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>10</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>0.002181</td>
-      <td>0.000096</td>
-      <td>0.001591</td>
-      <td>0.000076</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>12</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>0.002165</td>
-      <td>0.000120</td>
-      <td>0.001576</td>
-      <td>0.000073</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>14</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>0.002121</td>
-      <td>0.000116</td>
-      <td>0.001543</td>
-      <td>0.000091</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>16</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>0.002170</td>
-      <td>0.000114</td>
-      <td>0.001586</td>
-      <td>0.000078</td>
-      <td>entropy</td>
-      <td>3</td>
-      <td>18</td>
-      <td>{'criterion': 'entropy', 'max_depth': 3, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>0.002252</td>
-      <td>0.000252</td>
-      <td>0.001696</td>
-      <td>0.000242</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>2</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.750000</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.911364</td>
-      <td>0.086513</td>
-      <td>53</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>0.002177</td>
-      <td>0.000233</td>
-      <td>0.001615</td>
-      <td>0.000155</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>4</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.928788</td>
-      <td>0.077273</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>0.002263</td>
-      <td>0.000281</td>
-      <td>0.001578</td>
-      <td>0.000053</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>6</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.928788</td>
-      <td>0.077273</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>0.002364</td>
-      <td>0.000325</td>
-      <td>0.001796</td>
-      <td>0.000426</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>8</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>0.002550</td>
-      <td>0.000758</td>
-      <td>0.001726</td>
-      <td>0.000204</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>10</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>0.002291</td>
-      <td>0.000118</td>
-      <td>0.001812</td>
-      <td>0.000420</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>12</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>0.002212</td>
-      <td>0.000184</td>
-      <td>0.001674</td>
-      <td>0.000130</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>14</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>0.002294</td>
-      <td>0.000143</td>
-      <td>0.001655</td>
-      <td>0.000187</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>16</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>0.002134</td>
-      <td>0.000134</td>
-      <td>0.001589</td>
-      <td>0.000106</td>
-      <td>entropy</td>
-      <td>4</td>
-      <td>18</td>
-      <td>{'criterion': 'entropy', 'max_depth': 4, 'min_...</td>
-      <td>0.833333</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>0.909091</td>
-      <td>0.818182</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.909091</td>
-      <td>0.919697</td>
-      <td>0.073621</td>
-      <td>11</td>
+      <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.956522</td>
+      <td>0.913043</td>
+      <td>1.0</td>
+      <td>0.909091</td>
+      <td>0.954545</td>
+      <td>0.94664</td>
+      <td>0.033305</td>
+      <td>5</td>
     </tr>
   </tbody>
 </table>
-<p>54 rows × 21 columns</p>
 </div></div></div>
 </div>
+<p>To see more carefully what it does, we can look at its shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_selection</span><span class="o">.</span><span class="n">RandomizedSearchCV</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_5cv_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">RandomizedSearchCV</span><span class="p">()</span>
-
-<span class="ne">TypeError</span>: __init__() missing 2 required positional arguments: &#39;estimator&#39; and &#39;param_distributions&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(54, 16)
 </pre></div>
 </div>
 </div>
 </div>
+<p>we can see that the total number of rows matched the product of the length of each list of parameters to try.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="k">for</span> <span class="n">param_list</span> <span class="ow">in</span> <span class="n">params_dt</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that it tests every combination of features– without us writing a bunch of nested loops.</p>
+<p>We can also plot the dta and look at the performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_5cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
+           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01dd560d00&gt;
+</pre></div>
+</div>
+<img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
+</div>
+</div>
+<p>this makes it clear that none of these stick out much in terms of performance.</p>
+</section>
+<section id="impact-of-cv-parameters">
+<h2><span class="section-number">32.2. </span>Impact of CV parameters<a class="headerlink" href="#impact-of-cv-parameters" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">dt_opt10</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=10, estimator=DecisionTreeClassifier(),
+             param_grid={&#x27;criterion&#x27;: [&#x27;gini&#x27;, &#x27;entropy&#x27;],
+                         &#x27;max_depth&#x27;: [2, 3, 4],
+                         &#x27;min_samples_leaf&#x27;: [2, 4, 6, 8, 10, 12, 14, 16, 18]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=10, estimator=DecisionTreeClassifier(),
+             param_grid={&#x27;criterion&#x27;: [&#x27;gini&#x27;, &#x27;entropy&#x27;],
+                         &#x27;max_depth&#x27;: [2, 3, 4],
+                         &#x27;min_samples_leaf&#x27;: [2, 4, 6, 8, 10, 12, 14, 16, 18]})</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_10cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can stack the columns we want from the two results together with a new indicator column <code class="docutils literal notranslate"><span class="pre">cv</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">,</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span><span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span>
+<span class="n">dt_10cv_df</span><span class="p">[</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">dt_5cv_df</span><span class="p">[</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">dt_cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dt_5cv_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">],</span><span class="n">dt_10cv_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">]])</span>
+<span class="n">dt_cv_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>param_min_samples_leaf</th>
+      <th>std_test_score</th>
+      <th>mean_test_score</th>
+      <th>param_criterion</th>
+      <th>param_max_depth</th>
+      <th>cv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>0.033305</td>
+      <td>0.94664</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>0.033305</td>
+      <td>0.94664</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6</td>
+      <td>0.033305</td>
+      <td>0.94664</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>0.033305</td>
+      <td>0.94664</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10</td>
+      <td>0.033305</td>
+      <td>0.94664</td>
+      <td>gini</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>this can be used to plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
+           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+           <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;cv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01d9ef90d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
+</div>
+</div>
+<p>we see that the mean scores are not very different, but that 10 is a little higher in some cases.  This makes sense, it has more data to learn from, so it found something that applied better, on average, to the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">,</span>
+           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+           <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;cv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01dacb3670&gt;
+</pre></div>
+</div>
+<img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
+</div>
+</div>
+<p>However here we see that the variabilty in those scores is much higher, so maybe the 5 is better.</p>
+<p>We can compare to see if it finds the same model as best:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<p>In some cases they will and others they will not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+</pre></div>
+</div>
+</div>
+</div>
+<p>In some cases they will find the same model and score the same, but it other time they will not.</p>
+<p>The takeaway is that the cross validation parameters impact our ability to measure the score and possibly how close that cross validation mean score will match the true test score. Mostly it will change the variability in the estimate of the score.  It does not change necessarily which model is best, that is up to the data iteself (the original test/train split would impact this).</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Does this vary if you repeat this with different test sets? How much does it depend on that? Does repeating it produce the same scores? Does one take longer to fit or score?</p>
+</div>
+</section>
+<section id="other-searches">
+<h2><span class="section-number">32.3. </span>Other searches<a class="headerlink" href="#other-searches" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span>
+                                                     <span class="n">iris_y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8947368421052632
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 2, &#39;criterion&#39;: &#39;entropy&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>It might find the same solution, but it also might not.  If you do some and see that the parameters overall do not impact the scores much, then you can trust whichever one, or consider other criteria to choose the best model to use.</p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">32.4. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="what-does-cross-validation-do-that-clustering-doesnt">
+<h3><span class="section-number">32.4.1. </span>What does cross-validation do that clustering doesn’t?<a class="headerlink" href="#what-does-cross-validation-do-that-clustering-doesnt" title="Permalink to this headline">#</a></h3>
+<p>Cross validation can be used <em>with</em> clustering if you want.  Cross validation is a technique for evaluating how well a model performs; in this case we are combining with a search to find the best parameters.</p>
+</section>
+<section id="is-grid-search-commonly-used-or-is-it-too-expensive-for-more-realistically-sized-datasets">
+<h3><span class="section-number">32.4.2. </span>Is grid search commonly used or is it too expensive for more realistically sized datasets?<a class="headerlink" href="#is-grid-search-commonly-used-or-is-it-too-expensive-for-more-realistically-sized-datasets" title="Permalink to this headline">#</a></h3>
+<p>Grid search is realistic for simple models.  It becomes more expensive with models that have more options for parameters. For example a parameter that can be continuously valued or take a large range, there become too many to test, so we use the random search or something else. The cost does go up some with larger datasets, but this scales primarily with the nubmer of parameters and values for each.</p>
+<p>For example, bayesian optimization is a more complex type of random search.</p>
+</section>
+<section id="what-is-the-difference-between-gini-and-entropy">
+<h3><span class="section-number">32.4.3. </span>What is the difference between gini and entropy?<a class="headerlink" href="#what-is-the-difference-between-gini-and-entropy" title="Permalink to this headline">#</a></h3>
+<p>the criteria are discussed <a class="reference external" href="https://scikit-learn.org/stable/modules/tree.html#mathematical-formulation">in the mathematical formulation</a> of the sklearn documentation</p>
+</section>
+<section id="is-it-more-accurate-to-do-cross-vaididation-or-test-train-split">
+<h3><span class="section-number">32.4.4. </span>Is it more accurate to do cross vaididation or test_train_split?<a class="headerlink" href="#is-it-more-accurate-to-do-cross-vaididation-or-test-train-split" title="Permalink to this headline">#</a></h3>
+<p>Ideally both: use train test split to set aside a test set for the value that you will report when you say this is how good my final model is and cross validation to choose which model you call the final model.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2216,6 +1441,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-11-07.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">31. </span>ML Task Review Cross Validation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

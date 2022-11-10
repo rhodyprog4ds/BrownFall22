@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="next" title="32. Model Optimization" href="2022-11-09.html" />
     <link rel="prev" title="30. Clutering Evalutation" href="2022-11-04.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -291,6 +291,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    31. ML Task Review Cross Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-09.html">
+   32. Model Optimization
   </a>
  </li>
 </ul>
@@ -988,7 +993,7 @@ to get a single estimate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.96
 </pre></div>
 </div>
 </div>
@@ -1265,7 +1270,7 @@ We can do a similar experiment as above to see what <code class="docutils litera
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ -9.062     , -14.93195873, -18.93234207, -23.70894258,
-       -19.55457726])
+       -19.00813052])
 </pre></div>
 </div>
 </div>
@@ -1331,10 +1336,10 @@ The dictionary has the parameter names as the keys and the values are the values
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00258689, 0.00255795, 0.00238333, 0.00260749]),
- &#39;std_fit_time&#39;: array([0.00031232, 0.00026585, 0.00010568, 0.00025532]),
- &#39;mean_score_time&#39;: array([0.00182657, 0.00190554, 0.00182223, 0.00182366]),
- &#39;std_score_time&#39;: array([1.17643120e-04, 2.36785810e-04, 2.68267034e-04, 7.62487814e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00151467, 0.00145173, 0.00144997, 0.00147109]),
+ &#39;std_fit_time&#39;: array([1.26630659e-04, 1.75077826e-05, 2.15167187e-05, 1.85178653e-05]),
+ &#39;mean_score_time&#39;: array([0.00108438, 0.00102644, 0.00102496, 0.00102649]),
+ &#39;std_score_time&#39;: array([1.16175715e-04, 2.23358384e-05, 2.20832756e-05, 2.69552634e-05]),
  &#39;param_max_depth&#39;: masked_array(data=[2, 3, 4, 5],
               mask=[False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1346,11 +1351,11 @@ The dictionary has the parameter names as the keys and the values are the values
  &#39;split0_test_score&#39;: array([0.93333333, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split1_test_score&#39;: array([0.96666667, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split2_test_score&#39;: array([0.9       , 0.93333333, 0.9       , 0.9       ]),
- &#39;split3_test_score&#39;: array([0.86666667, 0.93333333, 1.        , 0.93333333]),
+ &#39;split3_test_score&#39;: array([0.86666667, 1.        , 0.96666667, 1.        ]),
  &#39;split4_test_score&#39;: array([1., 1., 1., 1.]),
- &#39;mean_test_score&#39;: array([0.93333333, 0.96      , 0.96666667, 0.95333333]),
- &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03651484, 0.03399346]),
- &#39;rank_test_score&#39;: array([4, 2, 1, 3], dtype=int32)}
+ &#39;mean_test_score&#39;: array([0.93333333, 0.97333333, 0.96      , 0.96666667]),
+ &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03265986, 0.03651484]),
+ &#39;rank_test_score&#39;: array([4, 1, 3, 2], dtype=int32)}
 </pre></div>
 </div>
 </div>
@@ -1400,10 +1405,10 @@ The dictionary has the parameter names as the keys and the values are the values
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002587</td>
-      <td>0.000312</td>
-      <td>0.001827</td>
-      <td>0.000118</td>
+      <td>0.001515</td>
+      <td>0.000127</td>
+      <td>0.001084</td>
+      <td>0.000116</td>
       <td>2</td>
       <td>{'max_depth': 2}</td>
       <td>0.933333</td>
@@ -1417,29 +1422,46 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002558</td>
-      <td>0.000266</td>
-      <td>0.001906</td>
-      <td>0.000237</td>
+      <td>0.001452</td>
+      <td>0.000018</td>
+      <td>0.001026</td>
+      <td>0.000022</td>
       <td>3</td>
       <td>{'max_depth': 3}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.933333</td>
-      <td>0.933333</td>
+      <td>1.000000</td>
       <td>1.0</td>
-      <td>0.960000</td>
+      <td>0.973333</td>
       <td>0.024944</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002383</td>
-      <td>0.000106</td>
-      <td>0.001822</td>
-      <td>0.000268</td>
+      <td>0.001450</td>
+      <td>0.000022</td>
+      <td>0.001025</td>
+      <td>0.000022</td>
       <td>4</td>
       <td>{'max_depth': 4}</td>
+      <td>0.966667</td>
+      <td>0.966667</td>
+      <td>0.900000</td>
+      <td>0.966667</td>
+      <td>1.0</td>
+      <td>0.960000</td>
+      <td>0.032660</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.001471</td>
+      <td>0.000019</td>
+      <td>0.001026</td>
+      <td>0.000027</td>
+      <td>5</td>
+      <td>{'max_depth': 5}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.900000</td>
@@ -1447,24 +1469,7 @@ The dictionary has the parameter names as the keys and the values are the values
       <td>1.0</td>
       <td>0.966667</td>
       <td>0.036515</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.002607</td>
-      <td>0.000255</td>
-      <td>0.001824</td>
-      <td>0.000076</td>
-      <td>5</td>
-      <td>{'max_depth': 5}</td>
-      <td>0.966667</td>
-      <td>0.966667</td>
-      <td>0.900000</td>
-      <td>0.933333</td>
-      <td>1.0</td>
-      <td>0.953333</td>
-      <td>0.033993</td>
-      <td>3</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1576,10 +1581,10 @@ The dictionary has the parameter names as the keys and the values are the values
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.011817</td>
-      <td>0.002250</td>
-      <td>0.001794</td>
-      <td>0.000049</td>
+      <td>0.006100</td>
+      <td>0.001049</td>
+      <td>0.001043</td>
+      <td>0.000010</td>
       <td>2</td>
       <td>{'n_clusters': 2}</td>
       <td>-13.417292</td>
@@ -1593,27 +1598,27 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>1</th>
-      <td>0.016218</td>
-      <td>0.001076</td>
-      <td>0.001979</td>
-      <td>0.000343</td>
+      <td>0.007747</td>
+      <td>0.000336</td>
+      <td>0.001039</td>
+      <td>0.000015</td>
       <td>3</td>
       <td>{'n_clusters': 3}</td>
       <td>-9.062000</td>
       <td>-14.931959</td>
       <td>-18.932342</td>
       <td>-23.708943</td>
-      <td>-19.554577</td>
-      <td>-17.237964</td>
-      <td>4.945204</td>
+      <td>-19.008131</td>
+      <td>-17.128675</td>
+      <td>4.898618</td>
       <td>5</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.019245</td>
-      <td>0.002672</td>
-      <td>0.001902</td>
-      <td>0.000177</td>
+      <td>0.009023</td>
+      <td>0.000321</td>
+      <td>0.001016</td>
+      <td>0.000010</td>
       <td>4</td>
       <td>{'n_clusters': 4}</td>
       <td>-9.062000</td>
@@ -1627,10 +1632,10 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>3</th>
-      <td>0.023027</td>
-      <td>0.001469</td>
-      <td>0.001955</td>
-      <td>0.000086</td>
+      <td>0.010465</td>
+      <td>0.000206</td>
+      <td>0.001044</td>
+      <td>0.000027</td>
       <td>5</td>
       <td>{'n_clusters': 5}</td>
       <td>-9.062000</td>
@@ -1644,36 +1649,36 @@ The dictionary has the parameter names as the keys and the values are the values
     </tr>
     <tr>
       <th>4</th>
-      <td>0.025225</td>
-      <td>0.000908</td>
-      <td>0.001989</td>
-      <td>0.000275</td>
+      <td>0.011900</td>
+      <td>0.000460</td>
+      <td>0.001019</td>
+      <td>0.000007</td>
       <td>6</td>
       <td>{'n_clusters': 6}</td>
       <td>-9.062000</td>
-      <td>-7.593219</td>
-      <td>-10.996277</td>
-      <td>-12.698270</td>
-      <td>-12.085484</td>
-      <td>-10.487050</td>
-      <td>1.903093</td>
+      <td>-7.871096</td>
+      <td>-10.840587</td>
+      <td>-12.915486</td>
+      <td>-11.476818</td>
+      <td>-10.433197</td>
+      <td>1.781090</td>
       <td>2</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.027067</td>
-      <td>0.000973</td>
-      <td>0.002056</td>
-      <td>0.000105</td>
+      <td>0.012769</td>
+      <td>0.000216</td>
+      <td>0.001047</td>
+      <td>0.000041</td>
       <td>7</td>
       <td>{'n_clusters': 7}</td>
       <td>-9.062000</td>
-      <td>-8.063065</td>
-      <td>-10.193980</td>
+      <td>-7.013464</td>
+      <td>-9.066973</td>
       <td>-12.183027</td>
       <td>-11.476818</td>
-      <td>-10.195778</td>
-      <td>1.511565</td>
+      <td>-9.760456</td>
+      <td>1.861691</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1754,10 +1759,10 @@ The dictionary has the parameter names as the keys and the values are the values
             <p class="prev-next-title"><span class="section-number">30. </span>Clutering Evalutation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-11-09.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+        <p class="prev-next-title"><span class="section-number">32. </span>Model Optimization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
