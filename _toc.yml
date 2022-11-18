@@ -56,7 +56,7 @@ parts:
     - file: assignments/08-regression
     - file: assignments/09-clustering
     - file: assignments/10-optimize
-    - file: assignments/11-copmare
+    - file: assignments/11-compare
   - caption: Portfolio
     chapters:
       - file: portfolio/index
