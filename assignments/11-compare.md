@@ -1,10 +1,10 @@
 ---
 substitutions:
   accept_assignment: |
-    [accept the assignment](https://classroom.github.com/a/OD3b_PmM)
-  date : 2020-11-16
+    [accept the assignment]()
+  date : 2022-11-23
 ---
-# Assignment 10: Tuning Model Parameters
+# Assignment 11 Model Comparison
 
 ## Quick Facts
 - {{accept_assignment}}
@@ -12,8 +12,8 @@ substitutions:
 
 ## Related notes
 
-- [2022-11-07](../notes/2022-11-07)
-- [2022-11-09](../notes/2022-11-09)
+- [2022-11-14](../notes/2022-11-14)
+- [2022-11-16](../notes/2022-11-16)
 
 ## Assessment
 
