@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="next" title="&lt;no title&gt;" href="2022-11-14.html" />
     <link rel="prev" title="31. ML Task Review Cross Validation" href="2022-11-07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -294,6 +294,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    32. Model Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-16.html">
+   33. Model Comparison: when do differences matter?
   </a>
  </li>
 </ul>
@@ -949,7 +954,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1002,10 +1007,10 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001644</td>
-      <td>0.000248</td>
-      <td>0.001076</td>
-      <td>0.000072</td>
+      <td>0.001898</td>
+      <td>0.000284</td>
+      <td>0.001269</td>
+      <td>0.000060</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1021,10 +1026,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001415</td>
-      <td>0.000008</td>
-      <td>0.001019</td>
-      <td>0.000018</td>
+      <td>0.001652</td>
+      <td>0.000072</td>
+      <td>0.001205</td>
+      <td>0.000045</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1040,10 +1045,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001429</td>
-      <td>0.000010</td>
-      <td>0.001015</td>
-      <td>0.000017</td>
+      <td>0.001712</td>
+      <td>0.000026</td>
+      <td>0.001191</td>
+      <td>0.000089</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1059,10 +1064,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001401</td>
-      <td>0.000016</td>
-      <td>0.001004</td>
-      <td>0.000015</td>
+      <td>0.001699</td>
+      <td>0.000026</td>
+      <td>0.001199</td>
+      <td>0.000068</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1078,10 +1083,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001428</td>
-      <td>0.000024</td>
-      <td>0.001016</td>
-      <td>0.000016</td>
+      <td>0.001672</td>
+      <td>0.000050</td>
+      <td>0.001220</td>
+      <td>0.000033</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1135,7 +1140,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01dd560d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fad349a0370&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1268,7 +1273,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01d9ef90d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fad313c9c70&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1284,7 +1289,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01dacb3670&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fad320901c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1299,7 +1304,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1311,7 +1316,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1373,7 +1378,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8947368421052632
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -1385,7 +1390,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 2, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>
@@ -1448,10 +1453,10 @@ title="Print to PDF"
             <p class="prev-next-title"><span class="section-number">31. </span>ML Task Review Cross Validation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-11-14.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
