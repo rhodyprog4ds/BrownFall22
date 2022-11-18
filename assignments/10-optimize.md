@@ -2,7 +2,7 @@
 substitutions:
   accept_assignment: |
     [accept the assignment](https://classroom.github.com/a/OD3b_PmM)
-  date : 2020-11-16
+  date : 2020-11-18
 ---
 # Assignment 10: Tuning Model Parameters
 
