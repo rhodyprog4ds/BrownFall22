@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Formatting Tips" href="formatting.html" />
-    <link rel="prev" title="10. Assignment 10: Tuning Model Parameters" href="../assignments/10-optimize.html" />
+    <link rel="prev" title="11. Assignment 10: Tuning Model Parameters" href="../assignments/11-compare.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -356,6 +356,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../assignments/10-optimize.html">
    10. Assignment 10: Tuning Model Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/11-compare.html">
+   11. Assignment 10: Tuning Model Parameters
   </a>
  </li>
 </ul>
@@ -767,9 +772,9 @@ title="Print to PDF"
 <span id="portolioindex"></span><h1>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this headline">#</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2485/1159722460.py:26: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2511/1159722460.py:26: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
   assignment_dummies  = pd.get_dummies(rubric_df[&#39;assignments&#39;].apply(pd.Series).stack()).sum(level=0)
-/tmp/ipykernel_2485/1159722460.py:31: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
+/tmp/ipykernel_2511/1159722460.py:31: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
   portfolio_dummies  = pd.get_dummies(rubric_df[&#39;portfolios&#39;].apply(pd.Series).stack()).sum(level=0)
 </pre></div>
 </div>
@@ -920,11 +925,11 @@ portfolio_df['Level 3'][portfolio_df['P4']==1].reset_index().set_index('keyword'
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../assignments/10-optimize.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../assignments/11-compare.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>Assignment 10: Tuning Model Parameters</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>Assignment 10: Tuning Model Parameters</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="formatting.html" title="next page">
