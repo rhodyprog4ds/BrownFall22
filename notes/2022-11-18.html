@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Learning Curves &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>35. Learning Curves &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,8 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="34. Model Comparison: when do differences matter?" href="2022-11-16.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -163,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-09-07.html">
    1. Welcome to Programming to Data Science
@@ -295,8 +299,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-14.html">
+   33. Model Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="2022-11-16.html">
-   33. Model Comparison: when do differences matter?
+   34. Model Comparison: when do differences matter?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   35. Learning Curves
   </a>
  </li>
 </ul>
@@ -728,9 +742,58 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+  <a class="reference internal nav-link" href="#digits-dataset">
+   35.1. Digits Dataset
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-problem">
+   35.2. Setting up the Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   35.3. Learning Curves
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-naive-bayes">
+     35.3.1. Gaussian Naive Bayes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   35.4. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-i-run-the-code-to-pull-issues">
+     35.4.1. how do I run the code to pull issues?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-fit-time-as-important-as-accuracy-i-would-think-generally-for-real-life-application-we-would-want-results-over-time">
+     35.4.2. Is fit time as important as accuracy? I would think generally for real life application we would want results over time.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-in-the-svc-model-did-we-used-gamma-0-001-and-not-other-values-why-does-that-parameter-represent-in-the-model">
+     35.4.3. Why in the SVC model did we used gamma=0.001 and not other values? Why does that parameter represent in the model?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#im-sure-it-will-be-in-the-notes-but-a-better-understanding-of-how-learning-curve-works">
+     35.4.4. I’m sure it will be in the notes but a better understanding of how learning curve works
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-go-over-the-melt-function-again">
+     35.4.5. Can you go over the melt function again?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -752,9 +815,58 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+  <a class="reference internal nav-link" href="#digits-dataset">
+   35.1. Digits Dataset
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-problem">
+   35.2. Setting up the Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   35.3. Learning Curves
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-naive-bayes">
+     35.3.1. Gaussian Naive Bayes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   35.4. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-i-run-the-code-to-pull-issues">
+     35.4.1. how do I run the code to pull issues?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-fit-time-as-important-as-accuracy-i-would-think-generally-for-real-life-application-we-would-want-results-over-time">
+     35.4.2. Is fit time as important as accuracy? I would think generally for real life application we would want results over time.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-in-the-svc-model-did-we-used-gamma-0-001-and-not-other-values-why-does-that-parameter-represent-in-the-model">
+     35.4.3. Why in the SVC model did we used gamma=0.001 and not other values? Why does that parameter represent in the model?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#im-sure-it-will-be-in-the-notes-but-a-better-understanding-of-how-learning-curve-works">
+     35.4.4. I’m sure it will be in the notes but a better understanding of how learning curve works
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-go-over-the-melt-function-again">
+     35.4.5. Can you go over the melt function again?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -767,7 +879,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="learning-curves">
-<h1>Learning Curves<a class="headerlink" href="#learning-curves" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">35. </span>Learning Curves<a class="headerlink" href="#learning-curves" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -787,6 +899,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section id="digits-dataset">
+<h2><span class="section-number">35.1. </span>Digits Dataset<a class="headerlink" href="#digits-dataset" title="Permalink to this headline">#</a></h2>
+<p>Today, we’ll load a new dataset and use the default sklearn data structure for datasets.  We get back the default data stucture when we use a <code class="docutils literal notranslate"><span class="pre">load_</span></code> function without any parameters at all.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
@@ -794,6 +909,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>This shows us that the type is defined by sklearn and they called it <code class="docutils literal notranslate"><span class="pre">bunch</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
@@ -806,6 +922,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>We can print it out to begin exploring it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span>
@@ -941,6 +1058,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>We note that it has key value pairs, and that the last one is called <code class="docutils literal notranslate"><span class="pre">DESCR</span></code> and is text that describes the data.  If we send that to the print function it will be formatted more readably.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="s1">&#39;DESCR&#39;</span><span class="p">])</span>
@@ -998,6 +1116,19 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>This tells us that we are going to be predicting what digit (0,1,2,3,4,5,6,7,8, or 9) is in the image.</p>
+<p>To get an idea of what the images look like, we can use <code class="docutils literal notranslate"><span class="pre">matshow</span></code> which is short for matrix show. It takes a 2D matrix and plots it as a grayscale image. To get the actual color bar, we use the matplotlib <code class="docutils literal notranslate"><span class="pre">plt.gray()</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Try using matshow without <code class="docutils literal notranslate"><span class="pre">plt.gray()</span></code>. How is it different?  What might alternatives do?  What other code in this notebook influences how plots look?</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Removing a line from an excerpt of code can help you see hat that line did and learn more about how each piece work.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
@@ -1006,15 +1137,18 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f49c7415af0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f9b52a09bb0&gt;
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/2022-11-18_6_2.png" src="../_images/2022-11-18_6_2.png" />
+<img alt="../_images/2022-11-18_11_2.png" src="../_images/2022-11-18_11_2.png" />
 </div>
 </div>
+</section>
+<section id="setting-up-the-problem">
+<h2><span class="section-number">35.2. </span>Setting up the Problem<a class="headerlink" href="#setting-up-the-problem" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits_X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
@@ -1023,6 +1157,7 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">bunch</span></code> objects are designed for machine learning, so they have the features as “data” and target explicitly identified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits_X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">digits_y</span><span class="o">.</span><span class="n">shape</span>
@@ -1035,6 +1170,8 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>This has one row for each sample and has reshaped the 8x8 image into a 64 length vector. So we have one ‘feature’ for each pixel in the images.</p>
+<p>The size of the <code class="docutils literal notranslate"><span class="pre">.images</span></code> is the total number of pixel values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1797</span><span class="o">*</span><span class="mi">8</span><span class="o">*</span><span class="mi">8</span>
@@ -1047,6 +1184,10 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+</section>
+<section id="id1">
+<h2><span class="section-number">35.3. </span>Learning Curves<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>We are going to do some model comparison, so we will instantiate estimator objects for two different classifiers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
@@ -1055,15 +1196,37 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>We’re going to use a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html">ShuffleSplit</a> object to do Cross validation with 100 iterations to get smoother mean test and train
+score curves, each time with 20% data randomly selected as a validation set.</p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p>You can see visualization of different <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_cv_indices.html#visualize-cross-validation-indices-for-many-cv-objects">cross validation</a> types in the sklearn documentation.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross validation with 100 iterations to get smoother mean test and train</span>
-<span class="c1"># score curves, each time with 20% data randomly selected as a validation set.</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This object has a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> object, the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> that we were using didn’t have a way to control the random state directly, but it accepts not only integers, but also cross validation objects to the <code class="docutils literal notranslate"><span class="pre">cv</span></code> parameter. The KFold cross validation object also has that parameter, so we could repeat what we did in previous classes by creating a <code class="docutils literal notranslate"><span class="pre">KFold</span></code> object with a fixed random state.</p>
+</div>
+<p>We’ll also create a linearly spaced list of training percentages.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You could speed it up by splitting it into jobs with the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Try varying the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter and tmiing the execution using the
+<a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">timit magic</a></p>
+</div>
+</aside>
+<p>Now we can create the learning curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -1230,6 +1393,23 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>It returns the list of the counts for each training size (we input percentages and it returns counts)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes_svm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other parameters, it returns a list for each length that’s 100 long because our cross validation was 100 iterations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_times_svm</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can save it in a DataFrame after averaging over the 100 trials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_learning_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">train_sizes_svm</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">])</span>
@@ -1249,6 +1429,14 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>We can use our skills in transforming data to make it easier to exmine just a subset of the scores.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This is <em>one</em> thing we can analyze, but there are others. To earn prepare on assignment 11,  manipulate your results a different way.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_learning_df_scores</span> <span class="o">=</span> <span class="n">svm_learning_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">],</span>
@@ -1258,6 +1446,7 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>This new DataFrame allows us to make convenient plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">svm_learning_df_scores</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;train_size&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">)</span>
@@ -1265,6 +1454,9 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<section id="gaussian-naive-bayes">
+<h3><span class="section-number">35.3.1. </span>Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Permalink to this headline">#</a></h3>
+<p>We can do the same thing with GNB</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes_gnb</span><span class="p">,</span> <span class="n">train_scores_gnb</span><span class="p">,</span> <span class="n">test_scores_gnb</span><span class="p">,</span> <span class="n">fit_times_gnb</span><span class="p">,</span> <span class="n">score_times_gnb</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span>
@@ -1278,6 +1470,18 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Getting used to thinking though these sorts of manipulations can take time, but
+is valuable. Investing time to learn these things will help you both write
+shorter, more readable, easy to examine, code (which is nicer to your co-workers)
+and help you develop flexible mental representation.  The flexiblity of your
+mental model of material is the way learning scientists distinguish compentent
+practioners from experts.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb_learning_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">train_sizes_gnb</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">])</span>
@@ -1298,15 +1502,35 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </div>
 </div>
 </div>
+<p>Notice in this case that the training accuracy starts high with the test accuracy low.  This big gap means that the model was overfitting to something that was different about the training set from the test set.  It was</p>
+</section>
+</section>
 <section id="questions-after-class">
-<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
-<p>how do I run this? gh issue list –state all -L 45 –json title,url,state &gt; grade-tracker.json</p>
-<p>• Is fit time as important as accuracy? I would think generally for real life application we would want results over time.</p>
-<p>• Why in the SVC model you used gamma=0.001 and not othe values? Why does that parameter represent in the model?</p>
-<p>• I’m sure it will be in the notes but a better understanding of how learning curve works</p>
-<p>• Can you go over the melt function again?</p>
+<h2><span class="section-number">35.4. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="how-do-i-run-the-code-to-pull-issues">
+<h3><span class="section-number">35.4.1. </span>how do I run the code to pull issues?<a class="headerlink" href="#how-do-i-run-the-code-to-pull-issues" title="Permalink to this headline">#</a></h3>
+<p>This uses the <a class="reference external" href="https://cli.github.com/">GitHub CLI</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span> <span class="o">--</span><span class="n">state</span> <span class="nb">all</span> <span class="o">-</span><span class="n">L</span> <span class="mi">45</span> <span class="o">--</span><span class="n">json</span> <span class="n">title</span><span class="p">,</span><span class="n">url</span><span class="p">,</span><span class="n">state</span> <span class="o">&gt;</span> <span class="n">grade</span><span class="o">-</span><span class="n">tracker</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</section>
+<section id="is-fit-time-as-important-as-accuracy-i-would-think-generally-for-real-life-application-we-would-want-results-over-time">
+<h3><span class="section-number">35.4.2. </span>Is fit time as important as accuracy? I would think generally for real life application we would want results over time.<a class="headerlink" href="#is-fit-time-as-important-as-accuracy-i-would-think-generally-for-real-life-application-we-would-want-results-over-time" title="Permalink to this headline">#</a></h3>
+<p>Fit time is generally not as important as accuracy when deploying a model. This question gets at a really important point.  Some of the metrics that we have for machine learning algorithms are for evaluating the <em>learning</em> algorithm, if someone develops a new learning algorithm that can perform as well as old ones, but faster that’s really helpful.  You are correct,</p>
+<p>That said, the score time can be really important in a deployed model.</p>
+</section>
+<section id="why-in-the-svc-model-did-we-used-gamma-0-001-and-not-other-values-why-does-that-parameter-represent-in-the-model">
+<h3><span class="section-number">35.4.3. </span>Why in the SVC model did we used gamma=0.001 and not other values? Why does that parameter represent in the model?<a class="headerlink" href="#why-in-the-svc-model-did-we-used-gamma-0-001-and-not-other-values-why-does-that-parameter-represent-in-the-model" title="Permalink to this headline">#</a></h3>
+<p>The gamma <span class="math notranslate nohighlight">\(\gamma\)</span> parameter for the default rbf kernel controls basically how wavy the line is.  I set it to a value that is known to work well for this dataset because, for time reasons, I did not want to also do a grid search.</p>
+</section>
+<section id="im-sure-it-will-be-in-the-notes-but-a-better-understanding-of-how-learning-curve-works">
+<h3><span class="section-number">35.4.4. </span>I’m sure it will be in the notes but a better understanding of how learning curve works<a class="headerlink" href="#im-sure-it-will-be-in-the-notes-but-a-better-understanding-of-how-learning-curve-works" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="can-you-go-over-the-melt-function-again">
+<h3><span class="section-number">35.4.5. </span>Can you go over the melt function again?<a class="headerlink" href="#can-you-go-over-the-melt-function-again" title="Permalink to this headline">#</a></h3>
 <p>• running code will be posted tonight correct?</p>
 <p>• nothing at the moment</p>
+</section>
 </section>
 </section>
 
@@ -1337,6 +1561,20 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-11-16.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">34. </span>Model Comparison: when do differences matter?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

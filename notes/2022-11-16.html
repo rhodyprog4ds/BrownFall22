@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>33. Model Comparison: when do differences matter? &#8212; Programming for Data Science at URI Fall 2022</title>
+    <title>34. Model Comparison: when do differences matter? &#8212; Programming for Data Science at URI Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="2022-11-14.html" />
+    <link rel="next" title="35. Learning Curves" href="2022-11-18.html" />
+    <link rel="prev" title="33. Model Comparison" href="2022-11-14.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -296,9 +296,19 @@ const thebe_selector_output = ".output, .cell_output"
    32. Model Optimization
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-14.html">
+   33. Model Comparison
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   33. Model Comparison: when do differences matter?
+   34. Model Comparison: when do differences matter?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-18.html">
+   35. Learning Curves
   </a>
  </li>
 </ul>
@@ -707,12 +717,48 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-do-differences-matter">
+   34.1. When do differences matter?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   34.2. Questions after class?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-data-type-of-the-dt-opt-and-svm-opt-variables-in-python-it-says-sklearn-model-selection-search-gridsearchcv-for-them-but-what-about-in-plain-human-language-it-is-a-model-or-a-group-of-models">
+     34.2.1. What is the data type of the dt_opt and svm_opt variables? In Python it says sklearn.model_selection._search.GridSearchCV for them, but what about in plain human language? It is a model or a group of models?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -724,6 +770,31 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-do-differences-matter">
+   34.1. When do differences matter?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   34.2. Questions after class?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-data-type-of-the-dt-opt-and-svm-opt-variables-in-python-it-says-sklearn-model-selection-search-gridsearchcv-for-them-but-what-about-in-plain-human-language-it-is-a-model-or-a-group-of-models">
+     34.2.1. What is the data type of the dt_opt and svm_opt variables? In Python it says sklearn.model_selection._search.GridSearchCV for them, but what about in plain human language? It is a model or a group of models?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -732,7 +803,8 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="model-comparison-when-do-differences-matter">
-<h1><span class="section-number">33. </span>Model Comparison: when do differences matter?<a class="headerlink" href="#model-comparison-when-do-differences-matter" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">34. </span>Model Comparison: when do differences matter?<a class="headerlink" href="#model-comparison-when-do-differences-matter" title="Permalink to this headline">#</a></h1>
+<p>We’ll pick up from where we left off on Monday.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -746,8 +818,27 @@ title="Print to PDF"
 <span class="c1"># import the whole model selection module</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
-
-<span class="c1"># load data, 20% test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p>If you struggled to understand this code excerpt to fill in the comments, some generic strategies to understand code may help, beyond applying what we have covered in class.</p>
+<p><a class="reference external" href="https://www.manning.com/books/the-programmers-brain">The Programmer’s brain</a>
+is an overview of how brains work, as applied to programming, written for working
+developers. This means that it assumes you know most CS concepts and at least two programming languages. If you don’t there may be some parts that do not make sense to you, but the general ideas should still make sense.
+The author is a professor who researchers how people learn
+programming and how to effectively teach it.</p>
+<p>This book is available for free online, including an audio version of the first chapter.</p>
+<p><strong>I strongly recommend this if you have trouble remembering things</strong></p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data, 20% test</span>
 <span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span>
   <span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
@@ -782,6 +873,59 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is extra detail we did not do in class for time reasons</p>
+</div>
+<p>We can  use EDA to understand how the score varied across all of the parameter settings we tried.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
+mean      0.966667
+std       0.013868
+min       0.941667
+25%       0.960417
+50%       0.970833
+75%       0.975000
+max       0.983333
+Name: mean_test_score, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
+mean      0.926574
+std       0.008276
+min       0.916667
+25%       0.916667
+50%       0.933333
+75%       0.933333
+max       0.941667
+Name: mean_test_score, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this we see that in both cases the standard deviation (std) is really
+low. This tells us that the parameter changes didn’t impact the performance
+much.  Combined with the overall high accuracy this tells us that the data
+is probably really easy to classify.  If the performance had been uniformly
+bad, it might have instead told us that we did not try a wide enough range
+of parameters.</p>
+<p>To confirm how many parameter settings we have used we can check a couple different ways. First, above in the count of the describe.</p>
+<p>We can also calculate directly from the parameter grids before we even do the fit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">description_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;param_C&#39;</span><span class="p">,</span> <span class="s1">&#39;param_kernel&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">,]</span>
@@ -794,10 +938,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbe5c914bb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f72c83bc940&gt;
 </pre></div>
 </div>
-<img alt="../_images/2022-11-16_2_1.png" src="../_images/2022-11-16_2_1.png" />
+<img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -833,7 +977,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">predict_proba</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/metaestimators.py:127,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
@@ -880,6 +1024,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section id="when-do-differences-matter">
+<h2><span class="section-number">34.1. </span>When do differences matter?<a class="headerlink" href="#when-do-differences-matter" title="Permalink to this headline">#</a></h2>
+<p>We can check calculate a confidence interval to determine more precisely when the performance of two models is meaningfully different.</p>
+<p>This function calculates the 95% confidence interval.  The range within which we are 95% confident the quantity we have estimated is truly within in.  When we have more samples in the test set used to calculate the score, we are more confident in the estimate, so the interval is narrower.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classification_confint</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -897,6 +1045,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>We can calculate the number of observations used to compute the accuracy using the size of the training data and the fact that we set it to 10-fold cross validation. That means that 10% (100/10) of the data was used for each fold and each validation set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dt_opt</span><span class="p">)</span>
@@ -916,7 +1065,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9583333333333334, 0.975)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9416666666666667, 0.9833333333333332)
 </pre></div>
 </div>
 </div>
@@ -928,11 +1077,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9225798693726878, 0.994086797293979)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8997320725326443, 0.983601260800689)
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can see how more samples narrows the range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification_confint</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
@@ -940,12 +1090,45 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9470270952976949, 0.9696395713689718)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9284057836448419, 0.9549275496884914)
 </pre></div>
 </div>
 </div>
 </div>
-<p>What is the data type of the dt_opt and svm_opt variables? In Python it says sklearn.model_selection._search.GridSearchCV for them, but what about in plain human language? It is a model or a group of models?</p>
+<p>We would say that two model sare different if their intervals do not overlap.</p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">34.2. </span>Questions after class?<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="what-is-the-data-type-of-the-dt-opt-and-svm-opt-variables-in-python-it-says-sklearn-model-selection-search-gridsearchcv-for-them-but-what-about-in-plain-human-language-it-is-a-model-or-a-group-of-models">
+<h3><span class="section-number">34.2.1. </span>What is the data type of the dt_opt and svm_opt variables? In Python it says sklearn.model_selection._search.GridSearchCV for them, but what about in plain human language? It is a model or a group of models?<a class="headerlink" href="#what-is-the-data-type-of-the-dt-opt-and-svm-opt-variables-in-python-it-says-sklearn-model-selection-search-gridsearchcv-for-them-but-what-about-in-plain-human-language-it-is-a-model-or-a-group-of-models" title="Permalink to this headline">#</a></h3>
+<p>This is an object of a sort of complex type, a Grid search object is really the only name for the whole thing, but it is easier to understand part by part.</p>
+<p>It has some attributes that are metrics and one attribute that is the a model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_opt</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -979,13 +1162,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title"><span class="section-number">33. </span>Model Comparison</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-11-18.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+        <p class="prev-next-title"><span class="section-number">35. </span>Learning Curves</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
