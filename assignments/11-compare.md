@@ -1,7 +1,7 @@
 ---
 substitutions:
   accept_assignment: |
-    [accept the assignment]()
+    [accept the assignment](https://classroom.github.com/a/HwJJPD11)
   date : 2022-11-23
 ---
 # Assignment 11 Model Comparison
