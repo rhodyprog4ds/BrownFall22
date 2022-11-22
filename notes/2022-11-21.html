@@ -1,0 +1,2389 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>36. Intro to NLP- representing text data &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="35. Learning Curves" href="2022-11-18.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-07.html">
+   13. Getting Data from Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-12.html">
+   14. Intro to Machine Learning: Evaluation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-14.html">
+   15. Performance Metrics continued
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-17.html">
+   16. Modeling and Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-19.html">
+   17. Classification with Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-21.html">
+   18. Decision Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-24.html">
+   19. Feedback &amp; Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-26.html">
+   21. Interpretting Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-28.html">
+   22. Sparse and Polynomial Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-31.html">
+   23. Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-02.html">
+   24. Clustering with Sci-kit Learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-04.html">
+   30. Clutering Evalutation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-07.html">
+   31. ML Task Review Cross Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-09.html">
+   32. Model Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-14.html">
+   33. Model Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-16.html">
+   34. Model Comparison: when do differences matter?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-18.html">
+   35. Learning Curves
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   36. Intro to NLP- representing text data
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/06-evaluate.html">
+   6. Assignment 6: Auditing Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/07-classification.html">
+   7. Assignment 7: Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/08-regression.html">
+   8. Assignment 8: Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/09-clustering.html">
+   9. Assignment 9
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/10-optimize.html">
+   10. Assignment 10: Tuning Model Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/11-compare.html">
+   11. Assignment 11 Model Comparison
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check2ideas.html">
+   Check 2 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-11-21.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-11-21.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-11-21.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-11-21.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-11-21.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-intervals-review">
+   36.1. Confidence Intervals review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-as-data">
+   36.2. Text as Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terms">
+   36.3. Terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bag-of-words-representionat">
+   36.4. Bag of Words Representionat
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-we-find-the-most-commonly-used-word">
+   36.5. How can we find the most commonly used word?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distances-in-text">
+   36.6. Distances in text
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-on-your-grade">
+   36.7. Check on Your grade:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-classroom">
+   36.8. Questions After Classroom
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-this-be-used-for-training-a-classifier">
+     36.8.1. How can this be used for training a classifier?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Intro to NLP- representing text data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-intervals-review">
+   36.1. Confidence Intervals review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#text-as-data">
+   36.2. Text as Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terms">
+   36.3. Terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bag-of-words-representionat">
+   36.4. Bag of Words Representionat
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-we-find-the-most-commonly-used-word">
+   36.5. How can we find the most commonly used word?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distances-in-text">
+   36.6. Distances in text
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-on-your-grade">
+   36.7. Check on Your grade:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-classroom">
+   36.8. Questions After Classroom
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-this-be-used-for-training-a-classifier">
+     36.8.1. How can this be used for training a classifier?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-nlp-representing-text-data">
+<h1><span class="section-number">36. </span>Intro to NLP- representing text data<a class="headerlink" href="#intro-to-nlp-representing-text-data" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Wednesday class will be on zoom, using the office hours link that you can find on the course <a class="reference external" href="https://github.com/rhodyprog4ds">GitHub Organization Page</a></p>
+<p><strong>If you do not see a list of links at the top, you might need to accept an invite</strong></p>
+<p>The link will also be sent on prismia at class time.</p>
+<p>Wednesday office hours will be 3-4:30pm instead of 7-8:30pm</p>
+</div>
+<section id="confidence-intervals-review">
+<h2><span class="section-number">36.1. </span>Confidence Intervals review<a class="headerlink" href="#confidence-intervals-review" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">classification_confint</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+      <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">      Compute the 95% confidence interval for a classification problem.</span>
+<span class="sd">       acc -- classification accuracy</span>
+<span class="sd">       n  -- number of observations used to compute the accuracy</span>
+<span class="sd">      Returns a tuple (lb,ub)</span>
+<span class="sd">      &#39;&#39;&#39;</span>
+      <span class="n">interval</span> <span class="o">=</span> <span class="mf">1.96</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">acc</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">acc</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+      <span class="n">lb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
+      <span class="n">ub</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">interval</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification_confint</span><span class="p">(</span><span class="mf">.78</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="p">,</span> <span class="n">classification_confint</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((0.6651767828355258, 0.8948232171644742),
+ (0.816844242532462, 0.983155757467538))
+</pre></div>
+</div>
+</div>
+</div>
+<p>These overlap, so they are not differnt</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">classification_confint</span><span class="p">(</span><span class="mf">.78</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="p">,</span> <span class="n">classification_confint</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((0.722588391417763, 0.8374116085822371),
+ (0.8584221212662311, 0.941577878733769))
+</pre></div>
+</div>
+</div>
+</div>
+<p>with more samples the intervals shrink and they stop overlapping</p>
+</section>
+<section id="text-as-data">
+<h2><span class="section-number">36.2. </span>Text as Data<a class="headerlink" href="#text-as-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;The class is just starting to feel settled for me. - Dr. Brown&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Hello, I like sushi! - &#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Why squared  aka the mask - is a computer science student.Data science is fun&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Hello my fellow gaymers - Sun Tzu&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Soccer is a sport -Obama&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Hello, I love pizza - Bear&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;This class is CSC/DSP 310. - Student&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;It is 2:21pm -&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Pizza conquers all- Beetlejuice&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ayyy whaddup wit it - frankie&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;This is a sentence - George W Bush&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Steam is the best place to play videogames change my mind. - Todd Howard&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;This is a hello -&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Hello how are you -&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;The monkey likes bananas. - A banana&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Just type a random sentence - Rosa Parks&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;I love CSC. - Everyone&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;The quick brown fox jumps over the lazy dog - Brendan Chadwick&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;I like computers - David&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Sally sells seashells by the seashore. - Narrator&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;I would like to take a nap. - Tom Cruise,&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>How can we analyze these? All of the machine leanring models we have seen only use numerical features organized into a table with one row per samplea and one column per feature.</p>
+<p>That’s actually generally true.  ALl ML models require numerical features, at some point. The process of taking data that is not numerical and tabular, which is called unstrucutred, into strucutred (tabular) format we require is called feature extraction.  There are many, many ways to do that.  We’ll see a few over the course of the rest of the semester.  Some more advanced models hide the feature extraction, by putting it in the same function, but it’s always there.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentence_list</span><span class="p">],</span>
+                 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can make it a dataframe, but we cannot use statistics on this because it is still sentences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sentence</th>
+      <th>attribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The class is just starting to feel settled for...</td>
+      <td>Dr. Brown</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hello, I like sushi!</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Why squared  aka the mask</td>
+      <td>is a computer science student.Data science is...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hello my fellow gaymers</td>
+      <td>Sun Tzu</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Soccer is a sport</td>
+      <td>Obama</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Hello, I love pizza</td>
+      <td>Bear</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>This class is CSC/DSP 310.</td>
+      <td>Student</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>It is 2:21pm</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pizza conquers all</td>
+      <td>Beetlejuice</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ayyy whaddup wit it</td>
+      <td>frankie</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>This is a sentence</td>
+      <td>George W Bush</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Steam is the best place to play videogames cha...</td>
+      <td>Todd Howard</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>This is a hello</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Hello how are you</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>The monkey likes bananas.</td>
+      <td>A banana</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Just type a random sentence</td>
+      <td>Rosa Parks</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>I love CSC.</td>
+      <td>Everyone</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>The quick brown fox jumps over the lazy dog</td>
+      <td>Brendan Chadwick</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>I like computers</td>
+      <td>David</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>The fitness gram pacer test is a multi aerobic...</td>
+      <td>Matt 3</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Sally sells seashells by the seashore.</td>
+      <td>Narrator</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>I would like to take a nap.</td>
+      <td>Tom Cruise,</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">sentence_list</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">s1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Soccer is a sport -Obama&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="terms">
+<h2><span class="section-number">36.3. </span>Terms<a class="headerlink" href="#terms" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>document: unit of text we’re analyzing (one sample)</p></li>
+<li><p>token: sequence of characters in some particular document that are grouped together as a useful semantic unit for processing (basically a word)</p></li>
+<li><p>stop words: no meaning, we don’t need them (like a, the, an,). Note that this is context dependent</p></li>
+<li><p>dictionary: all of the possible words that a given system knows how to process</p></li>
+</ul>
+</section>
+<section id="bag-of-words-representionat">
+<h2><span class="section-number">36.4. </span>Bag of Words Representionat<a class="headerlink" href="#bag-of-words-representionat" title="Permalink to this headline">#</a></h2>
+<p>We’re going to learn a represetnation called the bag of words.  It ignores the order of the words within a document. To do this, we’ll first extract all of the tokens (tokenize) the docuemtns and then count how mnay times each word appears.  This will be our numerical representation of the data.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/data_transforms.html">Transformers</a> are another broad class of sklearn objects.  We’ve seen Estimators mostly so far.
+We’re focusing on the <a class="reference external" href="https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction">text feature extraction</a> for now.</p>
+</div>
+</aside>
+<p>Then we initialize our transformer, and use the fit transform method to fit the vectorizer model and apply it to this sentence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;1x4 sparse matrix of type &#39;&lt;class &#39;numpy.int64&#39;&gt;&#39;
+	with 4 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see it returns a sparse matrix.  A sparse matrix means that it has a lot of 0s in it and so we only represent the data.</p>
+<p>For example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mfull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>but as a sparse matrix, we could store fewer values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span><span class="c1"># the above</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 0, 1], [1, 2, 1], [2, 3, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>So any matrix where the number of total values is low enough, we can store it more efficiently by tracking the locations and values instead of all of the zeros.</p>
+<p>To actually see it though we have to cast out of that into a regular array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 1, 1, 1]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>For only one sentence it’s all ones, because it only has a small vocabulary.</p>
+<p>We can make it more interesting, by picking a second sentence</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">sentence_list</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span>
+<span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0],
+       [1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 2, 1]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also examine attributes of the object.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Notice that we keep using the same tools over and over to explore how things work.  You can do this on your own, when you’re learning new things. Example
+code is readily available online but not all of it is well documented or
+clearly explained.</p>
+<p>Also, in a job, much, much, more of your time will be spent reading code than writing code from scratch. These strategies will help you get familiar with a new code base and get up to speed faster.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="o">.</span><span class="n">vocabulary_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;soccer&#39;: 9,
+ &#39;is&#39;: 4,
+ &#39;sport&#39;: 10,
+ &#39;obama&#39;: 7,
+ &#39;the&#39;: 12,
+ &#39;fitness&#39;: 2,
+ &#39;gram&#39;: 3,
+ &#39;pacer&#39;: 8,
+ &#39;test&#39;: 11,
+ &#39;multi&#39;: 6,
+ &#39;aerobic&#39;: 0,
+ &#39;capacity&#39;: 1,
+ &#39;matt&#39;: 5}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that what it does is creates an ordered (the values are the order) list of words as the parameters of this model (ending in <code class="docutils literal notranslate"><span class="pre">_</span></code> is an attribute of the object or parameter of the model).</p>
+<p>it puts the words in the <code class="docutils literal notranslate"><span class="pre">vocabulary_</span></code> attribute (aka the <a class="reference internal" href="../resources/glossary.html#term-dictionary"><span class="xref std std-term">dictionary</span></a>) in alphabetical order.</p>
+<p>Now we can transform the whole dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       ...,
+       [0, 0, 1, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 0, 0],
+       [0, 0, 0, ..., 0, 1, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this we can see that the representation is the count of how many times each word appears.</p>
+<p>Now we can apply it to all of the sentences, or our whole <a class="reference internal" href="../resources/glossary.html#term-corpus"><span class="xref std std-term">corpus</span></a>. We can get the dictionary out in order using the <code class="docutils literal notranslate"><span class="pre">get_feature_names</span></code> method. This method has a generic name, not specific to text, because it’s a property of transformers in general.</p>
+<p>We can use a dataframe again to see this more easily. We can put labels on both the index and the column headings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+<span class="n">sentence_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>21pm</th>
+      <th>310</th>
+      <th>aerobic</th>
+      <th>aka</th>
+      <th>all</th>
+      <th>are</th>
+      <th>ayyy</th>
+      <th>bananas</th>
+      <th>best</th>
+      <th>brown</th>
+      <th>...</th>
+      <th>the</th>
+      <th>this</th>
+      <th>to</th>
+      <th>type</th>
+      <th>videogames</th>
+      <th>whaddup</th>
+      <th>why</th>
+      <th>wit</th>
+      <th>would</th>
+      <th>you</th>
+    </tr>
+    <tr>
+      <th>attribution</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dr. Brown</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>is a computer science student.Data science is fun</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sun Tzu</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Obama</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Bear</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Student</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Beetlejuice</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>frankie</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>George W Bush</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Todd Howard</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>A banana</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Rosa Parks</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Everyone</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Brendan Chadwick</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>David</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Matt 3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Narrator</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Tom Cruise,</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>22 rows × 74 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="how-can-we-find-the-most-commonly-used-word">
+<h2><span class="section-number">36.5. </span>How can we find the most commonly used word?<a class="headerlink" href="#how-can-we-find-the-most-commonly-used-word" title="Permalink to this headline">#</a></h2>
+<p>One guess</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21pm       1
+310        1
+aerobic    1
+aka        1
+all        1
+          ..
+whaddup    1
+why        1
+wit        1
+would      1
+you        1
+Length: 74, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the maximum number of times each word appears in single “document”, but it’s also not sorted, it’s alphabetical.</p>
+<p>This shows the word that appears the most times.</p>
+<p>To get what we want we need to sum, which by default is along the columns, or per word. Then we get the location of the max with idx max.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;is&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distances-in-text">
+<h2><span class="section-number">36.6. </span>Distances in text<a class="headerlink" href="#distances-in-text" title="Permalink to this headline">#</a></h2>
+<p>We can now use a distance function to calculate how far apart the different sentences are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 3.60555128, 3.60555128, 3.74165739, 3.31662479,
+        3.60555128, 3.46410162, 3.31662479, 3.60555128, 3.74165739,
+        3.31662479, 3.87298335, 3.31662479, 3.74165739, 3.46410162,
+        3.46410162, 3.46410162, 4.12310563, 3.46410162, 4.24264069,
+        3.74165739, 3.60555128],
+       [3.60555128, 0.        , 2.82842712, 2.23606798, 2.44948974,
+        2.        , 3.        , 2.44948974, 2.44948974, 2.64575131,
+        2.44948974, 3.74165739, 2.        , 2.23606798, 2.64575131,
+        2.64575131, 2.23606798, 3.74165739, 1.73205081, 3.87298335,
+        3.        , 2.44948974],
+       [3.60555128, 2.82842712, 0.        , 3.        , 2.82842712,
+        2.82842712, 3.31662479, 2.82842712, 2.82842712, 3.        ,
+        2.82842712, 3.74165739, 2.82842712, 3.        , 2.64575131,
+        3.        , 2.64575131, 3.46410162, 2.64575131, 3.87298335,
+        3.        , 3.16227766],
+       [3.74165739, 2.23606798, 3.        , 0.        , 2.64575131,
+        2.23606798, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
+        2.64575131, 3.60555128, 2.23606798, 2.44948974, 2.82842712,
+        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
+        3.16227766, 3.        ],
+       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 0.        ,
+        2.44948974, 2.64575131, 2.        , 2.44948974, 2.64575131,
+        2.        , 3.46410162, 2.        , 2.64575131, 2.64575131,
+        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
+        3.        , 2.82842712],
+       [3.60555128, 2.        , 2.82842712, 2.23606798, 2.44948974,
+        0.        , 3.        , 2.44948974, 2.        , 2.64575131,
+        2.44948974, 3.74165739, 2.        , 2.23606798, 2.64575131,
+        2.64575131, 1.73205081, 3.74165739, 2.23606798, 3.87298335,
+        3.        , 2.82842712],
+       [3.46410162, 3.        , 3.31662479, 3.16227766, 2.64575131,
+        3.        , 0.        , 2.64575131, 3.        , 3.16227766,
+        2.23606798, 3.87298335, 2.23606798, 3.16227766, 3.16227766,
+        3.16227766, 2.44948974, 4.12310563, 2.82842712, 4.        ,
+        3.46410162, 3.31662479],
+       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 2.        ,
+        2.44948974, 2.64575131, 0.        , 2.44948974, 2.23606798,
+        2.        , 3.46410162, 2.        , 2.64575131, 2.64575131,
+        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
+        3.        , 2.82842712],
+       [3.60555128, 2.44948974, 2.82842712, 2.64575131, 2.44948974,
+        2.        , 3.        , 2.44948974, 0.        , 2.64575131,
+        2.44948974, 3.74165739, 2.44948974, 2.64575131, 2.64575131,
+        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.87298335,
+        3.        , 2.82842712],
+       [3.74165739, 2.64575131, 3.        , 2.82842712, 2.64575131,
+        2.64575131, 3.16227766, 2.23606798, 2.64575131, 0.        ,
+        2.64575131, 3.87298335, 2.64575131, 2.82842712, 2.82842712,
+        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
+        3.16227766, 3.        ],
+       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 2.        ,
+        2.44948974, 2.23606798, 2.        , 2.44948974, 2.64575131,
+        0.        , 3.46410162, 1.41421356, 2.64575131, 2.64575131,
+        2.23606798, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
+        3.        , 2.82842712],
+       [3.87298335, 3.74165739, 3.74165739, 3.60555128, 3.46410162,
+        3.74165739, 3.87298335, 3.46410162, 3.74165739, 3.87298335,
+        3.46410162, 0.        , 3.46410162, 3.87298335, 3.60555128,
+        3.87298335, 3.60555128, 4.24264069, 3.60555128, 4.35889894,
+        3.87298335, 3.74165739],
+       [3.31662479, 2.        , 2.82842712, 2.23606798, 2.        ,
+        2.        , 2.23606798, 2.        , 2.44948974, 2.64575131,
+        1.41421356, 3.46410162, 0.        , 2.23606798, 2.64575131,
+        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
+        3.        , 2.82842712],
+       [3.74165739, 2.23606798, 3.        , 2.44948974, 2.64575131,
+        2.23606798, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
+        2.64575131, 3.87298335, 2.23606798, 0.        , 2.82842712,
+        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
+        3.16227766, 3.        ],
+       [3.46410162, 2.64575131, 2.64575131, 2.82842712, 2.64575131,
+        2.64575131, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
+        2.64575131, 3.60555128, 2.64575131, 2.82842712, 0.        ,
+        2.82842712, 2.44948974, 3.31662479, 2.44948974, 3.74165739,
+        2.82842712, 3.        ],
+       [3.46410162, 2.64575131, 3.        , 2.82842712, 2.64575131,
+        2.64575131, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
+        2.23606798, 3.87298335, 2.64575131, 2.82842712, 2.82842712,
+        0.        , 2.44948974, 3.87298335, 2.44948974, 4.        ,
+        3.16227766, 3.        ],
+       [3.46410162, 2.23606798, 2.64575131, 2.44948974, 2.23606798,
+        1.73205081, 2.44948974, 2.23606798, 2.23606798, 2.44948974,
+        2.23606798, 3.60555128, 2.23606798, 2.44948974, 2.44948974,
+        2.44948974, 0.        , 3.60555128, 2.        , 3.74165739,
+        2.82842712, 2.64575131],
+       [4.12310563, 3.74165739, 3.46410162, 3.87298335, 3.74165739,
+        3.74165739, 4.12310563, 3.74165739, 3.74165739, 3.87298335,
+        3.74165739, 4.24264069, 3.74165739, 3.87298335, 3.31662479,
+        3.87298335, 3.60555128, 0.        , 3.60555128, 4.35889894,
+        3.60555128, 4.        ],
+       [3.46410162, 1.73205081, 2.64575131, 2.44948974, 2.23606798,
+        2.23606798, 2.82842712, 2.23606798, 2.23606798, 2.44948974,
+        2.23606798, 3.60555128, 2.23606798, 2.44948974, 2.44948974,
+        2.44948974, 2.        , 3.60555128, 0.        , 3.74165739,
+        2.82842712, 2.23606798],
+       [4.24264069, 3.87298335, 3.87298335, 4.        , 3.60555128,
+        3.87298335, 4.        , 3.60555128, 3.87298335, 4.        ,
+        3.60555128, 4.35889894, 3.60555128, 4.        , 3.74165739,
+        4.        , 3.74165739, 4.35889894, 3.74165739, 0.        ,
+        4.        , 4.12310563],
+       [3.74165739, 3.        , 3.        , 3.16227766, 3.        ,
+        3.        , 3.46410162, 3.        , 3.        , 3.16227766,
+        3.        , 3.87298335, 3.        , 3.16227766, 2.82842712,
+        3.16227766, 2.82842712, 3.60555128, 2.82842712, 4.        ,
+        0.        , 3.31662479],
+       [3.60555128, 2.44948974, 3.16227766, 3.        , 2.82842712,
+        2.82842712, 3.31662479, 2.82842712, 2.82842712, 3.        ,
+        2.82842712, 3.74165739, 2.82842712, 3.        , 3.        ,
+        3.        , 2.64575131, 4.        , 2.23606798, 4.12310563,
+        3.31662479, 0.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This distance is only int terms of actual reused words.  It does not contain anything about the meaning of the words</p>
+<p>We can make this eaiser to read by making it a Data Frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">),</span><span class="n">index</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">],</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>attribution</th>
+      <th>Dr. Brown</th>
+      <th></th>
+      <th>is a computer science student.Data science is fun</th>
+      <th>Sun Tzu</th>
+      <th>Obama</th>
+      <th>Bear</th>
+      <th>Student</th>
+      <th></th>
+      <th>Beetlejuice</th>
+      <th>frankie</th>
+      <th>...</th>
+      <th></th>
+      <th></th>
+      <th>A banana</th>
+      <th>Rosa Parks</th>
+      <th>Everyone</th>
+      <th>Brendan Chadwick</th>
+      <th>David</th>
+      <th>Matt 3</th>
+      <th>Narrator</th>
+      <th>Tom Cruise,</th>
+    </tr>
+    <tr>
+      <th>attribution</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Dr. Brown</th>
+      <td>0.000000</td>
+      <td>3.605551</td>
+      <td>3.605551</td>
+      <td>3.741657</td>
+      <td>3.316625</td>
+      <td>3.605551</td>
+      <td>3.464102</td>
+      <td>3.316625</td>
+      <td>3.605551</td>
+      <td>3.741657</td>
+      <td>...</td>
+      <td>3.316625</td>
+      <td>3.741657</td>
+      <td>3.464102</td>
+      <td>3.464102</td>
+      <td>3.464102</td>
+      <td>4.123106</td>
+      <td>3.464102</td>
+      <td>4.242641</td>
+      <td>3.741657</td>
+      <td>3.605551</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>3.605551</td>
+      <td>0.000000</td>
+      <td>2.828427</td>
+      <td>2.236068</td>
+      <td>2.449490</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>2.449490</td>
+      <td>2.449490</td>
+      <td>2.645751</td>
+      <td>...</td>
+      <td>2.000000</td>
+      <td>2.236068</td>
+      <td>2.645751</td>
+      <td>2.645751</td>
+      <td>2.236068</td>
+      <td>3.741657</td>
+      <td>1.732051</td>
+      <td>3.872983</td>
+      <td>3.000000</td>
+      <td>2.449490</td>
+    </tr>
+    <tr>
+      <th>is a computer science student.Data science is fun</th>
+      <td>3.605551</td>
+      <td>2.828427</td>
+      <td>0.000000</td>
+      <td>3.000000</td>
+      <td>2.828427</td>
+      <td>2.828427</td>
+      <td>3.316625</td>
+      <td>2.828427</td>
+      <td>2.828427</td>
+      <td>3.000000</td>
+      <td>...</td>
+      <td>2.828427</td>
+      <td>3.000000</td>
+      <td>2.645751</td>
+      <td>3.000000</td>
+      <td>2.645751</td>
+      <td>3.464102</td>
+      <td>2.645751</td>
+      <td>3.872983</td>
+      <td>3.000000</td>
+      <td>3.162278</td>
+    </tr>
+    <tr>
+      <th>Sun Tzu</th>
+      <td>3.741657</td>
+      <td>2.236068</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>2.645751</td>
+      <td>2.236068</td>
+      <td>3.162278</td>
+      <td>2.645751</td>
+      <td>2.645751</td>
+      <td>2.828427</td>
+      <td>...</td>
+      <td>2.236068</td>
+      <td>2.449490</td>
+      <td>2.828427</td>
+      <td>2.828427</td>
+      <td>2.449490</td>
+      <td>3.872983</td>
+      <td>2.449490</td>
+      <td>4.000000</td>
+      <td>3.162278</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>Obama</th>
+      <td>3.316625</td>
+      <td>2.449490</td>
+      <td>2.828427</td>
+      <td>2.645751</td>
+      <td>0.000000</td>
+      <td>2.449490</td>
+      <td>2.645751</td>
+      <td>2.000000</td>
+      <td>2.449490</td>
+      <td>2.645751</td>
+      <td>...</td>
+      <td>2.000000</td>
+      <td>2.645751</td>
+      <td>2.645751</td>
+      <td>2.645751</td>
+      <td>2.236068</td>
+      <td>3.741657</td>
+      <td>2.236068</td>
+      <td>3.605551</td>
+      <td>3.000000</td>
+      <td>2.828427</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div></div>
+</div>
+<p>Who wrote the most similar question to me?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span><span class="p">[</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Obama&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-on-your-grade">
+<h2><span class="section-number">36.7. </span>Check on Your grade:<a class="headerlink" href="#check-on-your-grade" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grade_in</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;grade-tracker-2022-11-18.json&#39;</span><span class="p">)</span>
+<span class="n">skill_level</span> <span class="o">=</span> <span class="n">grade_in</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;skill&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;level&#39;</span><span class="p">})</span>
+<span class="n">grade_df_tall</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">grade_in</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">],</span><span class="n">skill_level</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grade_df_view</span> <span class="o">=</span> <span class="n">grade_df_tall</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;skill&#39;</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span><span class="s1">&#39;level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;OPEN&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;CLOSED&#39;</span><span class="p">:</span><span class="s1">&#39;achieved&#39;</span><span class="p">}</span>
+
+<span class="n">grade_df_num</span> <span class="o">=</span> <span class="n">grade_df_tall</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;skill&#39;</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span><span class="s1">&#39;level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;OPEN&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;CLOSED&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Then you can use summary statistics to get the number of achivements you have already earned at each level.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember if your grade is lower than you want right now, this is the <strong>minimum</strong> grade you can earn, your grade can go up and you are not likely locked out of the grade you want.  Use office hours to make up level 1.</p>
+</div>
+</section>
+<section id="questions-after-classroom">
+<h2><span class="section-number">36.8. </span>Questions After Classroom<a class="headerlink" href="#questions-after-classroom" title="Permalink to this headline">#</a></h2>
+<section id="how-can-this-be-used-for-training-a-classifier">
+<h3><span class="section-number">36.8.1. </span>How can this be used for training a classifier?<a class="headerlink" href="#how-can-this-be-used-for-training-a-classifier" title="Permalink to this headline">#</a></h3>
+<p>To train a classifier, we would also need target variables, but the <code class="docutils literal notranslate"><span class="pre">mat</span></code> variable we had above can be used as the <code class="docutils literal notranslate"><span class="pre">X</span></code> for any <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> estimator object.
+To train more complex tasks you would need appropriate data: for example labeled articles that are real and fake to train a fake news classifier (this is provided for a12).</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-11-18.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">35. </span>Learning Curves</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
