@@ -45,6 +45,7 @@ parts:
     - file: notes/2022-11-16
     - file: notes/2022-11-18
     - file: notes/2022-11-21
+    - file: notes/2022-11-23
   - caption: Assignments
     numbered: True
     chapters:
@@ -59,6 +60,7 @@ parts:
     - file: assignments/09-clustering
     - file: assignments/10-optimize
     - file: assignments/11-compare
+    - file: assignments/12-fake-news
   - caption: Portfolio
     chapters:
       - file: portfolio/index
