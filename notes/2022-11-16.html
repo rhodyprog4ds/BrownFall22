@@ -316,6 +316,11 @@ const thebe_selector_output = ".output, .cell_output"
    36. Intro to NLP- representing text data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-23.html">
+   37. Classification of Text Data
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -376,6 +381,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../assignments/11-compare.html">
    11. Assignment 11 Model Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/12-fake-news.html">
+   12. Assignment 12: Fake News
   </a>
  </li>
 </ul>
@@ -891,13 +901,13 @@ programming and how to effectively teach it.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.964881
-std       0.009903
-min       0.950000
-25%       0.958333
+mean      0.957738
+std       0.011994
+min       0.933333
+25%       0.950000
 50%       0.958333
-75%       0.975000
-max       0.983333
+75%       0.964583
+max       0.975000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -911,13 +921,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.929537
-std       0.010612
-min       0.925000
-25%       0.925000
-50%       0.925000
-75%       0.925000
-max       0.966667
+mean      0.940926
+std       0.002385
+min       0.933333
+25%       0.941667
+50%       0.941667
+75%       0.941667
+max       0.941667
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -943,7 +953,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f01581e82b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9fda8a3790&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1070,7 +1080,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9666666666666666, 0.9833333333333332)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9416666666666668, 0.975)
 </pre></div>
 </div>
 </div>
@@ -1082,7 +1092,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9345490587118275, 0.9987842746215057)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8997320725326444, 0.9836012608006891)
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1105,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9565101872533032, 0.97682314608003)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.928405783644842, 0.9549275496884915)
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1125,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
 </pre></div>
 </div>
 </div>
@@ -1127,7 +1137,7 @@ of parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9333333333333333
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
 </pre></div>
 </div>
 </div>
