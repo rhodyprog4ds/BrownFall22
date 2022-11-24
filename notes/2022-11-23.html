@@ -772,14 +772,31 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   37.4.
+  <a class="reference internal nav-link" href="#tf-idf">
+   37.4. TF-IDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-representations">
    37.5. Comparing representations
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   37.6. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-unique-tokens-vs-total-vocabulary">
+     37.6.1. What are unique tokens vs total vocabulary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-it-only-take-into-account-if-the-word-appears-or-not-appear-or-does-the-number-of-times-the-word-appears-matter-multinomial-naive-bayes">
+     37.6.2. Does it only take into account if the word appears or not appear, or does the number of times the word appears matter? (Multinomial Naïve Bayes)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -816,14 +833,31 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   37.4.
+  <a class="reference internal nav-link" href="#tf-idf">
+   37.4. TF-IDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-representations">
    37.5. Comparing representations
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   37.6. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-unique-tokens-vs-total-vocabulary">
+     37.6.1. What are unique tokens vs total vocabulary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-it-only-take-into-account-if-the-word-appears-or-not-appear-or-does-the-number-of-times-the-word-appears-matter-multinomial-naive-bayes">
+     37.6.2. Does it only take into account if the word appears or not appear, or does the number of times the word appears matter? (Multinomial Naïve Bayes)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -926,13 +960,29 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ng_vec_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ng_vec_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">count_vec</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+
+<span class="n">ex_sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;1x24257 sparse matrix of type &#39;&lt;class &#39;numpy.int64&#39;&gt;&#39;
-	with 84 stored elements in Compressed Sparse Row format&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ex_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ng_vec_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">count_vec</span><span class="o">.</span><span class="n">vocabulary_</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ex_sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/util/_decorators.py:331,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">_format_argument_list</span><span class="p">(</span><span class="n">allow_args</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: sort_values() missing 1 required positional argument: &#39;by&#39;
 </pre></div>
 </div>
 </div>
@@ -956,9 +1006,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>THis tells us that from the word counts we are able to distinguish between computer graphics articles and cryptography articles very well.</p>
 </section>
-<section id="id2">
-<h2><span class="section-number">37.4. </span><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="tf-idf">
+<h2><span class="section-number">37.4. </span>TF-IDF<a class="headerlink" href="#tf-idf" title="Permalink to this headline">#</a></h2>
 <p>We wanted the TfidfVectorizer, not the transformer, so that it accepts documents not features. We will again, instantiate the object and then fit on the whole dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1225,6 +1276,17 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ idf = \log \frac{1 +n }{1 +df} + 1 \]</div>
 <p>In this implementation, each row is the normalized as well, to keep them small, so that documents of different sizes are more comparable.  For example, if we return to what we did last week.</p>
+</section>
+<section id="questions-after-class">
+<h2><span class="section-number">37.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="what-are-unique-tokens-vs-total-vocabulary">
+<h3><span class="section-number">37.6.1. </span>What are unique tokens vs total vocabulary?<a class="headerlink" href="#what-are-unique-tokens-vs-total-vocabulary" title="Permalink to this headline">#</a></h3>
+<p>the total vocabulary is the unique tokens across all documents.  THe number of values stored in the whole matrix is the sume of the number of unique tokens across each word.  In that number, any word that appears in more than one document is counted more than once.</p>
+</section>
+<section id="does-it-only-take-into-account-if-the-word-appears-or-not-appear-or-does-the-number-of-times-the-word-appears-matter-multinomial-naive-bayes">
+<h3><span class="section-number">37.6.2. </span>Does it only take into account if the word appears or not appear, or does the number of times the word appears matter? (Multinomial Naïve Bayes)<a class="headerlink" href="#does-it-only-take-into-account-if-the-word-appears-or-not-appear-or-does-the-number-of-times-the-word-appears-matter-multinomial-naive-bayes" title="Permalink to this headline">#</a></h3>
+<p>It takes the counts.</p>
+</section>
 </section>
 </section>
 
