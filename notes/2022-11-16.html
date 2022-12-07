@@ -906,12 +906,12 @@ sv_df = pd.DataFrame(svm_opt.cv_results_)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.977381
-std       0.012839
-min       0.950000
+mean      0.979762
+std       0.009649
+min       0.966667
 25%       0.975000
-50%       0.983333
-75%       0.983333
+50%       0.979167
+75%       0.989583
 max       0.991667
 Name: mean_test_score, dtype: float64
 </pre></div>
@@ -926,13 +926,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.966944
-std       0.001504
-min       0.966667
-25%       0.966667
-50%       0.966667
-75%       0.966667
-max       0.975000
+mean      0.934907
+std       0.004486
+min       0.933333
+25%       0.933333
+50%       0.933333
+75%       0.933333
+max       0.950000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -958,7 +958,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2b938cfac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae08c87d90&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1085,7 +1085,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.975, 0.9916666666666668)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.95, 0.9916666666666668)
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1097,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9470657020850711, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9110047011380431, 0.9889952988619568)
 </pre></div>
 </div>
 </div>
@@ -1110,7 +1110,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9661663993751132, 0.9838336006248868)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9376686037557244, 0.9623313962442755)
 </pre></div>
 </div>
 </div>
@@ -1142,7 +1142,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9333333333333333
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
 </pre></div>
 </div>
 </div>

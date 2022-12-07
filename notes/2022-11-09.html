@@ -976,7 +976,7 @@ params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_dep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -989,7 +989,7 @@ params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_dep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1042,10 +1042,10 @@ dt_5cv_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001907</td>
-      <td>0.000506</td>
-      <td>0.001166</td>
-      <td>0.000027</td>
+      <td>0.002910</td>
+      <td>0.001315</td>
+      <td>0.001710</td>
+      <td>0.000129</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1061,10 +1061,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001535</td>
-      <td>0.000019</td>
-      <td>0.001137</td>
-      <td>0.000021</td>
+      <td>0.002294</td>
+      <td>0.000162</td>
+      <td>0.001557</td>
+      <td>0.000128</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1080,10 +1080,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001530</td>
-      <td>0.000013</td>
-      <td>0.001126</td>
-      <td>0.000010</td>
+      <td>0.002347</td>
+      <td>0.000282</td>
+      <td>0.001795</td>
+      <td>0.000153</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1099,10 +1099,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001529</td>
-      <td>0.000010</td>
-      <td>0.001134</td>
-      <td>0.000013</td>
+      <td>0.002257</td>
+      <td>0.000305</td>
+      <td>0.001836</td>
+      <td>0.000250</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1118,10 +1118,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001530</td>
-      <td>0.000006</td>
-      <td>0.001132</td>
-      <td>0.000010</td>
+      <td>0.002459</td>
+      <td>0.000527</td>
+      <td>0.001693</td>
+      <td>0.000141</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1175,7 +1175,7 @@ dt_5cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f426285c2b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6000a29340&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1308,7 +1308,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f42625c3220&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6000792f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1324,7 +1324,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f425fedd940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5ffe0ab9a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1339,7 +1339,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1364,7 +1364,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -1413,7 +1413,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1425,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;gini&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 4, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>

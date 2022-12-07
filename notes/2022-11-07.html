@@ -1006,7 +1006,7 @@ each section gets used for testing.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.93333333, 1.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.96666667, 1.        ])
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1020,7 @@ to get a single estimate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666668
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9600000000000002
 </pre></div>
 </div>
 </div>
@@ -1376,10 +1376,10 @@ dt_opt = GridSearchCV(dt,param_grid)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00159869, 0.00157061, 0.00157895, 0.00158377]),
- &#39;std_fit_time&#39;: array([8.28109242e-05, 1.54972810e-05, 1.16835808e-05, 1.82519661e-05]),
- &#39;mean_score_time&#39;: array([0.00115013, 0.00112891, 0.00113134, 0.00112991]),
- &#39;std_score_time&#39;: array([4.02321727e-05, 1.29160391e-05, 1.40763104e-05, 1.14871249e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00242271, 0.00214171, 0.00241189, 0.00225167]),
+ &#39;std_fit_time&#39;: array([2.96384295e-04, 6.85437451e-05, 2.22214476e-04, 2.16762557e-04]),
+ &#39;mean_score_time&#39;: array([0.0020649 , 0.00164895, 0.00162616, 0.00151277]),
+ &#39;std_score_time&#39;: array([7.95302106e-04, 1.19984055e-04, 2.16179615e-04, 4.97903396e-05]),
  &#39;param_max_depth&#39;: masked_array(data=[2, 3, 4, 5],
               mask=[False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1391,11 +1391,11 @@ dt_opt = GridSearchCV(dt,param_grid)
  &#39;split0_test_score&#39;: array([0.93333333, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split1_test_score&#39;: array([0.96666667, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split2_test_score&#39;: array([0.9       , 0.93333333, 0.9       , 0.9       ]),
- &#39;split3_test_score&#39;: array([0.86666667, 1.        , 0.93333333, 0.96666667]),
+ &#39;split3_test_score&#39;: array([0.86666667, 1.        , 1.        , 1.        ]),
  &#39;split4_test_score&#39;: array([1., 1., 1., 1.]),
- &#39;mean_test_score&#39;: array([0.93333333, 0.97333333, 0.95333333, 0.96      ]),
- &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03399346, 0.03265986]),
- &#39;rank_test_score&#39;: array([4, 1, 3, 2], dtype=int32)}
+ &#39;mean_test_score&#39;: array([0.93333333, 0.97333333, 0.96666667, 0.96666667]),
+ &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03651484, 0.03651484]),
+ &#39;rank_test_score&#39;: array([4, 1, 2, 2], dtype=int32)}
 </pre></div>
 </div>
 </div>
@@ -1445,10 +1445,10 @@ dt_opt = GridSearchCV(dt,param_grid)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001599</td>
-      <td>0.000083</td>
-      <td>0.001150</td>
-      <td>0.000040</td>
+      <td>0.002423</td>
+      <td>0.000296</td>
+      <td>0.002065</td>
+      <td>0.000795</td>
       <td>2</td>
       <td>{'max_depth': 2}</td>
       <td>0.933333</td>
@@ -1462,10 +1462,10 @@ dt_opt = GridSearchCV(dt,param_grid)
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001571</td>
-      <td>0.000015</td>
-      <td>0.001129</td>
-      <td>0.000013</td>
+      <td>0.002142</td>
+      <td>0.000069</td>
+      <td>0.001649</td>
+      <td>0.000120</td>
       <td>3</td>
       <td>{'max_depth': 3}</td>
       <td>0.966667</td>
@@ -1479,36 +1479,36 @@ dt_opt = GridSearchCV(dt,param_grid)
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001579</td>
-      <td>0.000012</td>
-      <td>0.001131</td>
-      <td>0.000014</td>
+      <td>0.002412</td>
+      <td>0.000222</td>
+      <td>0.001626</td>
+      <td>0.000216</td>
       <td>4</td>
       <td>{'max_depth': 4}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.900000</td>
-      <td>0.933333</td>
+      <td>1.000000</td>
       <td>1.0</td>
-      <td>0.953333</td>
-      <td>0.033993</td>
-      <td>3</td>
+      <td>0.966667</td>
+      <td>0.036515</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001584</td>
-      <td>0.000018</td>
-      <td>0.001130</td>
-      <td>0.000011</td>
+      <td>0.002252</td>
+      <td>0.000217</td>
+      <td>0.001513</td>
+      <td>0.000050</td>
       <td>5</td>
       <td>{'max_depth': 5}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.900000</td>
-      <td>0.966667</td>
+      <td>1.000000</td>
       <td>1.0</td>
-      <td>0.960000</td>
-      <td>0.032660</td>
+      <td>0.966667</td>
+      <td>0.036515</td>
       <td>2</td>
     </tr>
   </tbody>
@@ -1621,10 +1621,10 @@ km_opt = GridSearchCV(km,param_grid)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.006822</td>
-      <td>0.001023</td>
-      <td>0.001104</td>
-      <td>0.000016</td>
+      <td>0.010593</td>
+      <td>0.000831</td>
+      <td>0.001733</td>
+      <td>0.000126</td>
       <td>2</td>
       <td>{'n_clusters': 2}</td>
       <td>-13.417292</td>
@@ -1638,87 +1638,87 @@ km_opt = GridSearchCV(km,param_grid)
     </tr>
     <tr>
       <th>1</th>
-      <td>0.008893</td>
-      <td>0.000265</td>
-      <td>0.001102</td>
-      <td>0.000017</td>
+      <td>0.017877</td>
+      <td>0.002112</td>
+      <td>0.001948</td>
+      <td>0.000145</td>
       <td>3</td>
       <td>{'n_clusters': 3}</td>
       <td>-9.062000</td>
       <td>-14.931959</td>
       <td>-18.932342</td>
       <td>-23.708943</td>
-      <td>-19.008131</td>
-      <td>-17.128675</td>
-      <td>4.898618</td>
+      <td>-19.554577</td>
+      <td>-17.237964</td>
+      <td>4.945204</td>
       <td>5</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.010515</td>
-      <td>0.000463</td>
-      <td>0.001120</td>
-      <td>0.000019</td>
+      <td>0.020248</td>
+      <td>0.001316</td>
+      <td>0.002083</td>
+      <td>0.000274</td>
       <td>4</td>
       <td>{'n_clusters': 4}</td>
       <td>-9.062000</td>
-      <td>-11.483458</td>
+      <td>-11.395150</td>
       <td>-13.714817</td>
       <td>-17.596427</td>
       <td>-15.673617</td>
-      <td>-13.506064</td>
-      <td>3.010434</td>
+      <td>-13.488402</td>
+      <td>3.022484</td>
       <td>4</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.011747</td>
-      <td>0.000395</td>
-      <td>0.001090</td>
-      <td>0.000012</td>
+      <td>0.019876</td>
+      <td>0.000812</td>
+      <td>0.001848</td>
+      <td>0.000193</td>
       <td>5</td>
       <td>{'n_clusters': 5}</td>
       <td>-9.062000</td>
       <td>-10.723786</td>
       <td>-10.996277</td>
-      <td>-18.193474</td>
+      <td>-17.596427</td>
       <td>-15.673617</td>
-      <td>-12.929831</td>
-      <td>3.429277</td>
+      <td>-12.810421</td>
+      <td>3.249602</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.013296</td>
-      <td>0.000393</td>
-      <td>0.001107</td>
-      <td>0.000012</td>
+      <td>0.023040</td>
+      <td>0.001193</td>
+      <td>0.001811</td>
+      <td>0.000262</td>
       <td>6</td>
       <td>{'n_clusters': 6}</td>
       <td>-9.062000</td>
-      <td>-7.618046</td>
+      <td>-7.593219</td>
       <td>-10.996277</td>
       <td>-12.915486</td>
-      <td>-11.476818</td>
-      <td>-10.413725</td>
-      <td>1.863938</td>
+      <td>-12.085484</td>
+      <td>-10.530493</td>
+      <td>1.954850</td>
       <td>2</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.014608</td>
-      <td>0.000448</td>
-      <td>0.001131</td>
-      <td>0.000018</td>
+      <td>0.025179</td>
+      <td>0.001147</td>
+      <td>0.001896</td>
+      <td>0.000280</td>
       <td>7</td>
       <td>{'n_clusters': 7}</td>
       <td>-9.062000</td>
-      <td>-7.286453</td>
-      <td>-10.500941</td>
-      <td>-12.099140</td>
-      <td>-11.476818</td>
-      <td>-10.085070</td>
-      <td>1.734665</td>
+      <td>-7.015523</td>
+      <td>-9.066973</td>
+      <td>-12.183027</td>
+      <td>-11.084948</td>
+      <td>-9.682494</td>
+      <td>1.794222</td>
       <td>1</td>
     </tr>
   </tbody>
