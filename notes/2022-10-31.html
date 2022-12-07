@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -854,14 +859,14 @@ for other types of centers.</p>
 <p>Clustering is a stochastic (random) algorithm, so it can be a little harder to debug the models and measure performance.  For this reason, we are going to lootk a little more closely at what it actuall <em>does</em> than we have with classification or regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import itertools as it
+import seaborn as sns
+from sklearn import datasets
+from sklearn.cluster import KMeans
+import string
+import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -880,40 +885,40 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">offset</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>C = 4
+N = 200
+offset = 2
+spacing = 2
 
-<span class="c1"># choose the first C uppcase letters</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">C</span><span class="p">])</span>
-<span class="c1"># get the number of grid locations needed</span>
-<span class="n">G</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span>
-<span class="c1"># get the locations for each axis</span>
-<span class="n">grid_locs</span> <span class="o">=</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="o">+</span><span class="n">G</span><span class="o">*</span><span class="n">spacing</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
-<span class="c1"># compute grid (i,j) for each combination of values above &amp; keep C values</span>
-<span class="n">means</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">grid_locs</span><span class="p">,</span><span class="n">grid_locs</span><span class="p">)][:</span><span class="n">C</span><span class="p">]</span>
-<span class="c1"># store in dictionary with class labels</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">means</span><span class="p">)}</span>
-<span class="c1"># random variances</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span><span class="o">*</span><span class="mf">.5</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">4</span><span class="p">))}</span>
+# choose the first C uppcase letters
+classes = list(string.ascii_uppercase[:C])
+# get the number of grid locations needed
+G = int(np.ceil(np.sqrt(C)))
+# get the locations for each axis
+grid_locs = a = np.linspace(offset,offset+G*spacing,G)
+# compute grid (i,j) for each combination of values above &amp; keep C values
+means = [(i,j) for i, j in it.product(grid_locs,grid_locs)][:C]
+# store in dictionary with class labels
+mu = {c: i for c, i in zip(classes,means)}
+# random variances
+sigma = {c: i*.5 for c, i in zip(classes,np.random.random(4))}
 
-<span class="c1">#randomly choose a class for each point, with equal probability</span>
-<span class="n">clusters_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="c1"># draw a randome point according to the means from above for each point</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">c</span><span class="p">],</span><span class="mf">.25</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clusters_true</span><span class="p">]</span>
-<span class="c1"># rounding to make display neater later</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+#randomly choose a class for each point, with equal probability
+clusters_true = np.random.choice(classes,N)
+# draw a randome point according to the means from above for each point
+data = [np.random.multivariate_normal(mu[c],.25*np.eye(2)) for c in clusters_true]
+# rounding to make display neater later
+df = pd.DataFrame(data = data,columns = [&#39;x&#39; + str(i) for i in range(2)]).round(2)
 
-<span class="c1"># store in dataFram</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;true_cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters_true</span>
+# store in dataFram
+df[&#39;true_cluster&#39;] = clusters_true
 
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;true_cluster&#39;</span><span class="p">)</span>
+sns.pairplot(data =df, hue=&#39;true_cluster&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f195004b190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9ed4fdf550&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-31_3_1.png" src="../_images/2022-10-31_3_1.png" />
@@ -921,7 +926,7 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.head()
 </pre></div>
 </div>
 </div>
@@ -952,33 +957,33 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
   <tbody>
     <tr>
       <th>0</th>
-      <td>6.69</td>
-      <td>6.40</td>
-      <td>D</td>
+      <td>1.67</td>
+      <td>5.27</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>6.00</td>
-      <td>1.95</td>
-      <td>C</td>
+      <td>1.67</td>
+      <td>2.07</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.52</td>
-      <td>5.88</td>
+      <td>2.08</td>
+      <td>6.01</td>
       <td>B</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6.55</td>
-      <td>6.50</td>
-      <td>D</td>
+      <td>1.52</td>
+      <td>6.73</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.95</td>
-      <td>2.33</td>
-      <td>A</td>
+      <td>1.74</td>
+      <td>5.45</td>
+      <td>B</td>
     </tr>
   </tbody>
 </table>
@@ -990,17 +995,17 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 <p>Next, we’ll pick 4 random points to be the starting points as the means.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">mu0</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-<span class="n">mu0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>K = 4
+mu0 = df.sample(n=K).values
+mu0
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.2, 5.66, &#39;B&#39;],
-       [5.68, 3.13, &#39;C&#39;],
-       [4.9, 1.18, &#39;C&#39;],
-       [2.02, 2.15, &#39;A&#39;]], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.62, 6.32, &#39;B&#39;],
+       [6.27, 1.7, &#39;C&#39;],
+       [1.82, 5.85, &#39;B&#39;],
+       [3.09, 1.81, &#39;A&#39;]], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -1009,7 +1014,7 @@ One tricky part is <a class="reference external" href="https://docs.python.org/3
 first by taking the difference, squaring it, then summing along each row.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[((df-mu_i)**2).sum(axis=1) for mu_i in mu0]
 </pre></div>
 </div>
 </div>
@@ -1036,10 +1041,10 @@ first by taking the difference, squaring it, then summing along each row.</p>
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">]</span>
 
-<span class="nn">Cell In [5], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[5], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">]</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
@@ -1128,7 +1133,7 @@ for each point in the dataset with the distance from that point to the
 corresponding mean. We can stack these into one DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i in mu0],axis=1).head()
 </pre></div>
 </div>
 </div>
@@ -1155,10 +1160,10 @@ corresponding mean. We can stack these into one DataFrame.</p>
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).head</span><span class="nt">()</span>
 
-<span class="nn">Cell In [6], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[6], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).head</span><span class="nt">()</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
@@ -1247,7 +1252,7 @@ mean is closest, for each point.  Using <code class="docutils literal notranslat
 minimum across each row and returns the index (location) of that minimum.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i in mu0],axis=1).idxmin(axis=1).head()
 </pre></div>
 </div>
 </div>
@@ -1274,10 +1279,10 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin(axis=1).head</span><span class="nt">()</span>
 
-<span class="nn">Cell In [7], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[7], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin(axis=1).head</span><span class="nt">()</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
@@ -1364,9 +1369,9 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <p>We’ll save all of this in a column named <code class="docutils literal notranslate"><span class="pre">'0'</span></code>. Since it is our 0th iteration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&#39;0&#39;] = pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i in mu0],axis=1).idxmin(axis=1)
 
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+df.head()
 </pre></div>
 </div>
 </div>
@@ -1393,11 +1398,11 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="nn">----&gt; 1 df[&#39;0&#39;] = pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin</span><span class="nt">(axis=1)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="nn">Cell In [8], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[8], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="nn">----&gt; 1 df[&#39;0&#39;] = pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin</span><span class="nt">(axis=1)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
@@ -1492,17 +1497,17 @@ minimum across each row and returns the index (location) of that minimum.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span>
-<span class="k">def</span> <span class="nf">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
-    <span class="n">mu_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">data_cols</span><span class="p">)</span>
-    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span>
-    <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mu&#39;</span>
-    <span class="k">return</span> <span class="n">mu_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_cols = [&#39;x0&#39;,&#39;x1&#39;]
+def mu_to_df(mu,i):
+    mu_df = pd.DataFrame(mu,columns=data_cols)
+    mu_df[&#39;iteration&#39;] = str(i)
+    mu_df[&#39;class&#39;] = [&#39;M&#39;+str(i) for i in range(K)]
+    mu_df[&#39;type&#39;] = &#39;mu&#39;
+    return mu_df
 
-<span class="c1"># color maps, we select every other value from this palette that has 8 values &amp; is paird</span>
-<span class="n">cmap_pt</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># starting from 1</span>
-<span class="n">cmap_mu</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span><span class="mi">8</span><span class="p">)[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># starting form 0</span>
+# color maps, we select every other value from this palette that has 8 values &amp; is paird
+cmap_pt = sns.color_palette(&#39;tab20&#39;,8)[1::2] # starting from 1
+cmap_mu = sns.color_palette(&#39;tab20&#39;,8)[0::2] # starting form 0
 </pre></div>
 </div>
 </div>
@@ -1513,18 +1518,18 @@ can pass it to the <code class="docutils literal notranslate"><span class="pre">
 plotting functions go on the same figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
-                       <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sfig = sns.scatterplot(data=df,x=&#39;x0&#39;,y=&#39;x1&#39;, hue=&#39;0&#39;,
+                       palette =cmap_pt,legend=False)
+mu_df = mu_to_df(mu0,0)
+sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
+                palette=cmap_mu,legend=False, ax=sfig)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                        <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -1601,15 +1606,15 @@ Now, we can compute new means of the points assigned to each cluster, using
 groupby.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
-<span class="n">mu1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mu1 = df.groupby(&#39;0&#39;)[data_cols].mean().values
+mu1
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mu1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mu1</span>
 
@@ -1661,18 +1666,18 @@ groupby.</p>
 <p>We can plot these again, the same data, but with the new means.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
-                       <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sfig = sns.scatterplot(data=df,x=&#39;x0&#39;,y=&#39;x1&#39;, hue=&#39;0&#39;,
+                       palette =cmap_pt,legend=False)
+mu_df = mu_to_df(mu1,0)
+sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
+                palette=cmap_mu,legend=False, ax=sfig)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                        <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -1747,14 +1752,14 @@ now points in one color that are assigned to other clusters.</p>
 <p>So, again we can update the assignments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu1</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&#39;1&#39;] = pd.concat([((df[data_cols]-mu_i)**2).sum(axis=1) for mu_i in mu1],axis=1).idxmin(axis=1)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="nn">----&gt; 1 df[&#39;1&#39;] = pd.concat([((df[data_cols]-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu1],axis=1).idxmin</span><span class="nt">(axis=1)</span>
 
 <span class="ne">NameError</span>: name &#39;mu1&#39; is not defined
@@ -1765,18 +1770,18 @@ now points in one color that are assigned to other clusters.</p>
 <p>And plot again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
-                       <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
-                <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sfig = sns.scatterplot(data=df,x=&#39;x0&#39;,y=&#39;x1&#39;, hue=&#39;0&#39;,
+                       palette =cmap_pt,legend=False)
+mu_df = mu_to_df(mu,0)
+sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
+                palette=cmap_mu,legend=False, ax=sfig)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>                        <span class="n">palette</span> <span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -1857,45 +1862,45 @@ was okay for the steps to be in the other order.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span><span class="mi">1</span>
-<span class="n">mu_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu0</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span><span class="n">i</span><span class="p">)]</span>
-<span class="n">cur_old</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cur_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="k">while</span> <span class="nb">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cur_old</span><span class="p">]</span> <span class="o">!=</span><span class="n">df</span><span class="p">[</span><span class="n">cur_new</span><span class="p">])</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-    <span class="n">cur_old</span> <span class="o">=</span> <span class="n">cur_new</span>
-    <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
-    <span class="n">cur_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="c1">#     update the means and plot with current generating assignments</span>
-    <span class="n">mu</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cur_old</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">mu_df</span> <span class="o">=</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">mu_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>i =1
+mu_list = [mu_to_df(mu0,i), mu_to_df(mu1,i)]
+cur_old = str(i-1)
+cur_new = str(i)
+while sum(df[cur_old] !=df[cur_new]) &gt;0:
+    cur_old = cur_new
+    i +=1
+    cur_new = str(i)
+        #     update the means and plot with current generating assignments
+    mu = df.groupby(cur_old)[data_cols].mean().values
+    mu_df = mu_to_df(mu,i)
+    mu_list.append(mu_df)
 
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">cur_old</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-
-    <span class="c1">#     update the assigments and plot with the associated means</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">cur_new</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([((</span><span class="n">df</span><span class="p">[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">sfig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">cur_new</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_pt</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">mu_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    fig = plt.figure()
+    sfig = sns.scatterplot(data =df,x=&#39;x0&#39;,y=&#39;x1&#39;,hue=cur_old,palette=cmap_pt,legend=False)
+    sns.scatterplot(data =mu_df,x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,palette=cmap_mu,ax=sfig,legend=False)
 
 
-<span class="n">n_iter</span> <span class="o">=</span> <span class="n">i</span>
+    #     update the assigments and plot with the associated means
+    df[cur_new] = pd.concat([((df[data_cols]-mu_i)**2).sum(axis=1) for mu_i in mu],axis=1).idxmin(axis=1)
+    fig = plt.figure()
+    sfig = sns.scatterplot(data =df,x=&#39;x0&#39;,y=&#39;x1&#39;,hue=cur_new,palette=cmap_pt,legend=False)
+    sns.scatterplot(data =mu_df,x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,palette=cmap_mu,ax=sfig,legend=False)
+
+
+n_iter = i
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">i</span> <span class="o">=</span><span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mu_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu0</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">mu_to_df</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span><span class="n">i</span><span class="p">)]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">cur_old</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cur_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-<span class="nn">Cell In [9], line 3,</span> in <span class="ni">mu_to_df</span><span class="nt">(mu, i)</span>
+<span class="nn">Cell In[9], line 3,</span> in <span class="ni">mu_to_df</span><span class="nt">(mu, i)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">mu_to_df</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">mu_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">data_cols</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>

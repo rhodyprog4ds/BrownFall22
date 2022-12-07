@@ -1,0 +1,1604 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>38. Neural Networks &#8212; Programming for Data Science at URI Fall 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Portfolio Setup, Data Science, and Python" href="../assignments/01-python-syllabus.html" />
+    <link rel="prev" title="37. Classification of Text Data" href="2022-11-23.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/310_2021.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Data Science at URI Fall 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   About
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/achievements.html">
+   Data Science Achievements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Help Hours and Course Communications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-07.html">
+   1. Welcome to Programming to Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-12.html">
+   2. Reading Docstrings, Object Inspection, and Loading Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-14.html">
+   3. Data Frames and other iterables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-16.html">
+   4. Iterables and Indexing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-19.html">
+   5. Getting Started with Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-21.html">
+   6. Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-23.html">
+   7. More EDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-26.html">
+   8. Intro to Data Cleaning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-28.html">
+   9. Fixing Data representations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-09-30.html">
+   10. Cleaning Data: fixing values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-03.html">
+   11. Building Datasets from Multiple Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-05.html">
+   12. Web Scraping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-07.html">
+   13. Getting Data from Databases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-12.html">
+   14. Intro to Machine Learning: Evaluation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-14.html">
+   15. Performance Metrics continued
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-17.html">
+   16. Modeling and Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-19.html">
+   17. Classification with Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-21.html">
+   18. Decision Trees
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-24.html">
+   19. Feedback &amp; Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-26.html">
+   21. Interpretting Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-28.html">
+   22. Sparse and Polynomial Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-10-31.html">
+   23. Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-02.html">
+   24. Clustering with Sci-kit Learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-04.html">
+   30. Clutering Evalutation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-07.html">
+   31. ML Task Review Cross Validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-09.html">
+   32. Model Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-14.html">
+   33. Model Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-16.html">
+   34. Model Comparison: when do differences matter?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-18.html">
+   35. Learning Curves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-21.html">
+   36. Intro to NLP- representing text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-11-23.html">
+   37. Classification of Text Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   38. Neural Networks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/01-python-syllabus.html">
+   1. Portfolio Setup, Data Science, and Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/02-python-access.html">
+   2. Assignment 2: Practicing Python and Accessing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/03-eda.html">
+   3. Assignment 3: Exploratory Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/04-prepare.html">
+   4. Assignment 4: Cleaning Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/05-construct.html">
+   5. Assignment 5: Constructing Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/06-evaluate.html">
+   6. Assignment 6: Auditing Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/07-classification.html">
+   7. Assignment 7: Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/08-regression.html">
+   8. Assignment 8: Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/09-clustering.html">
+   9. Assignment 9
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/10-optimize.html">
+   10. Assignment 10: Tuning Model Parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/11-compare.html">
+   11. Assignment 11 Model Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/12-fake-news.html">
+   12. Assignment 12: Fake News
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/index.html">
+   Portfolio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/formatting.html">
+   Formatting Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check1ideas.html">
+   Portfolio Check 1 Ideas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check2ideas.html">
+   Check 2 Ideas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/index.html">
+   FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/debugging.html">
+   Code Errors
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/python.html">
+   References on Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/operations.html">
+   How Tos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/datasets.html">
+   Data Sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/terminal.html">
+   Terminals and Environments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from FA2020 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall21/letters/">
+   Advice from FA2021 Students
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../letters/index.html">
+   Letters to Future students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/rhodyprog4ds/BrownFall22/main?urlpath=tree/notes/2022-12-05.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22//issues/new?title=Issue%20on%20page%20%2Fnotes/2022-12-05.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/rhodyprog4ds/BrownFall22/edit/main/notes/2022-12-05.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2022-12-05.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/notes/2022-12-05.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   38.1. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roughly-how-does-the-model-know-to-use-certain-functions-as-the-fitting-becomes-more-complex-e-g-sin-x-ln-x-e-x">
+     38.1.1. Roughly, how does the model know to use certain functions as the fitting becomes more complex (e.g. sin(x), ln(x), e^x)?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-doing-the-score-on-the-mlp-does-the-limit-vary-or-does-it-have-a-set-limit-on-its-own">
+     38.1.2. when doing the .score on the mlp does the limit vary or does it have a set limit on its own?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-tensorflow-used-for-that-scikit-cant-do">
+     38.1.3. What is tensorflow used for that scikit cant do?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-you-say-weight-what-does-that-mean">
+     38.1.4. when you say weight, what does that mean?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-an-artificial-neuron">
+     38.1.5. what is an artificial neuron?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-real-life-problems-require-tensorflow">
+     38.1.6. what real life problems require tensorflow?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-the-hidden-layers-of-the-neural-network-represent">
+     38.1.7. What do the hidden layers of the neural network represent?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-best-way-to-optimize-a-neural-net-would-it-be-jut-adding-more-layers">
+     38.1.8. What is the best way to optimize a neural net? would it be jut adding more layers?﻿
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-the-weights-given-to-the-hidden-layers-initially-random">
+     38.1.9. Are the weights given to the hidden layers initially random?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Neural Networks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   38.1. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roughly-how-does-the-model-know-to-use-certain-functions-as-the-fitting-becomes-more-complex-e-g-sin-x-ln-x-e-x">
+     38.1.1. Roughly, how does the model know to use certain functions as the fitting becomes more complex (e.g. sin(x), ln(x), e^x)?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-doing-the-score-on-the-mlp-does-the-limit-vary-or-does-it-have-a-set-limit-on-its-own">
+     38.1.2. when doing the .score on the mlp does the limit vary or does it have a set limit on its own?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-tensorflow-used-for-that-scikit-cant-do">
+     38.1.3. What is tensorflow used for that scikit cant do?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-you-say-weight-what-does-that-mean">
+     38.1.4. when you say weight, what does that mean?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-an-artificial-neuron">
+     38.1.5. what is an artificial neuron?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-real-life-problems-require-tensorflow">
+     38.1.6. what real life problems require tensorflow?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-the-hidden-layers-of-the-neural-network-represent">
+     38.1.7. What do the hidden layers of the neural network represent?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-best-way-to-optimize-a-neural-net-would-it-be-jut-adding-more-layers">
+     38.1.8. What is the best way to optimize a neural net? would it be jut adding more layers?﻿
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-the-weights-given-to-the-hidden-layers-initially-random">
+     38.1.9. Are the weights given to the hidden layers initially random?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-networks">
+<h1><span class="section-number">38. </span>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">#</a></h1>
+<p>We started thinking about machine learning wiht the idea that the basic idea is
+that we assume that our target variable (<span class="math notranslate nohighlight">\(y_i\)</span>) is related to the features <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>
+by some function (for sample <span class="math notranslate nohighlight">\(i\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[ y_i =f(\mathbf{x}_i)\]</div>
+<p>But we don’t know that function exactly, so we assume a type (a decision
+tree, a boundary for SVM, a probability distribution) that has some parameters
+<span class="math notranslate nohighlight">\(\theta\)</span> and then use a machine
+learning algorithm <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> to estimate the parameters for <span class="math notranslate nohighlight">\(f\)</span>.  In the
+decision tree the parameters are the thresholds to compare to, in the GaussianNB the parameters are the mean and variance, in SVM it’s the support vectors that define the margin.</p>
+<div class="math notranslate nohighlight">
+\[\theta = \mathcal{A}(X,y) \]</div>
+<p>That we can use to test on our test data:</p>
+<div class="math notranslate nohighlight">
+\[ \hat{y}_i = f(x_i;\theta) \]</div>
+<p>A neural net allows us to not assume a specific form for <span class="math notranslate nohighlight">\(f\)</span> first, it does
+universal function approximation.  For one hidden layer and a binary classification problem:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = W_2g(W_1^T x +b_1) + b_2 \]</div>
+<p>where the function <span class="math notranslate nohighlight">\(g\)</span> is called the activation function. so we approximate some
+unknown, complicated function $f4 by taking a weighted sum of all of the inputs,
+and passing those through another, known function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.neural_network import MLPClassifier
+from sklearn import svm
+import pandas as pd
+import sklearn
+
+from sklearn import datasets
+import matplotlib.pyplot as plt
+from sklearn import model_selection
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re going to use the digits dataset again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = datasets.load_digits()
+digits_X = digits.data
+digits_y = digits.target
+X_train, X_test, y_train, y_test = model_selection.train_test_split(digits_X,digits_y)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits.images[0]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.,  0.,  5., 13.,  9.,  1.,  0.,  0.],
+       [ 0.,  0., 13., 15., 10., 15.,  5.,  0.],
+       [ 0.,  3., 15.,  2.,  0., 11.,  8.,  0.],
+       [ 0.,  4., 12.,  0.,  0.,  8.,  8.,  0.],
+       [ 0.,  5.,  8.,  0.,  0.,  9.,  8.,  0.],
+       [ 0.,  4., 11.,  0.,  1., 12.,  7.,  0.],
+       [ 0.,  2., 14.,  5., 10., 12.,  0.,  0.],
+       [ 0.,  0.,  6., 13., 10.,  0.,  0.,  0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sklearn provides an estimator for the Multi-Llayer Perceptron (MLP). We can see one with one layer to
+start.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp = MLPClassifier(
+  hidden_layer_sizes=(16),
+  max_iter=100,
+  alpha=1e-4,
+  solver=&quot;lbfgs&quot;,
+  verbose=10,
+  random_state=1,
+  learning_rate_init=0.1,
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp.fit(X_train,y_train).score(X_test,y_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =         1210     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  9.21925D+00    |proj g|=  7.00278D+00
+
+At iterate    1    f=  8.16567D+00    |proj g|=  7.22122D+00
+
+At iterate    2    f=  3.16228D+00    |proj g|=  1.95656D+00
+
+At iterate    3    f=  2.36620D+00    |proj g|=  3.94812D-01
+
+At iterate    4    f=  2.25501D+00    |proj g|=  2.35379D-01
+
+At iterate    5    f=  2.12211D+00    |proj g|=  2.92144D-01
+
+At iterate    6    f=  1.97474D+00    |proj g|=  3.52230D-01
+
+At iterate    7    f=  1.71572D+00    |proj g|=  3.81059D-01
+
+At iterate    8    f=  1.55334D+00    |proj g|=  5.65391D-01
+
+At iterate    9    f=  1.49638D+00    |proj g|=  3.19177D-01
+
+At iterate   10    f=  1.42795D+00    |proj g|=  2.96076D-01
+
+At iterate   11    f=  1.31674D+00    |proj g|=  2.97448D-01
+
+At iterate   12    f=  1.18559D+00    |proj g|=  3.85525D-01
+
+At iterate   13    f=  1.11287D+00    |proj g|=  7.99083D-01
+
+At iterate   14    f=  1.04537D+00    |proj g|=  1.88585D-01
+
+At iterate   15    f=  1.01329D+00    |proj g|=  1.99620D-01
+
+At iterate   16    f=  9.53658D-01    |proj g|=  2.66325D-01
+
+At iterate   17    f=  9.35570D-01    |proj g|=  9.67258D-01
+
+At iterate   18    f=  8.80148D-01    |proj g|=  4.82901D-01
+
+At iterate   19    f=  8.58957D-01    |proj g|=  2.67480D-01
+
+At iterate   20    f=  8.28073D-01    |proj g|=  2.27267D-01
+
+At iterate   21    f=  7.85066D-01    |proj g|=  1.51837D-01
+
+At iterate   22    f=  7.33833D-01    |proj g|=  4.17359D-01
+
+At iterate   23    f=  6.62096D-01    |proj g|=  2.80666D-01
+
+At iterate   24    f=  6.22671D-01    |proj g|=  1.55118D-01
+
+At iterate   25    f=  5.83785D-01    |proj g|=  3.74732D-01
+
+At iterate   26    f=  5.60433D-01    |proj g|=  1.92151D-01
+
+At iterate   27    f=  5.36484D-01    |proj g|=  3.89682D-01
+
+At iterate   28    f=  4.78129D-01    |proj g|=  6.78135D-01
+
+At iterate   29    f=  4.35061D-01    |proj g|=  4.29782D-01
+
+At iterate   30    f=  3.84642D-01    |proj g|=  3.35730D-01
+
+At iterate   31    f=  3.43653D-01    |proj g|=  6.73670D-01
+
+At iterate   32    f=  3.13295D-01    |proj g|=  2.26639D-01
+
+At iterate   33    f=  2.89135D-01    |proj g|=  1.73452D-01
+
+At iterate   34    f=  2.55814D-01    |proj g|=  1.92675D-01
+
+At iterate   35    f=  2.39728D-01    |proj g|=  1.24939D-01
+
+At iterate   36    f=  2.29163D-01    |proj g|=  1.57575D-01
+
+At iterate   37    f=  2.12515D-01    |proj g|=  1.44845D-01
+
+At iterate   38    f=  1.96142D-01    |proj g|=  2.70599D-01
+
+At iterate   39    f=  1.77150D-01    |proj g|=  1.09920D-01
+
+At iterate   40    f=  1.69804D-01    |proj g|=  7.69681D-02
+
+At iterate   41    f=  1.52945D-01    |proj g|=  1.19267D-01
+
+At iterate   42    f=  1.45562D-01    |proj g|=  1.30007D-01
+
+At iterate   43    f=  1.37365D-01    |proj g|=  4.50491D-02
+
+At iterate   44    f=  1.33056D-01    |proj g|=  3.44461D-02
+
+At iterate   45    f=  1.27950D-01    |proj g|=  3.56922D-02
+
+At iterate   46    f=  1.24212D-01    |proj g|=  2.70621D-01
+
+At iterate   47    f=  1.13569D-01    |proj g|=  7.68664D-02
+
+At iterate   48    f=  1.06837D-01    |proj g|=  3.47534D-02
+
+At iterate   49    f=  1.03010D-01    |proj g|=  4.54721D-02
+
+At iterate   50    f=  9.96327D-02    |proj g|=  1.02824D-01
+
+At iterate   51    f=  9.41223D-02    |proj g|=  4.42876D-02
+
+At iterate   52    f=  8.91933D-02    |proj g|=  3.89652D-02
+
+At iterate   53    f=  8.40355D-02    |proj g|=  6.81312D-02
+
+At iterate   54    f=  8.06535D-02    |proj g|=  7.22276D-02
+
+At iterate   55    f=  7.69370D-02    |proj g|=  4.37708D-02
+
+At iterate   56    f=  7.33028D-02    |proj g|=  3.30888D-02
+
+At iterate   57    f=  7.00503D-02    |proj g|=  3.28876D-02
+
+At iterate   58    f=  6.56914D-02    |proj g|=  6.75003D-02
+
+At iterate   59    f=  6.15310D-02    |proj g|=  3.26029D-02
+
+At iterate   60    f=  5.86790D-02    |proj g|=  4.19819D-02
+
+At iterate   61    f=  5.58096D-02    |proj g|=  3.13297D-02
+
+At iterate   62    f=  5.28047D-02    |proj g|=  5.26270D-02
+
+At iterate   63    f=  4.88258D-02    |proj g|=  7.10165D-02
+
+At iterate   64    f=  4.43120D-02    |proj g|=  3.79245D-02
+
+At iterate   65    f=  4.06057D-02    |proj g|=  4.54958D-02
+
+At iterate   66    f=  3.85864D-02    |proj g|=  2.83204D-02
+
+At iterate   67    f=  3.70383D-02    |proj g|=  3.15955D-02
+
+At iterate   68    f=  3.40589D-02    |proj g|=  8.60429D-02
+
+At iterate   69    f=  3.06572D-02    |proj g|=  3.67036D-02
+
+At iterate   70    f=  2.92022D-02    |proj g|=  1.58565D-02
+
+At iterate   71    f=  2.75288D-02    |proj g|=  2.36057D-02
+
+At iterate   72    f=  2.60770D-02    |proj g|=  3.11783D-02
+
+At iterate   73    f=  2.45529D-02    |proj g|=  1.38772D-02
+
+At iterate   74    f=  2.33554D-02    |proj g|=  1.84083D-02
+
+At iterate   75    f=  2.22323D-02    |proj g|=  3.27427D-02
+
+At iterate   76    f=  2.11953D-02    |proj g|=  3.56292D-02
+
+At iterate   77    f=  1.99439D-02    |proj g|=  1.16451D-02
+
+At iterate   78    f=  1.91792D-02    |proj g|=  1.47434D-02
+
+At iterate   79    f=  1.81569D-02    |proj g|=  1.47259D-02
+
+At iterate   80    f=  1.73501D-02    |proj g|=  3.38662D-02
+
+At iterate   81    f=  1.63177D-02    |proj g|=  1.14967D-02
+
+At iterate   82    f=  1.53945D-02    |proj g|=  8.27146D-03
+
+At iterate   83    f=  1.45545D-02    |proj g|=  1.87245D-02
+
+At iterate   84    f=  1.37315D-02    |proj g|=  2.39629D-02
+
+At iterate   85    f=  1.27995D-02    |proj g|=  9.07698D-03
+
+At iterate   86    f=  1.21681D-02    |proj g|=  1.17620D-02
+
+At iterate   87    f=  1.16438D-02    |proj g|=  1.27889D-02
+
+At iterate   88    f=  1.10019D-02    |proj g|=  1.36326D-02
+
+At iterate   89    f=  9.88821D-03    |proj g|=  1.29881D-02
+
+At iterate   90    f=  9.13469D-03    |proj g|=  1.69977D-02
+
+At iterate   91    f=  8.89800D-03    |proj g|=  3.01583D-02
+
+At iterate   92    f=  8.40574D-03    |proj g|=  8.98979D-03
+
+At iterate   93    f=  8.14393D-03    |proj g|=  7.82781D-03
+
+At iterate   94    f=  7.66767D-03    |proj g|=  1.08729D-02
+
+At iterate   95    f=  7.24862D-03    |proj g|=  1.05303D-02
+
+At iterate   96    f=  6.91236D-03    |proj g|=  1.05128D-02
+
+At iterate   97    f=  6.57109D-03    |proj g|=  6.50697D-03
+
+At iterate   98    f=  6.11302D-03    |proj g|=  7.52292D-03
+
+At iterate   99    f=  5.90814D-03    |proj g|=  9.73800D-03
+
+At iterate  100    f=  5.72466D-03    |proj g|=  3.86670D-03
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+ 1210    100    106      1     0     0   3.867D-03   5.725D-03
+  F =   5.7246614010212403E-003
+
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT                 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
+/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/neural_network/_multilayer_perceptron.py:559: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9288888888888889
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compare it  to SVM:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_clf = svm.SVC(gamma=0.001)
+svm_clf.fit(X_train, y_train)
+svm_clf.score(X_test,y_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9911111111111112
+</pre></div>
+</div>
+</div>
+</div>
+<p>We saw that the SVM performed a bit better, but this is a simple problem.
+We can also compare these based on much they store, the number of parameters
+is realted to the complexity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.prod(list(svm_clf.support_vectors_.shape))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43968
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.sum([np.prod(list(c.shape)) for c in mlp.coefs_])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1184
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp.coefs_
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.04544792,  0.12067404, -0.27379261, ...,  0.20709889,
+         -0.25885478,  0.09336685],
+        [-0.04593881,  0.03009238, -0.19069045, ...,  0.2006957 ,
+         -0.22772407, -0.17190691],
+        [ 0.21563462, -0.03506171, -0.14037903, ..., -0.13049391,
+          0.11532447, -0.08406878],
+        ...,
+        [-0.14630541, -0.05092604, -0.23553127, ...,  0.08691572,
+          0.05896777, -0.07293738],
+        [ 0.00778229, -0.10123061, -0.07661302, ..., -0.21167286,
+         -0.29100928, -0.50212262],
+        [-0.25364507,  0.10567017,  0.04284603, ...,  0.05389517,
+         -0.04506549, -0.20359177]]),
+ array([[-0.4195524 , -0.0093074 , -0.25021264,  0.43949534,  0.37288252,
+          0.11959235,  0.45675145, -0.14863813,  0.3823662 , -0.04965362],
+        [-0.239262  ,  0.43213332,  0.17866601, -0.404468  ,  0.28782924,
+          0.19171586,  0.10122457,  0.23149726, -0.22656885,  0.10900253],
+        [ 1.54655759, -0.90875783, -0.7039524 , -0.71434051,  0.55232251,
+         -0.00974752,  0.36870446, -0.1017839 ,  0.00208007, -0.19532767],
+        [-0.27703068,  0.43587954, -0.17214133,  0.38500548, -0.10370225,
+          0.02842182,  0.18492449, -0.02823487,  0.18515368,  0.28898045],
+        [-0.21108383,  0.3769415 ,  0.06037127, -0.37087844, -0.21702527,
+          0.06725108, -0.24992151, -0.31979229, -0.33310585,  0.28381626],
+        [ 0.0974864 ,  0.4444959 , -0.14989573,  0.10000688,  0.09475912,
+          0.11055364, -0.42394636,  0.23912678,  0.42933942,  0.03239476],
+        [-0.21977539,  0.85250181, -0.74086368, -0.50390521,  1.01932446,
+         -0.30844321,  0.87153834,  0.02107133,  0.31516881, -0.39491114],
+        [-0.4464278 ,  0.02180105,  1.14815854,  0.67666797, -1.47966235,
+         -0.66735156,  0.02697784, -1.09142481,  0.16178626,  0.07269495],
+        [-0.3436408 , -0.47289065, -0.52287825,  0.84986976, -0.91673238,
+          1.60885574,  0.26266081, -0.37507999,  0.00835441, -0.15579539],
+        [-0.18997893, -0.08028429, -0.23027629,  0.19228202,  0.14524723,
+         -0.41805562,  0.41693609,  0.27660523,  0.22032044,  0.20108115],
+        [-0.40909969,  0.1044448 ,  0.09427888,  0.29297614,  0.29256052,
+          0.06079772, -0.89250146,  1.19196958,  0.04293395, -0.79629869],
+        [ 0.24847219,  0.25920305,  0.30081189, -0.21607679, -0.32071566,
+          0.05870636, -0.17941319,  0.26220668,  0.10675355,  0.20740256],
+        [ 0.11336331, -0.26785745, -0.36164268, -0.14834494, -0.16960451,
+         -0.19820435,  0.35675418,  0.04240134, -0.09380787, -0.33189044],
+        [-0.19356802,  0.05330192, -0.24867485, -0.40175324, -0.07917616,
+          0.25672638, -0.04064918,  0.26758888, -0.00683205,  0.24131156],
+        [ 0.20642533,  0.11191516, -0.2364608 ,  0.06915919,  0.17356214,
+         -0.15887618,  0.42856157,  0.33811924, -0.119696  ,  0.11000346],
+        [ 0.12216544,  0.05823738, -0.42250085, -0.40678659,  0.12000189,
+         -0.21259095, -0.70513196,  0.08146846,  0.61293926,  1.27110406]])]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp64 = MLPClassifier(
+  hidden_layer_sizes=(64),
+  max_iter=100,
+  alpha=1e-4,
+  solver=&quot;lbfgs&quot;,
+  verbose=10,
+  random_state=1,
+  learning_rate_init=0.1,
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp64.fit(X_train,y_train).score(X_test,y_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =         4810     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  1.04315D+01    |proj g|=  8.11718D+00
+
+At iterate    1    f=  9.75424D+00    |proj g|=  4.90192D+00
+
+At iterate    2    f=  8.69201D+00    |proj g|=  5.11136D+00
+
+At iterate    3    f=  7.06707D+00    |proj g|=  3.08950D+00
+
+At iterate    4    f=  5.19189D+00    |proj g|=  2.03877D+00
+
+At iterate    5    f=  3.57584D+00    |proj g|=  3.71314D+00
+
+At iterate    6    f=  2.12478D+00    |proj g|=  1.07366D+00
+
+At iterate    7    f=  1.57146D+00    |proj g|=  8.76974D-01
+
+At iterate    8    f=  1.08808D+00    |proj g|=  5.25384D-01
+
+At iterate    9    f=  8.16400D-01    |proj g|=  3.57840D-01
+
+At iterate   10    f=  5.45655D-01    |proj g|=  2.26321D-01
+
+At iterate   11    f=  4.22838D-01    |proj g|=  3.20178D-01
+
+At iterate   12    f=  3.12334D-01    |proj g|=  1.47141D-01
+
+At iterate   13    f=  2.50331D-01    |proj g|=  7.55924D-02
+
+At iterate   14    f=  2.07730D-01    |proj g|=  6.73904D-02
+
+At iterate   15    f=  1.80986D-01    |proj g|=  3.24006D-01
+
+At iterate   16    f=  1.41467D-01    |proj g|=  7.96995D-02
+
+At iterate   17    f=  1.29729D-01    |proj g|=  6.53932D-02
+
+At iterate   18    f=  1.11399D-01    |proj g|=  6.69659D-02
+
+At iterate   19    f=  8.91635D-02    |proj g|=  6.50249D-02
+
+At iterate   20    f=  7.21366D-02    |proj g|=  7.72173D-02
+
+At iterate   21    f=  5.50677D-02    |proj g|=  3.18132D-02
+
+At iterate   22    f=  4.55097D-02    |proj g|=  2.76196D-02
+
+At iterate   23    f=  3.68607D-02    |proj g|=  3.59135D-02
+
+At iterate   24    f=  2.85186D-02    |proj g|=  3.14951D-02
+
+At iterate   25    f=  2.36410D-02    |proj g|=  3.79207D-02
+
+At iterate   26    f=  2.02545D-02    |proj g|=  2.27335D-02
+
+At iterate   27    f=  1.60657D-02    |proj g|=  1.31920D-02
+
+At iterate   28    f=  1.35858D-02    |proj g|=  3.52644D-02
+
+At iterate   29    f=  9.66485D-03    |proj g|=  1.71447D-02
+
+At iterate   30    f=  7.07963D-03    |proj g|=  8.19669D-03
+
+At iterate   31    f=  5.33497D-03    |proj g|=  1.32053D-02
+
+At iterate   32    f=  3.93660D-03    |proj g|=  5.83532D-03
+
+At iterate   33    f=  3.27965D-03    |proj g|=  3.31661D-03
+
+At iterate   34    f=  2.40292D-03    |proj g|=  3.52143D-03
+
+At iterate   35    f=  1.48099D-03    |proj g|=  2.19033D-03
+
+At iterate   36    f=  9.22196D-04    |proj g|=  7.35101D-03
+
+At iterate   37    f=  5.42011D-04    |proj g|=  1.55730D-03
+
+At iterate   38    f=  4.75179D-04    |proj g|=  1.06047D-03
+
+At iterate   39    f=  3.27721D-04    |proj g|=  7.00317D-04
+
+At iterate   40    f=  2.55640D-04    |proj g|=  9.74960D-04
+
+At iterate   41    f=  2.08387D-04    |proj g|=  6.43005D-04
+
+At iterate   42    f=  1.75262D-04    |proj g|=  5.02459D-04
+
+At iterate   43    f=  1.28151D-04    |proj g|=  3.34631D-04
+
+At iterate   44    f=  9.55229D-05    |proj g|=  5.68621D-04
+
+At iterate   45    f=  6.56491D-05    |proj g|=  2.45583D-04
+
+At iterate   46    f=  4.95189D-05    |proj g|=  1.91865D-04
+
+At iterate   47    f=  3.40351D-05    |proj g|=  8.12003D-05
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+ 4810     47     49      1     0     0   8.120D-05   3.404D-05
+  F =   3.4035105238823097E-005
+
+CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9733333333333334
+</pre></div>
+</div>
+</div>
+</div>
+<section id="questions-after-class">
+<h2><span class="section-number">38.1. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">#</a></h2>
+<section id="roughly-how-does-the-model-know-to-use-certain-functions-as-the-fitting-becomes-more-complex-e-g-sin-x-ln-x-e-x">
+<h3><span class="section-number">38.1.1. </span>Roughly, how does the model know to use certain functions as the fitting becomes more complex (e.g. sin(x), ln(x), e^x)?<a class="headerlink" href="#roughly-how-does-the-model-know-to-use-certain-functions-as-the-fitting-becomes-more-complex-e-g-sin-x-ln-x-e-x" title="Permalink to this headline">#</a></h3>
+<p>It does not learn an analytical form; it just approximates it.</p>
+</section>
+<section id="when-doing-the-score-on-the-mlp-does-the-limit-vary-or-does-it-have-a-set-limit-on-its-own">
+<h3><span class="section-number">38.1.2. </span>when doing the .score on the mlp does the limit vary or does it have a set limit on its own?<a class="headerlink" href="#when-doing-the-score-on-the-mlp-does-the-limit-vary-or-does-it-have-a-set-limit-on-its-own" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="what-is-tensorflow-used-for-that-scikit-cant-do">
+<h3><span class="section-number">38.1.3. </span>What is tensorflow used for that scikit cant do?<a class="headerlink" href="#what-is-tensorflow-used-for-that-scikit-cant-do" title="Permalink to this headline">#</a></h3>
+<p>Tensorflow can do more types of networks and has more options for training.  Most importantly, it has code optmizations so that you can use more complex hardware directly.</p>
+</section>
+<section id="when-you-say-weight-what-does-that-mean">
+<h3><span class="section-number">38.1.4. </span>when you say weight, what does that mean?<a class="headerlink" href="#when-you-say-weight-what-does-that-mean" title="Permalink to this headline">#</a></h3>
+<p>Weights are coefficients, or the weight of that feature.</p>
+</section>
+<section id="what-is-an-artificial-neuron">
+<h3><span class="section-number">38.1.5. </span>what is an artificial neuron?<a class="headerlink" href="#what-is-an-artificial-neuron" title="Permalink to this headline">#</a></h3>
+<p>An artificial neuron is one “unit” of calculation.  A neuron takes a weighted sum of all of its inputs (including a bias term) and passes it through an “activation function” that squashes the values of output into [0,1].</p>
+</section>
+<section id="what-real-life-problems-require-tensorflow">
+<h3><span class="section-number">38.1.6. </span>what real life problems require tensorflow?<a class="headerlink" href="#what-real-life-problems-require-tensorflow" title="Permalink to this headline">#</a></h3>
+<p>All modern ML applications are tensorflow, pytorch or similar.</p>
+</section>
+<section id="what-do-the-hidden-layers-of-the-neural-network-represent">
+<h3><span class="section-number">38.1.7. </span>What do the hidden layers of the neural network represent?<a class="headerlink" href="#what-do-the-hidden-layers-of-the-neural-network-represent" title="Permalink to this headline">#</a></h3>
+<p>We do not specify exactly what they represent up front; we can use model explanation techniques and visualization tools to examine them after the fact and try to interpret them if needed.</p>
+</section>
+<section id="what-is-the-best-way-to-optimize-a-neural-net-would-it-be-jut-adding-more-layers">
+<h3><span class="section-number">38.1.8. </span>What is the best way to optimize a neural net? would it be jut adding more layers?﻿<a class="headerlink" href="#what-is-the-best-way-to-optimize-a-neural-net-would-it-be-jut-adding-more-layers" title="Permalink to this headline">#</a></h3>
+<p>You could specify some of the parameters and use GridSearch as well. There are types of layers as well. We will see that later.</p>
+</section>
+<section id="are-the-weights-given-to-the-hidden-layers-initially-random">
+<h3><span class="section-number">38.1.9. </span>Are the weights given to the hidden layers initially random?<a class="headerlink" href="#are-the-weights-given-to-the-hidden-layers-initially-random" title="Permalink to this headline">#</a></h3>
+<p>Typically yes, they can be initialized randomly and then they are learned.</p>
+<!--
+### on tensorflow playground, if we increase the weight is that increasing the amount we are feeding within the hidden layer?
+
+### Do the neurons' layers have to be specified in the models we are going to use, or they are already specified for each model?
+
+### Are hidden layers just a number of masks that help the function determine what the overall classification should be?
+--></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2022-11-23.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">37. </span>Classification of Text Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../assignments/01-python-syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Portfolio Setup, Data Science, and Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

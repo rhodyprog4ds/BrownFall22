@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -897,19 +902,19 @@ title="Print to PDF"
 <h1><span class="section-number">35. </span>Learning Curves<a class="headerlink" href="#learning-curves" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
+from sklearn import datasets
+from sklearn import cluster
 
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">naive_bayes</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="c1"># import the whole model selection module</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+from sklearn import naive_bayes
+from sklearn import svm
+from sklearn import tree
+# import the whole model selection module
+from sklearn import model_selection
+sns.set_theme(palette=&#39;colorblind&#39;)
 </pre></div>
 </div>
 </div>
@@ -919,7 +924,7 @@ title="Print to PDF"
 <p>Today, we’ll load a new dataset and use the default sklearn data structure for datasets.  We get back the default data stucture when we use a <code class="docutils literal notranslate"><span class="pre">load_</span></code> function without any parameters at all.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = datasets.load_digits()
 </pre></div>
 </div>
 </div>
@@ -927,7 +932,7 @@ title="Print to PDF"
 <p>This shows us that the type is defined by sklearn and they called it <code class="docutils literal notranslate"><span class="pre">bunch</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(digits)
 </pre></div>
 </div>
 </div>
@@ -940,7 +945,7 @@ title="Print to PDF"
 <p>We can print it out to begin exploring it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits
 </pre></div>
 </div>
 </div>
@@ -1076,7 +1081,7 @@ title="Print to PDF"
 <p>We note that it has key value pairs, and that the last one is called <code class="docutils literal notranslate"><span class="pre">DESCR</span></code> and is text that describes the data.  If we send that to the print function it will be formatted more readably.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="s1">&#39;DESCR&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(digits[&#39;DESCR&#39;])
 </pre></div>
 </div>
 </div>
@@ -1146,13 +1151,13 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.gray()
+plt.matshow(digits.images[9])
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0adc58fe50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f22cce43b20&gt;
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
@@ -1166,8 +1171,8 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 <h2><span class="section-number">35.2. </span>Setting up the Problem<a class="headerlink" href="#setting-up-the-problem" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits_X</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">data</span>
-<span class="n">digits_y</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits_X = digits.data
+digits_y = digits.target
 </pre></div>
 </div>
 </div>
@@ -1175,7 +1180,7 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 <p><code class="docutils literal notranslate"><span class="pre">bunch</span></code> objects are designed for machine learning, so they have the features as “data” and target explicitly identified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits_X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">digits_y</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits_X.shape, digits_y.shape
 </pre></div>
 </div>
 </div>
@@ -1189,7 +1194,7 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 <p>The size of the <code class="docutils literal notranslate"><span class="pre">.images</span></code> is the total number of pixel values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1797</span><span class="o">*</span><span class="mi">8</span><span class="o">*</span><span class="mi">8</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1797*8*8
 </pre></div>
 </div>
 </div>
@@ -1205,8 +1210,8 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 <p>We are going to do some model comparison, so we will instantiate estimator objects for two different classifiers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
-<span class="n">gnb_clf</span> <span class="o">=</span> <span class="n">naive_bayes</span><span class="o">.</span><span class="n">GaussianNB</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_clf = svm.SVC(gamma=0.001)
+gnb_clf = naive_bayes.GaussianNB()
 </pre></div>
 </div>
 </div>
@@ -1219,7 +1224,7 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv = model_selection.ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
 </pre></div>
 </div>
 </div>
@@ -1244,22 +1249,22 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>Now we can create the learning curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train_sizes = np.linspace(.05,1,10)
 
-<span class="n">train_sizes_svm</span><span class="p">,</span> <span class="n">train_scores_svm</span><span class="p">,</span> <span class="n">test_scores_svm</span><span class="p">,</span> <span class="n">fit_times_svm</span><span class="p">,</span> <span class="n">score_times_svm</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span>
-    <span class="n">svm_clf</span><span class="p">,</span>
-    <span class="n">digits_X</span><span class="p">,</span>
-    <span class="n">digits_y</span><span class="p">,</span>
-    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-    <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">,</span>
-    <span class="n">return_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+train_sizes_svm, train_scores_svm, test_scores_svm, fit_times_svm, score_times_svm = model_selection.learning_curve(
+    svm_clf,
+    digits_X,
+    digits_y,
+    cv=cv,
+    train_sizes=train_sizes,
+    return_times=True,)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">train_sizes_svm</span><span class="p">,</span> <span class="n">train_scores_svm</span><span class="p">,</span> <span class="n">test_scores_svm</span><span class="p">,</span> <span class="n">fit_times_svm</span><span class="p">,</span> <span class="n">score_times_svm</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">svm_clf</span><span class="p">,</span>
@@ -1424,7 +1429,7 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>It returns the list of the counts for each training size (we input percentages and it returns counts)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes_svm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train_sizes_svm
 </pre></div>
 </div>
 </div>
@@ -1432,7 +1437,7 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>The other parameters, it returns a list for each length that’s 100 long because our cross validation was 100 iterations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_times_svm</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fit_times_svm.shape
 </pre></div>
 </div>
 </div>
@@ -1440,19 +1445,19 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>We can save it in a DataFrame after averaging over the 100 trials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_learning_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">train_sizes_svm</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">])</span>
-<span class="c1"># svm_learning_df[&#39;train_size&#39;] = train_sizes_svm</span>
-<span class="n">svm_learning_df</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_scores_svm</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">svm_learning_df</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores_svm</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">svm_learning_df</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fit_times_svm</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">svm_learning_df</span><span class="p">[</span><span class="s1">&#39;score_times&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">score_times_svm</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_learning_df = pd.DataFrame(data = train_sizes_svm, columns = [&#39;train_size&#39;])
+# svm_learning_df[&#39;train_size&#39;] = train_sizes_svm
+svm_learning_df[&#39;train_score&#39;] = np.mean(train_scores_svm,axis=1)
+svm_learning_df[&#39;test_score&#39;] = np.mean(test_scores_svm,axis=1)
+svm_learning_df[&#39;fit_time&#39;] = np.mean(fit_times_svm,axis=1)
+svm_learning_df[&#39;score_times&#39;] = np.mean(score_times_svm,axis=1)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_learning_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_learning_df.head()
 </pre></div>
 </div>
 </div>
@@ -1467,9 +1472,9 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_learning_df_scores</span> <span class="o">=</span> <span class="n">svm_learning_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">],</span>
-                                                <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">,</span><span class="s1">&#39;test_score&#39;</span><span class="p">])</span>
-<span class="n">svm_learning_df_scores</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_learning_df_scores = svm_learning_df.melt(id_vars=[&#39;train_size&#39;],
+                                                value_vars=[&#39;train_score&#39;,&#39;test_score&#39;])
+svm_learning_df_scores.head(2)
 </pre></div>
 </div>
 </div>
@@ -1477,7 +1482,7 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>This new DataFrame allows us to make convenient plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">svm_learning_df_scores</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;train_size&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lineplot(data=svm_learning_df_scores,x=&#39;train_size&#39;,y=&#39;value&#39;,hue=&#39;variable&#39;)
 </pre></div>
 </div>
 </div>
@@ -1487,13 +1492,13 @@ score curves, each time with 20% data randomly selected as a validation set.</p>
 <p>We can do the same thing with GNB</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes_gnb</span><span class="p">,</span> <span class="n">train_scores_gnb</span><span class="p">,</span> <span class="n">test_scores_gnb</span><span class="p">,</span> <span class="n">fit_times_gnb</span><span class="p">,</span> <span class="n">score_times_gnb</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">learning_curve</span><span class="p">(</span>
-  <span class="n">gnb_clf</span><span class="p">,</span>
-  <span class="n">digits_X</span><span class="p">,</span>
-  <span class="n">digits_y</span><span class="p">,</span>
-  <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-  <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">,</span>
-  <span class="n">return_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train_sizes_gnb, train_scores_gnb, test_scores_gnb, fit_times_gnb, score_times_gnb = model_selection.learning_curve(
+  gnb_clf,
+  digits_X,
+  digits_y,
+  cv=cv,
+  train_sizes=train_sizes,
+  return_times=True,)
 </pre></div>
 </div>
 </div>
@@ -1512,20 +1517,20 @@ practioners from experts.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb_learning_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">train_sizes_gnb</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">])</span>
-<span class="c1"># gnb_learning_df[&#39;train_size&#39;] = train_sizes_gnb</span>
-<span class="n">gnb_learning_df</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_scores_gnb</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">gnb_learning_df</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores_gnb</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">gnb_learning_df</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fit_times_gnb</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">gnb_learning_df</span><span class="p">[</span><span class="s1">&#39;score_times_gnb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">score_times_gnb</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb_learning_df = pd.DataFrame(data = train_sizes_gnb, columns = [&#39;train_size&#39;])
+# gnb_learning_df[&#39;train_size&#39;] = train_sizes_gnb
+gnb_learning_df[&#39;train_score&#39;] = np.mean(train_scores_gnb,axis=1)
+gnb_learning_df[&#39;test_score&#39;] = np.mean(test_scores_gnb,axis=1)
+gnb_learning_df[&#39;fit_time&#39;] = np.mean(fit_times_gnb,axis=1)
+gnb_learning_df[&#39;score_times_gnb&#39;] = np.mean(score_times_gnb,axis=1)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb_learning_scores</span> <span class="o">=</span> <span class="n">gnb_learning_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train_size&#39;</span><span class="p">],</span><span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">,</span><span class="s1">&#39;test_score&#39;</span><span class="p">])</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">gnb_learning_scores</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span><span class="s1">&#39;train_size&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb_learning_scores = gnb_learning_df.melt(id_vars=[&#39;train_size&#39;],value_vars=[&#39;train_score&#39;,&#39;test_score&#39;])
+sns.lineplot(data = gnb_learning_scores, x =&#39;train_size&#39;, y=&#39;value&#39;,hue=&#39;variable&#39;)
 </pre></div>
 </div>
 </div>

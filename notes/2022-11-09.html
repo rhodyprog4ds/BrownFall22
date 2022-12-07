@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -875,16 +880,16 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span><span class="p">,</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
+from sklearn import datasets
+from sklearn import cluster
+from sklearn import svm, datasets
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn import tree
 </pre></div>
 </div>
 </div>
@@ -894,12 +899,12 @@ title="Print to PDF"
 <p>We will work with the iris data again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iris_df = sns.load_dataset(&#39;iris&#39;)
 
 
-<span class="n">iris_X</span> <span class="o">=</span> <span class="n">iris_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">])</span>
+iris_X = iris_df.drop(columns=[&#39;species&#39;])
 
-<span class="n">iris_y</span> <span class="o">=</span> <span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
+iris_y = iris_df[&#39;species&#39;]
 </pre></div>
 </div>
 </div>
@@ -907,8 +912,8 @@ title="Print to PDF"
 <p>We will still use the test train split to keep our test data separate from the data that we use to find our preferred parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span>
-                                                                        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iris_X_train, iris_X_test, iris_y_train, iris_y_test = train_test_split(iris_X,iris_y,
+                                                                        random_state=0)
 </pre></div>
 </div>
 </div>
@@ -924,9 +929,9 @@ title="Print to PDF"
 <p>The other two parameters we have seen some before. Max depth is the height of the tree and min smaples per leaf makes it keeps the leaf sizes small.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="n">params_dt</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
-       <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">))}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt = tree.DecisionTreeClassifier()
+params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_depth&#39;:[2,3,4],
+       &#39;min_samples_leaf&#39;:list(range(2,20,2))}
 </pre></div>
 </div>
 </div>
@@ -934,7 +939,7 @@ title="Print to PDF"
 <p>We will fit it with default CV settings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt = GridSearchCV(dt,params_dt)
 </pre></div>
 </div>
 </div>
@@ -942,7 +947,7 @@ title="Print to PDF"
 <p>then we can fit</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.fit(iris_X_train,iris_y_train)
 </pre></div>
 </div>
 </div>
@@ -958,7 +963,7 @@ title="Print to PDF"
 <p>we can use ti to get predictions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">dt_opt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = dt_opt.predict(iris_X_test)
 </pre></div>
 </div>
 </div>
@@ -966,12 +971,12 @@ title="Print to PDF"
 <p>we can also score it as regular.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -979,12 +984,12 @@ title="Print to PDF"
 <p>we can also see the best parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_params_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.best_params_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -992,8 +997,8 @@ title="Print to PDF"
 <p>we can look at the overall results this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_5cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
-<span class="n">dt_5cv_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_5cv_df = pd.DataFrame(dt_opt.cv_results_)
+dt_5cv_df.head()
 </pre></div>
 </div>
 </div>
@@ -1037,10 +1042,10 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001671</td>
-      <td>0.000208</td>
-      <td>0.001169</td>
-      <td>0.000037</td>
+      <td>0.001907</td>
+      <td>0.000506</td>
+      <td>0.001166</td>
+      <td>0.000027</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1056,10 +1061,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001547</td>
-      <td>0.000014</td>
-      <td>0.001151</td>
-      <td>0.000008</td>
+      <td>0.001535</td>
+      <td>0.000019</td>
+      <td>0.001137</td>
+      <td>0.000021</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1075,10 +1080,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001552</td>
-      <td>0.000020</td>
-      <td>0.001146</td>
-      <td>0.000017</td>
+      <td>0.001530</td>
+      <td>0.000013</td>
+      <td>0.001126</td>
+      <td>0.000010</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1094,10 +1099,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001546</td>
-      <td>0.000016</td>
-      <td>0.001150</td>
-      <td>0.000017</td>
+      <td>0.001529</td>
+      <td>0.000010</td>
+      <td>0.001134</td>
+      <td>0.000013</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1113,10 +1118,10 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001547</td>
-      <td>0.000013</td>
-      <td>0.001142</td>
-      <td>0.000012</td>
+      <td>0.001530</td>
+      <td>0.000006</td>
+      <td>0.001132</td>
+      <td>0.000010</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1137,7 +1142,7 @@ title="Print to PDF"
 <p>To see more carefully what it does, we can look at its shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_5cv_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_5cv_df.shape
 </pre></div>
 </div>
 </div>
@@ -1150,7 +1155,7 @@ title="Print to PDF"
 <p>we can see that the total number of rows matched the product of the length of each list of parameters to try.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="k">for</span> <span class="n">param_list</span> <span class="ow">in</span> <span class="n">params_dt</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.product([len(param_list) for param_list in params_dt.values()])
 </pre></div>
 </div>
 </div>
@@ -1164,13 +1169,13 @@ title="Print to PDF"
 <p>We can also plot the dta and look at the performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_5cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
-           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=dt_5cv_df,x=&#39;param_min_samples_leaf&#39;,y=&#39;mean_test_score&#39;,
+           col=&#39;param_criterion&#39;, row= &#39;param_max_depth&#39;, kind=&#39;bar&#39;,)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd0a299c490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f426285c2b0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1182,8 +1187,8 @@ title="Print to PDF"
 <h2><span class="section-number">32.2. </span>Impact of CV parameters<a class="headerlink" href="#impact-of-cv-parameters" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">dt_opt10</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt10 = GridSearchCV(dt,params_dt,cv=10)
+dt_opt10.fit(iris_X_train,iris_y_train)
 </pre></div>
 </div>
 </div>
@@ -1198,7 +1203,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_10cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_10cv_df = pd.DataFrame(dt_opt10.cv_results_)
 </pre></div>
 </div>
 </div>
@@ -1206,13 +1211,13 @@ title="Print to PDF"
 <p>We can stack the columns we want from the two results together with a new indicator column <code class="docutils literal notranslate"><span class="pre">cv</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">,</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span><span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span>
-<span class="n">dt_10cv_df</span><span class="p">[</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">dt_5cv_df</span><span class="p">[</span><span class="s1">&#39;cv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_cols = [&#39;param_min_samples_leaf&#39;,&#39;std_test_score&#39;,&#39;mean_test_score&#39;,
+             &#39;param_criterion&#39;,&#39;param_max_depth&#39;,&#39;cv&#39;]
+dt_10cv_df[&#39;cv&#39;] = 10
+dt_5cv_df[&#39;cv&#39;] = 5
 
-<span class="n">dt_cv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dt_5cv_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">],</span><span class="n">dt_10cv_df</span><span class="p">[</span><span class="n">plot_cols</span><span class="p">]])</span>
-<span class="n">dt_cv_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+dt_cv_df = pd.concat([dt_5cv_df[plot_cols],dt_10cv_df[plot_cols]])
+dt_cv_df.head()
 </pre></div>
 </div>
 </div>
@@ -1296,14 +1301,14 @@ title="Print to PDF"
 <p>this can be used to plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
-           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-           <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;cv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=dt_cv_df,x=&#39;param_min_samples_leaf&#39;,y=&#39;mean_test_score&#39;,
+           col=&#39;param_criterion&#39;, row= &#39;param_max_depth&#39;, kind=&#39;bar&#39;,
+           hue = &#39;cv&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd09f9a39d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f42625c3220&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1312,14 +1317,14 @@ title="Print to PDF"
 <p>we see that the mean scores are not very different, but that 10 is a little higher in some cases.  This makes sense, it has more data to learn from, so it found something that applied better, on average, to the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dt_cv_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;param_min_samples_leaf&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">,</span>
-           <span class="n">col</span><span class="o">=</span><span class="s1">&#39;param_criterion&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span> <span class="s1">&#39;param_max_depth&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-           <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;cv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=dt_cv_df,x=&#39;param_min_samples_leaf&#39;,y=&#39;std_test_score&#39;,
+           col=&#39;param_criterion&#39;, row= &#39;param_max_depth&#39;, kind=&#39;bar&#39;,
+           hue = &#39;cv&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd0a00c1160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f425fedd940&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1329,19 +1334,19 @@ title="Print to PDF"
 <p>We can compare to see if it finds the same model as best:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_params_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.best_params_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">best_params_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt10.best_params_
 </pre></div>
 </div>
 </div>
@@ -1354,19 +1359,19 @@ title="Print to PDF"
 <p>In some cases they will and others they will not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt10</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt10.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
@@ -1387,40 +1392,40 @@ title="Print to PDF"
 <h2><span class="section-number">32.3. </span>Other searches<a class="headerlink" href="#other-searches" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn import model_selection
+from sklearn.model_selection import LeaveOneOut
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">RandomizedSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span>
-                                                     <span class="n">iris_y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rand_opt = model_selection.RandomizedSearchCV(dt,params_dt).fit(iris_X_train,
+                                                     iris_y_train)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rand_opt.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rand_opt</span><span class="o">.</span><span class="n">best_params_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rand_opt.best_params_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 3, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>

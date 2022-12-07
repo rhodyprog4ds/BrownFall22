@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -895,9 +900,9 @@ sometimes they’re used close to exchangeably.</p>
 <p>This means that we have what the COMPAS algorithm predicted (in the form of a score from 1-10) and what actually happened (re-arrested or not). We can then measure how well the algorithm worked, in practice, in the real world.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn import metrics
+import seaborn as sns
 </pre></div>
 </div>
 </div>
@@ -905,15 +910,15 @@ sometimes they’re used close to exchangeably.</p>
 <p>We’re going to work with a cleaned copy of the data released by Propublica that also has a minimal subset of features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_clean_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;</span>
-<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">compas_clean_url</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_clean_url = &#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;
+compas_df = pd.read_csv(compas_clean_url,index_col = &#39;id&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_df.head()
 </pre></div>
 </div>
 </div>
@@ -1082,14 +1087,14 @@ sometimes they’re used close to exchangeably.</p>
 <p>We will audit first to see how good the algorithm is by treating the predictions as either high or not high.  One way we can get to that point is to transform the <code class="docutils literal notranslate"><span class="pre">score_text</span></code> column from one column with three values, to 3 binary columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">compas_df</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_df = pd.get_dummies(compas_df,columns=[&#39;score_text&#39;])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_df.head()
 </pre></div>
 </div>
 </div>
@@ -1256,7 +1261,7 @@ sometimes they’re used close to exchangeably.</p>
 <p>The first thing we usually check is the accuracy: the percentage of all samples that are correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.accuracy_score(compas_df[&#39;two_year_recid&#39;],compas_df[&#39;score_text_High&#39;])
 </pre></div>
 </div>
 </div>
@@ -1283,7 +1288,7 @@ sometimes they’re used close to exchangeably.</p>
 <p><code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> provides a <code class="docutils literal notranslate"><span class="pre">[confusion</span> <span class="pre">matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)</span></code> function that we can use.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.confusion_matrix(compas_df[&#39;two_year_recid&#39;],compas_df[&#39;score_text_High&#39;])
 </pre></div>
 </div>
 </div>
@@ -1310,7 +1315,7 @@ sometimes they’re used close to exchangeably.</p>
 \[ R = \frac{C_{1,1}}{C_{1,0} + C_{1,1}} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.recall_score(compas_df[&#39;two_year_recid&#39;],compas_df[&#39;score_text_High&#39;])
 </pre></div>
 </div>
 </div>
@@ -1325,7 +1330,7 @@ sometimes they’re used close to exchangeably.</p>
 $<span class="math notranslate nohighlight">\( P = \frac{C_{1,1}}{C_{0,1} + C_{1,1}} \)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.precision_score(compas_df[&#39;two_year_recid&#39;],compas_df[&#39;score_text_High&#39;])
 </pre></div>
 </div>
 </div>

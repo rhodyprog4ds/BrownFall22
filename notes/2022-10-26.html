@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -823,16 +828,16 @@ title="Print to PDF"
 <h1><span class="section-number">21. </span>Interpretting Regression<a class="headerlink" href="#interpretting-regression" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import PolynomialFeatures
+sns.set_theme(font_scale=2,palette=&#39;colorblind&#39;)
 </pre></div>
 </div>
 </div>
@@ -845,17 +850,17 @@ diabetes disease progression measured one year later. The predictor we can train
 with this data might be someting a doctor uses to calculate a patient’s risk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the diabetes dataset</span>
-<span class="n">diabetes_X</span><span class="p">,</span> <span class="n">diabetes_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">diabetes_X</span><span class="p">,</span> <span class="n">diabetes_y</span> <span class="p">,</span>
-                         <span class="n">test_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Load the diabetes dataset
+diabetes_X, diabetes_y = datasets.load_diabetes(return_X_y=True)
+X_train,X_test, y_train,y_test = train_test_split(diabetes_X, diabetes_y ,
+                         test_size=20,random_state=0)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train.shape
 </pre></div>
 </div>
 </div>
@@ -867,14 +872,14 @@ with this data might be someting a doctor uses to calculate a patient’s risk.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db = linear_model.LinearRegression()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span><span class="o">.</span><span class="vm">__dict__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db.__dict__
 </pre></div>
 </div>
 </div>
@@ -891,7 +896,7 @@ with this data might be someting a doctor uses to calculate a patient’s risk.<
 <p>We have an empty estimator object at this point and then we can fit it as usual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -904,7 +909,7 @@ r2, we can say that this is not a perfect predictor, but a Doctor, who better
 understands the score would have to help interpret the core.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span><span class="o">.</span><span class="vm">__dict__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db.__dict__
 </pre></div>
 </div>
 </div>
@@ -939,7 +944,7 @@ understands the score would have to help interpret the core.</p>
 <p>where there are <span class="math notranslate nohighlight">\(d\)</span> features, that is <span class="math notranslate nohighlight">\(d\)</span>= <code class="docutils literal notranslate"><span class="pre">len(X_test[k])</span></code> and <span class="math notranslate nohighlight">\(k\)</span> indexed into it. For example in the below <span class="math notranslate nohighlight">\(k=0\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_test[0]
 </pre></div>
 </div>
 </div>
@@ -953,7 +958,7 @@ understands the score would have to help interpret the core.</p>
 <p>We can compute the prediction manually:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">regr_db</span><span class="o">.</span><span class="n">coef_</span><span class="o">*</span><span class="n">X_test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="o">+</span> <span class="n">regr_db</span><span class="o">.</span><span class="n">intercept_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sum(regr_db.coef_*X_test[0])  + regr_db.intercept_
 </pre></div>
 </div>
 </div>
@@ -966,7 +971,7 @@ understands the score would have to help interpret the core.</p>
 <p>and see that it matches</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db.predict(X_test[:2])
 </pre></div>
 </div>
 </div>
@@ -978,7 +983,7 @@ understands the score would have to help interpret the core.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr_db</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr_db.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -991,14 +996,14 @@ understands the score would have to help interpret the core.</p>
 <p>We can also look at the residuals and see that they are fairly randomly spread out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">regr_db</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = regr_db.predict(X_test)
+plt.scatter(y_test,y_pred)
+plt.plot(y_pred,y_pred)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f105f3bcf70&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f759a0fbc70&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-26_19_1.png" src="../_images/2022-10-26_19_1.png" />

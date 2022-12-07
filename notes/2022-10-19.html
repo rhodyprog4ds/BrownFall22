@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -878,7 +883,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -886,24 +891,24 @@ title="Print to PDF"
 <p>We’ll start with the same dataset as Monday.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import seaborn as sns
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn import metrics
+iris_df = sns.load_dataset(&#39;iris&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset vars:</span>
-<span class="c1"># ,</span>
-<span class="n">feature_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span><span class="s1">&#39;petal_length&#39;</span><span class="p">]</span>
-<span class="n">target_var</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="n">feature_vars</span><span class="p">],</span><span class="n">iris_df</span><span class="p">[</span><span class="n">target_var</span><span class="p">],</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dataset vars:
+# ,
+feature_vars = [&#39;petal_width&#39;, &#39;sepal_length&#39;, &#39;sepal_width&#39;,&#39;petal_length&#39;]
+target_var = &#39;species&#39;
+X_train, X_test, y_train, y_test = train_test_split(iris_df[feature_vars],iris_df[target_var],random_state=0)
 </pre></div>
 </div>
 </div>
@@ -911,7 +916,7 @@ title="Print to PDF"
 <p>Using the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> makes it so that we get the same “random” set each type we run the code. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#:~:text=the%20test%20size.-,random_state,-int%2C%20RandomState%20instance">see docs</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train.head()
 </pre></div>
 </div>
 </div>
@@ -982,7 +987,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iris_df.head(1)
 </pre></div>
 </div>
 </div>
@@ -1027,7 +1032,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">iris_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train.shape, iris_df.shape
 </pre></div>
 </div>
 </div>
@@ -1039,7 +1044,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">112</span><span class="o">/</span><span class="mi">150</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>112/150
 </pre></div>
 </div>
 </div>
@@ -1053,14 +1058,14 @@ title="Print to PDF"
 <p>Again we will instantiate the object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb = GaussianNB()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.__dict__
 </pre></div>
 </div>
 </div>
@@ -1072,7 +1077,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -1084,7 +1089,7 @@ title="Print to PDF"
 <code class="docutils literal notranslate"><span class="pre">gnb.theta_,</span> <span class="pre">gnb.sigma_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.__dict__
 </pre></div>
 </div>
 </div>
@@ -1154,11 +1159,11 @@ DataFrame using the feature names as the columns.</p>
 as list of lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">var_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">sigma_</span><span class="p">)]),</span>
-         <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_vars</span><span class="p">)</span>
-<span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>N = 20
+gnb_df = pd.DataFrame(np.concatenate([np.random.multivariate_normal(th, sig*np.eye(4),N)
+         for th, sig in zip(gnb.var_,gnb.sigma_)]),
+         columns = feature_vars)
+gnb_df[&#39;species&#39;] = [ci for cl in [[c]*N for c in gnb.classes_] for ci in cl]
 </pre></div>
 </div>
 </div>
@@ -1171,12 +1176,12 @@ as list of lists.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">gnb_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(data =gnb_df, hue=&#39;species&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7efd5da24a60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9244eb1fa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_18_1.png" src="../_images/2022-10-19_18_1.png" />
@@ -1200,12 +1205,12 @@ these data are all in uniformly circular-ish blobs and the ones above are not.<b
 That means that the naive assumption doesn’t hold perfectly on this data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">iris_df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(data=iris_df,hue=&#39;species&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7efd58049970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f923f5771f0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_20_1.png" src="../_images/2022-10-19_20_1.png" />
@@ -1215,7 +1220,7 @@ That means that the naive assumption doesn’t hold perfectly on this data.</p>
 likelihood of the sample according to a Gaussian distribution (normal) for each class and then calculates the probability of the sample belonging to each class and returns the one with the highest probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = gnb.predict(X_test)
 </pre></div>
 </div>
 </div>
@@ -1223,7 +1228,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 <p>We can check the performance by comparing manually</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span><span class="n">y_test</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sum(y_pred ==y_test)/len(y_test)
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1241,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 <p>Or by scoring  it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1248,7 +1253,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.confusion_matrix(y_test,y_pred)
 </pre></div>
 </div>
 </div>
@@ -1264,7 +1269,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 <h2><span class="section-number">17.1. </span>Interpretting probabilities<a class="headerlink" href="#interpretting-probabilities" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.predict_proba(X_test)
 </pre></div>
 </div>
 </div>
@@ -1314,22 +1319,22 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 <p>These are hard to interpret as is, one option is to plot them</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the prbabilities into a dataframe labeled with classes &amp; make the index a separate column</span>
-<span class="n">prob_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span> <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="c1"># add the predictions</span>
-<span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;predicted_species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
-<span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;true_species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span>
-<span class="c1"># for plotting, make a column that combines the index &amp; prediction</span>
-<span class="n">pred_text</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;predicted_species&#39;</span><span class="p">]</span>
-<span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;i,pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pred_text</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># same for ground truth</span>
-<span class="n">true_text</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;true_species&#39;</span><span class="p">]</span>
-<span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;correct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;predicted_species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;true_species&#39;</span><span class="p">]</span>
-<span class="c1"># a dd a column for which are correct</span>
-<span class="n">prob_df</span><span class="p">[</span><span class="s1">&#39;i,true&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">true_text</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">prob_df_melted</span> <span class="o">=</span> <span class="n">prob_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span> <span class="o">=</span><span class="p">[</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;predicted_species&#39;</span><span class="p">,</span><span class="s1">&#39;true_species&#39;</span><span class="p">,</span><span class="s1">&#39;i,pred&#39;</span><span class="p">,</span><span class="s1">&#39;i,true&#39;</span><span class="p">,</span><span class="s1">&#39;correct&#39;</span><span class="p">],</span><span class="n">value_vars</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
-                             <span class="n">var_name</span> <span class="o">=</span> <span class="n">target_var</span><span class="p">,</span> <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;probability&#39;</span><span class="p">)</span>
-<span class="n">prob_df_melted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># make the prbabilities into a dataframe labeled with classes &amp; make the index a separate column
+prob_df = pd.DataFrame(data = gnb.predict_proba(X_test), columns = gnb.classes_ ).reset_index()
+# add the predictions
+prob_df[&#39;predicted_species&#39;] = y_pred
+prob_df[&#39;true_species&#39;] = y_test.values
+# for plotting, make a column that combines the index &amp; prediction
+pred_text = lambda r: str( r[&#39;index&#39;]) + &#39;,&#39; + r[&#39;predicted_species&#39;]
+prob_df[&#39;i,pred&#39;] = prob_df.apply(pred_text,axis=1)
+# same for ground truth
+true_text = lambda r: str( r[&#39;index&#39;]) + &#39;,&#39; + r[&#39;true_species&#39;]
+prob_df[&#39;correct&#39;] = prob_df[&#39;predicted_species&#39;] == prob_df[&#39;true_species&#39;]
+# a dd a column for which are correct
+prob_df[&#39;i,true&#39;] = prob_df.apply(true_text,axis=1)
+prob_df_melted = prob_df.melt(id_vars =[ &#39;index&#39;, &#39;predicted_species&#39;,&#39;true_species&#39;,&#39;i,pred&#39;,&#39;i,true&#39;,&#39;correct&#39;],value_vars = gnb.classes_,
+                             var_name = target_var, value_name = &#39;probability&#39;)
+prob_df_melted.head()
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1430,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 <p>Now we have a data frame where each rown is one the probability of one sample belonging to one class. So there’s a total of <code class="docutils literal notranslate"><span class="pre">number_of_samples*number_of_classes</span></code> rows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_df_melted</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>prob_df_melted.shape
 </pre></div>
 </div>
 </div>
@@ -1437,7 +1442,7 @@ likelihood of the sample according to a Gaussian distribution (normal) for each 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(y_pred)*len(gnb.classes_)
 </pre></div>
 </div>
 </div>
@@ -1460,15 +1465,15 @@ forms of color blindness.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span> <span class="s2">&quot;colorblind&quot;</span><span class="p">)</span>
-<span class="c1"># plot a bar graph for each point labeled with the prediction</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">prob_df_melted</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span> <span class="p">,</span><span class="n">col</span> <span class="o">=</span><span class="s1">&#39;i,true&#39;</span><span class="p">,</span>
-            <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_theme(font_scale=2, palette= &quot;colorblind&quot;)
+# plot a bar graph for each point labeled with the prediction
+sns.catplot(data =prob_df_melted, x = &#39;species&#39;, y=&#39;probability&#39; ,col =&#39;i,true&#39;,
+            col_wrap=5,kind=&#39;bar&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7efd74174940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f927c0b1700&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-19_36_1.png" src="../_images/2022-10-19_36_1.png" />
@@ -1484,7 +1489,7 @@ forms of color blindness.</p>
 <p>For example if I use the index of the test set to pick a set of rows from the original dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">X_test</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">5</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iris_df.iloc[X_test.index[:5]]
 </pre></div>
 </div>
 </div>
@@ -1562,7 +1567,7 @@ forms of color blindness.</p>
 <p>and compare it to the actual test set</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_test.head()
 </pre></div>
 </div>
 </div>

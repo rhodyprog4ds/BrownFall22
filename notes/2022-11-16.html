@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -822,17 +827,17 @@ title="Print to PDF"
 <p>We’ll pick up from where we left off on Monday.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="c1"># import the whole model selection module</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
+from sklearn import datasets
+from sklearn import cluster
+from sklearn import svm
+from sklearn import tree
+# import the whole model selection module
+from sklearn import model_selection
+sns.set_theme(palette=&#39;colorblind&#39;)
 </pre></div>
 </div>
 </div>
@@ -853,37 +858,37 @@ programming and how to effectively teach it.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data, 20% test</span>
-<span class="n">iris_X</span><span class="p">,</span> <span class="n">iris_y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">iris_X_train</span><span class="p">,</span> <span class="n">iris_X_test</span><span class="p">,</span> <span class="n">iris_y_train</span><span class="p">,</span> <span class="n">iris_y_test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span>
-  <span class="n">iris_X</span><span class="p">,</span><span class="n">iris_y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load data, 20% test
+iris_X, iris_y = datasets.load_iris(return_X_y=True)
+iris_X_train, iris_X_test, iris_y_train, iris_y_test = model_selection.train_test_split(
+  iris_X,iris_y, test_size =.2)
 
 
-<span class="c1"># setup DT &amp; params</span>
-<span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+# setup DT &amp; params
+dt = tree.DecisionTreeClassifier()
 
-<span class="n">params_dt</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
-       <span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">2</span><span class="p">))}</span>
+params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],
+       &#39;max_depth&#39;:[2,3,4,5,6],
+    &#39;min_samples_leaf&#39;:list(range(2,20,2))}
 
-<span class="n">dt_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">params_dt</span><span class="p">)</span>
-
-
-<span class="c1"># optmize DT</span>
-<span class="n">dt_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
-
-<span class="c1"># store DT results in dataframe</span>
-<span class="n">dt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+dt_opt = model_selection.GridSearchCV(dt,params_dt)
 
 
-<span class="c1"># setup svm and params</span>
-<span class="n">svm_clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="s1">&#39;rbf&#39;</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
-<span class="n">svm_opt</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm_clf</span><span class="p">,</span><span class="n">param_grid</span><span class="p">)</span>
+# optmize DT
+dt_opt.fit(iris_X_train,iris_y_train)
 
-<span class="c1"># optmize and save svm results</span>
-<span class="n">svm_opt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">,</span><span class="n">iris_y_train</span><span class="p">)</span>
-<span class="n">sv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">svm_opt</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+# store DT results in dataframe
+dt_df = pd.DataFrame(dt_opt.cv_results_)
+
+
+# setup svm and params
+svm_clf = svm.SVC()
+param_grid = {&#39;kernel&#39;:[&#39;linear&#39;,&#39;rbf&#39;], &#39;C&#39;:[.5, .75,1,2,5,7, 10]}
+svm_opt = model_selection.GridSearchCV(svm_clf,param_grid)
+
+# optmize and save svm results
+svm_opt.fit(iris_X_train,iris_y_train)
+sv_df = pd.DataFrame(svm_opt.cv_results_)
 </pre></div>
 </div>
 </div>
@@ -895,19 +900,19 @@ programming and how to effectively teach it.</p>
 <p>We can  use EDA to understand how the score varied across all of the parameter settings we tried.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sv_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sv_df[&#39;mean_test_score&#39;].describe()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.974405
-std       0.007641
-min       0.958333
-25%       0.968750
-50%       0.975000
-75%       0.981250
-max       0.983333
+mean      0.977381
+std       0.012839
+min       0.950000
+25%       0.975000
+50%       0.983333
+75%       0.983333
+max       0.991667
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -915,19 +920,19 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_df</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_df[&#39;mean_test_score&#39;].describe()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.926481
-std       0.004770
-min       0.925000
-25%       0.925000
-50%       0.925000
-75%       0.925000
-max       0.941667
+mean      0.966944
+std       0.001504
+min       0.966667
+25%       0.966667
+50%       0.966667
+75%       0.966667
+max       0.975000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -943,17 +948,17 @@ of parameters.</p>
 <p>We can also calculate directly from the parameter grids before we even do the fit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">description_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;param_C&#39;</span><span class="p">,</span> <span class="s1">&#39;param_kernel&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">,]</span>
-<span class="n">vars_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mean_fit_time&#39;</span><span class="p">,</span> <span class="s1">&#39;std_fit_time&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_score_time&#39;</span><span class="p">,</span> <span class="s1">&#39;std_score_time&#39;</span><span class="p">]</span>
-<span class="n">svm_time</span> <span class="o">=</span> <span class="n">sv_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span> <span class="n">description_vars</span><span class="p">,</span>
-           <span class="n">value_vars</span><span class="o">=</span><span class="n">vars_to_plot</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sv_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;mean_fit_time&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">,</span>
-     <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;param_kernel&#39;</span><span class="p">,</span><span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>description_vars = [&#39;param_C&#39;, &#39;param_kernel&#39;, &#39;params&#39;,]
+vars_to_plot = [&#39;mean_fit_time&#39;, &#39;std_fit_time&#39;, &#39;mean_score_time&#39;, &#39;std_score_time&#39;]
+svm_time = sv_df.melt(id_vars= description_vars,
+           value_vars=vars_to_plot)
+sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
+     hue=&#39;param_kernel&#39;,fit_reg=False)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f36109a5700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2b938cfac0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -961,7 +966,7 @@ of parameters.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(iris_X_train)/5
 </pre></div>
 </div>
 </div>
@@ -973,7 +978,7 @@ of parameters.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">23</span><span class="o">/</span><span class="mi">24</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>23/24
 </pre></div>
 </div>
 </div>
@@ -985,14 +990,14 @@ of parameters.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_opt</span><span class="o">.</span><span class="n">predict_proba</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_opt.predict_proba
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">predict_proba</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/metaestimators.py:127,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
@@ -1045,17 +1050,17 @@ of parameters.</p>
 <p>This function calculates the 95% confidence interval.  The range within which we are 95% confident the quantity we have estimated is truly within in.  When we have more samples in the test set used to calculate the score, we are more confident in the estimate, so the interval is narrower.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classification_confint</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Compute the 95% confidence interval for a classification problem.</span>
-<span class="sd">    acc -- classification accuracy</span>
-<span class="sd">    n -- number of observations used to compute the accuracy</span>
-<span class="sd">    Returns a tuple (lb,ub)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">interval</span> <span class="o">=</span> <span class="mf">1.96</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">acc</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">acc</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">lb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
-    <span class="n">ub</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">interval</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def classification_confint(acc, n):
+    &#39;&#39;&#39;
+    Compute the 95% confidence interval for a classification problem.
+    acc -- classification accuracy
+    n -- number of observations used to compute the accuracy
+    Returns a tuple (lb,ub)
+    &#39;&#39;&#39;
+    interval = 1.96*np.sqrt(acc*(1-acc)/n)
+    lb = max(0, acc - interval)
+    ub = min(1.0, acc + interval)
+    return (lb,ub)
 </pre></div>
 </div>
 </div>
@@ -1063,7 +1068,7 @@ of parameters.</p>
 <p>We can calculate the number of observations used to compute the accuracy using the size of the training data and the fact that we set it to 10-fold cross validation. That means that 10% (100/10) of the data was used for each fold and each validation set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dt_opt</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(dt_opt)
 </pre></div>
 </div>
 </div>
@@ -1075,24 +1080,24 @@ of parameters.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">best_score_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.best_score_, svm_opt.best_score_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9416666666666667, 0.9833333333333334)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.975, 0.9916666666666668)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification_confint</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>classification_confint(dt_opt.best_score_, len(iris_X_train))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.8997320725326443, 0.983601260800689)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9470657020850711, 1.0)
 </pre></div>
 </div>
 </div>
@@ -1100,12 +1105,12 @@ of parameters.</p>
 <p>We can see how more samples narrows the range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification_confint</span><span class="p">(</span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">iris_X_train</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>classification_confint(dt_opt.best_score_, len(iris_X_train)*10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9284057836448419, 0.9549275496884914)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9661663993751132, 0.9838336006248868)
 </pre></div>
 </div>
 </div>
@@ -1120,7 +1125,7 @@ of parameters.</p>
 <p>It has some attributes that are metrics and one attribute that is the a model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_opt</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_opt.best_estimator_.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
@@ -1132,12 +1137,12 @@ of parameters.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_opt</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">iris_X_test</span><span class="p">,</span><span class="n">iris_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt_opt.best_estimator_.score(iris_X_test,iris_y_test)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9333333333333333
 </pre></div>
 </div>
 </div>

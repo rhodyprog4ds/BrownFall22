@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -871,24 +876,24 @@ title="Print to PDF"
 <h1><span class="section-number">18. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span> <span class="c1"># this improves contrast</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import seaborn as sns
+import numpy as np
+from sklearn import tree
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn import metrics
+sns.set(palette=&#39;colorblind&#39;) # this improves contrast
 
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+from sklearn.metrics import confusion_matrix, classification_report
 </pre></div>
 </div>
 </div>
@@ -898,27 +903,27 @@ title="Print to PDF"
 <p>Using a toy dataset here shows an easy to see challenge for the classifier that we have seen so far.  Real datasets will be hard in different ways, and since they’re higher dimensional, it’s harder to visualize the cause.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corner_data</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/06-naive-bayes/f425ba121cc0c4dd8bcaa7ebb2ff0b40b0b03bff/data/dataset6.csv&#39;</span>
-<span class="n">df6</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">corner_data</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>corner_data = &#39;https://raw.githubusercontent.com/rhodyprog4ds/06-naive-bayes/f425ba121cc0c4dd8bcaa7ebb2ff0b40b0b03bff/data/dataset6.csv&#39;
+df6= pd.read_csv(corner_data,usecols=[1,2,3])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb = GaussianNB()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df6</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(data=df6, hue=&#39;char&#39;,hue_order=[&#39;A&#39;,&#39;B&#39;])
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e1d595790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e0c4d4610&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_6_1.png" src="../_images/2022-10-21_6_1.png" />
@@ -927,17 +932,17 @@ title="Print to PDF"
 <p>As we can see in this dataset, these classes are quite separated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span>
-                          <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;],
+                          random_state = 4)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.fit(X_train,y_train)
+gnb.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -951,7 +956,7 @@ title="Print to PDF"
 <p>To see why, we can look at what it learned.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb</span><span class="o">.</span><span class="vm">__dict__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gnb.__dict__
 </pre></div>
 </div>
 </div>
@@ -974,13 +979,13 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">sigma_</span><span class="p">)]),</span>
-         <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span>
-<span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>N = 100
+gnb_df = pd.DataFrame(np.concatenate([np.random.multivariate_normal(th, sig*np.eye(2),N)
+         for th, sig in zip(gnb.theta_,gnb.sigma_)]),
+         columns = [&#39;x0&#39;,&#39;x1&#39;])
+gnb_df[&#39;char&#39;] = [ci for cl in [[c]*N for c in gnb.classes_] for ci in cl]
 
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">gnb_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+sns.pairplot(data =gnb_df, hue=&#39;char&#39;,hue_order=[&#39;A&#39;,&#39;B&#39;])
 </pre></div>
 </div>
 </div>
@@ -989,7 +994,7 @@ title="Print to PDF"
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e082a3b20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6de4a24040&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_12_2.png" src="../_images/2022-10-21_12_2.png" />
@@ -998,15 +1003,15 @@ title="Print to PDF"
 <p>This does not look much like the data and it’s hard to tell which is higher at any given point in the 2D space.  We know though, that it has missed the mark. We can also look at the actual predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df6pred</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df6pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df6pred = X_test.copy()
+df6pred[&#39;pred&#39;] =gnb.predict(X_test)
 
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df6pred</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;pred&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+sns.pairplot(df6pred, hue = &#39;pred&#39;,hue_order=[&#39;A&#39;,&#39;B&#39;])
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e082884f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6dcc4955b0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_14_1.png" src="../_images/2022-10-21_14_1.png" />
@@ -1015,10 +1020,10 @@ title="Print to PDF"
 <p>This makes it more clear. It basically learns one group that covers 3 blobs and only 1 for the second color. If we train again with a different random seed, it makes a different specific error, but basically the same idea.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;], random_state = 5)
+gnb.fit(X_train,y_train)
+gnb.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1030,15 +1035,15 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df6pred</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df6pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df6pred = X_test.copy()
+df6pred[&#39;pred&#39;] =gnb.predict(X_test)
 
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df6pred</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+sns.pairplot(df6pred, hue = &#39;pred&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e04e31d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6dcc468d60&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_17_1.png" src="../_images/2022-10-21_17_1.png" />
@@ -1046,10 +1051,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">7</span><span class="p">)</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="n">gnb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;], random_state = 7)
+gnb.fit(X_train,y_train)
+gnb.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1061,15 +1066,15 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df6pred</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df6pred</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df6pred = X_test.copy()
+df6pred[&#39;pred&#39;] =gnb.predict(X_test)
 
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df6pred</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+sns.pairplot(df6pred, hue = &#39;pred&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6e0a3dbee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f6dd0808310&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_19_1.png" src="../_images/2022-10-21_19_1.png" />
@@ -1083,14 +1088,14 @@ title="Print to PDF"
 <p>It is a <strong>discriminative</strong> model, because it describes how to discriminate (in the sense of differentiate) between the classes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt = tree.DecisionTreeClassifier()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -1099,7 +1104,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1113,9 +1118,9 @@ title="Print to PDF"
 <p>the <code class="docutils literal notranslate"><span class="pre">tree</span></code> module also allows you to plot the tree to examine it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
-      <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15,20))
+tree.plot_tree(dt, rounded =True, class_names = [&#39;A&#39;,&#39;B&#39;],
+      proportion=True, filled =True, impurity=False,fontsize=10);
 </pre></div>
 </div>
 </div>
@@ -1137,8 +1142,8 @@ title="Print to PDF"
 <p>Fortunately, we can control the parameters to make it find a simpler decision boundary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt2</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">dt2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt2 = tree.DecisionTreeClassifier(max_depth=2)
+dt2.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -1147,9 +1152,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt2</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
-      <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15,20))
+tree.plot_tree(dt2, rounded =True, class_names = [&#39;A&#39;,&#39;B&#39;],
+      proportion=True, filled =True, impurity=False,fontsize=10);
 </pre></div>
 </div>
 </div>
@@ -1159,7 +1164,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt2.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1177,7 @@ title="Print to PDF"
 <p>We might need to play with different parameters to get it just how we want it.  A simpler model is better because it will be more reliable in general.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt2.score(X_test,y_test)
 </pre></div>
 </div>
 </div>
@@ -1184,8 +1189,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt2_20</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">dt2_20</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt2_20 = tree.DecisionTreeClassifier(max_depth=2)
+dt2_20.fit(X_train,y_train)
 </pre></div>
 </div>
 </div>
@@ -1194,7 +1199,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt2_20</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt2_20.score(X_test, y_test)
 </pre></div>
 </div>
 </div>
@@ -1206,9 +1211,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dt2_20</span><span class="p">,</span> <span class="n">rounded</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">],</span>
-      <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15,20))
+tree.plot_tree(dt2_20, rounded =True, class_names = [&#39;A&#39;,&#39;B&#39;],
+      proportion=True, filled =True, impurity=False,fontsize=10);
 </pre></div>
 </div>
 </div>
@@ -1233,10 +1238,10 @@ title="Print to PDF"
 <p>Generally no, with the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> variable set on a given data they will be the same subset every time, but without it would get different rows.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span>
-                          <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;],
+                          random_state = 4)
+X_train.head()
 </pre></div>
 </div>
 </div>
@@ -1295,10 +1300,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">],</span>
-                          <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;],
+                          random_state = 4)
+X_train.head()
 </pre></div>
 </div>
 </div>
@@ -1358,9 +1363,9 @@ title="Print to PDF"
 <p>with random state, we get the same samples each time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">])</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;])
+X_train.head()
 </pre></div>
 </div>
 </div>
@@ -1389,29 +1394,29 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>156</th>
-      <td>1.28</td>
-      <td>4.96</td>
+      <th>59</th>
+      <td>2.91</td>
+      <td>1.92</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>6.75</td>
-      <td>5.99</td>
+      <th>179</th>
+      <td>1.99</td>
+      <td>6.46</td>
     </tr>
     <tr>
-      <th>158</th>
-      <td>6.43</td>
-      <td>6.43</td>
+      <th>54</th>
+      <td>2.63</td>
+      <td>2.58</td>
     </tr>
     <tr>
-      <th>137</th>
-      <td>6.36</td>
-      <td>6.62</td>
+      <th>16</th>
+      <td>6.84</td>
+      <td>2.61</td>
     </tr>
     <tr>
-      <th>40</th>
-      <td>5.11</td>
-      <td>2.06</td>
+      <th>56</th>
+      <td>5.61</td>
+      <td>1.51</td>
     </tr>
   </tbody>
 </table>
@@ -1419,9 +1424,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df6</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]],</span>
-                          <span class="n">df6</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">])</span>
-<span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train, X_test, y_train, y_test = train_test_split(df6[[&#39;x0&#39;,&#39;x1&#39;]],
+                          df6[&#39;char&#39;])
+X_train.head()
 </pre></div>
 </div>
 </div>
@@ -1450,29 +1455,29 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>101</th>
-      <td>6.36</td>
-      <td>1.56</td>
+      <th>175</th>
+      <td>6.28</td>
+      <td>5.62</td>
     </tr>
     <tr>
-      <th>144</th>
-      <td>5.63</td>
-      <td>5.83</td>
+      <th>122</th>
+      <td>5.89</td>
+      <td>0.89</td>
     </tr>
     <tr>
-      <th>128</th>
-      <td>5.49</td>
-      <td>1.72</td>
+      <th>140</th>
+      <td>5.75</td>
+      <td>2.24</td>
     </tr>
     <tr>
-      <th>138</th>
-      <td>5.48</td>
-      <td>6.90</td>
+      <th>71</th>
+      <td>1.49</td>
+      <td>6.42</td>
     </tr>
     <tr>
-      <th>69</th>
-      <td>6.46</td>
-      <td>2.06</td>
+      <th>155</th>
+      <td>5.69</td>
+      <td>2.33</td>
     </tr>
   </tbody>
 </table>

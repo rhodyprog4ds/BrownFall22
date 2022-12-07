@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -989,20 +994,20 @@ cleaning.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#</span>
-<span class="n">na_toy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span> <span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import seaborn as sns
+import numpy as np #
+na_toy_df = pd.DataFrame(data = [[1,3,4,5],[2 ,6, np.nan,4]])
 
-<span class="c1"># make plots look nicer and increase font size</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
+# make plots look nicer and increase font size
+sns.set_theme(font_scale=2)
+arabica_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;
 
-<span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">)</span>
+coffee_df = pd.read_csv(arabica_data_url)
 
 
-<span class="n">rhodyprog4ds_gh_events_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;</span>
-<span class="n">course_gh_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">rhodyprog4ds_gh_events_url</span><span class="p">)</span>
+rhodyprog4ds_gh_events_url = &#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;
+course_gh_df = pd.read_json(rhodyprog4ds_gh_events_url)
 </pre></div>
 </div>
 </div>
@@ -1043,7 +1048,7 @@ spare by dropping.  For example</p>
 have a problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.info()
 </pre></div>
 </div>
 </div>
@@ -1110,7 +1115,7 @@ memory usage: 450.8+ KB
 <p>We can look at the type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Lot.Number&#39;].dtype
 </pre></div>
 </div>
 </div>
@@ -1123,7 +1128,7 @@ memory usage: 450.8+ KB
 <p>And we can look at the value counts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Lot.Number&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1152,7 @@ Name: Lot.Number, Length: 221, dtype: int64
 <p>We see that a lot are ‘1’, maybe we know that when the data was collected, if the Farm only has one lot, some people recorded ‘1’ and others left it as missing. So we could fill in with 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Lot.Number&#39;].fillna(1).head(10)
 </pre></div>
 </div>
 </div>
@@ -1170,7 +1175,7 @@ Name: Lot.Number, dtype: object
 <p>Note that even after we called <code class="docutils literal notranslate"><span class="pre">fillna</span></code> we display it again and the original data is unchanged.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Lot.Number&#39;].head(3)
 </pre></div>
 </div>
 </div>
@@ -1192,14 +1197,14 @@ Name: Lot.Number, dtype: object
 <p>We’ll use adding a column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;lot_number_clean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Lot.Number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;lot_number_clean&#39;] = coffee_df[&#39;Lot.Number&#39;].fillna(&#39;1&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;lot_number_clean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;lot_number_clean&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -1227,7 +1232,7 @@ Name: lot_number_clean, Length: 221, dtype: int64
 Dropna is going to drop either rows or columns. So we</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.shape
 </pre></div>
 </div>
 </div>
@@ -1240,7 +1245,7 @@ Dropna is going to drop either rows or columns. So we</p>
 <p>By default, it drops any row with one or more <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.dropna().shape
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1259,7 @@ Dropna is going to drop either rows or columns. So we</p>
 We might do this if we were interested in studying the impact of altitude on the ratings .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;altitude_low_meters&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.dropna(subset=[&#39;altitude_low_meters&#39;]).shape
 </pre></div>
 </div>
 </div>
@@ -1269,8 +1274,8 @@ We might do this if we were interested in studying the impact of altitude on the
 save the shape values to variables and then use that</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span> <span class="o">=</span><span class="mf">.7</span><span class="o">*</span><span class="n">nrows</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nrows, ncols = coffee_df.shape
+coffee_df.dropna(thresh =.7*nrows,axis=1).shape
 </pre></div>
 </div>
 </div>
@@ -1283,8 +1288,8 @@ save the shape values to variables and then use that</p>
 <p>This dataset is actually in pretty good shape, but if we use a more stringent threshold it drops more columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">coffee_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span> <span class="o">=</span><span class="mf">.85</span><span class="o">*</span><span class="n">nrows</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nrows, ncols = coffee_df.shape
+coffee_df.dropna(thresh =.85*nrows,axis=1).shape
 </pre></div>
 </div>
 </div>

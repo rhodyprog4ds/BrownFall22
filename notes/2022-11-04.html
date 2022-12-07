@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -854,11 +859,11 @@ title="Print to PDF"
 <p>Today, we will learn how to  evaluate if a clustering model was effective or not.  In the process, we will also learn how to determine if we have the right number of clusters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+from sklearn import datasets
+from sklearn.cluster import KMeans
+from sklearn import metrics
+import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -866,8 +871,8 @@ title="Print to PDF"
 <p>Extract out the features to <code class="docutils literal notranslate"><span class="pre">iris_X</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
-<span class="n">iris_X</span> <span class="o">=</span> <span class="n">iris_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iris_df = sns.load_dataset(&#39;iris&#39;)
+iris_X = iris_df.drop(columns=[&#39;species&#39;])
 </pre></div>
 </div>
 </div>
@@ -875,8 +880,8 @@ title="Print to PDF"
 <p>First we will fit the model with the correct number of clusters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km3</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">km3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>km3 = KMeans(n_clusters=3)
+km3.fit(iris_X)
 </pre></div>
 </div>
 </div>
@@ -886,28 +891,28 @@ title="Print to PDF"
 <p>When we use the fit method, it does not return the predictions, but it does store them in the estimator object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km3</span><span class="o">.</span><span class="n">labels_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>km3.labels_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0,
-       0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 2, 0, 2, 0, 0, 2, 2, 0, 0, 0, 0,
-       0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 2], dtype=int32)
+       1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 0, 2, 2, 2,
+       2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 2, 0, 2, 0, 2, 2, 0, 0, 2, 2, 2, 2,
+       2, 0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 0], dtype=int32)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">km2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
-<span class="n">km4</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">km4</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>km2 = KMeans(n_clusters=2)
+km2.fit(iris_X)
+km4 = KMeans(n_clusters=4)
+km4.fit(iris_X)
 </pre></div>
 </div>
 </div>
@@ -931,7 +936,7 @@ If both of these are true then b-a will be close to the value of b and the denom
 <p>Let’s check our clustering solution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">km3</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.silhouette_score(iris_X, km3.labels_)
 </pre></div>
 </div>
 </div>
@@ -944,7 +949,7 @@ If both of these are true then b-a will be close to the value of b and the denom
 <p>This looks pretty good. But we can also compare it for the other two models that we fit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">km2</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.silhouette_score(iris_X, km2.labels_)
 </pre></div>
 </div>
 </div>
@@ -957,7 +962,7 @@ If both of these are true then b-a will be close to the value of b and the denom
 <p>We see in this case this actually fits better.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">km4</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.silhouette_score(iris_X, km4.labels_)
 </pre></div>
 </div>
 </div>
@@ -970,12 +975,12 @@ If both of these are true then b-a will be close to the value of b and the denom
 <p>and 4 fits worse.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris_X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.pairplot(iris_X)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f38785d3070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9cc4b5fc40&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-04_16_1.png" src="../_images/2022-11-04_16_1.png" />
@@ -990,46 +995,46 @@ If both of these are true then b-a will be close to the value of b and the denom
 few different scenarios and add that score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">K</span><span class="p">])</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">classes</span><span class="p">,[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">]])}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>K = 4
+N = 200
+classes = list(string.ascii_uppercase[:K])
+mu = {c: i for c, i in zip(classes,[[2,2], [6,6], [2,6],[6,2]])}
 
 
-<span class="c1"># sample random cluster assignments</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+# sample random cluster assignments
+target = np.random.choice(classes,N)
 
-<span class="c1"># sample points with different means according to those assignments</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">c</span><span class="p">],</span><span class="mf">.25</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">target</span><span class="p">]</span>
-<span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+# sample points with different means according to those assignments
+data = [np.random.multivariate_normal(mu[c],.25*np.eye(2)) for c in target]
+feature_names = [&#39;x&#39; + str(i) for i in range(2)]
+df = pd.DataFrame(data = data,columns = feature_names)
 
-<span class="c1"># save the true assignments</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
+# save the true assignments
+df[&#39;true&#39;] = target
 
-<span class="c1"># random assignments, right number of clusters</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;random&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+# random assignments, right number of clusters
+df[&#39;random&#39;] = np.random.choice(classes,N)
 
-<span class="c1"># random assignments, way too many clusters</span>
-<span class="n">charsK4</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">K</span><span class="o">*</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;random10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">charsK4</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+# random assignments, way too many clusters
+charsK4 = list(string.ascii_uppercase[:K*4])
+df[&#39;random10&#39;] = np.random.choice(charsK4,N)
 
-<span class="c1"># Kmeans with 2x number of clusters</span>
-<span class="n">kmrK2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">kmK2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">]])</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;km&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">kmK2</span><span class="o">.</span><span class="n">labels_</span>
+# Kmeans with 2x number of clusters
+kmrK2 = KMeans(K*2)
+kmK2.fit(df[[&#39;x0&#39;,&#39;x1&#39;]])
+df[&#39;km&#39; + str(K*2)] = kmK2.labels_
 
-<span class="c1"># assign every point to its own cluster</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+# assign every point to its own cluster
+df[&#39;id&#39;] = list(range(N))
 
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+df.head()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">K</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">classes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[:</span><span class="n">K</span><span class="p">])</span>
@@ -1043,23 +1048,23 @@ few different scenarios and add that score.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">assignment_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;random10&#39;</span><span class="p">,</span><span class="s1">&#39;km8&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>assignment_cols = [&#39;true&#39;,&#39;random&#39;, &#39;random10&#39;,&#39;km8&#39;,&#39;id&#39;]
 
-<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
+s = [metrics.silhouette_score(iris_X, df[col]) for col in assignment_cols]
 
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">assignment_cols</span><span class="p">)</span>
+pd.Series(data = s,index=assignment_cols)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">assignment_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;random10&#39;</span><span class="p">,</span><span class="s1">&#39;km8&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">assignment_cols</span><span class="p">)</span>
 
-<span class="nn">Cell In [11], line 3,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[11], line 3,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">assignment_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;random10&#39;</span><span class="p">,</span><span class="s1">&#39;km8&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">iris_X</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">assignment_cols</span><span class="p">)</span>
@@ -1071,17 +1076,17 @@ few different scenarios and add that score.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[sns.pairplot(data =df, hue=col, vars= feature_names) for col in assignment_cols]
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
 
-<span class="nn">Cell In [12], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Cell In[12], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assignment_cols</span><span class="p">]</span>
 
 <span class="ne">NameError</span>: name &#39;df&#39; is not defined
@@ -1105,7 +1110,7 @@ Mutual information is related to entropy in physics.</p>
 <p>The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score"><code class="docutils literal notranslate"><span class="pre">mutual_info_score</span></code></a> method in the <code class="docutils literal notranslate"><span class="pre">metrics</span></code> module computes mutual information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km2</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.mutual_info_score(iris_df[&#39;species&#39;],km2.labels_)
 </pre></div>
 </div>
 </div>
@@ -1117,7 +1122,7 @@ Mutual information is related to entropy in physics.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km3</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.mutual_info_score(iris_df[&#39;species&#39;],km3.labels_)
 </pre></div>
 </div>
 </div>
@@ -1129,7 +1134,7 @@ Mutual information is related to entropy in physics.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km4</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.mutual_info_score(iris_df[&#39;species&#39;],km4.labels_)
 </pre></div>
 </div>
 </div>
@@ -1143,7 +1148,7 @@ Mutual information is related to entropy in physics.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">adjusted_mutual_info_score</span></code> methos in the <code class="docutils literal notranslate"><span class="pre">metrics</span></code> module computes a version of mutual information that is normalized to have good properties. Apply that to the two different clustering solutions and to a solution for K=4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km3</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.adjusted_mutual_info_score(iris_df[&#39;species&#39;],km3.labels_)
 </pre></div>
 </div>
 </div>
@@ -1155,7 +1160,7 @@ Mutual information is related to entropy in physics.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km2</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.adjusted_mutual_info_score(iris_df[&#39;species&#39;],km2.labels_)
 </pre></div>
 </div>
 </div>
@@ -1167,7 +1172,7 @@ Mutual information is related to entropy in physics.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">iris_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">],</span><span class="n">km4</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics.adjusted_mutual_info_score(iris_df[&#39;species&#39;],km4.labels_)
 </pre></div>
 </div>
 </div>

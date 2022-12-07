@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1008,8 +1013,8 @@ how to use it in different ways.</p>
 <p>Given this code excerpt, how could you print out “Sarah_Brown”?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;Sarah&#39;</span>
-<span class="n">last</span> <span class="o">=</span> <span class="s1">&#39;Brown&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>first = &#39;Sarah&#39;
+last = &#39;Brown&#39;
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1022,7 @@ how to use it in different ways.</p>
 <p>We can print the docstring out, as a whole instead of using the shfit + tab to view it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(print)
 </pre></div>
 </div>
 </div>
@@ -1043,7 +1048,7 @@ keyword argument (must be used like <code class="docutils literal notranslate"><
 This means that by default it adds a space as above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="n">last</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(first,last)
 </pre></div>
 </div>
 </div>
@@ -1055,7 +1060,7 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span><span class="n">last</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(first,last,sep=&#39;_&#39;)
 </pre></div>
 </div>
 </div>
@@ -1067,7 +1072,7 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(first)
 </pre></div>
 </div>
 </div>
@@ -1079,58 +1084,58 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_grade</span><span class="p">(</span><span class="n">num_level1</span><span class="p">,</span><span class="n">num_level2</span><span class="p">,</span><span class="n">num_level3</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Computes a grade for CSC/DSP310 from numbers of achievements at each level</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def compute_grade(num_level1,num_level2,num_level3):
+    &#39;&#39;&#39;
+    Computes a grade for CSC/DSP310 from numbers of achievements at each level
 
-<span class="sd">    Parameters:</span>
-<span class="sd">    ------------</span>
-<span class="sd">    num_level1 : int</span>
-<span class="sd">      number of level 1 achievements earned</span>
-<span class="sd">    num_level2 : int</span>
-<span class="sd">      number of level 2 achievements earned</span>
-<span class="sd">    num_level3 : int</span>
-<span class="sd">      number of level 3 achievements earned</span>
+    Parameters:
+    ------------
+    num_level1 : int
+      number of level 1 achievements earned
+    num_level2 : int
+      number of level 2 achievements earned
+    num_level3 : int
+      number of level 3 achievements earned
 
-<span class="sd">    Returns:</span>
-<span class="sd">    --------</span>
-<span class="sd">    letter_grade : string</span>
-<span class="sd">      letter grade with modifier (+/-)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="n">num_level1</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">num_level2</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">num_level3</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
-                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
-            <span class="k">elif</span> <span class="n">num_level3</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
-                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;A-&#39;</span>
-            <span class="k">elif</span> <span class="n">num_level3</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
-                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B+&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span>
-        <span class="k">elif</span> <span class="n">num_level2</span> <span class="o">&gt;=</span><span class="mi">10</span><span class="p">:</span>
-            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;B-&#39;</span>
-        <span class="k">elif</span> <span class="n">num_level2</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
-            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C+&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
-    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;C-&#39;</span>
-    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;D+&#39;</span>
-    <span class="k">elif</span> <span class="n">num_level1</span> <span class="o">&gt;=</span><span class="mi">3</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">grade</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+    Returns:
+    --------
+    letter_grade : string
+      letter grade with modifier (+/-)
+    &#39;&#39;&#39;
+    if num_level1 == 15:
+        if num_level2 == 15:
+            if num_level3 == 15:
+                grade = &#39;A&#39;
+            elif num_level3 &gt;= 10:
+                grade = &#39;A-&#39;
+            elif num_level3 &gt;=5:
+                grade = &#39;B+&#39;
+            else:
+                grade = &#39;B&#39;
+        elif num_level2 &gt;=10:
+            grade = &#39;B-&#39;
+        elif num_level2 &gt;=5:
+            grade = &#39;C+&#39;
+        else:
+            grade = &#39;C&#39;
+    elif num_level1 &gt;= 10:
+        grade = &#39;C-&#39;
+    elif num_level1 &gt;= 5:
+        grade = &#39;D+&#39;
+    elif num_level1 &gt;=3:
+        grade = &#39;D&#39;
+    else:
+        grade = &#39;F&#39;
 
 
-    <span class="k">return</span> <span class="n">grade</span>
+    return grade
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(compute_grade)
 </pre></div>
 </div>
 </div>
@@ -1142,14 +1147,14 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(compute_grade())
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">compute_grade</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: compute_grade() missing 3 required positional arguments: &#39;num_level1&#39;, &#39;num_level2&#39;, and &#39;num_level3&#39;
@@ -1168,22 +1173,22 @@ This means that by default it adds a space as above.</p>
 <p>We can see how the docstring impacts help and how exactly it has to be formatted to become a docstring</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_1</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ex_1(a):
+    print(a)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_1</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(ex_1())
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_1</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_1() missing 1 required positional argument: &#39;a&#39;
@@ -1193,23 +1198,23 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_2</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="c1">#nis htis a docstring?</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ex_2(a):
+    #nis htis a docstring?
+    print(a)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_2</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(ex_2())
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_2</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_2() missing 1 required positional argument: &#39;a&#39;
@@ -1219,24 +1224,24 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_3</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; this is a docstring&#39;&#39;&#39;</span>
-    <span class="c1">#nis htis a docstring?</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ex_3(a):
+    &#39;&#39;&#39; this is a docstring&#39;&#39;&#39;
+    #nis htis a docstring?
+    print(a)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_3</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(ex_3())
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_3</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_3() missing 1 required positional argument: &#39;a&#39;
@@ -1246,24 +1251,24 @@ This means that by default it adds a space as above.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ex_4</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;this is a docstring&quot;&quot;&quot;</span>
-    <span class="c1">#nis htis a docstring?</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ex_4(a):
+    &quot;&quot;&quot;this is a docstring&quot;&quot;&quot;
+    #nis htis a docstring?
+    print(a)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ex_4</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>help(ex_4())
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">help</span><span class="p">(</span><span class="n">ex_4</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: ex_4() missing 1 required positional argument: &#39;a&#39;
@@ -1324,7 +1329,7 @@ This means that by default it adds a space as above.</p>
 <p>We’ll save that url as a variable to work with it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -1342,7 +1347,7 @@ This means that by default it adds a space as above.</p>
 <p>We will use a library called Pandas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -1356,7 +1361,7 @@ This means that by default it adds a space as above.</p>
 <p>We can read data in using the read csv file</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_csv(coffee_data_url)
 </pre></div>
 </div>
 </div>
@@ -1676,9 +1681,9 @@ This means that by default it adds a space as above.</p>
 If we do something else after, it will read it in, but not print it out</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_csv(coffee_data_url)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+print(first)
 </pre></div>
 </div>
 </div>
@@ -1691,7 +1696,7 @@ If we do something else after, it will read it in, but not print it out</p>
 <p>In order to use it, we save the output to a variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_data = pd.read_csv(coffee_data_url)
 </pre></div>
 </div>
 </div>
@@ -1699,7 +1704,7 @@ If we do something else after, it will read it in, but not print it out</p>
 <p>Then we can check the type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(coffee_data)
 </pre></div>
 </div>
 </div>
@@ -1712,14 +1717,14 @@ If we do something else after, it will read it in, but not print it out</p>
 <p>This is a new type that is provided by the pandas library.  Notice this uses the full libary name, not the alias, because this comes from the code for the library itself, not our current code where pandas as a nickname.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df = pd.read_csv(coffee_data_url)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df
 </pre></div>
 </div>
 </div>

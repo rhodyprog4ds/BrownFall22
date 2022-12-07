@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1147,7 +1152,7 @@ title="Print to PDF"
 <h2><span class="section-number">4.2. </span>Lists of lists<a class="headerlink" href="#lists-of-lists" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -1155,14 +1160,14 @@ title="Print to PDF"
 <p>Recall how indexing works with negagive numbers</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topics</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;what is data science&#39;</span><span class="p">,</span> <span class="s1">&#39;jupyter&#39;</span><span class="p">,</span> <span class="s1">&#39;conditional&#39;</span><span class="p">,</span><span class="s1">&#39;functions&#39;</span><span class="p">,</span> <span class="s1">&#39;lists&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries&#39;</span><span class="p">,</span><span class="s1">&#39;pandas&#39;</span> <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>topics = [&#39;what is data science&#39;, &#39;jupyter&#39;, &#39;conditional&#39;,&#39;functions&#39;, &#39;lists&#39;, &#39;dictionaries&#39;,&#39;pandas&#39; ]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topics</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>topics[-1]
 </pre></div>
 </div>
 </div>
@@ -1175,39 +1180,39 @@ title="Print to PDF"
 <p>A list we built together:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can remain anonymous (this page &amp; the notes will be fully public)</span>
-<span class="c1"># by attributing it to a celebrity or psuedonym, but include *some* sort of attribution</span>
-<span class="n">sentence_list</span> <span class="o">=</span> <span class="p">[</span>
-<span class="s2">&quot;The class is just starting to feel settled for me. - Dr. Brown&quot;</span><span class="p">,</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Hello, I like sushi! - &quot;</span><span class="p">,</span>
-<span class="s2">&quot;Why squared  aka the mask - is a computer science student.&quot;</span>
-<span class="s2">&quot;Data science is fun&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Hello my fellow gaymers - Sun Tzu&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Soccer is a sport -Obama&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Hello, I love pizza - Bear&quot;</span><span class="p">,</span>
-<span class="s2">&quot;This class is CSC/DSP 310. - Student&quot;</span><span class="p">,</span>
-<span class="s2">&quot;It is 2:21pm -&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Pizza conquers all- Beetlejuice&quot;</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;ayyy whaddup wit it - frankie&quot;</span><span class="p">,</span>
-<span class="s2">&quot;This is a sentence - George W Bush&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Steam is the best place to play videogames change my mind. - Todd Howard&quot;</span><span class="p">,</span>
-<span class="s2">&quot;This is a hello -&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Hello how are you -&quot;</span><span class="p">,</span>
-<span class="s2">&quot;The monkey likes bananas. - A banana&quot;</span><span class="p">,</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Just type a random sentence - Rosa Parks&quot;</span><span class="p">,</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;I love CSC. - Everyone&quot;</span><span class="p">,</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;The quick brown fox jumps over the lazy dog - Brendan Chadwick&quot;</span><span class="p">,</span>
-<span class="s2">&quot;I like computers - David&quot;</span><span class="p">,</span>
-<span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="s2">&quot;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Sally sells seashells by the seashore. - Narrator&quot;</span><span class="p">,</span>
-<span class="s2">&quot;I would like to take a nap. - Tom Cruise,&quot;</span>
-<span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># You can remain anonymous (this page &amp; the notes will be fully public)
+# by attributing it to a celebrity or psuedonym, but include *some* sort of attribution
+sentence_list = [
+&quot;The class is just starting to feel settled for me. - Dr. Brown&quot;,
+&quot;&quot;,
+&quot;Hello, I like sushi! - &quot;,
+&quot;Why squared  aka the mask - is a computer science student.&quot;
+&quot;Data science is fun&quot;,
+&quot;Hello my fellow gaymers - Sun Tzu&quot;,
+&quot;Soccer is a sport -Obama&quot;,
+&quot;Hello, I love pizza - Bear&quot;,
+&quot;This class is CSC/DSP 310. - Student&quot;,
+&quot;It is 2:21pm -&quot;,
+&quot;Pizza conquers all- Beetlejuice&quot;
+&quot;&quot;,
+&quot;ayyy whaddup wit it - frankie&quot;,
+&quot;This is a sentence - George W Bush&quot;,
+&quot;Steam is the best place to play videogames change my mind. - Todd Howard&quot;,
+&quot;This is a hello -&quot;,
+&quot;Hello how are you -&quot;,
+&quot;The monkey likes bananas. - A banana&quot;,
+&quot;&quot;,
+&quot;Just type a random sentence - Rosa Parks&quot;,
+&quot;&quot;,
+&quot;I love CSC. - Everyone&quot;,
+&quot;&quot;,
+&quot;The quick brown fox jumps over the lazy dog - Brendan Chadwick&quot;,
+&quot;I like computers - David&quot;,
+&quot;&quot;,
+&quot;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&quot;,
+&quot;Sally sells seashells by the seashore. - Narrator&quot;,
+&quot;I would like to take a nap. - Tom Cruise,&quot;
+]
 </pre></div>
 </div>
 </div>
@@ -1215,7 +1220,7 @@ title="Print to PDF"
 <p>We can confirm this is a list</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">sentence_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(sentence_list)
 </pre></div>
 </div>
 </div>
@@ -1228,8 +1233,8 @@ title="Print to PDF"
 <p>We can use a list comprehension to remove the empty ones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences_clean</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentence_list</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">sentences_clean</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentences_clean = [s for s in sentence_list if len(s)&gt;1]
+sentences_clean
 </pre></div>
 </div>
 </div>
@@ -1263,8 +1268,8 @@ title="Print to PDF"
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">split</span></code> method on a string to make a list of lists</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentences_clean</span><span class="p">]</span>
-<span class="n">sentence_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_data = [s.split(&#39;-&#39;) for s in sentences_clean]
+sentence_data
 </pre></div>
 </div>
 </div>
@@ -1300,7 +1305,7 @@ title="Print to PDF"
 <p>then we can use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">DataFrame Constructor</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">sentence_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df = pd.DataFrame(data= sentence_data, columns=[&#39;sentence&#39;,&#39;attribution&#39;])
 </pre></div>
 </div>
 </div>
@@ -1308,7 +1313,7 @@ title="Print to PDF"
 <p>We can use head by default for 5</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.head()
 </pre></div>
 </div>
 </div>
@@ -1368,7 +1373,7 @@ title="Print to PDF"
 <p>or pass a nubmer to get a different  number of rows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.head(3)
 </pre></div>
 </div>
 </div>
@@ -1418,7 +1423,7 @@ title="Print to PDF"
 <p>the <code class="docutils literal notranslate"><span class="pre">loc</span></code> property can index on rows or columns, but is rows by deault</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.loc[3]
 </pre></div>
 </div>
 </div>
@@ -1433,7 +1438,7 @@ Name: 3, dtype: object
 <p>We can select a range, like in base python with a colon</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.loc[3:5]
 </pre></div>
 </div>
 </div>
@@ -1486,14 +1491,14 @@ Name: 3, dtype: object
 <p>We can load a json using the <code class="docutils literal notranslate"><span class="pre">read_json</span></code> method the same way we used the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhodyprog4ds_gh_events_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rhodyprog4ds_gh_events_url = &#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">rhodyprog4ds_gh_events_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_json(rhodyprog4ds_gh_events_url)
 </pre></div>
 </div>
 </div>
@@ -1529,6 +1534,39 @@ Name: 3, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>25707236522</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11907839113, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-12-07 02:09:26+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25559123842</td>
+      <td>ForkEvent</td>
+      <td>{'id': 119482217, 'login': 'thuthaont', 'displ...</td>
+      <td>{'id': 287067905, 'name': 'rhodyprog4ds/portfo...</td>
+      <td>{'forkee': {'id': 572439723, 'node_id': 'R_kgD...</td>
+      <td>True</td>
+      <td>2022-11-30 09:26:11+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25454470489</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11775411829, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-11-24 13:07:35+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>25454293906</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1539,7 +1577,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>25443448383</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1550,7 +1588,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>5</th>
       <td>25443372137</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1561,7 +1599,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>6</th>
       <td>25443352568</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1572,7 +1610,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>25443343932</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1583,7 +1621,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>8</th>
       <td>25390211963</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1594,7 +1632,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>9</th>
       <td>25390113561</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1605,7 +1643,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>10</th>
       <td>25390087086</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1616,7 +1654,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>11</th>
       <td>25390070156</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1627,7 +1665,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>12</th>
       <td>25360316947</td>
       <td>IssuesEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1638,7 +1676,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>13</th>
       <td>25360316900</td>
       <td>IssueCommentEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1649,7 +1687,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>14</th>
       <td>25360154325</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1660,7 +1698,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>15</th>
       <td>25360116113</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1671,7 +1709,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>16</th>
       <td>25360107585</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1682,7 +1720,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>25360103740</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1693,7 +1731,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>25350056101</td>
       <td>IssuesEvent</td>
       <td>{'id': 54962132, 'login': 'saidafern', 'displa...</td>
@@ -1704,7 +1742,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>25344448847</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1715,7 +1753,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>20</th>
       <td>25344423864</td>
       <td>ReleaseEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1726,7 +1764,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>21</th>
       <td>25344402964</td>
       <td>CreateEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1737,7 +1775,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>22</th>
       <td>25344398675</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1748,7 +1786,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>23</th>
       <td>25342083235</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1759,7 +1797,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>24</th>
       <td>25341998257</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1770,7 +1808,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>25</th>
       <td>25337507441</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1781,7 +1819,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>26</th>
       <td>25337490927</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1792,7 +1830,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>27</th>
       <td>25337370539</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1803,7 +1841,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>28</th>
       <td>25337341579</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1814,7 +1852,7 @@ Name: 3, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>29</th>
       <td>25320624895</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1822,39 +1860,6 @@ Name: 3, dtype: object
       <td>{'push_id': 11704759224, 'size': 1, 'distinct_...</td>
       <td>True</td>
       <td>2022-11-18 03:19:42+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>25320597150</td>
-      <td>PushEvent</td>
-      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11704744417, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-11-18 03:17:14+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>25320534974</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11704710069, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-11-18 03:11:38+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>25320514276</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11704698397, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-11-18 03:09:50+00:00</td>
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
   </tbody>

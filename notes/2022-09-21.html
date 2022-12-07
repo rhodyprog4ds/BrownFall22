@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -919,7 +924,7 @@ title="Print to PDF"
 <h1><span class="section-number">6. </span>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -930,8 +935,8 @@ title="Print to PDF"
 <em>displays</em> it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sarah&#39;</span>
-<span class="n">name</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>name = &#39;sarah&#39;
+name
 </pre></div>
 </div>
 </div>
@@ -944,7 +949,7 @@ title="Print to PDF"
 <p>How it displays it depends on the type</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(name)
 </pre></div>
 </div>
 </div>
@@ -957,7 +962,7 @@ title="Print to PDF"
 <p>For a string, it uses <code class="docutils literal notranslate"><span class="pre">print</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(name)
 </pre></div>
 </div>
 </div>
@@ -976,7 +981,7 @@ in a more visually appealing way.</p>
 <p>We will load the robusta data briefly again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -984,8 +989,8 @@ in a more visually appealing way.</p>
 <p>Is the robusta coffee’s Mouthfeel or Aftertaste rated more consistently</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">robusta_data_url</span><span class="p">)</span>
-<span class="n">robusta_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_df = pd.read_csv(robusta_data_url)
+robusta_df.describe()
 </pre></div>
 </div>
 </div>
@@ -1232,7 +1237,7 @@ in a more visually appealing way.</p>
 <p>from the lower <code class="docutils literal notranslate"><span class="pre">std</span></code> we can see that Aftertaste is more consistently rated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="p">[[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_df[[&#39;Aftertaste&#39;,&#39;Mouthfeel&#39;]].plot(kind=&#39;hist&#39;)
 </pre></div>
 </div>
 </div>
@@ -1248,7 +1253,7 @@ This approximates the distribution of the data, you can think of it rougly like
 a smoothed out histogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="p">[[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_df[[&#39;Aftertaste&#39;,&#39;Mouthfeel&#39;]].plot(kind=&#39;kde&#39;)
 </pre></div>
 </div>
 </div>
@@ -1267,7 +1272,7 @@ a smoothed out histogram.</p>
 <p>It tries to use them to index in multiple ways instead.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_df[&#39;Aftertaste&#39;,&#39;Mouthfeel&#39;]
 </pre></div>
 </div>
 </div>
@@ -1292,7 +1297,7 @@ a smoothed out histogram.</p>
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:3805,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
@@ -1325,8 +1330,8 @@ a smoothed out histogram.</p>
 and more interesting for plotting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
-<span class="n">arabica_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>arabica_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;
+arabica_df = pd.read_csv(arabica_data_url,index_col=0)
 </pre></div>
 </div>
 </div>
@@ -1334,7 +1339,7 @@ and more interesting for plotting</p>
 <p>It is mostly the same columns as the robusta data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>arabica_df.columns
 </pre></div>
 </div>
 </div>
@@ -1356,7 +1361,7 @@ and more interesting for plotting</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">robusta_df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>robusta_df.columns
 </pre></div>
 </div>
 </div>
@@ -1380,7 +1385,7 @@ and more interesting for plotting</p>
 <p>but it has a lot more rows</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">arabica_df</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">robusta_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(arabica_df) - len(robusta_df)
 </pre></div>
 </div>
 </div>
@@ -1392,7 +1397,7 @@ and more interesting for plotting</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">robusta_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>arabica_df.shape, robusta_df.shape
 </pre></div>
 </div>
 </div>
@@ -1422,19 +1427,19 @@ and more interesting for plotting</p>
 Getting started with seaborn is the simplest, so we’ll use that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data = robusta_df, x=&#39;Aftertaste&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f51a7f041f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f63a8497910&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_28_1.png" src="../_images/2022-09-21_28_1.png" />
@@ -1442,14 +1447,14 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Moutfeel&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data = robusta_df, x=&#39;Moutfeel&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Moutfeel&#39;</span><span class="p">)</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/distributions.py:2125,</span> in <span class="ni">displot</span><span class="nt">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
@@ -1518,7 +1523,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 <h3><span class="section-number">6.4.1. </span>how are flavor and balance related?<a class="headerlink" href="#how-are-flavor-and-balance-related" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(data=arabica_df,x=&#39;Flavor&#39;,y=&#39;Balance&#39;)
 </pre></div>
 </div>
 </div>
@@ -1532,7 +1537,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 <p>But now we have more power to investigate more relationships in the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Color&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(data=arabica_df,x=&#39;Flavor&#39;,y=&#39;Balance&#39;,hue=&#39;Color&#39;)
 </pre></div>
 </div>
 </div>
@@ -1547,8 +1552,8 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 or balance scores, but that the flavor and balacne are related.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">,</span>
-                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(data=arabica_df,x=&#39;Flavor&#39;,y=&#39;Balance&#39;,
+                hue=&#39;Country.of.Origin&#39;)
 </pre></div>
 </div>
 </div>
@@ -1564,14 +1569,14 @@ it allows us to create grids of plots and by default also includes a regression
 line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">,</span>
-                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span>
-          <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lmplot(data=arabica_df,x=&#39;Flavor&#39;,y=&#39;Balance&#39;,
+                hue=&#39;Country.of.Origin&#39;,col=&#39;Country.of.Origin&#39;,
+          col_wrap=4)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f51a751f670&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f63a78a3f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_37_1.png" src="../_images/2022-09-21_37_1.png" />
@@ -1580,14 +1585,14 @@ line.</p>
 <p>If we were not interested in the regression line, we could turn that off for now, with <code class="docutils literal notranslate"><span class="pre">,fit_reg=False</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">arabica_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Balance&#39;</span><span class="p">,</span>
-                <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span>
-          <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.lmplot(data=arabica_df,x=&#39;Flavor&#39;,y=&#39;Balance&#39;,
+                hue=&#39;Country.of.Origin&#39;,col=&#39;Country.of.Origin&#39;,
+          col_wrap=4,fit_reg=False)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f519d4cf340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f639d624f70&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_39_1.png" src="../_images/2022-09-21_39_1.png" />

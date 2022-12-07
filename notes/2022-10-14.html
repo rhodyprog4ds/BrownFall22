@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -865,16 +870,16 @@ title="Print to PDF"
 </aside>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">skmetrics</span>
-<span class="kn">from</span> <span class="nn">aif360</span> <span class="kn">import</span> <span class="n">metrics</span> <span class="k">as</span> <span class="n">fairmetrics</span>
-<span class="kn">from</span> <span class="nn">aif360.datasets</span> <span class="kn">import</span> <span class="n">BinaryLabelDataset</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn import metrics as skmetrics
+from aif360 import metrics as fairmetrics
+from aif360.datasets import BinaryLabelDataset
+import seaborn as sns
 
-<span class="n">compas_clean_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;</span>
-<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">compas_clean_url</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span>
+compas_clean_url = &#39;https://raw.githubusercontent.com/ml4sts/outreach-compas/main/data/compas_c.csv&#39;
+compas_df = pd.read_csv(compas_clean_url,index_col = &#39;id&#39;)
 
-<span class="n">compas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">compas_df</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text&#39;</span><span class="p">],)</span>
+compas_df = pd.get_dummies(compas_df,columns=[&#39;score_text&#39;],)
 </pre></div>
 </div>
 </div>
@@ -912,7 +917,7 @@ pip install &#39;aif360[Reductions]&#39;
 <p>to review:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_df.head()
 </pre></div>
 </div>
 </div>
@@ -1075,7 +1080,7 @@ pip install &#39;aif360[Reductions]&#39;
 <p>Notice today we imported the sklearn.metrics module with an alias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_High&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>skmetrics.accuracy_score(compas_df[&#39;two_year_recid&#39;],compas_df[&#39;score_text_High&#39;])
 </pre></div>
 </div>
 </div>
@@ -1092,10 +1097,10 @@ pip install &#39;aif360[Reductions]&#39;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-<span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_Low&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
-<span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-             <span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int_not = lambda a:int(not(a))
+compas_df[&#39;score_text_MedHigh&#39;] = compas_df[&#39;score_text_Low&#39;].apply(int_not)
+skmetrics.accuracy_score(compas_df[&#39;two_year_recid&#39;],
+             compas_df[&#39;score_text_MedHigh&#39;])
 </pre></div>
 </div>
 </div>
@@ -1109,7 +1114,7 @@ pip install &#39;aif360[Reductions]&#39;
 <p>the <code class="docutils literal notranslate"><span class="pre">int_not</span></code> <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">int_not</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(int_not)
 </pre></div>
 </div>
 </div>
@@ -1122,8 +1127,8 @@ pip install &#39;aif360[Reductions]&#39;
 <p>it is equivalent as the following, but a more compact notation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">int_not_f</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def int_not_f(a):
+    return int(not(a))
 </pre></div>
 </div>
 </div>
@@ -1131,7 +1136,7 @@ pip install &#39;aif360[Reductions]&#39;
 <p>It flips a 0 to a 1</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int_not(0)
 </pre></div>
 </div>
 </div>
@@ -1144,7 +1149,7 @@ pip install &#39;aif360[Reductions]&#39;
 <p>and th eother way</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_not</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int_not(1)
 </pre></div>
 </div>
 </div>
@@ -1156,7 +1161,7 @@ pip install &#39;aif360[Reductions]&#39;
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;score_text_Medium&#39;</span><span class="p">)[</span><span class="s1">&#39;decile_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_df.groupby(&#39;score_text_Medium&#39;)[&#39;decile_score&#39;].min()
 </pre></div>
 </div>
 </div>
@@ -1171,7 +1176,7 @@ Name: decile_score, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_race</span> <span class="o">=</span> <span class="n">compas_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;race&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_race = compas_df.groupby(&#39;race&#39;)
 </pre></div>
 </div>
 </div>
@@ -1182,10 +1187,10 @@ Name: decile_score, dtype: int64
 <p>To groupby and then do the score, we can use a lambda again, with apply</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acc_fx</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-             <span class="n">d</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>acc_fx = lambda d: skmetrics.accuracy_score(d[&#39;two_year_recid&#39;],
+             d[&#39;score_text_MedHigh&#39;])
 
-<span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span>
+compas_race.apply(acc_fx,)
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1206,7 @@ dtype: float64
 <p>In this case it gives a series, but with <code class="docutils literal notranslate"><span class="pre">reset_index</span></code> we can make it a DataFrame and then rename the column to label it as accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_race</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">acc_fx</span><span class="p">,)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;accuracy&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_race.apply(acc_fx,).reset_index().rename(columns={0:&#39;accuracy&#39;})
 </pre></div>
 </div>
 </div>
@@ -1246,13 +1251,13 @@ dtype: float64
 <p>That lambda + apply is equivalent to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_acc</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">race</span><span class="p">,</span> <span class="n">rdf</span> <span class="ow">in</span> <span class="n">compas_race</span><span class="p">:</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">skmetrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-             <span class="n">rdf</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-    <span class="n">race_acc</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">race</span><span class="p">,</span><span class="n">acc</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>race_acc = []
+for race, rdf in compas_race:
+    acc = skmetrics.accuracy_score(rdf[&#39;two_year_recid&#39;],
+             rdf[&#39;score_text_MedHigh&#39;])
+    race_acc.append([race,acc])
 
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">race_acc</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+pd.DataFrame(race_acc, columns =[&#39;race&#39;,&#39;accuracy&#39;])
 </pre></div>
 </div>
 </div>
@@ -1308,8 +1313,8 @@ dtype: float64
 <p>First, we’ll make a numerical copy of the <code class="docutils literal notranslate"><span class="pre">compas_df</span></code> columns that we need. The only nonnumerical column that we need is race, wo we’ll make a <code class="docutils literal notranslate"><span class="pre">dict</span></code> to replace that/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">race_num_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">compas_df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)}</span>
-<span class="n">race_num_map</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>race_num_map = {r:i for i,r, in enumerate(compas_df[&#39;race&#39;].value_counts().index)}
+race_num_map
 </pre></div>
 </div>
 </div>
@@ -1322,9 +1327,9 @@ dtype: float64
 <p>and here we select columns and replace the values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">required_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">,</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">]</span>
-<span class="n">num_compas</span> <span class="o">=</span> <span class="n">compas_df</span><span class="p">[</span><span class="n">required_cols</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">race_num_map</span><span class="p">)</span>
-<span class="n">num_compas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>required_cols = [&#39;race&#39;,&#39;two_year_recid&#39;,&#39;score_text_MedHigh&#39;]
+num_compas = compas_df[required_cols].replace(race_num_map)
+num_compas.head(2)
 </pre></div>
 </div>
 </div>
@@ -1378,8 +1383,8 @@ dtype: float64
 <p>Next we will make two versions, one with race &amp; the ground truth and ht eother with race &amp; the predictions. It’s easiest to drop the column we don’t want.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_compas_true</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">])</span>
-<span class="n">num_compas_pred</span> <span class="o">=</span> <span class="n">num_compas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_compas_true = num_compas.drop(columns=[&#39;score_text_MedHigh&#39;])
+num_compas_pred = num_compas.drop(columns=[&#39;two_year_recid&#39;])
 </pre></div>
 </div>
 </div>
@@ -1387,13 +1392,13 @@ dtype: float64
 <p>Now we make the <a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.BinaryLabelDataset.html#aif360.datasets.BinaryLabelDataset"><code class="docutils literal notranslate"><span class="pre">BinaryLabelDataset</span></code></a> objects, this type comes from AIF360 too.  Basically, it is a DataFrame with extra attributes; some specific and some inherited from <a class="reference external" href="https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.StructuredDataset.html#aif360.datasets.StructuredDataset"><code class="docutils literal notranslate"><span class="pre">StructuredDataset</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here we want actual favorable outcome</span>
-<span class="n">broward_true</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_true</span><span class="p">,</span>
-          <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;two_year_recid&#39;</span><span class="p">],</span>
-         <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
-<span class="n">compas_predictions</span> <span class="o">=</span> <span class="n">BinaryLabelDataset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">num_compas_pred</span><span class="p">,</span>
-          <span class="n">label_names</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score_text_MedHigh&#39;</span><span class="p">],</span>
-         <span class="n">protected_attribute_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># here we want actual favorable outcome
+broward_true = BinaryLabelDataset(0,1,df = num_compas_true,
+          label_names= [&#39;two_year_recid&#39;],
+         protected_attribute_names=[&#39;race&#39;])
+compas_predictions = BinaryLabelDataset(0,1,df = num_compas_pred,
+          label_names= [&#39;score_text_MedHigh&#39;],
+         protected_attribute_names=[&#39;race&#39;])
 </pre></div>
 </div>
 </div>
@@ -1405,8 +1410,8 @@ dtype: float64
 <p>This type also has an <code class="docutils literal notranslate"><span class="pre">ignore_fields</span></code> column for when comparisons are made, since the requirement is that only the <em>content</em> of the label column is different, but in our case also the label names are different, we have to tell it that that’s okay.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_predictions</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
-<span class="n">broward_true</span><span class="o">.</span><span class="n">ignore_fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;label_names&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_predictions.ignore_fields.add(&#39;label_names&#39;)
+broward_true.ignore_fields.add(&#39;label_names&#39;)
 </pre></div>
 </div>
 </div>
@@ -1414,10 +1419,10 @@ dtype: float64
 <p>Now, we can instantiate our metric object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span> <span class="o">=</span> <span class="n">fairmetrics</span><span class="o">.</span><span class="n">ClassificationMetric</span><span class="p">(</span><span class="n">broward_true</span><span class="p">,</span>
-                           <span class="n">compas_predictions</span><span class="p">,</span>
-                 <span class="n">unprivileged_groups</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}],</span>
-                <span class="n">privileged_groups</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;race&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer = fairmetrics.ClassificationMetric(broward_true,
+                           compas_predictions,
+                 unprivileged_groups=[{&#39;race&#39;:0}],
+                privileged_groups = [{&#39;race&#39;:1}])
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1430,7 @@ dtype: float64
 <p>And finally we can compute! First, we can verify that we get the same accuracy as before</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.accuracy()
 </pre></div>
 </div>
 </div>
@@ -1438,7 +1443,7 @@ dtype: float64
 <p>For the aif360 metrics, they have one parameter, <code class="docutils literal notranslate"><span class="pre">privleged</span></code> with a defautl value of <code class="docutils literal notranslate"><span class="pre">None</span></code> when it’s none it computes th ewhole dataset.  When <code class="docutils literal notranslate"><span class="pre">True</span></code> it compues only the priveleged group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.accuracy(True)
 </pre></div>
 </div>
 </div>
@@ -1452,7 +1457,7 @@ dtype: float64
 <p>When <code class="docutils literal notranslate"><span class="pre">False</span></code> it’s the unpriveleged group, here African American</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.accuracy(False)
 </pre></div>
 </div>
 </div>
@@ -1466,7 +1471,7 @@ dtype: float64
 <p>In Disparate Impact the ratio is of the positive outcome, independent of the predictor.  So this is the ratio of the % of Black people not rearrested to % of white people rearrested.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">disparate_impact</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.disparate_impact()
 </pre></div>
 </div>
 </div>
@@ -1479,7 +1484,7 @@ dtype: float64
 <p>The courts use an “80%” rule saying that if this ratio is above .8 for things like employment, it’s close enough. T</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">error_rate_ratio</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.error_rate_ratio()
 </pre></div>
 </div>
 </div>
@@ -1492,7 +1497,7 @@ dtype: float64
 <p>We can also do ratios of the scores.  This is where the journalists <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">found bias</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_positive_rate_ratio</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.false_positive_rate_ratio()
 </pre></div>
 </div>
 </div>
@@ -1505,7 +1510,7 @@ dtype: float64
 <p>Black people were given a low score and then re-arrested only a little more than half as often as white people.  (White people were give an low score and rearrested almost twice as often)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_negative_rate_ratio</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.false_negative_rate_ratio()
 </pre></div>
 </div>
 </div>
@@ -1522,7 +1527,7 @@ dtype: float64
 <p>The <a class="reference external" href="https://www.equivant.com/response-to-propublica-demonstrating-accuracy-equity-and-predictive-parity/">COMPAS creators argued</a> that the model should be evaluated in terms of if a given score means the same thing across races; using the prediction as the denominator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_omission_rate_ratio</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.false_omission_rate_ratio()
 </pre></div>
 </div>
 </div>
@@ -1534,7 +1539,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compas_fair_scorer</span><span class="o">.</span><span class="n">false_discovery_rate_ratio</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compas_fair_scorer.false_discovery_rate_ratio()
 </pre></div>
 </div>
 </div>

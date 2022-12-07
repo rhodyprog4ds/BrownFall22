@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -935,24 +940,24 @@ title="Print to PDF"
 <h1><span class="section-number">7. </span>More EDA<a class="headerlink" href="#more-eda" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import seaborn as sns
+sns.set_theme(palette=&#39;colorblind&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
-<span class="n">robusta_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>arabica_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;
+robusta_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df = pd.read_csv(arabica_data_url,index_col=0)
 </pre></div>
 </div>
 </div>
@@ -961,8 +966,8 @@ title="Print to PDF"
 <h2><span class="section-number">7.1. </span>Which of the following is distributed most similarly to Sweetness?<a class="headerlink" href="#which-of-the-following-is-distributed-most-similarly-to-sweetness" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_of_interest</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span><span class="s1">&#39;Balance&#39;</span><span class="p">,</span><span class="s1">&#39;Aroma&#39;</span><span class="p">,</span><span class="s1">&#39;Body&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;Uniformity&#39;</span><span class="p">,</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Sweetness&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scores_of_interest = [&#39;Flavor&#39;,&#39;Balance&#39;,&#39;Aroma&#39;,&#39;Body&#39;,
+                      &#39;Uniformity&#39;,&#39;Aftertaste&#39;,&#39;Sweetness&#39;]
 </pre></div>
 </div>
 </div>
@@ -972,7 +977,7 @@ looking ad a plot.</p>
 <p>First step is to subset the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="n">scores_of_interest</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[scores_of_interest].head(2)
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1037,7 @@ looking ad a plot.</p>
 <p>Then we produce a kde plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="n">scores_of_interest</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[scores_of_interest].plot(kind=&#39;kde&#39;)
 </pre></div>
 </div>
 </div>
@@ -1046,12 +1051,12 @@ looking ad a plot.</p>
 <p>We could also do it with seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">[</span><span class="n">scores_of_interest</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data=coffee_df[scores_of_interest])
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f5777fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41fc1ef490&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_11_1.png" src="../_images/2022-09-23_11_1.png" />
@@ -1060,12 +1065,12 @@ looking ad a plot.</p>
 <p>the default is not as helpful as using</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">[</span><span class="n">scores_of_interest</span><span class="p">],</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data=coffee_df[scores_of_interest],kind=&#39;kde&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f532c10e970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41c02ed850&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_13_1.png" src="../_images/2022-09-23_13_1.png" />
@@ -1081,7 +1086,7 @@ looking ad a plot.</p>
 </aside>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;\n&#39;.join(sns.displot.__doc__.split(&#39;\n&#39;)[5:10]))
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1107,7 @@ looking ad a plot.</p>
 <p>On Monday, we saw how to see how many reviews there were per country, using</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_per_country</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_per_country = coffee_df.groupby(&#39;Country.of.Origin&#39;)[&#39;Number.of.Bags&#39;].sum()
 </pre></div>
 </div>
 </div>
@@ -1121,14 +1126,14 @@ these notes as a notebook.</p>
 <p>We can view this by saving the groupby object as a variable and exploring it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_grouped</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>country_grouped = coffee_df.groupby(&#39;Country.of.Origin&#39;)
 
-<span class="n">country_grouped</span>
+country_grouped
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f52f1102fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f41fc1f5f40&gt;
 </pre></div>
 </div>
 </div>
@@ -1136,8 +1141,8 @@ these notes as a notebook.</p>
 <p>Trying to look at it without applying additional functions, just tells us the type.  But, it’s iterable, so we can loop over.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">country</span><span class="p">,</span><span class="n">df</span> <span class="ow">in</span> <span class="n">country_grouped</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">country</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for country,df in country_grouped:
+    print(type(country), type(df))
 </pre></div>
 </div>
 </div>
@@ -1199,14 +1204,14 @@ these notes as a notebook.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_total_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bag_total_dict = {}
 
-<span class="k">for</span> <span class="n">country</span><span class="p">,</span><span class="n">df</span> <span class="ow">in</span> <span class="n">country_grouped</span><span class="p">:</span>
-    <span class="n">tot_bags</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">bag_total_dict</span><span class="p">[</span><span class="n">country</span><span class="p">]</span> <span class="o">=</span> <span class="n">tot_bags</span>
+for country,df in country_grouped:
+    tot_bags =  df[&#39;Number.of.Bags&#39;].sum()
+    bag_total_dict[country] = tot_bags
 
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">bag_total_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span>
-                           <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Number.of.Bags.Sum&#39;</span><span class="p">])</span>
+pd.DataFrame.from_dict(bag_total_dict, orient=&#39;index&#39;,
+                           columns = [&#39;Number.of.Bags.Sum&#39;])
 </pre></div>
 </div>
 </div>
@@ -1389,7 +1394,7 @@ these notes as a notebook.</p>
 <p>We saved the totals, so we can check what type that is.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">total_per_country</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(total_per_country)
 </pre></div>
 </div>
 </div>
@@ -1409,7 +1414,7 @@ these notes as a notebook.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_per_country.sort_values(ascending=False)
 </pre></div>
 </div>
 </div>
@@ -1462,12 +1467,12 @@ Name: Number.of.Bags, dtype: int64
 <p>We can also look at the distributions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f1144b20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41c027b9a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_29_1.png" src="../_images/2022-09-23_29_1.png" />
@@ -1475,13 +1480,13 @@ Name: Number.of.Bags, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;violin&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5304c0d880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41c01caf70&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_30_1.png" src="../_images/2022-09-23_30_1.png" />
@@ -1489,13 +1494,13 @@ Name: Number.of.Bags, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f11955b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41c004ffa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_31_1.png" src="../_images/2022-09-23_31_1.png" />
@@ -1513,7 +1518,7 @@ Name: Number.of.Bags, dtype: int64
 <h2><span class="section-number">7.5. </span>How can we pick the top 10 countries out?<a class="headerlink" href="#how-can-we-pick-the-top-10-countries-out" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_per_country.sort_values(ascending=False)[:10]
 </pre></div>
 </div>
 </div>
@@ -1536,7 +1541,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">total_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(total_per_country.sort_values(ascending=False)[:10])
 </pre></div>
 </div>
 </div>
@@ -1549,8 +1554,8 @@ Name: Number.of.Bags, dtype: int64
 <p>this is a series, but we can change it to a DataFrame with <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> this will also add a new index column but a side effect is that it becomes a DataFrame again</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_total_df</span> <span class="o">=</span> <span class="n">total_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">top_total_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_total_df = total_per_country.sort_values(ascending=False)[:10].reset_index()
+top_total_df
 </pre></div>
 </div>
 </div>
@@ -1634,13 +1639,13 @@ Name: Number.of.Bags, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_total_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=top_total_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect=2)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f0f6b280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41bfca12e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_38_1.png" src="../_images/2022-09-23_38_1.png" />
@@ -1649,14 +1654,14 @@ Name: Number.of.Bags, dtype: int64
 <p>this got the number of countries fewer, bu they were still hard to read because they were small and still overlapping, so I added <code class="docutils literal notranslate"><span class="pre">aspect=2</span></code> to make it 2x as wide as tall and give it more space. We can also use a similar strategy to pull out just these country names and get all the data for those.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_countries</span> <span class="o">=</span> <span class="n">total_per_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_countries = total_per_country.sort_values(ascending=False)[:10].index
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[coffee_df[&#39;Country.of.Origin&#39;].isin(top_countries)].head(2)
 </pre></div>
 </div>
 </div>
@@ -1759,20 +1764,20 @@ Name: Number.of.Bags, dtype: int64
 <p>I forgot the <code class="docutils literal notranslate"><span class="pre">isin</span></code> method in class and had to look that up, I more often need to filter by numerical columns or selecting a single value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_countries</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_coffee_df = coffee_df[coffee_df[&#39;Country.of.Origin&#39;].isin(top_countries)]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect=2)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f0ce3400&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41bfa291c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_44_1.png" src="../_images/2022-09-23_44_1.png" />
@@ -1780,7 +1785,7 @@ Name: Number.of.Bags, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_coffee_df.info()
 </pre></div>
 </div>
 </div>
@@ -1841,12 +1846,12 @@ memory usage: 327.2+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">top_coffee_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sweetness&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(top_coffee_df, x=&#39;Sweetness&#39;, kind=&#39;kde&#39;, col=&#39;Country.of.Origin&#39;,col_wrap=3)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f104bc70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41bfbb1fa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_46_1.png" src="../_images/2022-09-23_46_1.png" />
@@ -1888,20 +1893,20 @@ Related but not the same.</p>
 <h2><span class="section-number">7.7. </span>Styling Plots<a class="headerlink" href="#styling-plots" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_theme()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect=2)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52f573fe20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41c016dfa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_52_1.png" src="../_images/2022-09-23_52_1.png" />
@@ -1910,14 +1915,14 @@ Related but not the same.</p>
 <p>This by default styles the plots to be more visually appealing</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_theme(palette=&#39;colorblind&#39;)
+sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect=2)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52ef846730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41bcdc4880&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_54_1.png" src="../_images/2022-09-23_54_1.png" />
@@ -1926,14 +1931,14 @@ Related but not the same.</p>
 <p>the colorblind palette is more distinguishable under a variety fo colorblindness types. <a class="reference external" href="https://gist.github.com/mwaskom/b35f6ebc2d4b340b4f64a4e28e778486">for more</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;bright&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_theme(palette=&#39;bright&#39;)
+sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect=2)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f52ecb65fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f41bccfedf0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-23_56_1.png" src="../_images/2022-09-23_56_1.png" />
@@ -1944,9 +1949,9 @@ Related but not the same.</p>
 <p>to prepare plots for posters vs printing, etc you can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">(</span><span class="s1">&#39;paper&#39;</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with sns.plotting_context(&#39;paper&#39;):
+    sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect =2)
 </pre></div>
 </div>
 </div>
@@ -1956,9 +1961,9 @@ Related but not the same.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">(</span><span class="s1">&#39;poster&#39;</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with sns.plotting_context(&#39;poster&#39;):
+    sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect =2)
 </pre></div>
 </div>
 </div>
@@ -1968,9 +1973,9 @@ Related but not the same.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with sns.plotting_context(&#39;talk&#39;):
+    sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect =2)
 </pre></div>
 </div>
 </div>
@@ -1980,9 +1985,9 @@ Related but not the same.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">):</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">top_coffee_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">aspect</span> <span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with sns.plotting_context(&#39;notebook&#39;):
+    sns.catplot(data=top_coffee_df,x=&#39;Country.of.Origin&#39;,y=&#39;Number.of.Bags&#39;,
+           kind=&#39;bar&#39;,aspect =2)
 </pre></div>
 </div>
 </div>

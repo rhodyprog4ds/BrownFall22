@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1004,7 +1009,7 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -1020,8 +1025,8 @@ title="Print to PDF"
 <h2><span class="section-number">5.2. </span>Loading Data and Examining Structure<a class="headerlink" href="#loading-data-and-examining-structure" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
-<span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;
+coffee_df = pd.read_csv(coffee_data_url,index_col=0)
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1036,7 @@ DataFrames as a data structure, looking at what different attributes they have
 and what some of the methods are, and how to get data into them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.head(2)
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1152,7 @@ and what some of the methods are, and how to get data into them.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.info()
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1219,7 @@ memory usage: 9.6+ KB
 describe the data overall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.describe()
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1470,7 @@ describe the data overall.</p>
 <p>We can use the descriptive statistics on individual columns as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Balance&#39;].describe()
 </pre></div>
 </div>
 </div>
@@ -1488,7 +1493,7 @@ Name: Balance, dtype: float64
 becaues there are 28 values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balance_sorted</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>balance_sorted = coffee_df[&#39;Balance&#39;].sort_values().values
 </pre></div>
 </div>
 </div>
@@ -1496,8 +1501,8 @@ becaues there are 28 values.</p>
 <p>What value of <code class="docutils literal notranslate"><span class="pre">x</span></code> to pick out 25%</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">balance_sorted</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 6
+balance_sorted[x]
 </pre></div>
 </div>
 </div>
@@ -1520,7 +1525,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 <code class="docutils literal notranslate"><span class="pre">quantile</span></code> method and pass it a value between 0 and 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Flavor&#39;].quantile(.8)
 </pre></div>
 </div>
 </div>
@@ -1533,7 +1538,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 <p>Calculate the mean of <code class="docutils literal notranslate"><span class="pre">Aftertaste</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Aftertaste&#39;].mean()
 </pre></div>
 </div>
 </div>
@@ -1549,7 +1554,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 <p>There are different columns in the describe than the the whole dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.columns
 </pre></div>
 </div>
 </div>
@@ -1572,7 +1577,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.describe().columns
 </pre></div>
 </div>
 </div>
@@ -1591,7 +1596,7 @@ are tricky, we cannot just <code class="docutils literal notranslate"><span clas
 <p>We can get the prevalence of each one with <code class="docutils literal notranslate"><span class="pre">value_counts</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Color&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -1614,7 +1619,7 @@ How can you get the number of missing Colors?</p>
 <p>Describe only operates on the numerical columns, but we might want to know about the others.  We can get the number of each value with <code class="docutils literal notranslate"><span class="pre">value_counts</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -1632,7 +1637,7 @@ Name: Country.of.Origin, dtype: int64
 <p>We can get the name of the most common country out of this Series using <code class="docutils literal notranslate"><span class="pre">idmax</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].value_counts().idxmax()
 </pre></div>
 </div>
 </div>
@@ -1645,7 +1650,7 @@ Name: Country.of.Origin, dtype: int64
 <p>Or see only how many different values with the related:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].nunique()
 </pre></div>
 </div>
 </div>
@@ -1658,7 +1663,7 @@ Name: Country.of.Origin, dtype: int64
 <p>We can also use the mode function, which works on both numerical or nonnumerical</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].mode()
 </pre></div>
 </div>
 </div>
@@ -1675,7 +1680,7 @@ Name: Country.of.Origin, dtype: object
 <p>Pandas give us basic plotting capability built right into DataFrames.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].value_counts().plot()
 </pre></div>
 </div>
 </div>
@@ -1689,7 +1694,7 @@ Name: Country.of.Origin, dtype: object
 <p>It defaults to a line graph, which is not very informative in this case, so we can use the <code class="docutils literal notranslate"><span class="pre">kind</span></code> parameter to change it to a bar graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Country.of.Origin&#39;].value_counts().plot(kind=&#39;bar&#39;)
 </pre></div>
 </div>
 </div>
@@ -1708,7 +1713,7 @@ Name: Country.of.Origin, dtype: object
 <p>Above we saw which country had the most ratings (remember one row is one rating), but what if we wanted to see the mean number of bags per country?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.groupby(&#39;Country.of.Origin&#39;)[&#39;Number.of.Bags&#39;].mean()
 </pre></div>
 </div>
 </div>
@@ -1743,7 +1748,7 @@ Name: Number.of.Bags, dtype: float64
 <p>The inside parenthesis is the parameter of the groupby function, we could instead do it this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_grouped</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_grouped = coffee_df.groupby(&#39;Country.of.Origin&#39;)
 </pre></div>
 </div>
 </div>
@@ -1751,7 +1756,7 @@ Name: Number.of.Bags, dtype: float64
 <p>Then we can use <code class="docutils literal notranslate"><span class="pre">coffee_grouped</span></code> for different things</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_grouped.describe()
 </pre></div>
 </div>
 </div>
@@ -1962,7 +1967,7 @@ Name: Number.of.Bags, dtype: float64
 <p>or as we did before</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_grouped</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_grouped[&#39;Number.of.Bags&#39;].mean()
 </pre></div>
 </div>
 </div>
@@ -1982,8 +1987,8 @@ Name: Number.of.Bags, dtype: float64
 <p>We could make a smaller DataFrame first, then group, then mean</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_country_bags_df</span><span class="o">=</span> <span class="n">coffee_df</span><span class="p">[[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]]</span>
-<span class="n">coffee_country_bags_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_country_bags_df= coffee_df[[&#39;Number.of.Bags&#39;,&#39;Country.of.Origin&#39;]]
+coffee_country_bags_df.head()
 </pre></div>
 </div>
 </div>
@@ -2043,7 +2048,7 @@ Name: Number.of.Bags, dtype: float64
 <p>There are two sets of square brackets because putting a comma it would try to index along rows with one and columns with the other, to select multiple in one dimension you need to pass a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">([</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type([&#39;Number.of.Bags&#39;,&#39;Country.of.Origin&#39;])
 </pre></div>
 </div>
 </div>
@@ -2056,7 +2061,7 @@ Name: Number.of.Bags, dtype: float64
 <p>If you do not put square <code class="docutils literal notranslate"><span class="pre">[]</span></code> or curly <code class="docutils literal notranslate"><span class="pre">{}</span></code> brackets around items, Python implicitly treats them as if there are parenthesis<code class="docutils literal notranslate"><span class="pre">()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">((</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">,</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type((&#39;Number.of.Bags&#39;,&#39;Country.of.Origin&#39;))
 </pre></div>
 </div>
 </div>
@@ -2069,7 +2074,7 @@ Name: Number.of.Bags, dtype: float64
 <p>and tuples are treated separately .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_country_bags_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_country_bags_df.groupby(&#39;Country.of.Origin&#39;).mean()
 </pre></div>
 </div>
 </div>

@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -873,21 +878,21 @@ title="Print to PDF"
 that same coffee dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/robusta_data_cleaned.csv&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df =pd.read_csv(coffee_data_url)
 </pre></div>
 </div>
 </div>
@@ -899,7 +904,7 @@ that same coffee dataset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df
 </pre></div>
 </div>
 </div>
@@ -1625,7 +1630,7 @@ that same coffee dataset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(coffee_df)
 </pre></div>
 </div>
 </div>
@@ -1910,7 +1915,7 @@ that same coffee dataset.</p>
 <p>I told you this was a DataFrame, but we can check with type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(coffee_df)
 </pre></div>
 </div>
 </div>
@@ -1924,7 +1929,7 @@ that same coffee dataset.</p>
 <p>We can also exmaine its parts.  It consists of several; first the column headings</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.columns
 </pre></div>
 </div>
 </div>
@@ -1948,7 +1953,7 @@ that same coffee dataset.</p>
 <p>These are a special type called Index</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(coffee_df.columns)
 </pre></div>
 </div>
 </div>
@@ -1962,7 +1967,7 @@ that same coffee dataset.</p>
 <p>and it stores the data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.values
 </pre></div>
 </div>
 </div>
@@ -1982,7 +1987,7 @@ that same coffee dataset.</p>
 <p>It also has an index (first column, visually) but it is special because this is how you can index the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.index
 </pre></div>
 </div>
 </div>
@@ -1995,8 +2000,8 @@ that same coffee dataset.</p>
 <p>Right now this is an autogenerated index, but we can also use the <code class="docutils literal notranslate"><span class="pre">index_col</span></code> parameter to set that up front.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">coffee_data_url</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">coffee_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df = pd.read_csv(coffee_data_url,index_col=0)
+coffee_df
 </pre></div>
 </div>
 </div>
@@ -2722,7 +2727,7 @@ that same coffee dataset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.index
 </pre></div>
 </div>
 </div>
@@ -2741,7 +2746,7 @@ that same coffee dataset.</p>
 <p>We can look at the first 5 rows with <code class="docutils literal notranslate"><span class="pre">head</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.head()
 </pre></div>
 </div>
 </div>
@@ -2923,7 +2928,7 @@ that same coffee dataset.</p>
 <p>and the last 5 with <code class="docutils literal notranslate"><span class="pre">tail</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.tail()
 </pre></div>
 </div>
 </div>
@@ -3098,7 +3103,7 @@ that same coffee dataset.</p>
 <p>the shape of a DataFrame is an attribute</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.shape
 </pre></div>
 </div>
 </div>
@@ -3110,7 +3115,7 @@ that same coffee dataset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(coffee_df)
 </pre></div>
 </div>
 </div>
@@ -3123,7 +3128,7 @@ that same coffee dataset.</p>
 <p>We can pick out columns by name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Species&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Species&#39;]
 </pre></div>
 </div>
 </div>
@@ -3168,7 +3173,7 @@ Name: Species, dtype: object
 <p>We can pick out rows with <code class="docutils literal notranslate"><span class="pre">loc</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df.loc[0]
 </pre></div>
 </div>
 </div>
@@ -3193,7 +3198,7 @@ Name: Species, dtype: object
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/indexing.py:1073,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
@@ -3244,7 +3249,7 @@ We will do more, but for very structured data it can be this easy</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comm_url</span> <span class="o">=</span> <span class="s1">&#39;https://rhodyprog4ds.github.io/BrownFall22/syllabus/communication.html#&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>comm_url = &#39;https://rhodyprog4ds.github.io/BrownFall22/syllabus/communication.html#&#39;
 </pre></div>
 </div>
 </div>
@@ -3269,7 +3274,7 @@ their own documentation gets updated at the same time the code does.</p>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">read_html</span></code> method to read from this page.  We know that it has multiple tables on the page, and from the help, we know that it will return a list of DataFrames.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">comm_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_list = pd.read_html(comm_url)
 </pre></div>
 </div>
 </div>
@@ -3277,7 +3282,7 @@ their own documentation gets updated at the same time the code does.</p>
 <p>We can also verify what it returns</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(df_list)
 </pre></div>
 </div>
 </div>
@@ -3290,7 +3295,7 @@ their own documentation gets updated at the same time the code does.</p>
 <p>We can index with <code class="docutils literal notranslate"><span class="pre">[]</span></code> to pick one item from the list and verify that it is a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(df_list[0])
 </pre></div>
 </div>
 </div>
@@ -3313,9 +3318,9 @@ each time it goes through, in order.  Writing loops this way makes them more
 compact and more readable, this is more like English.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sarah&#39;</span>
-<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>name = &#39;sarah&#39;
+for letter in name:
+    print(letter.upper())
 </pre></div>
 </div>
 </div>
@@ -3332,8 +3337,8 @@ H
 <p>It is best to name variables so that the loop variable makes sense as an item from the iterable. For example, names have letters in them, and an item in <code class="docutils literal notranslate"><span class="pre">df_list</span></code> makes sense as <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">df_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for df in df_list:
+    print(df.shape)
 </pre></div>
 </div>
 </div>
@@ -3360,8 +3365,8 @@ H
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">char</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s1">&#39;abcde&#39;</span><span class="p">]</span>
-<span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [char for char in &#39;abcde&#39;]
+a
 </pre></div>
 </div>
 </div>
@@ -3373,7 +3378,7 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(a)
 </pre></div>
 </div>
 </div>
@@ -3389,8 +3394,8 @@ H
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="n">char</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">)}</span>
-<span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = {char:i for i, char in enumerate(&#39;abcde&#39;)}
+b
 </pre></div>
 </div>
 </div>
@@ -3402,7 +3407,7 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(b)
 </pre></div>
 </div>
 </div>
@@ -3414,8 +3419,8 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">)</span>
-<span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>c = (&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;)
+c
 </pre></div>
 </div>
 </div>
@@ -3427,7 +3432,7 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(c)
 </pre></div>
 </div>
 </div>
@@ -3439,15 +3444,15 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="s1">&#39;a b c d e&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">d</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d = &#39;a b c d e&#39;.split(&#39;&#39;)
+d
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span> <span class="o">=</span> <span class="s1">&#39;a b c d e&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">d</span>
 
@@ -3458,14 +3463,14 @@ H
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(d)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;d&#39; is not defined
@@ -3482,8 +3487,8 @@ H
 <p>For example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prof_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;first&#39;</span><span class="p">:</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">:</span><span class="s1">&#39;Brown&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span><span class="s1">&#39;Dr.&#39;</span><span class="p">}</span>
-<span class="n">prof_info</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>prof_info = {&#39;first&#39;:&#39;Sarah&#39;, &#39;last&#39;:&#39;Brown&#39;, &#39;title&#39;:&#39;Dr.&#39;}
+prof_info
 </pre></div>
 </div>
 </div>
@@ -3496,7 +3501,7 @@ H
 <p>We can use the keys to index in and get the values out</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prof_info</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>prof_info[&#39;title&#39;]
 </pre></div>
 </div>
 </div>

@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -995,7 +1000,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <h2><span class="section-number">11.3. </span>Merges<a class="headerlink" href="#merges" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1008,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <p>I created a folder with <a class="reference external" href="https://github.com/rhodyprog4ds/rhodyds/tree/main/data">datasets we use in class</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>course_data_url = &#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/&#39;
 </pre></div>
 </div>
 </div>
@@ -1011,8 +1016,8 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <p>We can load in two data sets of player information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">course_data_url</span><span class="o">+</span> <span class="s1">&#39;2018-players.csv&#39;</span><span class="p">)</span>
-<span class="n">df_19</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">course_data_url</span><span class="o">+</span> <span class="s1">&#39;2019-players.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18 = pd.read_csv(course_data_url+ &#39;2018-players.csv&#39;)
+df_19 = pd.read_csv(course_data_url+ &#39;2019-players.csv&#39;)
 </pre></div>
 </div>
 </div>
@@ -1020,7 +1025,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <p>and take a peek at each</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18.head(2)
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1076,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_19</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_19.columns
 </pre></div>
 </div>
 </div>
@@ -1084,7 +1089,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <p>Let’s make note of the shape of each</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_19</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18.shape, df_19.shape
 </pre></div>
 </div>
 </div>
@@ -1100,7 +1105,7 @@ about your portfolio. (tip: post an idea as an issue to get early feedback and h
 <p>We can combine them vertically:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([df_18,df_19]).shape
 </pre></div>
 </div>
 </div>
@@ -1126,7 +1131,7 @@ columns) and the total number of rows.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df_18,df_19,).head(2)
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1168,7 @@ columns) and the total number of rows.</p>
 <p>if we merge them without any parameters, it tries to merge on all shared columns.  We want to merge them using the <code class="docutils literal notranslate"><span class="pre">PLAYER_ID</span></code> column though, we would say hat we are “merging on player ID” and we use the <code class="docutils literal notranslate"><span class="pre">on</span></code> parameter to do it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df_18,df_19, on = &#39;PLAYER_ID&#39;).head(2)
 </pre></div>
 </div>
 </div>
@@ -1220,8 +1225,8 @@ columns) and the total number of rows.</p>
 <p>Since there are other columns that appear in both DataFrames, they get a suffis, which by default is <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>, we can specify them though.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span>
-        <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df_18,df_19, on = &#39;PLAYER_ID&#39;,
+        suffixes=(&#39;_2018&#39;,&#39;_2019&#39;)).head(2)
 </pre></div>
 </div>
 </div>
@@ -1278,7 +1283,7 @@ columns) and the total number of rows.</p>
 <p>We also told it what to append to any column names that match, but are not the same across both datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18.head(1)
 </pre></div>
 </div>
 </div>
@@ -1319,7 +1324,7 @@ columns) and the total number of rows.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_19</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_19.head(1)
 </pre></div>
 </div>
 </div>
@@ -1362,15 +1367,15 @@ columns) and the total number of rows.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1819</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span>
-        <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1819 = pd.merge(df_18,df_19, on = &#39;PLAYER_ID&#39;,
+        suffixes=(&#39;_2018&#39;,&#39;_2019&#39;))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1819</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1819.shape
 </pre></div>
 </div>
 </div>
@@ -1383,7 +1388,7 @@ columns) and the total number of rows.</p>
 <p>By default, this uses an <em>inner</em> merge, so we get the players that are in both datasets only.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1819</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1819.head()
 </pre></div>
 </div>
 </div>
@@ -1472,7 +1477,7 @@ happens when a player plays for two team in one season.</p>
 <p>We have different types of merges, inner is both, out is either.  Left and right keep all the rows of one dataFrame.  We can use left with <code class="docutils literal notranslate"><span class="pre">df_18</span></code> as the left DataFrame to see which players played only in 18.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df_18,df_19,on=&#39;PLAYER_ID&#39;, how=&#39;left&#39;,suffixes=(&#39;_2018&#39;,&#39;_2019&#39;)).tail()
 </pre></div>
 </div>
 </div>
@@ -1556,8 +1561,8 @@ happens when a player plays for two team in one season.</p>
 <p>To pick out those rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_only</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span>
-<span class="n">df_18_only</span><span class="p">[</span><span class="n">df_18_only</span><span class="p">[</span><span class="s1">&#39;SEASON_2019&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18_only = pd.merge(df_18,df_19,on=&#39;PLAYER_ID&#39;, how=&#39;left&#39;, suffixes=(&#39;_2018&#39;,&#39;_2019&#39;))
+df_18_only[df_18_only[&#39;SEASON_2019&#39;].isna()]
 </pre></div>
 </div>
 </div>
@@ -1695,10 +1700,10 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SEASON&#39;</span><span class="p">])</span>
-                                       <span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_2018&#39;</span><span class="p">,</span><span class="s1">&#39;_2019&#39;</span><span class="p">))</span>
-<span class="n">df_18_only</span> <span class="o">=</span> <span class="n">df_18_only</span><span class="p">[</span><span class="n">df_18_only</span><span class="p">[</span><span class="s1">&#39;TEAM_ID_2019&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
-<span class="n">df_18_only</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18_left = pd.merge(df_18,df_19.drop(columns=[&#39;SEASON&#39;])
+                                       ,on=&#39;PLAYER_ID&#39;, how=&#39;left&#39;, suffixes=(&#39;_2018&#39;,&#39;_2019&#39;))
+df_18_only = df_18_only[df_18_only[&#39;TEAM_ID_2019&#39;].isna()]
+df_18_only.head()
 </pre></div>
 </div>
 </div>
@@ -1781,8 +1786,8 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_18_only</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">df_18_only</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">n_18_only</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_18_only, _ = df_18_only.drop_duplicates(subset=[&#39;PLAYER_ID&#39;]).shape
+n_18_only
 </pre></div>
 </div>
 </div>
@@ -1797,8 +1802,8 @@ happens when a player plays for two team in one season.</p>
 <h2><span class="section-number">11.7. </span>Which players played for the same team both seasons?<a class="headerlink" href="#which-players-played-for-the-same-team-both-seasons" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_same_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="p">,</span><span class="n">df_19</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="s1">&#39;TEAM_ID&#39;</span><span class="p">],)</span>
-<span class="n">df_same_team</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_same_team = pd.merge(df_18,df_19, on = [&#39;PLAYER_ID&#39;,&#39;TEAM_ID&#39;],)
+df_same_team.head()
 </pre></div>
 </div>
 </div>
@@ -1876,8 +1881,8 @@ happens when a player plays for two team in one season.</p>
 <p>In this case, the suffix only applies to season, but they’re not telling us much, so we can clean it up using <code class="docutils literal notranslate"><span class="pre">drop</span></code> before we merge.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_only_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_18</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;SEASON&#39;</span><span class="p">),</span><span class="n">df_19</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;SEASON&#39;</span><span class="p">),</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">,</span><span class="s1">&#39;TEAM_ID&#39;</span><span class="p">],)</span>
-<span class="n">df_18_only_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18_only_clean = pd.merge(df_18.drop(columns=&#39;SEASON&#39;),df_19.drop(columns=&#39;SEASON&#39;), on = [&#39;PLAYER_ID&#39;,&#39;TEAM_ID&#39;],)
+df_18_only_clean.head()
 </pre></div>
 </div>
 </div>
@@ -1942,7 +1947,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_only_clean</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18_only_clean.shape
 </pre></div>
 </div>
 </div>
@@ -1954,7 +1959,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_18_only_clean</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PLAYER_ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_18_only_clean.drop_duplicates(subset=[&#39;PLAYER_ID&#39;]).shape
 </pre></div>
 </div>
 </div>
@@ -1970,29 +1975,29 @@ happens when a player plays for two team in one season.</p>
 <h2><span class="section-number">11.8. </span>Visualizing merges<a class="headerlink" href="#visualizing-merges" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">,</span> <span class="s2">&quot;K4&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A0&quot;</span><span class="p">,</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B0&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left = pd.DataFrame(
+    {
+        &quot;key&quot;: [&quot;K0&quot;, &quot;K1&quot;, &quot;K2&quot;, &quot;K4&quot;],
+        &quot;A&quot;: [&quot;A0&quot;, &quot;A1&quot;, &quot;A2&quot;, &quot;A4&quot;],
+        &quot;B&quot;: [&quot;B0&quot;, &quot;B1&quot;, &quot;B2&quot;, &quot;B4&quot;],
+    }
+)
 
 
-<span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">,</span> <span class="s2">&quot;K3&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;C3&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D0&quot;</span><span class="p">,</span> <span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+right = pd.DataFrame(
+    {
+        &quot;key&quot;: [&quot;K0&quot;, &quot;K1&quot;, &quot;K2&quot;, &quot;K3&quot;],
+        &quot;C&quot;: [&quot;C0&quot;, &quot;C1&quot;, &quot;C2&quot;, &quot;C3&quot;],
+        &quot;D&quot;: [&quot;D0&quot;, &quot;D1&quot;, &quot;D2&quot;, &quot;D3&quot;],
+    }
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left
 </pre></div>
 </div>
 </div>
@@ -2051,7 +2056,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>right
 </pre></div>
 </div>
 </div>
@@ -2110,7 +2115,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, how=&#39;inner&#39;,)
 </pre></div>
 </div>
 </div>
@@ -2171,7 +2176,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, how=&#39;outer&#39;)
 </pre></div>
 </div>
 </div>
@@ -2248,7 +2253,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, how=&#39;left&#39;)
 </pre></div>
 </div>
 </div>
@@ -2317,7 +2322,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, how=&#39;right&#39;)
 </pre></div>
 </div>
 </div>
@@ -2387,31 +2392,31 @@ happens when a player plays for two team in one season.</p>
 <p>We can merge on multiple columns too/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A0&quot;</span><span class="p">,</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B0&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left = pd.DataFrame(
+    {
+        &quot;key1&quot;: [&quot;K0&quot;, &quot;K0&quot;, &quot;K1&quot;, &quot;K2&quot;],
+        &quot;key2&quot;: [&quot;K0&quot;, &quot;K1&quot;, &quot;K0&quot;, &quot;K1&quot;],
+        &quot;A&quot;: [&quot;A0&quot;, &quot;A1&quot;, &quot;A2&quot;, &quot;A3&quot;],
+        &quot;B&quot;: [&quot;B0&quot;, &quot;B1&quot;, &quot;B2&quot;, &quot;B3&quot;],
+    }
+)
 
 
-<span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K0&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;C3&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D0&quot;</span><span class="p">,</span> <span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+right = pd.DataFrame(
+    {
+        &quot;key1&quot;: [&quot;K0&quot;, &quot;K1&quot;, &quot;K1&quot;, &quot;K2&quot;],
+        &quot;key2&quot;: [&quot;K0&quot;, &quot;K0&quot;, &quot;K0&quot;, &quot;K0&quot;],
+        &quot;C&quot;: [&quot;C0&quot;, &quot;C1&quot;, &quot;C2&quot;, &quot;C3&quot;],
+        &quot;D&quot;: [&quot;D0&quot;, &quot;D1&quot;, &quot;D2&quot;, &quot;D3&quot;],
+    }
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left
 </pre></div>
 </div>
 </div>
@@ -2475,7 +2480,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>right
 </pre></div>
 </div>
 </div>
@@ -2539,7 +2544,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, on=[&quot;key1&quot;, &quot;key2&quot;])
 </pre></div>
 </div>
 </div>
@@ -2604,7 +2609,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, on=[&quot;key1&quot;, &quot;key2&quot;],how=&#39;outer&#39;)
 </pre></div>
 </div>
 </div>
@@ -2696,7 +2701,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span><span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;key1&#39;</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right,on = &#39;key1&#39; )
 </pre></div>
 </div>
 </div>
@@ -2785,16 +2790,16 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left = pd.DataFrame({&quot;A&quot;: [1, 2], &quot;B&quot;: [2, 2]})
 
-<span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+right = pd.DataFrame({&quot;A&quot;: [4, 5, 6], &quot;B&quot;: [2, 2, 2]})
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>left
 </pre></div>
 </div>
 </div>
@@ -2838,7 +2843,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>right
 </pre></div>
 </div>
 </div>
@@ -2887,7 +2892,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(left, right, on=&quot;B&quot;, how=&quot;outer&quot;)
 </pre></div>
 </div>
 </div>
@@ -2968,7 +2973,7 @@ happens when a player plays for two team in one season.</p>
 <p>For that specific case, you can use the <code class="docutils literal notranslate"><span class="pre">isna</span></code> method as I did above, but if you need a NaN constant otherwise pandas provides</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.NA
 </pre></div>
 </div>
 </div>
@@ -2981,8 +2986,8 @@ happens when a player plays for two team in one season.</p>
 <p>and numpy provides</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+np.nan
 </pre></div>
 </div>
 </div>
@@ -2995,7 +3000,7 @@ happens when a player plays for two team in one season.</p>
 <p>Watch out though because they are not the same:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.nan == pd.NA
 </pre></div>
 </div>
 </div>
@@ -3008,14 +3013,14 @@ happens when a player plays for two team in one season.</p>
 <p>and this cannot even assert</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>assert pd.NA == np.nan
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/_libs/missing.pyx:382,</span> in <span class="ni">pandas._libs.missing.NAType.__bool__</span><span class="nt">()</span>
@@ -3028,7 +3033,7 @@ happens when a player plays for two team in one season.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <code class="docutils literal notranslate"><span class="pre">pd.isna</span></code> method is robust, and it knows how <code class="docutils literal notranslate"><span class="pre">numpy</span></code> works (because it is built on top and imports).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.isna(np.nan)
 </pre></div>
 </div>
 </div>
@@ -3040,7 +3045,7 @@ happens when a player plays for two team in one season.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.isna(pd.NA)
 </pre></div>
 </div>
 </div>
@@ -3053,7 +3058,7 @@ happens when a player plays for two team in one season.</p>
 <p>However, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> does not know <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.isnan(pd.NA)
 </pre></div>
 </div>
 </div>

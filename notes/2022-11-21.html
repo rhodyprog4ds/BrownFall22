@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -890,32 +895,32 @@ title="Print to PDF"
 <h2><span class="section-number">36.1. </span>Confidence Intervals review<a class="headerlink" href="#confidence-intervals-review" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">classification_confint</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-      <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">      Compute the 95% confidence interval for a classification problem.</span>
-<span class="sd">       acc -- classification accuracy</span>
-<span class="sd">       n  -- number of observations used to compute the accuracy</span>
-<span class="sd">      Returns a tuple (lb,ub)</span>
-<span class="sd">      &#39;&#39;&#39;</span>
-      <span class="n">interval</span> <span class="o">=</span> <span class="mf">1.96</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">acc</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">acc</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
-      <span class="n">lb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
-      <span class="n">ub</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">interval</span><span class="p">)</span>
-      <span class="k">return</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+def classification_confint(acc, n):
+      &#39;&#39;&#39;
+      Compute the 95% confidence interval for a classification problem.
+       acc -- classification accuracy
+       n  -- number of observations used to compute the accuracy
+      Returns a tuple (lb,ub)
+      &#39;&#39;&#39;
+      interval = 1.96*np.sqrt(acc*(1-acc)/n)
+      lb = max(0, acc - interval)
+      ub = min(1.0, acc + interval)
+      return (lb,ub)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>N = 50
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification_confint</span><span class="p">(</span><span class="mf">.78</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="p">,</span> <span class="n">classification_confint</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>classification_confint(.78,N) , classification_confint(.9,N)
 </pre></div>
 </div>
 </div>
@@ -929,8 +934,8 @@ title="Print to PDF"
 <p>These overlap, so they are not differnt</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">classification_confint</span><span class="p">(</span><span class="mf">.78</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="p">,</span> <span class="n">classification_confint</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>N = 200
+classification_confint(.78,N) , classification_confint(.9,N)
 </pre></div>
 </div>
 </div>
@@ -947,37 +952,37 @@ title="Print to PDF"
 <h2><span class="section-number">36.2. </span>Text as Data<a class="headerlink" href="#text-as-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import euclidean_distances
+import pandas as pd
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;The class is just starting to feel settled for me. - Dr. Brown&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Hello, I like sushi! - &#39;</span><span class="p">,</span>
- <span class="s1">&#39;Why squared  aka the mask - is a computer science student.Data science is fun&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Hello my fellow gaymers - Sun Tzu&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Soccer is a sport -Obama&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Hello, I love pizza - Bear&#39;</span><span class="p">,</span>
- <span class="s1">&#39;This class is CSC/DSP 310. - Student&#39;</span><span class="p">,</span>
- <span class="s1">&#39;It is 2:21pm -&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Pizza conquers all- Beetlejuice&#39;</span><span class="p">,</span>
- <span class="s1">&#39;ayyy whaddup wit it - frankie&#39;</span><span class="p">,</span>
- <span class="s1">&#39;This is a sentence - George W Bush&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Steam is the best place to play videogames change my mind. - Todd Howard&#39;</span><span class="p">,</span>
- <span class="s1">&#39;This is a hello -&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Hello how are you -&#39;</span><span class="p">,</span>
- <span class="s1">&#39;The monkey likes bananas. - A banana&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Just type a random sentence - Rosa Parks&#39;</span><span class="p">,</span>
- <span class="s1">&#39;I love CSC. - Everyone&#39;</span><span class="p">,</span>
- <span class="s1">&#39;The quick brown fox jumps over the lazy dog - Brendan Chadwick&#39;</span><span class="p">,</span>
- <span class="s1">&#39;I like computers - David&#39;</span><span class="p">,</span>
- <span class="s1">&#39;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&#39;</span><span class="p">,</span>
- <span class="s1">&#39;Sally sells seashells by the seashore. - Narrator&#39;</span><span class="p">,</span>
- <span class="s1">&#39;I would like to take a nap. - Tom Cruise,&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_list = [&#39;The class is just starting to feel settled for me. - Dr. Brown&#39;,
+ &#39;Hello, I like sushi! - &#39;,
+ &#39;Why squared  aka the mask - is a computer science student.Data science is fun&#39;,
+ &#39;Hello my fellow gaymers - Sun Tzu&#39;,
+ &#39;Soccer is a sport -Obama&#39;,
+ &#39;Hello, I love pizza - Bear&#39;,
+ &#39;This class is CSC/DSP 310. - Student&#39;,
+ &#39;It is 2:21pm -&#39;,
+ &#39;Pizza conquers all- Beetlejuice&#39;,
+ &#39;ayyy whaddup wit it - frankie&#39;,
+ &#39;This is a sentence - George W Bush&#39;,
+ &#39;Steam is the best place to play videogames change my mind. - Todd Howard&#39;,
+ &#39;This is a hello -&#39;,
+ &#39;Hello how are you -&#39;,
+ &#39;The monkey likes bananas. - A banana&#39;,
+ &#39;Just type a random sentence - Rosa Parks&#39;,
+ &#39;I love CSC. - Everyone&#39;,
+ &#39;The quick brown fox jumps over the lazy dog - Brendan Chadwick&#39;,
+ &#39;I like computers - David&#39;,
+ &#39;The fitness gram pacer test is a multi aerobic capacity test - Matt 3&#39;,
+ &#39;Sally sells seashells by the seashore. - Narrator&#39;,
+ &#39;I would like to take a nap. - Tom Cruise,&#39;]
 </pre></div>
 </div>
 </div>
@@ -986,8 +991,8 @@ title="Print to PDF"
 <p>That’s actually generally true.  ALl ML models require numerical features, at some point. The process of taking data that is not numerical and tabular, which is called unstrucutred, into strucutred (tabular) format we require is called feature extraction.  There are many, many ways to do that.  We’ll see a few over the course of the rest of the semester.  Some more advanced models hide the feature extraction, by putting it in the same function, but it’s always there.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sentence_list</span><span class="p">],</span>
-                 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">,</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.DataFrame(data=[s.split(&#39;-&#39;) for s in sentence_list],
+                 columns = [&#39;sentence&#39;,&#39;attribution&#39;])
 </pre></div>
 </div>
 </div>
@@ -995,7 +1000,7 @@ title="Print to PDF"
 <p>We can make it a dataframe, but we cannot use statistics on this because it is still sentences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
 </pre></div>
 </div>
 </div>
@@ -1139,8 +1144,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">sentence_list</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">s1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s1 = sentence_list[4]
+s1
 </pre></div>
 </div>
 </div>
@@ -1174,8 +1179,8 @@ We’re focusing on the <a class="reference external" href="https://scikit-learn
 <p>Then we initialize our transformer, and use the fit transform method to fit the vectorizer model and apply it to this sentence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
-<span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counts = CountVectorizer()
+counts.fit_transform([s1])
 </pre></div>
 </div>
 </div>
@@ -1190,7 +1195,7 @@ We’re focusing on the <a class="reference external" href="https://scikit-learn
 <p>For example</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mfull</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mfull = np.asarray([[1,0,0,0,0],[0,0,1,0,0],[0,0,0,1,0]])
 </pre></div>
 </div>
 </div>
@@ -1198,7 +1203,7 @@ We’re focusing on the <a class="reference external" href="https://scikit-learn
 <p>but as a sparse matrix, we could store fewer values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span><span class="c1"># the above</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[[0,0,1],[1,2,1],[2,3,1]]# the above
 </pre></div>
 </div>
 </div>
@@ -1212,7 +1217,7 @@ We’re focusing on the <a class="reference external" href="https://scikit-learn
 <p>To actually see it though we have to cast out of that into a regular array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counts.fit_transform([s1]).toarray()
 </pre></div>
 </div>
 </div>
@@ -1226,8 +1231,8 @@ We’re focusing on the <a class="reference external" href="https://scikit-learn
 <p>We can make it more interesting, by picking a second sentence</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">sentence_list</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span>
-<span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s2 = sentence_list[19]
+counts.fit_transform([s1,s2]).toarray()
 </pre></div>
 </div>
 </div>
@@ -1251,7 +1256,7 @@ clearly explained.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span><span class="o">.</span><span class="n">vocabulary_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counts.vocabulary_
 </pre></div>
 </div>
 </div>
@@ -1278,14 +1283,14 @@ clearly explained.</p>
 <p>Now we can transform the whole dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sentence&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mat = counts.fit_transform(df[&#39;sentence&#39;]).toarray()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mat
 </pre></div>
 </div>
 </div>
@@ -1306,8 +1311,8 @@ clearly explained.</p>
 <p>We can use a dataframe again to see this more easily. We can put labels on both the index and the column headings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
-<span class="n">sentence_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df = pd.DataFrame(mat, columns=counts.get_feature_names(),index= df[&#39;attribution&#39;])
+sentence_df
 </pre></div>
 </div>
 </div>
@@ -1921,7 +1926,7 @@ clearly explained.</p>
 <p>One guess</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.max()
 </pre></div>
 </div>
 </div>
@@ -1947,7 +1952,7 @@ Length: 74, dtype: int64
 <p>To get what we want we need to sum, which by default is along the columns, or per word. Then we get the location of the max with idx max.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sentence_df.sum().idxmax()
 </pre></div>
 </div>
 </div>
@@ -1963,7 +1968,7 @@ Length: 74, dtype: int64
 <p>We can now use a distance function to calculate how far apart the different sentences are.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>euclidean_distances(sentence_df)
 </pre></div>
 </div>
 </div>
@@ -2086,15 +2091,15 @@ Length: 74, dtype: int64
 <p>We can make this eaiser to read by making it a Data Frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">),</span><span class="n">index</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">],</span>
-                      <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dist_df = pd.DataFrame(data=euclidean_distances(sentence_df),index =df[&#39;attribution&#39;],
+                      columns=df[&#39;attribution&#39;])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dist_df.head()
 </pre></div>
 </div>
 </div>
@@ -2293,7 +2298,7 @@ Length: 74, dtype: int64
 <p>Who wrote the most similar question to me?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_df</span><span class="p">[</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dist_df[&#39; Dr. Brown&#39;].drop(&#39; Dr. Brown&#39;).idxmin()
 </pre></div>
 </div>
 </div>

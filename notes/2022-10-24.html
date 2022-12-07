@@ -323,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -859,16 +864,16 @@ title="Print to PDF"
 %matplotlib inline
 ``` --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
+import pandas as pd
+sns.set_theme(font_scale=2,palette=&#39;colorblind&#39;)
 
-<span class="n">data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/310_data_22-midsem.csv&#39;</span>
+data_url = &#39;https://raw.githubusercontent.com/rhodyprog4ds/rhodyds/main/data/310_data_22-midsem.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -878,14 +883,14 @@ title="Print to PDF"
 <p>Here is the feedback from the survey that you completed with feedback on the course.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feedback_df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>feedback_df_raw = pd.read_csv(data_url)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feedback_df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>feedback_df_raw.head()
 </pre></div>
 </div>
 </div>
@@ -992,7 +997,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feedback_df_raw</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>feedback_df_raw.columns
 </pre></div>
 </div>
 </div>
@@ -1014,24 +1019,24 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">short_names</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;How much do you think you&#39;ve learned so far this semester?&quot;</span><span class="p">:</span><span class="s1">&#39;learned&#39;</span><span class="p">,</span>
-    <span class="s2">&quot;How much of the material that&#39;s been taught do you feel you understand?&quot;</span><span class="p">:</span><span class="s1">&#39;understand&#39;</span><span class="p">,</span>
-    <span class="s2">&quot;How do you think the achievements you&#39;ve earned so far align with your understanding?&quot;</span><span class="p">:</span><span class="s1">&#39;achievements&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [How well I follow instructions]&#39;</span><span class="p">:</span><span class="s1">&#39;grading_instructions&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [What I understand about the material]&#39;</span><span class="p">:</span><span class="s1">&#39;grading_understanding&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [How much effort I put into assignments]&#39;</span><span class="p">:</span><span class="s1">&#39;grading_effort&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;How fair do you think the amount each of the following is reflected in the grading [How well I follow instructions]&#39;</span><span class="p">:</span><span class="s1">&#39;fairness_instructions&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;How fair do you think the amount each of the following is reflected in the grading [What I understand about the material]&#39;</span><span class="p">:</span><span class="s1">&#39;fairness_understanding&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;How fair do you think the amount each of the following is reflected in the grading [How much effort I put into assignments]&#39;</span><span class="p">:</span><span class="s1">&#39;fairness_effort&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Which of the following have you done to support your learning outside of class time? &#39;</span><span class="p">:</span><span class="s1">&#39;learning_activities&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>short_names = {&quot;How much do you think you&#39;ve learned so far this semester?&quot;:&#39;learned&#39;,
+    &quot;How much of the material that&#39;s been taught do you feel you understand?&quot;:&#39;understand&#39;,
+    &quot;How do you think the achievements you&#39;ve earned so far align with your understanding?&quot;:&#39;achievements&#39;,
+    &#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [How well I follow instructions]&#39;:&#39;grading_instructions&#39;,
+    &#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [What I understand about the material]&#39;:&#39;grading_understanding&#39;,
+    &#39;Rank the following as what you feel the grading (when you do/not earn achievements) so far actually reflects about your performance in the class [How much effort I put into assignments]&#39;:&#39;grading_effort&#39;,
+    &#39;How fair do you think the amount each of the following is reflected in the grading [How well I follow instructions]&#39;:&#39;fairness_instructions&#39;,
+    &#39;How fair do you think the amount each of the following is reflected in the grading [What I understand about the material]&#39;:&#39;fairness_understanding&#39;,
+    &#39;How fair do you think the amount each of the following is reflected in the grading [How much effort I put into assignments]&#39;:&#39;fairness_effort&#39;,
+    &#39;Which of the following have you done to support your learning outside of class time? &#39;:&#39;learning_activities&#39;}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feedback_df_cols</span> <span class="o">=</span> <span class="n">feedback_df_raw</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">short_names</span><span class="p">)</span>
-<span class="n">feedback_df_cols</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>feedback_df_cols = feedback_df_raw.rename(columns=short_names)
+feedback_df_cols.head(2)
 </pre></div>
 </div>
 </div>
@@ -1099,15 +1104,15 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">learning_lists</span> <span class="o">=</span> <span class="n">feedback_df_cols</span><span class="p">[</span><span class="s1">&#39;learning_activities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">learning_stacked</span> <span class="o">=</span> <span class="n">learning_lists</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="n">learning_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">learning_stacked</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">learning_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>learning_lists = feedback_df_cols[&#39;learning_activities&#39;].str.split(&#39;,&#39;)
+learning_stacked = learning_lists.apply(pd.Series).stack()
+learning_df = pd.get_dummies(learning_stacked).sum(level=0)
+learning_df.head()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2198/3116911913.py:3: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2306/3116911913.py:3: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
   learning_df = pd.get_dummies(learning_stacked).sum(level=0)
 </pre></div>
 </div>
@@ -1225,7 +1230,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">learning_df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>learning_df.sum()
 </pre></div>
 </div>
 </div>
@@ -1249,19 +1254,19 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el_meaning</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;much less&#39;</span><span class="p">,</span>
- <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;a little less&#39;</span><span class="p">,</span>
- <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;about right&#39;</span><span class="p">,</span>
- <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;a little more &#39;</span><span class="p">,</span>
- <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;much more&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>el_meaning = {1: &#39;much less&#39;,
+ 2: &#39;a little less&#39;,
+ 3: &#39;about right&#39;,
+ 4: &#39;a little more &#39;,
+ 5: &#39;much more&#39;}
 
-<span class="n">question_text</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">short_names</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="nb">list</span><span class="p">(</span><span class="n">short_names</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;learned&#39;</span><span class="p">)]</span>
-<span class="n">el_counts</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">feedback_df_cols</span><span class="p">[</span><span class="s1">&#39;learned&#39;</span><span class="p">],</span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)])</span>
-<span class="n">el_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">el_counts</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">el_meaning</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="n">question_text</span><span class="p">],)</span>
+question_text = list(short_names.keys())[list(short_names.values()).index(&#39;learned&#39;)]
+el_counts,_ = np.histogram(feedback_df_cols[&#39;learned&#39;],bins = [i+.5 for i in range(6)])
+el_df = pd.DataFrame(data = el_counts,index = el_meaning.values(),columns= [question_text],)
 
-<span class="c1"># el_df.rename_axis(index=&#39;amount relative to expectations&#39;,inplace=True)</span>
-<span class="n">el_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
-<span class="c1"># sns.displot(feedback_df[&#39;learned&#39;].replace(el_meaning))</span>
+# el_df.rename_axis(index=&#39;amount relative to expectations&#39;,inplace=True)
+el_df.plot.bar(legend=False);
+# sns.displot(feedback_df[&#39;learned&#39;].replace(el_meaning))
 </pre></div>
 </div>
 </div>
@@ -1271,15 +1276,15 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_meaning</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;A little&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s1">&#39;A moderate amount&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s1">&#39;Almost all&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s1">&#39;All&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>u_meaning = {0:&#39;None&#39;, 1:&#39;A little&#39;,3:&#39;A moderate amount&#39;, 4:&#39;Almost all&#39;,5:&#39;All&#39;}
 
 
-<span class="n">question_text</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">short_names</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="nb">list</span><span class="p">(</span><span class="n">short_names</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;understand&#39;</span><span class="p">)]</span>
-<span class="n">u_counts</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">feedback_df_cols</span><span class="p">[</span><span class="s1">&#39;understand&#39;</span><span class="p">],</span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)])</span>
-<span class="n">u_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">el_counts</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">u_meaning</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="n">question_text</span><span class="p">],)</span>
+question_text = list(short_names.keys())[list(short_names.values()).index(&#39;understand&#39;)]
+u_counts,_ = np.histogram(feedback_df_cols[&#39;understand&#39;],bins = [i+.5 for i in range(6)])
+u_df = pd.DataFrame(data = el_counts,index = u_meaning.values(),columns= [question_text],)
 
 
-<span class="n">u_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+u_df.plot.bar(legend=False);
 </pre></div>
 </div>
 </div>
@@ -1312,14 +1317,14 @@ typically tipped with some more complicated function, this would not be a good
 model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_df = sns.load_dataset(&quot;tips&quot;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_df.head()
 </pre></div>
 </div>
 </div>
@@ -1409,11 +1414,11 @@ model.</p>
 <p>Split the data so that we use 80% of the data to train a modle to predict the tip from the total bill</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_X</span> <span class="o">=</span> <span class="n">tips_df</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">tips_X</span> <span class="o">=</span> <span class="n">tips_X</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="c1"># add an axis</span>
-<span class="n">tips_y</span> <span class="o">=</span> <span class="n">tips_df</span><span class="p">[</span><span class="s1">&#39;tip&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_X = tips_df[&#39;total_bill&#39;].values
+tips_X = tips_X[:,np.newaxis] # add an axis
+tips_y = tips_df[&#39;tip&#39;]
 
-<span class="n">tips_X_train</span><span class="p">,</span><span class="n">tips_X_test</span><span class="p">,</span> <span class="n">tips_y_train</span><span class="p">,</span> <span class="n">tips_y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">tips_X</span><span class="p">,</span><span class="n">tips_y</span><span class="p">,</span><span class="n">train_size</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+tips_X_train,tips_X_test, tips_y_train, tips_y_test = train_test_split(tips_X,tips_y,train_size=.8)
 </pre></div>
 </div>
 </div>
@@ -1421,7 +1426,7 @@ model.</p>
 <p>To see what that new bit of code did, we can examine the shapes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_X</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_X.shape
 </pre></div>
 </div>
 </div>
@@ -1435,7 +1440,7 @@ model.</p>
 one is 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_df</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_df[&#39;total_bill&#39;].values.shape
 </pre></div>
 </div>
 </div>
@@ -1450,14 +1455,14 @@ no number after the comma.</p>
 <p>Now that our data is ready, we create the linear regression estimator object</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr = linear_model.LinearRegression()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">regr</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(regr)
 </pre></div>
 </div>
 </div>
@@ -1470,7 +1475,7 @@ no number after the comma.</p>
 <p>Now we fit the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tips_X_train</span><span class="p">,</span><span class="n">tips_y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr.fit(tips_X_train,tips_y_train)
 </pre></div>
 </div>
 </div>
@@ -1480,12 +1485,12 @@ no number after the comma.</p>
 <p>We can examine the coefficients and intercept.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">regr</span><span class="o">.</span><span class="n">intercept_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr.coef_, regr.intercept_
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.10160595]), 0.9750933136110738)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.10213557]), 0.960747926358763)
 </pre></div>
 </div>
 </div>
@@ -1505,14 +1510,14 @@ plausible total bill and get the predicted tip.</p>
 <p>We can predict the data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_y_pred</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tips_y_pred = regr.predict(tips_X_test)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">tips_y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(tips_y_pred)
 </pre></div>
 </div>
 </div>
@@ -1527,13 +1532,13 @@ predictions as blue points.  To highlight that this is a perfectly linear
 prediction, we’ll also add a line for the prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span><span class="n">tips_y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span><span class="n">tips_y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.scatter(tips_X_test,tips_y_test, color=&#39;black&#39;)
+plt.scatter(tips_X_test,tips_y_pred, color=&#39;blue&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9383434970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f8cb56f5700&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-24_32_1.png" src="../_images/2022-10-24_32_1.png" />
@@ -1549,12 +1554,12 @@ is in each prediction, we can look at that visually first.</p>
 <p>These red lines are the <span class="xref std std-term">residuals</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span> <span class="n">tips_y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span> <span class="n">tips_y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.scatter(tips_X_test, tips_y_test, color=&#39;black&#39;)
+plt.plot(tips_X_test, tips_y_pred, color=&#39;blue&#39;, linewidth=3)
 
-<span class="c1"># draw vertical lines frome each data point to its predict value</span>
-<span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">],[</span><span class="n">yp</span><span class="p">,</span><span class="n">yt</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">yt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span> <span class="n">tips_y_pred</span><span class="p">,</span><span class="n">tips_y_test</span><span class="p">)];</span>
+# draw vertical lines frome each data point to its predict value
+[plt.plot([x,x],[yp,yt], color=&#39;red&#39;, linewidth=3)
+         for x, yp, yt in zip(tips_X_test, tips_y_pred,tips_y_test)];
 </pre></div>
 </div>
 </div>
@@ -1568,12 +1573,12 @@ each point. Some would be positive and others negative, so we will square each
 one then take the average.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">tips_y_test</span><span class="p">,</span><span class="n">tips_y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mean_squared_error(tips_y_test,tips_y_pred)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8104487455562255
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.634106522977846
 </pre></div>
 </div>
 </div>
@@ -1581,12 +1586,12 @@ one then take the average.</p>
 <p>We can get back to the units being dollars, by taking the square root.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">tips_y_test</span><span class="p">,</span> <span class="n">tips_y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.sqrt(mean_squared_error(tips_y_test, tips_y_pred))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9002492685674482
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7963080578380743
 </pre></div>
 </div>
 </div>
@@ -1594,12 +1599,12 @@ one then take the average.</p>
 <p>This is equivalent to using absolute value instead</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tips_y_test</span> <span class="o">-</span> <span class="n">tips_y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.mean(np.abs(tips_y_test - tips_y_pred))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6749305100391998
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6183566436112707
 </pre></div>
 </div>
 </div>
@@ -1620,12 +1625,12 @@ one then take the average.</p>
 \[ R^2(y, \hat{y}) = 1 = \frac{\sum_{i=0}^n (y_i - \hat{y}_i)^2}{\sum_{i=0}^n (y_i - \bar{y}_i)^2} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2_score</span><span class="p">(</span><span class="n">tips_y_test</span><span class="p">,</span> <span class="n">tips_y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r2_score(tips_y_test, tips_y_pred)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5456377396723282
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6228817984788131
 </pre></div>
 </div>
 </div>
@@ -1646,31 +1651,31 @@ particular type of plot.</p>
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>
-<span class="n">ex_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
-<span class="n">ex_df</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
-<span class="n">n_levels</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">-</span><span class="mf">.5</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_levels</span><span class="p">:</span>
-  <span class="n">y_true</span> <span class="o">=</span> <span class="n">y_pred</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span> <span class="n">noise</span>
-  <span class="n">ex_df</span><span class="p">[</span><span class="s1">&#39;r2 = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_true</span><span class="p">),</span><span class="mi">3</span><span class="p">))]</span> <span class="o">=</span> <span class="n">y_true</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 10*np.random.random(20)
+y_pred = 3*x
+ex_df = pd.DataFrame(data = x,columns = [&#39;x&#39;])
+ex_df[&#39;y_pred&#39;] = y_pred
+n_levels = range(1,18,2)
+noise = (np.random.random(20)-.5)*2
+for n in n_levels:
+  y_true = y_pred + n* noise
+  ex_df[&#39;r2 = &#39;+ str(np.round(r2_score(y_pred,y_true),3))] = y_true
 
-<span class="n">f_x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="mf">3.5</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="mf">.5</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.03</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)]</span>
-<span class="k">for</span> <span class="n">fx</span> <span class="ow">in</span> <span class="n">f_x_list</span><span class="p">:</span>
-  <span class="n">y_true</span> <span class="o">=</span> <span class="n">fx</span> <span class="o">+</span> <span class="n">noise</span>
-  <span class="n">ex_df</span><span class="p">[</span><span class="s1">&#39;r2 = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">y_true</span><span class="p">),</span><span class="mi">3</span><span class="p">))]</span> <span class="o">=</span> <span class="n">y_true</span>   
+f_x_list = [2*x,3.5*x,.5*x**2, .03*x**3, 10*np.sin(x)+x*3,3*np.log(x**2)]
+for fx in f_x_list:
+  y_true = fx + noise
+  ex_df[&#39;r2 = &#39;+ str(np.round(r2_score(y_pred,y_true),3))] = y_true   
 
-<span class="n">xy_df</span> <span class="o">=</span> <span class="n">ex_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y_pred&#39;</span><span class="p">],</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;rscore&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="c1"># sns.lmplot(x=&#39;x&#39;,y=&#39;y&#39;, data = xy_df,col=&#39;rscore&#39;,col_wrap=3,)</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">xy_df</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;rscore&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y_pred&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,)</span>
+xy_df = ex_df.melt(id_vars=[&#39;x&#39;,&#39;y_pred&#39;],var_name=&#39;rscore&#39;,value_name=&#39;y&#39;)
+# sns.lmplot(x=&#39;x&#39;,y=&#39;y&#39;, data = xy_df,col=&#39;rscore&#39;,col_wrap=3,)
+g = sns.FacetGrid(data = xy_df,col=&#39;rscore&#39;,col_wrap=3,aspect=1.5,height=3)
+g.map(plt.plot, &#39;x&#39;,&#39;y_pred&#39;,color=&#39;k&#39;)
+g.map(sns.scatterplot, &quot;x&quot;, &quot;y&quot;,)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f93854bd910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8cb56f30d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-24_44_1.png" src="../_images/2022-10-24_44_1.png" />
@@ -1679,12 +1684,12 @@ particular type of plot.</p>
 <p>By default, the regression estimator uses the R2 score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">tips_X_test</span><span class="p">,</span><span class="n">tips_y_test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regr.score(tips_X_test,tips_y_test)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5456377396723282
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6228817984788131
 </pre></div>
 </div>
 </div>

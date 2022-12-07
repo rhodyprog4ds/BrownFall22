@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -893,7 +898,7 @@ for evidence of learning and assess that.  There is not a single “right” ans
 <h2><span class="section-number">9.2. </span>Review Filtering<a class="headerlink" href="#review-filtering" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -908,17 +913,17 @@ for evidence of learning and assess that.  There is not a single “right” ans
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arabica_data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;</span>
-<span class="c1"># load the data</span>
-<span class="n">coffee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">arabica_data_url</span><span class="p">)</span>
-<span class="c1"># get total bags per country</span>
-<span class="n">bags_per_country_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">)[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>arabica_data_url = &#39;https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv&#39;
+# load the data
+coffee_df = pd.read_csv(arabica_data_url)
+# get total bags per country
+bags_per_country_df = coffee_df.groupby(&#39;Country.of.Origin&#39;)[&#39;Number.of.Bags&#39;].sum()
 
-<span class="c1"># sort descending, keep only the top 10 and pick out only the country names</span>
-<span class="n">top_bags_country_list</span> <span class="o">=</span> <span class="n">bags_per_country_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+# sort descending, keep only the top 10 and pick out only the country names
+top_bags_country_list = bags_per_country_df.sort_values(ascending=False)[:10].index
 
-<span class="c1"># filter the original data for only the countries in the top list</span>
-<span class="n">top_coffee_df</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Country.of.Origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_bags_country_list</span><span class="p">)]</span>
+# filter the original data for only the countries in the top list
+top_coffee_df = coffee_df[coffee_df[&#39;Country.of.Origin&#39;].isin(top_bags_country_list)]
 </pre></div>
 </div>
 </div>
@@ -926,7 +931,7 @@ for evidence of learning and assess that.  There is not a single “right” ans
 <p>Yes this is a Series, not a data Frame, but a DataFrame is built of Series, so this is a small error in naming. <code class="docutils literal notranslate"><span class="pre">top_bags_country_list</span></code> is also an <code class="docutils literal notranslate"><span class="pre">Index</span></code> not a <code class="docutils literal notranslate"><span class="pre">list</span></code> but the names need to give an idea, not necessarily be precise so my choices are okay, but could be better.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Number.of.Bags&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(coffee_df[&#39;Number.of.Bags&#39;])
 </pre></div>
 </div>
 </div>
@@ -938,7 +943,7 @@ for evidence of learning and assess that.  There is not a single “right” ans
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">coffee_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(coffee_df.loc[1])
 </pre></div>
 </div>
 </div>
@@ -951,7 +956,7 @@ for evidence of learning and assess that.  There is not a single “right” ans
 <p>We can look at the final result</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_coffee_df.head()
 </pre></div>
 </div>
 </div>
@@ -1125,7 +1130,7 @@ for evidence of learning and assess that.  There is not a single “right” ans
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_coffee_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">coffee_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>top_coffee_df.shape, coffee_df.shape
 </pre></div>
 </div>
 </div>
@@ -1141,21 +1146,21 @@ for evidence of learning and assess that.  There is not a single “right” ans
 <p>In tidy data each column is exactly one variable. Let’s look at the <code class="docutils literal notranslate"><span class="pre">Bag.Weight</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Bag.Weight&#39;].sample(10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>264        70 kg
-1098        2 kg
-232        70 kg
-1139    12000 kg
-948        70 kg
-54         70 kg
-861        60 kg
-733        70 kg
-337        70 kg
-1130        2 kg
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>748      1 kg
+179     60 kg
+592     70 kg
+1142     1 kg
+1191        6
+1247    5 lbs
+593     60 kg
+1065    69 kg
+771     70 kg
+611      8 kg
 Name: Bag.Weight, dtype: object
 </pre></div>
 </div>
@@ -1165,12 +1170,12 @@ Name: Bag.Weight, dtype: object
 <p>Series have a <code class="docutils literal notranslate"><span class="pre">str</span></code> attribute so we can apply base python string methods to each value in a column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Bag.Weight&#39;].str
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.strings.accessor.StringMethods at 0x7fcd60ab2fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.strings.accessor.StringMethods at 0x7faed4c6d3a0&gt;
 </pre></div>
 </div>
 </div>
@@ -1178,21 +1183,21 @@ Name: Bag.Weight, dtype: object
 <p>What we want is to split it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>coffee_df[&#39;Bag.Weight&#39;].str.split(&#39; &#39;).sample(10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23          [1, kg]
-275        [70, kg]
-823         [2, kg]
-959         [1, kg]
-99         [30, kg]
-311        [70, kg]
-741         [2, kg]
-448        [60, kg]
-443     [13800, kg]
-1033        [1, kg]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>202        [60, kg]
+440        [60, kg]
+130        [1, lbs]
+1281        [1, kg]
+967        [60, kg]
+507        [60, kg]
+335        [60, kg]
+1011        [1, kg]
+843     [18975, kg]
+214        [69, kg]
 Name: Bag.Weight, dtype: object
 </pre></div>
 </div>
@@ -1201,7 +1206,7 @@ Name: Bag.Weight, dtype: object
 <p>Since this looks good, we can save it to a variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split_bw</span> <span class="o">=</span> <span class="n">coffee_df</span><span class="p">[</span><span class="s1">&#39;Bag.Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>split_bw = coffee_df[&#39;Bag.Weight&#39;].str.split(&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1214,7 @@ Name: Bag.Weight, dtype: object
 <p>We still have one problem, each element contains a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">split_bw</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(split_bw[0])
 </pre></div>
 </div>
 </div>
@@ -1225,14 +1230,14 @@ Name: Bag.Weight, dtype: object
 <p>Recall that in python, we can use types as functions to cast</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num = &#39;2&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(int(num))
 </pre></div>
 </div>
 </div>
@@ -1244,7 +1249,7 @@ Name: Bag.Weight, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(num)
 </pre></div>
 </div>
 </div>
@@ -1257,7 +1262,7 @@ Name: Bag.Weight, dtype: object
 <p>So, back to our real problem:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split_bw</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>split_bw.apply(pd.Series)
 </pre></div>
 </div>
 </div>
@@ -1349,8 +1354,8 @@ Name: Bag.Weight, dtype: object
 <p>Rename can take many different inputs and be applied on lots of parts, but we will use it with a dictionary that serves as a mapping (like the mathematical sense of mapping; like a function).  It will change the column with each key to the value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split_df</span> <span class="o">=</span> <span class="n">split_bw</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;Units&#39;</span><span class="p">})</span>
-<span class="n">split_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>split_df = split_bw.apply(pd.Series).rename(columns={0:&#39;Weight&#39;,1:&#39;Units&#39;})
+split_df
 </pre></div>
 </div>
 </div>
@@ -1441,7 +1446,7 @@ Name: Bag.Weight, dtype: object
 <p>This is good, but it’s only the one column.  We can use concat to put them together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">split_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([coffee_df,split_df],axis=1).head(2)
 </pre></div>
 </div>
 </div>
@@ -1545,8 +1550,8 @@ Name: Bag.Weight, dtype: object
 <p>Let’s look at the other one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">coffee_df</span><span class="p">,</span><span class="n">split_df</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">bad_concat</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bad_concat = pd.concat([coffee_df,split_df],axis=0)
+bad_concat.shape
 </pre></div>
 </div>
 </div>
@@ -1564,7 +1569,7 @@ Name: Bag.Weight, dtype: object
 <p>and the bottom of it most columns are NaN (null, missing)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_concat</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bad_concat.tail()
 </pre></div>
 </div>
 </div>
@@ -1741,15 +1746,15 @@ Name: Bag.Weight, dtype: object
 <span id="id1"></span><h2><span class="section-number">9.4. </span>Unpacking Jsons<a class="headerlink" href="#unpacking-jsons" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhodyprog4ds_gh_events_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rhodyprog4ds_gh_events_url = &#39;https://api.github.com/orgs/rhodyprog4ds/events&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_gh_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">rhodyprog4ds_gh_events_url</span><span class="p">)</span>
-<span class="n">course_gh_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>course_gh_df = pd.read_json(rhodyprog4ds_gh_events_url)
+course_gh_df.head()
 </pre></div>
 </div>
 </div>
@@ -1785,6 +1790,39 @@ Name: Bag.Weight, dtype: object
   <tbody>
     <tr>
       <th>0</th>
+      <td>25707236522</td>
+      <td>PushEvent</td>
+      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11907839113, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-12-07 02:09:26+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25559123842</td>
+      <td>ForkEvent</td>
+      <td>{'id': 119482217, 'login': 'thuthaont', 'displ...</td>
+      <td>{'id': 287067905, 'name': 'rhodyprog4ds/portfo...</td>
+      <td>{'forkee': {'id': 572439723, 'node_id': 'R_kgD...</td>
+      <td>True</td>
+      <td>2022-11-30 09:26:11+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25454470489</td>
+      <td>PushEvent</td>
+      <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
+      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
+      <td>{'push_id': 11775411829, 'size': 1, 'distinct_...</td>
+      <td>True</td>
+      <td>2022-11-24 13:07:35+00:00</td>
+      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>25454293906</td>
       <td>PushEvent</td>
       <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
@@ -1795,7 +1833,7 @@ Name: Bag.Weight, dtype: object
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>25443448383</td>
       <td>PushEvent</td>
       <td>{'id': 41898282, 'login': 'github-actions[bot]...</td>
@@ -1803,39 +1841,6 @@ Name: Bag.Weight, dtype: object
       <td>{'push_id': 11769796411, 'size': 1, 'distinct_...</td>
       <td>True</td>
       <td>2022-11-24 02:14:06+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25443372137</td>
-      <td>ReleaseEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'action': 'published', 'release': {'url': 'ht...</td>
-      <td>True</td>
-      <td>2022-11-24 02:07:04+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>25443352568</td>
-      <td>CreateEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'ref': 'c30', 'ref_type': 'tag', 'master_bran...</td>
-      <td>True</td>
-      <td>2022-11-24 02:05:18+00:00</td>
-      <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>25443343932</td>
-      <td>PushEvent</td>
-      <td>{'id': 10656079, 'login': 'brownsarahm', 'disp...</td>
-      <td>{'id': 532028859, 'name': 'rhodyprog4ds/BrownF...</td>
-      <td>{'push_id': 11769742784, 'size': 1, 'distinct_...</td>
-      <td>True</td>
-      <td>2022-11-24 02:04:31+00:00</td>
       <td>{'id': 69595187, 'login': 'rhodyprog4ds', 'gra...</td>
     </tr>
   </tbody>
@@ -1846,7 +1851,7 @@ Name: Bag.Weight, dtype: object
 row in a data frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">course_gh_df</span><span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(course_gh_df[&#39;actor&#39;])
 </pre></div>
 </div>
 </div>
@@ -1860,7 +1865,7 @@ row in a data frame.</p>
 type to another.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5
 </pre></div>
 </div>
 </div>
@@ -1872,7 +1877,7 @@ type to another.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(5)
 </pre></div>
 </div>
 </div>
@@ -1884,7 +1889,7 @@ type to another.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>str(5)
 </pre></div>
 </div>
 </div>
@@ -1898,7 +1903,7 @@ type to another.</p>
 <p>First, let’s look at one row of one column</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_gh_df</span><span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>course_gh_df[&#39;actor&#39;][0]
 </pre></div>
 </div>
 </div>
@@ -1916,7 +1921,7 @@ type to another.</p>
 <p>Now let’s cast it to a Series</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">course_gh_df</span><span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.Series(course_gh_df[&#39;actor&#39;][0])
 </pre></div>
 </div>
 </div>
@@ -1936,7 +1941,7 @@ dtype: object
 <p>The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method does this for us, in one compact step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_gh_df</span><span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>course_gh_df[&#39;actor&#39;].apply(pd.Series)
 </pre></div>
 </div>
 </div>
@@ -1979,21 +1984,21 @@ dtype: object
     </tr>
     <tr>
       <th>1</th>
+      <td>119482217</td>
+      <td>thuthaont</td>
+      <td>thuthaont</td>
+      <td></td>
+      <td>https://api.github.com/users/thuthaont</td>
+      <td>https://avatars.githubusercontent.com/u/119482...</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2006,21 +2011,21 @@ dtype: object
     </tr>
     <tr>
       <th>4</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2042,12 +2047,12 @@ dtype: object
     </tr>
     <tr>
       <th>8</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
     </tr>
     <tr>
       <th>9</th>
@@ -2069,12 +2074,12 @@ dtype: object
     </tr>
     <tr>
       <th>11</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>12</th>
@@ -2096,6 +2101,15 @@ dtype: object
     </tr>
     <tr>
       <th>14</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>15</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -2104,22 +2118,13 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>54962132</td>
-      <td>saidafern</td>
-      <td>saidafern</td>
-      <td></td>
-      <td>https://api.github.com/users/saidafern</td>
-      <td>https://avatars.githubusercontent.com/u/54962132?</td>
-    </tr>
-    <tr>
       <th>16</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>17</th>
@@ -2132,30 +2137,30 @@ dtype: object
     </tr>
     <tr>
       <th>18</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>54962132</td>
+      <td>saidafern</td>
+      <td>saidafern</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/saidafern</td>
+      <td>https://avatars.githubusercontent.com/u/54962132?</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-    </tr>
-    <tr>
-      <th>20</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
       <td></td>
       <td>https://api.github.com/users/github-actions[bot]</td>
       <td>https://avatars.githubusercontent.com/u/41898282?</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>21</th>
@@ -2168,12 +2173,12 @@ dtype: object
     </tr>
     <tr>
       <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>23</th>
@@ -2195,12 +2200,12 @@ dtype: object
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
     </tr>
     <tr>
       <th>26</th>
@@ -2213,12 +2218,12 @@ dtype: object
     </tr>
     <tr>
       <th>27</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
     </tr>
     <tr>
       <th>28</th>
@@ -2231,12 +2236,12 @@ dtype: object
     </tr>
     <tr>
       <th>29</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
     </tr>
   </tbody>
 </table>
@@ -2246,7 +2251,7 @@ dtype: object
 <p>First, let’s make a list of the columns we need to convert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">js_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">,</span><span class="s1">&#39;repo&#39;</span><span class="p">,</span><span class="s1">&#39;payload&#39;</span><span class="p">,</span><span class="s1">&#39;org&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>js_cols = [&#39;actor&#39;,&#39;repo&#39;,&#39;payload&#39;,&#39;org&#39;]
 </pre></div>
 </div>
 </div>
@@ -2254,7 +2259,7 @@ dtype: object
 <p>When we use <code class="docutils literal notranslate"><span class="pre">.apply(pd.Series)</span></code> we get a a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">course_gh_df</span><span class="p">[</span><span class="s1">&#39;actor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(course_gh_df[&#39;actor&#39;].apply(pd.Series))
 </pre></div>
 </div>
 </div>
@@ -2268,9 +2273,9 @@ dtype: object
 <p>to illustrate, it’s nice to make small dataFrames.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">],[</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">70</span><span class="p">]],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AA&#39;</span><span class="p">,</span><span class="s1">&#39;BB&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
-<span class="n">df1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1 = pd.DataFrame([[1,2,3],[3,4,7]], columns = [&#39;A&#39;,&#39;B&#39;,&#39;t&#39;])
+df2 = pd.DataFrame([[10,20,30],[30,40,70]], columns = [&#39;AA&#39;,&#39;BB&#39;,&#39;t&#39;])
+df1
 </pre></div>
 </div>
 </div>
@@ -2317,7 +2322,7 @@ dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df2
 </pre></div>
 </div>
 </div>
@@ -2365,7 +2370,7 @@ dtype: object
 <p>If we use concat with the default settings, it stacks them vertically and aligns any columns that have the same name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([df1,df2])
 </pre></div>
 </div>
 </div>
@@ -2435,7 +2440,7 @@ dtype: object
 <p>So, since the original DataFrames were both 2 rows with 3 columns each, with one column name appearing in both, we end up with a new DataFrame with shape (4,5) and it fills with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in the top right and the bottom left.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([df1,df2]).shape
 </pre></div>
 </div>
 </div>
@@ -2448,7 +2453,7 @@ dtype: object
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter to tell it how to combine them. The default is <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, but <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> will combine along rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([df1,df2], axis =1)
 </pre></div>
 </div>
 </div>
@@ -2505,7 +2510,7 @@ dtype: object
 <p>So now we get no NaN values, because both DataFrames have the same number of rows and the same index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1.index == df2.index
 </pre></div>
 </div>
 </div>
@@ -2518,7 +2523,7 @@ dtype: object
 <p>and we have a total of 6 columns and 2 rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([df1,df2], axis =1).shape
 </pre></div>
 </div>
 </div>
@@ -2531,8 +2536,8 @@ dtype: object
 <p>Back to our gh data, we want to make a list of DataFrames where each DataFrame corresponds to one of the columns in the original DataFrame, but unpacked and then stack them horizontally (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>) because each DataFrame in the list is based on the same original DataFrame, they again have the same index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">cur_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="k">for</span> <span class="n">cur_col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span>
-         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gh_df[cur_col].apply(pd.Series) for cur_col in js_cols],
+         axis=1)
 </pre></div>
 </div>
 </div>
@@ -2590,7 +2595,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.177532e+10</td>
+      <td>1.190784e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2605,16 +2610,16 @@ dtype: object
     </tr>
     <tr>
       <th>1</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>119482217</td>
+      <td>thuthaont</td>
+      <td>thuthaont</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176980e+10</td>
+      <td>https://api.github.com/users/thuthaont</td>
+      <td>https://avatars.githubusercontent.com/u/119482...</td>
+      <td>287067905</td>
+      <td>rhodyprog4ds/portfolio-template</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/port...</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2629,16 +2634,16 @@ dtype: object
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177541e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2662,11 +2667,11 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177532e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2677,16 +2682,16 @@ dtype: object
     </tr>
     <tr>
       <th>4</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176974e+10</td>
+      <td>1.176980e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2701,16 +2706,16 @@ dtype: object
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174295e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2736,9 +2741,9 @@ dtype: object
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2758,11 +2763,11 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.176974e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -2773,16 +2778,16 @@ dtype: object
     </tr>
     <tr>
       <th>8</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174288e+10</td>
+      <td>1.174295e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2811,7 +2816,7 @@ dtype: object
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2832,11 +2837,11 @@ dtype: object
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -2845,16 +2850,16 @@ dtype: object
     </tr>
     <tr>
       <th>11</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.172757e+10</td>
+      <td>1.174288e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2883,7 +2888,7 @@ dtype: object
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -2893,6 +2898,78 @@ dtype: object
     </tr>
     <tr>
       <th>13</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>1.172757e+10</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -2916,7 +2993,7 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -2940,7 +3017,7 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>54962132</td>
       <td>saidafern</td>
       <td>saidafern</td>
@@ -2964,7 +3041,7 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
@@ -2988,89 +3065,17 @@ dtype: object
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171696e+10</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
       <th>20</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171566e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3094,11 +3099,11 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171561e+10</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3109,16 +3114,16 @@ dtype: object
     </tr>
     <tr>
       <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171334e+10</td>
+      <td>1.171696e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3142,7 +3147,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171333e+10</td>
+      <td>1.171566e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3166,7 +3171,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171327e+10</td>
+      <td>1.171561e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3181,16 +3186,16 @@ dtype: object
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171326e+10</td>
+      <td>1.171334e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3214,7 +3219,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170476e+10</td>
+      <td>1.171333e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3229,16 +3234,16 @@ dtype: object
     </tr>
     <tr>
       <th>27</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170474e+10</td>
+      <td>1.171327e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3262,7 +3267,7 @@ dtype: object
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170471e+10</td>
+      <td>1.171326e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3277,16 +3282,16 @@ dtype: object
     </tr>
     <tr>
       <th>29</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170470e+10</td>
+      <td>1.170476e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3301,7 +3306,7 @@ dtype: object
     </tr>
   </tbody>
 </table>
-<p>30 rows × 29 columns</p>
+<p>30 rows × 30 columns</p>
 </div></div></div>
 </div>
 <div class="admonition-try-it-yourself admonition">
@@ -3311,13 +3316,13 @@ dtype: object
 <p>In this case we get the same 30 rows, beacuse that’s what the API gave us and turned our 4 columns from <code class="docutils literal notranslate"><span class="pre">js_cols</span></code> into 26 columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">cur_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="k">for</span> <span class="n">cur_col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span>
-         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gh_df[cur_col].apply(pd.Series) for cur_col in js_cols],
+         axis=1).shape
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, 29)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, 30)
 </pre></div>
 </div>
 </div>
@@ -3332,13 +3337,13 @@ dtype: object
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">cur_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="k">for</span> <span class="n">cur_col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span>
-         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gh_df[cur_col].apply(pd.Series) for cur_col in js_cols],
+         axis=0).shape
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(120, 22)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(120, 23)
 </pre></div>
 </div>
 </div>
@@ -3349,9 +3354,9 @@ name prepended to the new name. This will help us distinguish between the differ
 <p>and this is another job for lambdas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">cur_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">cur_col</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="n">c</span><span class="p">)</span>
-           <span class="k">for</span> <span class="n">cur_col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span>
-         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gh_df[cur_col].apply(pd.Series).rename(columns = lambda c: cur_col + &#39;_&#39; +c)
+           for cur_col in js_cols],
+         axis=1)
 </pre></div>
 </div>
 </div>
@@ -3409,7 +3414,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.177532e+10</td>
+      <td>1.190784e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3424,16 +3429,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>1</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>119482217</td>
+      <td>thuthaont</td>
+      <td>thuthaont</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176980e+10</td>
+      <td>https://api.github.com/users/thuthaont</td>
+      <td>https://avatars.githubusercontent.com/u/119482...</td>
+      <td>287067905</td>
+      <td>rhodyprog4ds/portfolio-template</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/port...</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3448,16 +3453,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177541e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3481,11 +3486,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177532e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3496,16 +3501,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>4</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176974e+10</td>
+      <td>1.176980e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3520,16 +3525,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174295e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3555,9 +3560,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3577,11 +3582,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.176974e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3592,16 +3597,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>8</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174288e+10</td>
+      <td>1.174295e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3630,7 +3635,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3651,11 +3656,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -3664,16 +3669,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>11</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.172757e+10</td>
+      <td>1.174288e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3702,7 +3707,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -3712,6 +3717,78 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>13</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>1.172757e+10</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3735,7 +3812,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -3759,7 +3836,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>54962132</td>
       <td>saidafern</td>
       <td>saidafern</td>
@@ -3783,7 +3860,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
@@ -3807,89 +3884,17 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171696e+10</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
       <th>20</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171566e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3913,11 +3918,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171561e+10</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -3928,16 +3933,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171334e+10</td>
+      <td>1.171696e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3961,7 +3966,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171333e+10</td>
+      <td>1.171566e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3985,7 +3990,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171327e+10</td>
+      <td>1.171561e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4000,16 +4005,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171326e+10</td>
+      <td>1.171334e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4033,7 +4038,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170476e+10</td>
+      <td>1.171333e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4048,16 +4053,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>27</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170474e+10</td>
+      <td>1.171327e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4081,7 +4086,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170471e+10</td>
+      <td>1.171326e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4096,16 +4101,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>29</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170470e+10</td>
+      <td>1.170476e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4120,15 +4125,15 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
   </tbody>
 </table>
-<p>30 rows × 29 columns</p>
+<p>30 rows × 30 columns</p>
 </div></div></div>
 </div>
 <p>the <code class="docutils literal notranslate"><span class="pre">rename</span></code> method’s <code class="docutils literal notranslate"><span class="pre">column</span></code> parameter can take a lambda defined inline, which is helpful, because we want that function to take one parameter (the current columnt name) and do the same thing to all of the columns within a single DataFrame, but to prepend a different thing for each DataFrame</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">cur_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">cur_col</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span><span class="n">c</span><span class="p">)</span>
-           <span class="k">for</span> <span class="n">cur_col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span>
-         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gh_df[cur_col].apply(pd.Series).rename(columns = lambda c: cur_col + &#39;_&#39; +c)
+           for cur_col in js_cols],
+         axis=1)
 </pre></div>
 </div>
 </div>
@@ -4186,7 +4191,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.177532e+10</td>
+      <td>1.190784e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4201,16 +4206,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>1</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>119482217</td>
+      <td>thuthaont</td>
+      <td>thuthaont</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176980e+10</td>
+      <td>https://api.github.com/users/thuthaont</td>
+      <td>https://avatars.githubusercontent.com/u/119482...</td>
+      <td>287067905</td>
+      <td>rhodyprog4ds/portfolio-template</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/port...</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4225,16 +4230,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>2</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177541e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4258,11 +4263,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.177532e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4273,16 +4278,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>4</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.176974e+10</td>
+      <td>1.176980e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4297,16 +4302,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>5</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174295e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4332,9 +4337,9 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4354,11 +4359,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
+      <td>1.176974e+10</td>
       <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4369,16 +4374,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>8</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.174288e+10</td>
+      <td>1.174295e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4407,7 +4412,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4428,11 +4433,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
       <td>NaN</td>
       <td>...</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
-      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
       <td></td>
@@ -4441,16 +4446,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>11</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.172757e+10</td>
+      <td>1.174288e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4479,7 +4484,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
       <td>NaN</td>
       <td>69595187</td>
       <td>rhodyprog4ds</td>
@@ -4489,6 +4494,78 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>13</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>{'url': 'https://api.github.com/repos/rhodypro...</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>1.172757e+10</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>532028859</td>
+      <td>rhodyprog4ds/BrownFall22</td>
+      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>16</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -4512,7 +4589,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>10656079</td>
       <td>brownsarahm</td>
       <td>brownsarahm</td>
@@ -4536,7 +4613,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>54962132</td>
       <td>saidafern</td>
       <td>saidafern</td>
@@ -4560,7 +4637,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>41898282</td>
       <td>github-actions[bot]</td>
       <td>github-actions</td>
@@ -4584,89 +4661,17 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>main</td>
-      <td>Course website repo</td>
-      <td>user</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>532028859</td>
-      <td>rhodyprog4ds/BrownFall22</td>
-      <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171696e+10</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
       <th>20</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171566e+10</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4690,11 +4695,11 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171561e+10</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>main</td>
+      <td>Course website repo</td>
+      <td>user</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>69595187</td>
@@ -4705,16 +4710,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>22</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171334e+10</td>
+      <td>1.171696e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4738,7 +4743,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171333e+10</td>
+      <td>1.171566e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4762,7 +4767,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171327e+10</td>
+      <td>1.171561e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4777,16 +4782,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>25</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.171326e+10</td>
+      <td>1.171334e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4810,7 +4815,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170476e+10</td>
+      <td>1.171333e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4825,16 +4830,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>27</th>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
       <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170474e+10</td>
+      <td>1.171327e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4858,7 +4863,7 @@ name prepended to the new name. This will help us distinguish between the differ
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170471e+10</td>
+      <td>1.171326e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4873,16 +4878,16 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
     <tr>
       <th>29</th>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
       <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
       <td>532028859</td>
       <td>rhodyprog4ds/BrownFall22</td>
       <td>https://api.github.com/repos/rhodyprog4ds/Brow...</td>
-      <td>1.170470e+10</td>
+      <td>1.170476e+10</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -4897,7 +4902,7 @@ name prepended to the new name. This will help us distinguish between the differ
     </tr>
   </tbody>
 </table>
-<p>30 rows × 29 columns</p>
+<p>30 rows × 30 columns</p>
 </div></div></div>
 </div>
 <p>So now, we have the unpacked columns with good column names, but we lost the columns that were originally good.</p>
@@ -4905,9 +4910,9 @@ name prepended to the new name. This will help us distinguish between the differ
 First we can make a DataFrame that’s just the columns not on the list that we’re goign to expand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">course_gf_df_good</span> <span class="o">=</span> <span class="n">course_gh_df</span><span class="p">[[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span>
-          <span class="n">course_gh_df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">)]]</span>
-<span class="n">course_gf_df_good</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>course_gf_df_good = course_gh_df[[col for col in
+          course_gh_df.columns if not(col in js_cols)]]
+course_gf_df_good
 </pre></div>
 </div>
 </div>
@@ -4939,213 +4944,213 @@ First we can make a DataFrame that’s just the columns not on the list that we�
   <tbody>
     <tr>
       <th>0</th>
+      <td>25707236522</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-12-07 02:09:26+00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25559123842</td>
+      <td>ForkEvent</td>
+      <td>True</td>
+      <td>2022-11-30 09:26:11+00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25454470489</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-11-24 13:07:35+00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>25454293906</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-24 13:00:08+00:00</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>25443448383</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-24 02:14:06+00:00</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>5</th>
       <td>25443372137</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-11-24 02:07:04+00:00</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>6</th>
       <td>25443352568</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-11-24 02:05:18+00:00</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>25443343932</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-24 02:04:31+00:00</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>8</th>
       <td>25390211963</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-22 02:55:20+00:00</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>9</th>
       <td>25390113561</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-11-22 02:47:58+00:00</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>10</th>
       <td>25390087086</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-11-22 02:45:58+00:00</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>11</th>
       <td>25390070156</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-22 02:44:44+00:00</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>12</th>
       <td>25360316947</td>
       <td>IssuesEvent</td>
       <td>True</td>
       <td>2022-11-20 20:24:42+00:00</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>13</th>
       <td>25360316900</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
       <td>2022-11-20 20:24:42+00:00</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>14</th>
       <td>25360154325</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-20 20:02:45+00:00</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>15</th>
       <td>25360116113</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-11-20 19:57:26+00:00</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>16</th>
       <td>25360107585</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-11-20 19:56:11+00:00</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>25360103740</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-20 19:55:39+00:00</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>25350056101</td>
       <td>IssuesEvent</td>
       <td>True</td>
       <td>2022-11-19 17:05:46+00:00</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>25344448847</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-19 03:25:34+00:00</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>20</th>
       <td>25344423864</td>
       <td>ReleaseEvent</td>
       <td>True</td>
       <td>2022-11-19 03:21:33+00:00</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>21</th>
       <td>25344402964</td>
       <td>CreateEvent</td>
       <td>True</td>
       <td>2022-11-19 03:18:33+00:00</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>22</th>
       <td>25344398675</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-19 03:17:50+00:00</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>23</th>
       <td>25342083235</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 22:54:00+00:00</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>24</th>
       <td>25341998257</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 22:47:06+00:00</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>25</th>
       <td>25337507441</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 18:09:53+00:00</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>26</th>
       <td>25337490927</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 18:08:59+00:00</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>27</th>
       <td>25337370539</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 18:02:32+00:00</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>28</th>
       <td>25337341579</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 18:01:04+00:00</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>29</th>
       <td>25320624895</td>
       <td>PushEvent</td>
       <td>True</td>
       <td>2022-11-18 03:19:42+00:00</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>25320597150</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:17:14+00:00</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>25320534974</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:11:38+00:00</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>25320514276</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:09:50+00:00</td>
     </tr>
   </tbody>
 </table>
@@ -5154,9 +5159,9 @@ First we can make a DataFrame that’s just the columns not on the list that we�
 <p>Then we can prepend that to the list that we pass to <code class="docutils literal notranslate"><span class="pre">concat</span></code>. We have to put it in a list first, then use + to do that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">course_gf_df_good</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">course_gh_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-  <span class="n">columns</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">i_col</span><span class="p">:</span> <span class="n">col</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">i_col</span> <span class="p">)</span>
-      <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">js_cols</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat([course_gf_df_good]+[course_gh_df[col].apply(pd.Series,).rename(
+  columns= lambda i_col: col + &#39;_&#39; + i_col )
+      for col in js_cols],axis=1)
 </pre></div>
 </div>
 </div>
@@ -5205,6 +5210,78 @@ First we can make a DataFrame that’s just the columns not on the list that we�
   <tbody>
     <tr>
       <th>0</th>
+      <td>25707236522</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-12-07 02:09:26+00:00</td>
+      <td>10656079</td>
+      <td>brownsarahm</td>
+      <td>brownsarahm</td>
+      <td></td>
+      <td>https://api.github.com/users/brownsarahm</td>
+      <td>https://avatars.githubusercontent.com/u/10656079?</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25559123842</td>
+      <td>ForkEvent</td>
+      <td>True</td>
+      <td>2022-11-30 09:26:11+00:00</td>
+      <td>119482217</td>
+      <td>thuthaont</td>
+      <td>thuthaont</td>
+      <td></td>
+      <td>https://api.github.com/users/thuthaont</td>
+      <td>https://avatars.githubusercontent.com/u/119482...</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25454470489</td>
+      <td>PushEvent</td>
+      <td>True</td>
+      <td>2022-11-24 13:07:35+00:00</td>
+      <td>41898282</td>
+      <td>github-actions[bot]</td>
+      <td>github-actions</td>
+      <td></td>
+      <td>https://api.github.com/users/github-actions[bot]</td>
+      <td>https://avatars.githubusercontent.com/u/41898282?</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69595187</td>
+      <td>rhodyprog4ds</td>
+      <td></td>
+      <td>https://api.github.com/orgs/rhodyprog4ds</td>
+      <td>https://avatars.githubusercontent.com/u/69595187?</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>25454293906</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5228,7 +5305,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>4</th>
       <td>25443448383</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5252,7 +5329,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>5</th>
       <td>25443372137</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5276,7 +5353,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>6</th>
       <td>25443352568</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5300,7 +5377,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>7</th>
       <td>25443343932</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5324,7 +5401,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>8</th>
       <td>25390211963</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5348,7 +5425,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>9</th>
       <td>25390113561</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5372,7 +5449,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>10</th>
       <td>25390087086</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5396,7 +5473,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>11</th>
       <td>25390070156</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5420,7 +5497,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>12</th>
       <td>25360316947</td>
       <td>IssuesEvent</td>
       <td>True</td>
@@ -5444,7 +5521,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>13</th>
       <td>25360316900</td>
       <td>IssueCommentEvent</td>
       <td>True</td>
@@ -5468,7 +5545,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>14</th>
       <td>25360154325</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5492,7 +5569,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>15</th>
       <td>25360116113</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5516,7 +5593,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>13</th>
+      <th>16</th>
       <td>25360107585</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5540,7 +5617,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>17</th>
       <td>25360103740</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5564,7 +5641,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>25350056101</td>
       <td>IssuesEvent</td>
       <td>True</td>
@@ -5588,7 +5665,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>19</th>
       <td>25344448847</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5612,7 +5689,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>20</th>
       <td>25344423864</td>
       <td>ReleaseEvent</td>
       <td>True</td>
@@ -5636,7 +5713,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>21</th>
       <td>25344402964</td>
       <td>CreateEvent</td>
       <td>True</td>
@@ -5660,7 +5737,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>22</th>
       <td>25344398675</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5684,7 +5761,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>23</th>
       <td>25342083235</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5708,7 +5785,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>24</th>
       <td>25341998257</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5732,7 +5809,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>25</th>
       <td>25337507441</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5756,7 +5833,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>23</th>
+      <th>26</th>
       <td>25337490927</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5780,7 +5857,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>27</th>
       <td>25337370539</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5804,7 +5881,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>28</th>
       <td>25337341579</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5828,7 +5905,7 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
     <tr>
-      <th>26</th>
+      <th>29</th>
       <td>25320624895</td>
       <td>PushEvent</td>
       <td>True</td>
@@ -5851,81 +5928,9 @@ First we can make a DataFrame that’s just the columns not on the list that we�
       <td>https://api.github.com/orgs/rhodyprog4ds</td>
       <td>https://avatars.githubusercontent.com/u/69595187?</td>
     </tr>
-    <tr>
-      <th>27</th>
-      <td>25320597150</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:17:14+00:00</td>
-      <td>41898282</td>
-      <td>github-actions[bot]</td>
-      <td>github-actions</td>
-      <td></td>
-      <td>https://api.github.com/users/github-actions[bot]</td>
-      <td>https://avatars.githubusercontent.com/u/41898282?</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>25320534974</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:11:38+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>25320514276</td>
-      <td>PushEvent</td>
-      <td>True</td>
-      <td>2022-11-18 03:09:50+00:00</td>
-      <td>10656079</td>
-      <td>brownsarahm</td>
-      <td>brownsarahm</td>
-      <td></td>
-      <td>https://api.github.com/users/brownsarahm</td>
-      <td>https://avatars.githubusercontent.com/u/10656079?</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>69595187</td>
-      <td>rhodyprog4ds</td>
-      <td></td>
-      <td>https://api.github.com/orgs/rhodyprog4ds</td>
-      <td>https://avatars.githubusercontent.com/u/69595187?</td>
-    </tr>
   </tbody>
 </table>
-<p>30 rows × 33 columns</p>
+<p>30 rows × 34 columns</p>
 </div></div></div>
 </div>
 </section>

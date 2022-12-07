@@ -321,6 +321,11 @@ const thebe_selector_output = ".output, .cell_output"
    37. Classification of Text Data
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-05.html">
+   38. Neural Networks
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -948,9 +953,9 @@ package and <code class="docutils literal notranslate"><span class="pre">sqlite3
 are others, depending on the type of database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
-<span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from urllib import request
+import sqlite3
 </pre></div>
 </div>
 </div>
@@ -958,13 +963,13 @@ are others, depending on the type of database.</p>
 <p>First we need to download the database to work with it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s1">&#39;https://github.com/rhodyprog4ds/rhodyds/raw/main/data/nba1819.db&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>request.urlretrieve(&#39;https://github.com/rhodyprog4ds/rhodyds/raw/main/data/nba1819.db&#39;,
+   &#39;nba1819.db&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;nba1819.db&#39;, &lt;http.client.HTTPMessage at 0x7f02f9e9cfa0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;nba1819.db&#39;, &lt;http.client.HTTPMessage at 0x7f165c2d5be0&gt;)
 </pre></div>
 </div>
 </div>
@@ -973,8 +978,8 @@ are others, depending on the type of database.</p>
 To use it, we add a cursor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;nba1819.db&#39;</span><span class="p">)</span>
-<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>conn = sqlite3.connect(&#39;nba1819.db&#39;)
+cursor = conn.cursor()
 </pre></div>
 </div>
 </div>
@@ -982,12 +987,12 @@ To use it, we add a cursor.</p>
 <p>We can use execute to pass SQL queries through the cursor to the database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cursor.execute(&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlite3.Cursor at 0x7f02f9f0ece0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlite3.Cursor at 0x7f165c2c0ab0&gt;
 </pre></div>
 </div>
 </div>
@@ -995,7 +1000,7 @@ To use it, we add a cursor.</p>
 <p>Then we use <code class="docutils literal notranslate"><span class="pre">fetchall</span></code> to get the the results of the query.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cursor.fetchall()
 </pre></div>
 </div>
 </div>
@@ -1019,7 +1024,7 @@ To use it, we add a cursor.</p>
 execute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cursor.fetchall()
 </pre></div>
 </div>
 </div>
@@ -1034,14 +1039,14 @@ us the column names.</p>
 <p>The schema of a database is the description of its setup and layout. The <code class="docutils literal notranslate"><span class="pre">*</span></code> means to get all.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM INFORMATION_SCHEMA.COLUMNS &quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cursor.execute(&quot;SELECT * FROM INFORMATION_SCHEMA.COLUMNS &quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM INFORMATION_SCHEMA.COLUMNS &quot;</span><span class="p">)</span>
 
 <span class="ne">OperationalError</span>: no such table: INFORMATION_SCHEMA.COLUMNS
@@ -1052,7 +1057,7 @@ us the column names.</p>
 <p>Then we use <code class="docutils literal notranslate"><span class="pre">fetchall</span></code> to get the the results of the query.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cursor.fetchall()
 </pre></div>
 </div>
 </div>
@@ -1069,7 +1074,7 @@ us the column names.</p>
 into a DataFrame all at once</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM teams&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_sql(&quot;SELECT * FROM teams&quot;,conn)
 </pre></div>
 </div>
 </div>
@@ -1657,7 +1662,7 @@ into a DataFrame all at once</p>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">*</span></code> to get all of the columns and <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> to reduce the number of rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">con</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span><span class="n">sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM teams LIMIT 3&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_sql(con=conn,sql=&quot;SELECT * FROM teams LIMIT 3&quot;)
 </pre></div>
 </div>
 </div>
@@ -1763,7 +1768,7 @@ because there is one row in players per team a played for per season.  SO if a
 player was traded (changed teams), they are in there multiple times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM playerTeams2018 LIMIT 1&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_sql(&quot;SELECT * FROM playerTeams2018 LIMIT 1&quot;,conn)
 </pre></div>
 </div>
 </div>
@@ -1804,7 +1809,7 @@ player was traded (changed teams), they are in there multiple times.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span> <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_ID FROM playerTeams2018 &quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p18 =pd.read_sql(&quot;SELECT PLAYER_ID FROM playerTeams2018 &quot;,conn)
 </pre></div>
 </div>
 </div>
@@ -1812,7 +1817,7 @@ player was traded (changed teams), they are in there multiple times.</p>
 <p>Then we can use value counts</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p18</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p18.value_counts().sort_values(ascending=False).head(10)
 </pre></div>
 </div>
 </div>
@@ -1836,7 +1841,7 @@ dtype: int64
 <p>and we can get the player’s name from the player name <strong>remember our first query told us all the tables</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT PLAYER_NAME FROM playerNames WHERE PLAYER_ID = 1629150&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.read_sql(&quot;SELECT PLAYER_NAME FROM playerNames WHERE PLAYER_ID = 1629150&quot;,conn)
 </pre></div>
 </div>
 </div>
@@ -1885,20 +1890,20 @@ in the same conferences or switch conferences?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get conferences</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get conferences
 
-<span class="c1"># get 2018 players</span>
+# get 2018 players
 
-<span class="c1"># add conferences to 2018 players wiht a left merge on teams</span>
+# add conferences to 2018 players wiht a left merge on teams
 
 
-<span class="c1"># get 2019 players</span>
+# get 2019 players
 
-<span class="c1"># add conference</span>
+# add conference
 
-<span class="c1"># inner merge the two tables and add suffixes to conference</span>
+# inner merge the two tables and add suffixes to conference
 
-<span class="c1"># subset the dataframe with only rows where 18 &amp; 19 conference are diff</span>
+# subset the dataframe with only rows where 18 &amp; 19 conference are diff
 </pre></div>
 </div>
 </div>
