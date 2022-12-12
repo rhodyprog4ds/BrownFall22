@@ -923,7 +923,7 @@ df6= pd.read_csv(corner_data,usecols=[1,2,3])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fbb38f476d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff84ca5c220&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_6_1.png" src="../_images/2022-10-21_6_1.png" />
@@ -990,14 +990,19 @@ sns.pairplot(data =gnb_df, hue=&#39;char&#39;,hue_order=[&#39;A&#39;,&#39;B&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/deprecation.py:103: FutureWarning: Attribute `sigma_` was deprecated in 1.0 and will be removed in1.2. Use `var_` instead.
-  warnings.warn(msg, category=FutureWarning)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">gnb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">th</span><span class="p">,</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">N</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>          <span class="k">for</span> <span class="n">th</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gnb</span><span class="o">.</span><span class="n">theta_</span><span class="p">,</span><span class="n">gnb</span><span class="o">.</span><span class="n">sigma_</span><span class="p">)]),</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>          <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">gnb_df</span><span class="p">[</span><span class="s1">&#39;char&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gnb</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span><span class="n">gnb_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span><span class="n">hue_order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+
+<span class="ne">AttributeError</span>: &#39;GaussianNB&#39; object has no attribute &#39;sigma_&#39;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fbaf812d1c0&gt;
-</pre></div>
-</div>
-<img alt="../_images/2022-10-21_12_2.png" src="../_images/2022-10-21_12_2.png" />
 </div>
 </div>
 <p>This does not look much like the data and it’s hard to tell which is higher at any given point in the 2D space.  We know though, that it has missed the mark. We can also look at the actual predictions.</p>
@@ -1011,7 +1016,7 @@ sns.pairplot(df6pred, hue = &#39;pred&#39;,hue_order=[&#39;A&#39;,&#39;B&#39;])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fbaf2ec9910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff80fc55280&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_14_1.png" src="../_images/2022-10-21_14_1.png" />
@@ -1043,7 +1048,7 @@ sns.pairplot(df6pred, hue = &#39;pred&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fbaf2c99ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff80fd0df10&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_17_1.png" src="../_images/2022-10-21_17_1.png" />
@@ -1074,7 +1079,7 @@ sns.pairplot(df6pred, hue = &#39;pred&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fbafa1bb3a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff80c639a00&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-21_19_1.png" src="../_images/2022-10-21_19_1.png" />
@@ -1394,29 +1399,29 @@ X_train.head()
   </thead>
   <tbody>
     <tr>
-      <th>56</th>
+      <th>27</th>
+      <td>5.21</td>
+      <td>2.11</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>5.71</td>
+      <td>6.49</td>
+    </tr>
+    <tr>
+      <th>20</th>
       <td>5.61</td>
-      <td>1.51</td>
+      <td>1.48</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>4.98</td>
-      <td>5.84</td>
+      <th>146</th>
+      <td>6.94</td>
+      <td>5.27</td>
     </tr>
     <tr>
-      <th>112</th>
-      <td>2.03</td>
-      <td>2.77</td>
-    </tr>
-    <tr>
-      <th>90</th>
-      <td>1.83</td>
-      <td>6.26</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>2.31</td>
-      <td>6.07</td>
+      <th>187</th>
+      <td>5.90</td>
+      <td>2.18</td>
     </tr>
   </tbody>
 </table>
@@ -1455,29 +1460,29 @@ X_train.head()
   </thead>
   <tbody>
     <tr>
-      <th>62</th>
-      <td>5.57</td>
-      <td>2.15</td>
+      <th>75</th>
+      <td>5.25</td>
+      <td>1.47</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>1.43</td>
-      <td>6.57</td>
+      <th>45</th>
+      <td>2.23</td>
+      <td>2.55</td>
     </tr>
     <tr>
-      <th>72</th>
-      <td>1.45</td>
-      <td>1.91</td>
+      <th>34</th>
+      <td>6.38</td>
+      <td>2.64</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>5.79</td>
-      <td>5.95</td>
+      <th>199</th>
+      <td>2.04</td>
+      <td>1.10</td>
     </tr>
     <tr>
-      <th>67</th>
-      <td>1.61</td>
-      <td>5.66</td>
+      <th>54</th>
+      <td>2.63</td>
+      <td>2.58</td>
     </tr>
   </tbody>
 </table>

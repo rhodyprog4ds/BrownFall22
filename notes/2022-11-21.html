@@ -1317,608 +1317,16 @@ sentence_df
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
-  warnings.warn(msg, category=FutureWarning)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sentence_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sentence_df</span>
+
+<span class="ne">AttributeError</span>: &#39;CountVectorizer&#39; object has no attribute &#39;get_feature_names&#39;
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>21pm</th>
-      <th>310</th>
-      <th>aerobic</th>
-      <th>aka</th>
-      <th>all</th>
-      <th>are</th>
-      <th>ayyy</th>
-      <th>bananas</th>
-      <th>best</th>
-      <th>brown</th>
-      <th>...</th>
-      <th>the</th>
-      <th>this</th>
-      <th>to</th>
-      <th>type</th>
-      <th>videogames</th>
-      <th>whaddup</th>
-      <th>why</th>
-      <th>wit</th>
-      <th>would</th>
-      <th>you</th>
-    </tr>
-    <tr>
-      <th>attribution</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Dr. Brown</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>is a computer science student.Data science is fun</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sun Tzu</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Obama</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Bear</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Student</th>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Beetlejuice</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>frankie</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>George W Bush</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Todd Howard</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>A banana</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Rosa Parks</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Everyone</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Brendan Chadwick</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>...</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>David</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Matt 3</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Narrator</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Tom Cruise,</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>22 rows × 74 columns</p>
-</div></div></div>
+</div>
 </div>
 </section>
 <section id="how-can-we-find-the-most-commonly-used-word">
@@ -1931,18 +1339,12 @@ sentence_df
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21pm       1
-310        1
-aerobic    1
-aka        1
-all        1
-          ..
-whaddup    1
-why        1
-wit        1
-would      1
-you        1
-Length: 74, dtype: int64
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sentence_df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;sentence_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1957,7 +1359,12 @@ Length: 74, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;is&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sentence_df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;sentence_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1973,116 +1380,12 @@ Length: 74, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 3.60555128, 3.60555128, 3.74165739, 3.31662479,
-        3.60555128, 3.46410162, 3.31662479, 3.60555128, 3.74165739,
-        3.31662479, 3.87298335, 3.31662479, 3.74165739, 3.46410162,
-        3.46410162, 3.46410162, 4.12310563, 3.46410162, 4.24264069,
-        3.74165739, 3.60555128],
-       [3.60555128, 0.        , 2.82842712, 2.23606798, 2.44948974,
-        2.        , 3.        , 2.44948974, 2.44948974, 2.64575131,
-        2.44948974, 3.74165739, 2.        , 2.23606798, 2.64575131,
-        2.64575131, 2.23606798, 3.74165739, 1.73205081, 3.87298335,
-        3.        , 2.44948974],
-       [3.60555128, 2.82842712, 0.        , 3.        , 2.82842712,
-        2.82842712, 3.31662479, 2.82842712, 2.82842712, 3.        ,
-        2.82842712, 3.74165739, 2.82842712, 3.        , 2.64575131,
-        3.        , 2.64575131, 3.46410162, 2.64575131, 3.87298335,
-        3.        , 3.16227766],
-       [3.74165739, 2.23606798, 3.        , 0.        , 2.64575131,
-        2.23606798, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
-        2.64575131, 3.60555128, 2.23606798, 2.44948974, 2.82842712,
-        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
-        3.16227766, 3.        ],
-       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 0.        ,
-        2.44948974, 2.64575131, 2.        , 2.44948974, 2.64575131,
-        2.        , 3.46410162, 2.        , 2.64575131, 2.64575131,
-        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
-        3.        , 2.82842712],
-       [3.60555128, 2.        , 2.82842712, 2.23606798, 2.44948974,
-        0.        , 3.        , 2.44948974, 2.        , 2.64575131,
-        2.44948974, 3.74165739, 2.        , 2.23606798, 2.64575131,
-        2.64575131, 1.73205081, 3.74165739, 2.23606798, 3.87298335,
-        3.        , 2.82842712],
-       [3.46410162, 3.        , 3.31662479, 3.16227766, 2.64575131,
-        3.        , 0.        , 2.64575131, 3.        , 3.16227766,
-        2.23606798, 3.87298335, 2.23606798, 3.16227766, 3.16227766,
-        3.16227766, 2.44948974, 4.12310563, 2.82842712, 4.        ,
-        3.46410162, 3.31662479],
-       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 2.        ,
-        2.44948974, 2.64575131, 0.        , 2.44948974, 2.23606798,
-        2.        , 3.46410162, 2.        , 2.64575131, 2.64575131,
-        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
-        3.        , 2.82842712],
-       [3.60555128, 2.44948974, 2.82842712, 2.64575131, 2.44948974,
-        2.        , 3.        , 2.44948974, 0.        , 2.64575131,
-        2.44948974, 3.74165739, 2.44948974, 2.64575131, 2.64575131,
-        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.87298335,
-        3.        , 2.82842712],
-       [3.74165739, 2.64575131, 3.        , 2.82842712, 2.64575131,
-        2.64575131, 3.16227766, 2.23606798, 2.64575131, 0.        ,
-        2.64575131, 3.87298335, 2.64575131, 2.82842712, 2.82842712,
-        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
-        3.16227766, 3.        ],
-       [3.31662479, 2.44948974, 2.82842712, 2.64575131, 2.        ,
-        2.44948974, 2.23606798, 2.        , 2.44948974, 2.64575131,
-        0.        , 3.46410162, 1.41421356, 2.64575131, 2.64575131,
-        2.23606798, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
-        3.        , 2.82842712],
-       [3.87298335, 3.74165739, 3.74165739, 3.60555128, 3.46410162,
-        3.74165739, 3.87298335, 3.46410162, 3.74165739, 3.87298335,
-        3.46410162, 0.        , 3.46410162, 3.87298335, 3.60555128,
-        3.87298335, 3.60555128, 4.24264069, 3.60555128, 4.35889894,
-        3.87298335, 3.74165739],
-       [3.31662479, 2.        , 2.82842712, 2.23606798, 2.        ,
-        2.        , 2.23606798, 2.        , 2.44948974, 2.64575131,
-        1.41421356, 3.46410162, 0.        , 2.23606798, 2.64575131,
-        2.64575131, 2.23606798, 3.74165739, 2.23606798, 3.60555128,
-        3.        , 2.82842712],
-       [3.74165739, 2.23606798, 3.        , 2.44948974, 2.64575131,
-        2.23606798, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
-        2.64575131, 3.87298335, 2.23606798, 0.        , 2.82842712,
-        2.82842712, 2.44948974, 3.87298335, 2.44948974, 4.        ,
-        3.16227766, 3.        ],
-       [3.46410162, 2.64575131, 2.64575131, 2.82842712, 2.64575131,
-        2.64575131, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
-        2.64575131, 3.60555128, 2.64575131, 2.82842712, 0.        ,
-        2.82842712, 2.44948974, 3.31662479, 2.44948974, 3.74165739,
-        2.82842712, 3.        ],
-       [3.46410162, 2.64575131, 3.        , 2.82842712, 2.64575131,
-        2.64575131, 3.16227766, 2.64575131, 2.64575131, 2.82842712,
-        2.23606798, 3.87298335, 2.64575131, 2.82842712, 2.82842712,
-        0.        , 2.44948974, 3.87298335, 2.44948974, 4.        ,
-        3.16227766, 3.        ],
-       [3.46410162, 2.23606798, 2.64575131, 2.44948974, 2.23606798,
-        1.73205081, 2.44948974, 2.23606798, 2.23606798, 2.44948974,
-        2.23606798, 3.60555128, 2.23606798, 2.44948974, 2.44948974,
-        2.44948974, 0.        , 3.60555128, 2.        , 3.74165739,
-        2.82842712, 2.64575131],
-       [4.12310563, 3.74165739, 3.46410162, 3.87298335, 3.74165739,
-        3.74165739, 4.12310563, 3.74165739, 3.74165739, 3.87298335,
-        3.74165739, 4.24264069, 3.74165739, 3.87298335, 3.31662479,
-        3.87298335, 3.60555128, 0.        , 3.60555128, 4.35889894,
-        3.60555128, 4.        ],
-       [3.46410162, 1.73205081, 2.64575131, 2.44948974, 2.23606798,
-        2.23606798, 2.82842712, 2.23606798, 2.23606798, 2.44948974,
-        2.23606798, 3.60555128, 2.23606798, 2.44948974, 2.44948974,
-        2.44948974, 2.        , 3.60555128, 0.        , 3.74165739,
-        2.82842712, 2.23606798],
-       [4.24264069, 3.87298335, 3.87298335, 4.        , 3.60555128,
-        3.87298335, 4.        , 3.60555128, 3.87298335, 4.        ,
-        3.60555128, 4.35889894, 3.60555128, 4.        , 3.74165739,
-        4.        , 3.74165739, 4.35889894, 3.74165739, 0.        ,
-        4.        , 4.12310563],
-       [3.74165739, 3.        , 3.        , 3.16227766, 3.        ,
-        3.        , 3.46410162, 3.        , 3.        , 3.16227766,
-        3.        , 3.87298335, 3.        , 3.16227766, 2.82842712,
-        3.16227766, 2.82842712, 3.60555128, 2.82842712, 4.        ,
-        0.        , 3.31662479],
-       [3.60555128, 2.44948974, 3.16227766, 3.        , 2.82842712,
-        2.82842712, 3.31662479, 2.82842712, 2.82842712, 3.        ,
-        2.82842712, 3.74165739, 2.82842712, 3.        , 3.        ,
-        3.        , 2.64575131, 4.        , 2.23606798, 4.12310563,
-        3.31662479, 0.        ]])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sentence_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -2096,6 +1399,17 @@ Length: 74, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dist_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">sentence_df</span><span class="p">),</span><span class="n">index</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                       <span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;attribution&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;sentence_df&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2104,196 +1418,15 @@ Length: 74, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dist_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>attribution</th>
-      <th>Dr. Brown</th>
-      <th></th>
-      <th>is a computer science student.Data science is fun</th>
-      <th>Sun Tzu</th>
-      <th>Obama</th>
-      <th>Bear</th>
-      <th>Student</th>
-      <th></th>
-      <th>Beetlejuice</th>
-      <th>frankie</th>
-      <th>...</th>
-      <th></th>
-      <th></th>
-      <th>A banana</th>
-      <th>Rosa Parks</th>
-      <th>Everyone</th>
-      <th>Brendan Chadwick</th>
-      <th>David</th>
-      <th>Matt 3</th>
-      <th>Narrator</th>
-      <th>Tom Cruise,</th>
-    </tr>
-    <tr>
-      <th>attribution</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Dr. Brown</th>
-      <td>0.000000</td>
-      <td>3.605551</td>
-      <td>3.605551</td>
-      <td>3.741657</td>
-      <td>3.316625</td>
-      <td>3.605551</td>
-      <td>3.464102</td>
-      <td>3.316625</td>
-      <td>3.605551</td>
-      <td>3.741657</td>
-      <td>...</td>
-      <td>3.316625</td>
-      <td>3.741657</td>
-      <td>3.464102</td>
-      <td>3.464102</td>
-      <td>3.464102</td>
-      <td>4.123106</td>
-      <td>3.464102</td>
-      <td>4.242641</td>
-      <td>3.741657</td>
-      <td>3.605551</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>3.605551</td>
-      <td>0.000000</td>
-      <td>2.828427</td>
-      <td>2.236068</td>
-      <td>2.449490</td>
-      <td>2.000000</td>
-      <td>3.000000</td>
-      <td>2.449490</td>
-      <td>2.449490</td>
-      <td>2.645751</td>
-      <td>...</td>
-      <td>2.000000</td>
-      <td>2.236068</td>
-      <td>2.645751</td>
-      <td>2.645751</td>
-      <td>2.236068</td>
-      <td>3.741657</td>
-      <td>1.732051</td>
-      <td>3.872983</td>
-      <td>3.000000</td>
-      <td>2.449490</td>
-    </tr>
-    <tr>
-      <th>is a computer science student.Data science is fun</th>
-      <td>3.605551</td>
-      <td>2.828427</td>
-      <td>0.000000</td>
-      <td>3.000000</td>
-      <td>2.828427</td>
-      <td>2.828427</td>
-      <td>3.316625</td>
-      <td>2.828427</td>
-      <td>2.828427</td>
-      <td>3.000000</td>
-      <td>...</td>
-      <td>2.828427</td>
-      <td>3.000000</td>
-      <td>2.645751</td>
-      <td>3.000000</td>
-      <td>2.645751</td>
-      <td>3.464102</td>
-      <td>2.645751</td>
-      <td>3.872983</td>
-      <td>3.000000</td>
-      <td>3.162278</td>
-    </tr>
-    <tr>
-      <th>Sun Tzu</th>
-      <td>3.741657</td>
-      <td>2.236068</td>
-      <td>3.000000</td>
-      <td>0.000000</td>
-      <td>2.645751</td>
-      <td>2.236068</td>
-      <td>3.162278</td>
-      <td>2.645751</td>
-      <td>2.645751</td>
-      <td>2.828427</td>
-      <td>...</td>
-      <td>2.236068</td>
-      <td>2.449490</td>
-      <td>2.828427</td>
-      <td>2.828427</td>
-      <td>2.449490</td>
-      <td>3.872983</td>
-      <td>2.449490</td>
-      <td>4.000000</td>
-      <td>3.162278</td>
-      <td>3.000000</td>
-    </tr>
-    <tr>
-      <th>Obama</th>
-      <td>3.316625</td>
-      <td>2.449490</td>
-      <td>2.828427</td>
-      <td>2.645751</td>
-      <td>0.000000</td>
-      <td>2.449490</td>
-      <td>2.645751</td>
-      <td>2.000000</td>
-      <td>2.449490</td>
-      <td>2.645751</td>
-      <td>...</td>
-      <td>2.000000</td>
-      <td>2.645751</td>
-      <td>2.645751</td>
-      <td>2.645751</td>
-      <td>2.236068</td>
-      <td>3.741657</td>
-      <td>2.236068</td>
-      <td>3.605551</td>
-      <td>3.000000</td>
-      <td>2.828427</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 22 columns</p>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;dist_df&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>Who wrote the most similar question to me?</p>
 <div class="cell docutils container">
@@ -2303,7 +1436,12 @@ Length: 74, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Obama&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dist_df</span><span class="p">[</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39; Dr. Brown&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;dist_df&#39; is not defined
 </pre></div>
 </div>
 </div>

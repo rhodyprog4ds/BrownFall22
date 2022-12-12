@@ -1167,11 +1167,13 @@ count_vec.get_feature_names()[computer_idx]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function get_feature_names is deprecated; get_feature_names is deprecated in 1.0 and will be removed in 1.2. Please use get_feature_names_out instead.
-  warnings.warn(msg, category=FutureWarning)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;computer&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">computer_idx</span> <span class="o">=</span> <span class="mi">6786</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">count_vec</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()[</span><span class="n">computer_idx</span><span class="p">]</span>
+
+<span class="ne">AttributeError</span>: &#39;CountVectorizer&#39; object has no attribute &#39;get_feature_names&#39;
 </pre></div>
 </div>
 </div>

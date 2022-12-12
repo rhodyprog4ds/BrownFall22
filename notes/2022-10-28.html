@@ -896,7 +896,6 @@ regr_db.score(X_test,y_test)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_intercept&#39;: True,
- &#39;normalize&#39;: &#39;deprecated&#39;,
  &#39;copy_X&#39;: True,
  &#39;n_jobs&#39;: None,
  &#39;positive&#39;: False,
@@ -1022,7 +1021,7 @@ x_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5af6bb7d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0e2af4cb80&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_10_1.png" src="../_images/2022-10-28_10_1.png" />
@@ -1151,7 +1150,7 @@ sns.relplot(data= x_df2,x=&#39;value&#39;,col=&#39;feature&#39;, col_wrap=4,y=&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5af4ad0f40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0e2a01f760&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_22_1.png" src="../_images/2022-10-28_22_1.png" />
@@ -1217,7 +1216,7 @@ sns.relplot(data= x_df2,x=&#39;value&#39;,col=&#39;feature&#39;, col_wrap=4,y=&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f5ae6623490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e1cecb280&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_30_1.png" src="../_images/2022-10-28_30_1.png" />
@@ -1285,7 +1284,7 @@ plt.scatter(y_test,y_pred_lasso2-y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f5ae6c57550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e18a3c1c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_36_1.png" src="../_images/2022-10-28_36_1.png" />
@@ -1332,13 +1331,13 @@ plt.plot(alpha_vals,scores,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.855e+05, tolerance: 2.501e+02
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:634: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.855e+05, tolerance: 2.501e+02
   model = cd_fast.enet_coordinate_descent(
-/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 3.623e+05, tolerance: 2.501e+02
+/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:634: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 3.623e+05, tolerance: 2.501e+02
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5ae6b07580&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e189dd070&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_41_2.png" src="../_images/2022-10-28_41_2.png" />
@@ -1353,7 +1352,7 @@ lasso2.score(X2_test,y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.855e+05, tolerance: 2.501e+02
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py:634: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 2.855e+05, tolerance: 2.501e+02
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
@@ -1472,7 +1471,7 @@ regr2_tips.score(tips_X2_test,tips_y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f5ae6b72610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e18944d60&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_53_1.png" src="../_images/2022-10-28_53_1.png" />
@@ -1505,7 +1504,7 @@ y_test = compute_y(x_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f5ae24a0430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e188b47c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_56_1.png" src="../_images/2022-10-28_56_1.png" />
@@ -1523,7 +1522,7 @@ plt.plot(x_train*x_train, x2_train[:,1])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5ae23feb80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e1889c430&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_58_1.png" src="../_images/2022-10-28_58_1.png" />
@@ -1564,7 +1563,7 @@ plt.scatter(x_test,y_pred)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f5ae23e6ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e187ff6a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_61_1.png" src="../_images/2022-10-28_61_1.png" />
