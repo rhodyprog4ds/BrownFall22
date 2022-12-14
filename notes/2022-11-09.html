@@ -425,6 +425,11 @@ const thebe_selector_output = ".output, .cell_output"
    Check 2 Ideas
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check4ideas.html">
+   Check 4 Ideas
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -981,7 +986,7 @@ params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_dep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -1047,10 +1052,10 @@ dt_5cv_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002064</td>
-      <td>0.000394</td>
-      <td>0.001513</td>
-      <td>0.000410</td>
+      <td>0.001844</td>
+      <td>0.000234</td>
+      <td>0.001225</td>
+      <td>0.000118</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1066,10 +1071,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001809</td>
-      <td>0.000009</td>
-      <td>0.001276</td>
-      <td>0.000007</td>
+      <td>0.001680</td>
+      <td>0.000069</td>
+      <td>0.001147</td>
+      <td>0.000011</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1085,10 +1090,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001802</td>
-      <td>0.000003</td>
-      <td>0.001295</td>
-      <td>0.000019</td>
+      <td>0.001654</td>
+      <td>0.000010</td>
+      <td>0.001150</td>
+      <td>0.000014</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1104,10 +1109,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001801</td>
-      <td>0.000008</td>
-      <td>0.001274</td>
-      <td>0.000013</td>
+      <td>0.001638</td>
+      <td>0.000014</td>
+      <td>0.001146</td>
+      <td>0.000012</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1123,10 +1128,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001818</td>
-      <td>0.000027</td>
-      <td>0.001258</td>
-      <td>0.000002</td>
+      <td>0.001637</td>
+      <td>0.000014</td>
+      <td>0.001141</td>
+      <td>0.000016</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1180,7 +1185,7 @@ dt_5cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688c403490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d8343970&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1313,7 +1318,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688c160be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d5900a30&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1329,7 +1334,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688bceb130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d7c101c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1356,7 +1361,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1369,7 +1374,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -1381,7 +1386,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -1418,7 +1423,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8947368421052632
 </pre></div>
 </div>
 </div>
@@ -1430,7 +1435,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 16, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;entropy&#39;}
 </pre></div>
 </div>
 </div>

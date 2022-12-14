@@ -425,6 +425,11 @@ const thebe_selector_output = ".output, .cell_output"
    Check 2 Ideas
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../portfolio/check4ideas.html">
+   Check 4 Ideas
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -911,13 +916,13 @@ sv_df = pd.DataFrame(svm_opt.cv_results_)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.979167
-std       0.006330
+mean      0.976190
+std       0.005525
 min       0.966667
 25%       0.975000
-50%       0.979167
-75%       0.983333
-max       0.991667
+50%       0.975000
+75%       0.981250
+max       0.983333
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -931,13 +936,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.979722
-std       0.008291
+mean      0.951296
+std       0.004311
 min       0.950000
-25%       0.983333
-50%       0.983333
-75%       0.983333
-max       0.983333
+25%       0.950000
+50%       0.950000
+75%       0.950000
+max       0.966667
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -963,7 +968,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9838df8700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fed9d819130&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1090,7 +1095,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9833333333333332, 0.9916666666666668)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9666666666666666, 0.9833333333333334)
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1107,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9604278107904404, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9345490587118275, 0.9987842746215057)
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1120,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9760899711101458, 0.9905766955565205)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9565101872533032, 0.97682314608003)
 </pre></div>
 </div>
 </div>
@@ -1135,7 +1140,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1152,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
 </pre></div>
 </div>
 </div>
