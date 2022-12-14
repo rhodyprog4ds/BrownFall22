@@ -326,6 +326,11 @@ const thebe_selector_output = ".output, .cell_output"
    38. Neural Networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-07.html">
+   39. Predicting with NN
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -994,98 +999,98 @@ dt_opt.fit(iris_X_train,iris_y_train)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.003039</td>
-      <td>0.000400</td>
-      <td>0.001989</td>
-      <td>0.000294</td>
+      <td>0.001973</td>
+      <td>0.000302</td>
+      <td>0.001352</td>
+      <td>0.000116</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.916667</td>
       <td>0.958333</td>
-      <td>1.0</td>
-      <td>0.833333</td>
+      <td>0.958333</td>
       <td>0.916667</td>
       <td>0.916667</td>
-      <td>0.925</td>
-      <td>0.055277</td>
-      <td>9</td>
+      <td>0.933333</td>
+      <td>0.020412</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002694</td>
-      <td>0.000161</td>
-      <td>0.001845</td>
-      <td>0.000089</td>
+      <td>0.001811</td>
+      <td>0.000014</td>
+      <td>0.001277</td>
+      <td>0.000017</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.916667</td>
       <td>0.958333</td>
-      <td>1.0</td>
-      <td>0.833333</td>
+      <td>0.958333</td>
       <td>0.916667</td>
       <td>0.916667</td>
-      <td>0.925</td>
-      <td>0.055277</td>
-      <td>9</td>
+      <td>0.933333</td>
+      <td>0.020412</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002581</td>
-      <td>0.000130</td>
-      <td>0.001750</td>
-      <td>0.000118</td>
+      <td>0.001801</td>
+      <td>0.000008</td>
+      <td>0.001275</td>
+      <td>0.000034</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.916667</td>
       <td>0.958333</td>
-      <td>1.0</td>
-      <td>0.833333</td>
+      <td>0.958333</td>
       <td>0.916667</td>
       <td>0.916667</td>
-      <td>0.925</td>
-      <td>0.055277</td>
-      <td>9</td>
+      <td>0.933333</td>
+      <td>0.020412</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002568</td>
-      <td>0.000082</td>
-      <td>0.001842</td>
-      <td>0.000100</td>
+      <td>0.001789</td>
+      <td>0.000012</td>
+      <td>0.001266</td>
+      <td>0.000011</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.916667</td>
       <td>0.958333</td>
-      <td>1.0</td>
-      <td>0.833333</td>
+      <td>0.958333</td>
       <td>0.916667</td>
       <td>0.916667</td>
-      <td>0.925</td>
-      <td>0.055277</td>
-      <td>9</td>
+      <td>0.933333</td>
+      <td>0.020412</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.002417</td>
-      <td>0.000068</td>
-      <td>0.002065</td>
-      <td>0.000427</td>
+      <td>0.001800</td>
+      <td>0.000029</td>
+      <td>0.001269</td>
+      <td>0.000014</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
       <td>{'criterion': 'gini', 'max_depth': 2, 'min_sam...</td>
+      <td>0.916667</td>
       <td>0.958333</td>
-      <td>1.0</td>
-      <td>0.833333</td>
+      <td>0.958333</td>
       <td>0.916667</td>
       <td>0.916667</td>
-      <td>0.925</td>
-      <td>0.055277</td>
-      <td>9</td>
+      <td>0.933333</td>
+      <td>0.020412</td>
+      <td>11</td>
     </tr>
   </tbody>
 </table>
@@ -1216,7 +1221,7 @@ svm_opt = model_selection.GridSearchCV(svmclf,param_grid_svm)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9666666666666667, 0.9666666666666667)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9666666666666667, 0.9333333333333333)
 </pre></div>
 </div>
 </div>

@@ -326,6 +326,11 @@ const thebe_selector_output = ".output, .cell_output"
    38. Neural Networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-07.html">
+   39. Predicting with NN
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -989,7 +994,7 @@ params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_dep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1042,10 +1047,10 @@ dt_5cv_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002927</td>
-      <td>0.000539</td>
-      <td>0.001749</td>
-      <td>0.000071</td>
+      <td>0.002064</td>
+      <td>0.000394</td>
+      <td>0.001513</td>
+      <td>0.000410</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1061,10 +1066,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002460</td>
-      <td>0.000126</td>
-      <td>0.001821</td>
-      <td>0.000163</td>
+      <td>0.001809</td>
+      <td>0.000009</td>
+      <td>0.001276</td>
+      <td>0.000007</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1080,10 +1085,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002356</td>
-      <td>0.000091</td>
-      <td>0.001747</td>
-      <td>0.000050</td>
+      <td>0.001802</td>
+      <td>0.000003</td>
+      <td>0.001295</td>
+      <td>0.000019</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1099,10 +1104,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002180</td>
-      <td>0.000136</td>
-      <td>0.001610</td>
-      <td>0.000143</td>
+      <td>0.001801</td>
+      <td>0.000008</td>
+      <td>0.001274</td>
+      <td>0.000013</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1118,10 +1123,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>0.002607</td>
-      <td>0.000497</td>
-      <td>0.001726</td>
-      <td>0.000070</td>
+      <td>0.001818</td>
+      <td>0.000027</td>
+      <td>0.001258</td>
+      <td>0.000002</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1175,7 +1180,7 @@ dt_5cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbd8f7ac460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688c403490&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1308,7 +1313,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbd8c185df0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688c160be0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1324,7 +1329,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbd8f0f3880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f688bceb130&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1339,7 +1344,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1351,7 +1356,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1413,7 +1418,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8947368421052632
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1430,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 6, &#39;max_depth&#39;: 2, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 2, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;entropy&#39;}
 </pre></div>
 </div>
 </div>

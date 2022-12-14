@@ -326,6 +326,11 @@ const thebe_selector_output = ".output, .cell_output"
    38. Neural Networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-07.html">
+   39. Predicting with NN
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -906,12 +911,12 @@ sv_df = pd.DataFrame(svm_opt.cv_results_)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.971429
-std       0.010699
-min       0.950000
-25%       0.966667
-50%       0.970833
-75%       0.975000
+mean      0.979167
+std       0.006330
+min       0.966667
+25%       0.975000
+50%       0.979167
+75%       0.983333
 max       0.991667
 Name: mean_test_score, dtype: float64
 </pre></div>
@@ -926,13 +931,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.935370
-std       0.005045
-min       0.933333
-25%       0.933333
-50%       0.933333
-75%       0.933333
-max       0.950000
+mean      0.979722
+std       0.008291
+min       0.950000
+25%       0.983333
+50%       0.983333
+75%       0.983333
+max       0.983333
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -958,7 +963,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9764359280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9838df8700&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1085,7 +1090,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.95, 0.9916666666666668)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9833333333333332, 0.9916666666666668)
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1102,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9110047011380431, 0.9889952988619568)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9604278107904404, 1.0)
 </pre></div>
 </div>
 </div>
@@ -1110,7 +1115,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9376686037557244, 0.9623313962442755)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9760899711101458, 0.9905766955565205)
 </pre></div>
 </div>
 </div>
@@ -1130,7 +1135,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
 </pre></div>
 </div>
 </div>
@@ -1142,7 +1147,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
 </pre></div>
 </div>
 </div>

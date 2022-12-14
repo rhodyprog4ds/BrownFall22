@@ -328,6 +328,11 @@ const thebe_selector_output = ".output, .cell_output"
    38. Neural Networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-07.html">
+   39. Predicting with NN
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1021,7 +1026,7 @@ x_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0e2af4cb80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5789b7ee50&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_10_1.png" src="../_images/2022-10-28_10_1.png" />
@@ -1150,7 +1155,7 @@ sns.relplot(data= x_df2,x=&#39;value&#39;,col=&#39;feature&#39;, col_wrap=4,y=&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0e2a01f760&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5780c8c5b0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_22_1.png" src="../_images/2022-10-28_22_1.png" />
@@ -1216,7 +1221,7 @@ sns.relplot(data= x_df2,x=&#39;value&#39;,col=&#39;feature&#39;, col_wrap=4,y=&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e1cecb280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f577795b760&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_30_1.png" src="../_images/2022-10-28_30_1.png" />
@@ -1284,7 +1289,7 @@ plt.scatter(y_test,y_pred_lasso2-y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e18a3c1c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f57734b0f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_36_1.png" src="../_images/2022-10-28_36_1.png" />
@@ -1337,7 +1342,7 @@ plt.plot(alpha_vals,scores,)
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e189dd070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5773452f10&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_41_2.png" src="../_images/2022-10-28_41_2.png" />
@@ -1356,7 +1361,7 @@ lasso2.score(X2_test,y_test)
   model = cd_fast.enet_coordinate_descent(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5700228082080694
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5700228082080702
 </pre></div>
 </div>
 </div>
@@ -1458,7 +1463,7 @@ regr2_tips.score(tips_X2_test,tips_y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5907071399659563
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5907071399659565
 </pre></div>
 </div>
 </div>
@@ -1471,7 +1476,7 @@ regr2_tips.score(tips_X2_test,tips_y_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e18944d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f57733c5cd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_53_1.png" src="../_images/2022-10-28_53_1.png" />
@@ -1504,7 +1509,7 @@ y_test = compute_y(x_test)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e188b47c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f57733366d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_56_1.png" src="../_images/2022-10-28_56_1.png" />
@@ -1522,7 +1527,7 @@ plt.plot(x_train*x_train, x2_train[:,1])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e1889c430&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f57733207f0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_58_1.png" src="../_images/2022-10-28_58_1.png" />
@@ -1563,7 +1568,7 @@ plt.scatter(x_test,y_pred)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e187ff6a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f577327eb50&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-28_61_1.png" src="../_images/2022-10-28_61_1.png" />

@@ -328,6 +328,11 @@ const thebe_selector_output = ".output, .cell_output"
    38. Neural Networks
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-12-07.html">
+   39. Predicting with NN
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1112,7 +1117,7 @@ learning_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2446/3116911913.py:3: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2358/3116911913.py:3: FutureWarning: Using the level keyword in DataFrame and Series aggregations is deprecated and will be removed in a future version. Use groupby instead. df.sum(level=1) should use df.groupby(level=1).sum().
   learning_df = pd.get_dummies(learning_stacked).sum(level=0)
 </pre></div>
 </div>
@@ -1490,7 +1495,7 @@ no number after the comma.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.10597412]), 0.8999725037827608)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.10165209]), 0.9715353850335235)
 </pre></div>
 </div>
 </div>
@@ -1538,7 +1543,7 @@ plt.scatter(tips_X_test,tips_y_pred, color=&#39;blue&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6e0f76dca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fcaa90c4310&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-24_32_1.png" src="../_images/2022-10-24_32_1.png" />
@@ -1578,7 +1583,7 @@ one then take the average.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3768652065747453
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8914622521787356
 </pre></div>
 </div>
 </div>
@@ -1591,7 +1596,7 @@ one then take the average.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.17339899717647
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9441727872475121
 </pre></div>
 </div>
 </div>
@@ -1604,7 +1609,7 @@ one then take the average.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7971132796055656
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6790919978988561
 </pre></div>
 </div>
 </div>
@@ -1630,7 +1635,7 @@ one then take the average.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4000524403947685
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47183146695736544
 </pre></div>
 </div>
 </div>
@@ -1675,7 +1680,7 @@ g.map(sns.scatterplot, &quot;x&quot;, &quot;y&quot;,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6e0f641a60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcaa8fe6700&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-24_44_1.png" src="../_images/2022-10-24_44_1.png" />
@@ -1689,7 +1694,7 @@ g.map(sns.scatterplot, &quot;x&quot;, &quot;y&quot;,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4000524403947685
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47183146695736544
 </pre></div>
 </div>
 </div>
