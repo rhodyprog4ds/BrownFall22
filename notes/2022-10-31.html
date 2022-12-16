@@ -928,7 +928,7 @@ sns.pairplot(data =df, hue=&#39;true_cluster&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f51357fa970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7efec4816940&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-10-31_3_1.png" src="../_images/2022-10-31_3_1.png" />
@@ -967,33 +967,33 @@ sns.pairplot(data =df, hue=&#39;true_cluster&#39;)
   <tbody>
     <tr>
       <th>0</th>
-      <td>6.50</td>
-      <td>6.88</td>
+      <td>5.82</td>
+      <td>6.47</td>
       <td>D</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.26</td>
-      <td>2.40</td>
-      <td>A</td>
+      <td>1.92</td>
+      <td>6.14</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>6.12</td>
-      <td>5.63</td>
-      <td>D</td>
+      <td>1.79</td>
+      <td>5.53</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>6.93</td>
-      <td>2.93</td>
-      <td>C</td>
+      <td>1.71</td>
+      <td>2.14</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6.26</td>
-      <td>6.39</td>
-      <td>D</td>
+      <td>6.42</td>
+      <td>1.83</td>
+      <td>C</td>
     </tr>
   </tbody>
 </table>
@@ -1012,10 +1012,10 @@ mu0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.61, 1.76, &#39;C&#39;],
-       [1.88, 2.06, &#39;A&#39;],
-       [6.47, 2.6, &#39;C&#39;],
-       [1.65, 1.86, &#39;A&#39;]], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.26, 5.58, &#39;B&#39;],
+       [1.6, 5.99, &#39;B&#39;],
+       [5.61, 6.68, &#39;D&#39;],
+       [1.55, 6.37, &#39;B&#39;]], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -1031,18 +1031,18 @@ first by taking the difference, squaring it, then summing along each row.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">165</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
 <span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">use_numexpr</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="c1"># error: &quot;None&quot; not callable</span>
 <span class="ne">--&gt; </span><span class="mi">241</span>         <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
 <span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">70</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
@@ -1057,23 +1057,23 @@ first by taking the difference, squaring it, then summing along each row.</p>
 <span class="nn">Cell In[5], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[((</span><span class="n">df</span><span class="o">-</span><span class="n">mu_i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu_i</span> <span class="ow">in</span> <span class="n">mu0</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">72</span> <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__sub__&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7587</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">maybe_prepare_scalar_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],))</span>
 <span class="g g-Whitespace">   </span><span class="mi">7589</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">align_method_FRAME</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">flex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">7591</span> <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_frame_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7592</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7624</span>     <span class="c1"># TODO: The previous assertion `assert right._indexed_same(self)`</span>
 <span class="g g-Whitespace">   </span><span class="mi">7625</span>     <span class="c1">#  fails in cases with empty columns reached via</span>
 <span class="g g-Whitespace">   </span><span class="mi">7626</span>     <span class="c1">#  _frame_arith_method_with_reindex</span>
@@ -1094,28 +1094,28 @@ first by taking the difference, squaring it, then summing along each row.</p>
 <span class="g g-Whitespace">   </span><span class="mi">7642</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">7643</span>     <span class="c1"># axis=1 means we want to operate row-by-row</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1582</span> <span class="k">def</span> <span class="nf">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">BlockManager</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockManager</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1583</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="sd">     Apply array_op blockwise with another (aligned) BlockManager.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1586</span>     <span class="k">return</span> <span class="n">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
 <span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">res_blks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Block</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">,</span> <span class="n">locs</span><span class="p">,</span> <span class="n">left_ea</span><span class="p">,</span> <span class="n">right_ea</span><span class="p">,</span> <span class="n">rblk</span> <span class="ow">in</span> <span class="n">_iter_block_pairs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">63</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">array_op</span><span class="p">(</span><span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="k">if</span> <span class="n">left_ea</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right_ea</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">res_values</span><span class="p">,</span> <span class="s2">&quot;reshape&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">res_values</span> <span class="o">=</span> <span class="n">res_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># error: Argument 1 to &quot;_na_arithmetic_op&quot; has incompatible type</span>
 <span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="c1"># &quot;Union[ExtensionArray, ndarray[Any, Any]]&quot;; expected &quot;ndarray[Any, Any]&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">226</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
 <span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">return</span> <span class="n">res_values</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cmp</span> <span class="ow">and</span> <span class="p">(</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_object_dtype</span><span class="p">(</span><span class="n">right</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="c1"># For object dtype, fallback to a masked operation (only operating</span>
@@ -1126,7 +1126,7 @@ first by taking the difference, squaring it, then summing along each row.</p>
 <span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="k">raise</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
@@ -1150,18 +1150,18 @@ corresponding mean. We can stack these into one DataFrame.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">165</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
 <span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">use_numexpr</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="c1"># error: &quot;None&quot; not callable</span>
 <span class="ne">--&gt; </span><span class="mi">241</span>         <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
 <span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">70</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
@@ -1176,23 +1176,23 @@ corresponding mean. We can stack these into one DataFrame.</p>
 <span class="nn">Cell In[6], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).head</span><span class="nt">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">72</span> <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__sub__&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7587</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">maybe_prepare_scalar_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],))</span>
 <span class="g g-Whitespace">   </span><span class="mi">7589</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">align_method_FRAME</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">flex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">7591</span> <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_frame_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7592</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7624</span>     <span class="c1"># TODO: The previous assertion `assert right._indexed_same(self)`</span>
 <span class="g g-Whitespace">   </span><span class="mi">7625</span>     <span class="c1">#  fails in cases with empty columns reached via</span>
 <span class="g g-Whitespace">   </span><span class="mi">7626</span>     <span class="c1">#  _frame_arith_method_with_reindex</span>
@@ -1213,28 +1213,28 @@ corresponding mean. We can stack these into one DataFrame.</p>
 <span class="g g-Whitespace">   </span><span class="mi">7642</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">7643</span>     <span class="c1"># axis=1 means we want to operate row-by-row</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1582</span> <span class="k">def</span> <span class="nf">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">BlockManager</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockManager</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1583</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="sd">     Apply array_op blockwise with another (aligned) BlockManager.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1586</span>     <span class="k">return</span> <span class="n">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
 <span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">res_blks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Block</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">,</span> <span class="n">locs</span><span class="p">,</span> <span class="n">left_ea</span><span class="p">,</span> <span class="n">right_ea</span><span class="p">,</span> <span class="n">rblk</span> <span class="ow">in</span> <span class="n">_iter_block_pairs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">63</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">array_op</span><span class="p">(</span><span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="k">if</span> <span class="n">left_ea</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right_ea</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">res_values</span><span class="p">,</span> <span class="s2">&quot;reshape&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">res_values</span> <span class="o">=</span> <span class="n">res_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># error: Argument 1 to &quot;_na_arithmetic_op&quot; has incompatible type</span>
 <span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="c1"># &quot;Union[ExtensionArray, ndarray[Any, Any]]&quot;; expected &quot;ndarray[Any, Any]&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">226</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
 <span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">return</span> <span class="n">res_values</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cmp</span> <span class="ow">and</span> <span class="p">(</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_object_dtype</span><span class="p">(</span><span class="n">right</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="c1"># For object dtype, fallback to a masked operation (only operating</span>
@@ -1245,7 +1245,7 @@ corresponding mean. We can stack these into one DataFrame.</p>
 <span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="k">raise</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
@@ -1269,18 +1269,18 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">165</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
 <span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">use_numexpr</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="c1"># error: &quot;None&quot; not callable</span>
 <span class="ne">--&gt; </span><span class="mi">241</span>         <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
 <span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">70</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
@@ -1295,23 +1295,23 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <span class="nn">Cell In[7], line 1,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="nn">----&gt; 1 pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin(axis=1).head</span><span class="nt">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">72</span> <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__sub__&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7587</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">maybe_prepare_scalar_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],))</span>
 <span class="g g-Whitespace">   </span><span class="mi">7589</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">align_method_FRAME</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">flex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">7591</span> <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_frame_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7592</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7624</span>     <span class="c1"># TODO: The previous assertion `assert right._indexed_same(self)`</span>
 <span class="g g-Whitespace">   </span><span class="mi">7625</span>     <span class="c1">#  fails in cases with empty columns reached via</span>
 <span class="g g-Whitespace">   </span><span class="mi">7626</span>     <span class="c1">#  _frame_arith_method_with_reindex</span>
@@ -1332,28 +1332,28 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <span class="g g-Whitespace">   </span><span class="mi">7642</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">7643</span>     <span class="c1"># axis=1 means we want to operate row-by-row</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1582</span> <span class="k">def</span> <span class="nf">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">BlockManager</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockManager</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1583</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="sd">     Apply array_op blockwise with another (aligned) BlockManager.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1586</span>     <span class="k">return</span> <span class="n">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
 <span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">res_blks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Block</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">,</span> <span class="n">locs</span><span class="p">,</span> <span class="n">left_ea</span><span class="p">,</span> <span class="n">right_ea</span><span class="p">,</span> <span class="n">rblk</span> <span class="ow">in</span> <span class="n">_iter_block_pairs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">63</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">array_op</span><span class="p">(</span><span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="k">if</span> <span class="n">left_ea</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right_ea</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">res_values</span><span class="p">,</span> <span class="s2">&quot;reshape&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">res_values</span> <span class="o">=</span> <span class="n">res_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># error: Argument 1 to &quot;_na_arithmetic_op&quot; has incompatible type</span>
 <span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="c1"># &quot;Union[ExtensionArray, ndarray[Any, Any]]&quot;; expected &quot;ndarray[Any, Any]&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">226</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
 <span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">return</span> <span class="n">res_values</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cmp</span> <span class="ow">and</span> <span class="p">(</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_object_dtype</span><span class="p">(</span><span class="n">right</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="c1"># For object dtype, fallback to a masked operation (only operating</span>
@@ -1364,7 +1364,7 @@ minimum across each row and returns the index (location) of that minimum.</p>
 <span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="k">raise</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
@@ -1388,18 +1388,18 @@ df.head()
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:165,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">165</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:241,</span> in <span class="ni">evaluate</span><span class="nt">(op, a, b, use_numexpr)</span>
 <span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">if</span> <span class="n">use_numexpr</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="c1"># error: &quot;None&quot; not callable</span>
 <span class="ne">--&gt; </span><span class="mi">241</span>         <span class="k">return</span> <span class="n">_evaluate</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
 <span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">return</span> <span class="n">_evaluate_standard</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">op_str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/computation/expressions.py:70,</span> in <span class="ni">_evaluate_standard</span><span class="nt">(op, op_str, a, b)</span>
 <span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">_store_test_result</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">70</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
@@ -1416,23 +1416,23 @@ df.head()
 <span class="nn">----&gt; 1 df[&#39;0&#39;] = pd.concat([((df-mu_i)**2).sum(axis=1) for mu_i</span> in <span class="ni">mu0],axis=1).idxmin</span><span class="nt">(axis=1)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/common.py:72,</span> in <span class="ni">_unpack_zerodim_and_defer.&lt;locals&gt;.new_method</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">72</span> <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/arraylike.py:110,</span> in <span class="ni">OpsMixin.__sub__</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="nd">@unpack_zerodim_and_defer</span><span class="p">(</span><span class="s2">&quot;__sub__&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arith_method</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7591,</span> in <span class="ni">DataFrame._arith_method</span><span class="nt">(self, other, op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7587</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">maybe_prepare_scalar_for_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],))</span>
 <span class="g g-Whitespace">   </span><span class="mi">7589</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">align_method_FRAME</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">flex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">7591</span> <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch_frame_op</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7592</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:7630,</span> in <span class="ni">DataFrame._dispatch_frame_op</span><span class="nt">(self, right, func, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7624</span>     <span class="c1"># TODO: The previous assertion `assert right._indexed_same(self)`</span>
 <span class="g g-Whitespace">   </span><span class="mi">7625</span>     <span class="c1">#  fails in cases with empty columns reached via</span>
 <span class="g g-Whitespace">   </span><span class="mi">7626</span>     <span class="c1">#  _frame_arith_method_with_reindex</span>
@@ -1453,28 +1453,28 @@ df.head()
 <span class="g g-Whitespace">   </span><span class="mi">7642</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">7643</span>     <span class="c1"># axis=1 means we want to operate row-by-row</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/managers.py:1586,</span> in <span class="ni">BlockManager.operate_blockwise</span><span class="nt">(self, other, array_op)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1582</span> <span class="k">def</span> <span class="nf">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">BlockManager</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockManager</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1583</span>     <span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1584</span><span class="sd">     Apply array_op blockwise with another (aligned) BlockManager.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1585</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1586</span>     <span class="k">return</span> <span class="n">operate_blockwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">array_op</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/ops.py:63,</span> in <span class="ni">operate_blockwise</span><span class="nt">(left, right, array_op)</span>
 <span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">res_blks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Block</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">,</span> <span class="n">locs</span><span class="p">,</span> <span class="n">left_ea</span><span class="p">,</span> <span class="n">right_ea</span><span class="p">,</span> <span class="n">rblk</span> <span class="ow">in</span> <span class="n">_iter_block_pairs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">63</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">array_op</span><span class="p">(</span><span class="n">lvals</span><span class="p">,</span> <span class="n">rvals</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="k">if</span> <span class="n">left_ea</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">right_ea</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">res_values</span><span class="p">,</span> <span class="s2">&quot;reshape&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">65</span>         <span class="n">res_values</span> <span class="o">=</span> <span class="n">res_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:226,</span> in <span class="ni">arithmetic_op</span><span class="nt">(left, right, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">_bool_arith_check</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="c1"># error: Argument 1 to &quot;_na_arithmetic_op&quot; has incompatible type</span>
 <span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="c1"># &quot;Union[ExtensionArray, ndarray[Any, Any]]&quot;; expected &quot;ndarray[Any, Any]&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">226</span>     <span class="n">res_values</span> <span class="o">=</span> <span class="n">_na_arithmetic_op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
 <span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">return</span> <span class="n">res_values</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:172,</span> in <span class="ni">_na_arithmetic_op</span><span class="nt">(left, right, op, is_cmp)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cmp</span> <span class="ow">and</span> <span class="p">(</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_object_dtype</span><span class="p">(</span><span class="n">right</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">168</span>         <span class="c1"># For object dtype, fallback to a masked operation (only operating</span>
@@ -1485,7 +1485,7 @@ df.head()
 <span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="k">raise</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/ops/array_ops.py:110,</span> in <span class="ni">_masked_arith_op</span><span class="nt">(x, y, op)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="c1"># See GH#5284, GH#5035, GH#19448 for historical reference</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
 <span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">result</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">xrav</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">yrav</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
@@ -1546,7 +1546,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>                 <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">732</span> <span class="k">def</span> <span class="nf">scatterplot</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">734</span>     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1558,7 +1558,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_hue</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">hue_norm</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">745</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_size</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">size_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">size_norm</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="p">{},</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">530</span> 
 <span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="c1"># TODO this is messy, we want the mapping to be agnostic about</span>
@@ -1570,7 +1570,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="ne">--&gt; </span><span class="mi">538</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="bp">self</span><span class="o">.</span><span class="n">legend</span> <span class="o">=</span> <span class="n">legend</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="c1"># var_ordered is relevant only for categorical axis variables, and may</span>
 <span class="g g-Whitespace">    </span><span class="mi">636</span> <span class="c1"># be better handled by an internal axis information object that tracks</span>
 <span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># such information and is set up by the scale_* methods. The analogous</span>
@@ -1582,7 +1582,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="c1"># Create the mapping function</span>
 <span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">map_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">701</span>     <span class="n">plot_data</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables_longform</span><span class="p">(</span>
@@ -1591,7 +1591,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">plot_data</span>
 <span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">933</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">934</span> 
 <span class="g g-Whitespace">    </span><span class="mi">935</span>     <span class="c1"># This looks like a column name but we don&#39;t know what it means!</span>
@@ -1628,7 +1628,7 @@ mu1
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mu1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)[</span><span class="n">data_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mu1</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:8399,</span> in <span class="ni">DataFrame.groupby</span><span class="nt">(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, dropna)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:8399,</span> in <span class="ni">DataFrame.groupby</span><span class="nt">(self, by, axis, level, as_index, sort, group_keys, squeeze, observed, dropna)</span>
 <span class="g g-Whitespace">   </span><span class="mi">8396</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;You have to supply one of &#39;by&#39; and &#39;level&#39;&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">8397</span> <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_axis_number</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">8399</span> <span class="k">return</span> <span class="n">DataFrameGroupBy</span><span class="p">(</span>
@@ -1644,7 +1644,7 @@ mu1
 <span class="g g-Whitespace">   </span><span class="mi">8409</span>     <span class="n">dropna</span><span class="o">=</span><span class="n">dropna</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">8410</span> <span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/groupby/groupby.py:959,</span> in <span class="ni">GroupBy.__init__</span><span class="nt">(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, mutated, dropna)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/groupby/groupby.py:959,</span> in <span class="ni">GroupBy.__init__</span><span class="nt">(self, obj, keys, axis, level, grouper, exclusions, selection, as_index, sort, group_keys, squeeze, observed, mutated, dropna)</span>
 <span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">if</span> <span class="n">grouper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">957</span>     <span class="kn">from</span> <span class="nn">pandas.core.groupby.grouper</span> <span class="kn">import</span> <span class="n">get_grouper</span>
 <span class="ne">--&gt; </span><span class="mi">959</span>     <span class="n">grouper</span><span class="p">,</span> <span class="n">exclusions</span><span class="p">,</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">get_grouper</span><span class="p">(</span>
@@ -1660,7 +1660,7 @@ mu1
 <span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
 <span class="g g-Whitespace">    </span><span class="mi">971</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_get_axis_number</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/groupby/grouper.py:888,</span> in <span class="ni">get_grouper</span><span class="nt">(obj, key, axis, level, sort, observed, mutated, validate, dropna)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/groupby/grouper.py:888,</span> in <span class="ni">get_grouper</span><span class="nt">(obj, key, axis, level, sort, observed, mutated, validate, dropna)</span>
 <span class="g g-Whitespace">    </span><span class="mi">886</span>         <span class="n">in_axis</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">gpr</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">gpr</span><span class="p">,</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">888</span>         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">gpr</span><span class="p">)</span>
@@ -1694,7 +1694,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>                 <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">732</span> <span class="k">def</span> <span class="nf">scatterplot</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">734</span>     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1706,7 +1706,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_hue</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">hue_norm</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">745</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_size</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">size_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">size_norm</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="p">{},</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">530</span> 
 <span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="c1"># TODO this is messy, we want the mapping to be agnostic about</span>
@@ -1718,7 +1718,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="ne">--&gt; </span><span class="mi">538</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="bp">self</span><span class="o">.</span><span class="n">legend</span> <span class="o">=</span> <span class="n">legend</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="c1"># var_ordered is relevant only for categorical axis variables, and may</span>
 <span class="g g-Whitespace">    </span><span class="mi">636</span> <span class="c1"># be better handled by an internal axis information object that tracks</span>
 <span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># such information and is set up by the scale_* methods. The analogous</span>
@@ -1730,7 +1730,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="c1"># Create the mapping function</span>
 <span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">map_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">701</span>     <span class="n">plot_data</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables_longform</span><span class="p">(</span>
@@ -1739,7 +1739,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">plot_data</span>
 <span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">933</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">934</span> 
 <span class="g g-Whitespace">    </span><span class="mi">935</span>     <span class="c1"># This looks like a column name but we don&#39;t know what it means!</span>
@@ -1798,7 +1798,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>                 <span class="n">palette</span><span class="o">=</span><span class="n">cmap_mu</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sfig</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:742,</span> in <span class="ni">scatterplot</span><span class="nt">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">732</span> <span class="k">def</span> <span class="nf">scatterplot</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">734</span>     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1810,7 +1810,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_hue</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">hue_norm</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">745</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_size</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">size_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">size_norm</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/relational.py:538,</span> in <span class="ni">_ScatterPlotter.__init__</span><span class="nt">(self, data, variables, legend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="p">{},</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">530</span> 
 <span class="g g-Whitespace">    </span><span class="mi">531</span>     <span class="c1"># TODO this is messy, we want the mapping to be agnostic about</span>
@@ -1822,7 +1822,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="ne">--&gt; </span><span class="mi">538</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="bp">self</span><span class="o">.</span><span class="n">legend</span> <span class="o">=</span> <span class="n">legend</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="c1"># var_ordered is relevant only for categorical axis variables, and may</span>
 <span class="g g-Whitespace">    </span><span class="mi">636</span> <span class="c1"># be better handled by an internal axis information object that tracks</span>
 <span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># such information and is set up by the scale_* methods. The analogous</span>
@@ -1834,7 +1834,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="c1"># Create the mapping function</span>
 <span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">map_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
 <span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
 <span class="ne">--&gt; </span><span class="mi">701</span>     <span class="n">plot_data</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables_longform</span><span class="p">(</span>
@@ -1843,7 +1843,7 @@ sns.scatterplot(data=mu_df, x=&#39;x0&#39;,y=&#39;x1&#39;,hue=&#39;class&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">plot_data</span>
 <span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">933</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">934</span> 
 <span class="g g-Whitespace">    </span><span class="mi">935</span>     <span class="c1"># This looks like a column name but we don&#39;t know what it means!</span>
@@ -1916,7 +1916,7 @@ n_iter = i
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">mu_df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:721,</span> in <span class="ni">DataFrame.__init__</span><span class="nt">(self, data, index, columns, dtype, copy)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:721,</span> in <span class="ni">DataFrame.__init__</span><span class="nt">(self, data, index, columns, dtype, copy)</span>
 <span class="g g-Whitespace">    </span><span class="mi">711</span>         <span class="n">mgr</span> <span class="o">=</span> <span class="n">dict_to_mgr</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">712</span>             <span class="c1"># error: Item &quot;ndarray&quot; of &quot;Union[ndarray, Series, Index]&quot; has no</span>
 <span class="g g-Whitespace">    </span><span class="mi">713</span>             <span class="c1"># attribute &quot;name&quot;</span>
@@ -1935,7 +1935,7 @@ n_iter = i
 <span class="g g-Whitespace">    </span><span class="mi">730</span> <span class="c1"># For data is list-like, or Iterable (will consume into list)</span>
 <span class="g g-Whitespace">    </span><span class="mi">731</span> <span class="k">elif</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/construction.py:349,</span> in <span class="ni">ndarray_to_mgr</span><span class="nt">(values, index, columns, dtype, copy, typ)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/construction.py:349,</span> in <span class="ni">ndarray_to_mgr</span><span class="nt">(values, index, columns, dtype, copy, typ)</span>
 <span class="g g-Whitespace">    </span><span class="mi">344</span> <span class="c1"># _prep_ndarraylike ensures that values.ndim == 2 at this point</span>
 <span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">_get_axes</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
@@ -1944,7 +1944,7 @@ n_iter = i
 <span class="g g-Whitespace">    </span><span class="mi">351</span> <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/internals/construction.py:420,</span> in <span class="ni">_check_values_indices_shape_match</span><span class="nt">(values, index, columns)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/internals/construction.py:420,</span> in <span class="ni">_check_values_indices_shape_match</span><span class="nt">(values, index, columns)</span>
 <span class="g g-Whitespace">    </span><span class="mi">418</span> <span class="n">passed</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span>
 <span class="g g-Whitespace">    </span><span class="mi">419</span> <span class="n">implied</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span>
 <span class="ne">--&gt; </span><span class="mi">420</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of passed values is </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">, indices imply </span><span class="si">{</span><span class="n">implied</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>

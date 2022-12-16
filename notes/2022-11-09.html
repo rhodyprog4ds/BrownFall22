@@ -999,7 +999,7 @@ params_dt = {&#39;criterion&#39;:[&#39;gini&#39;,&#39;entropy&#39;],&#39;max_dep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1052,10 +1052,10 @@ dt_5cv_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.001844</td>
-      <td>0.000234</td>
-      <td>0.001225</td>
-      <td>0.000118</td>
+      <td>0.003019</td>
+      <td>0.000766</td>
+      <td>0.002755</td>
+      <td>0.001108</td>
       <td>gini</td>
       <td>2</td>
       <td>2</td>
@@ -1071,10 +1071,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>0.001680</td>
-      <td>0.000069</td>
-      <td>0.001147</td>
-      <td>0.000011</td>
+      <td>0.002635</td>
+      <td>0.000198</td>
+      <td>0.001756</td>
+      <td>0.000147</td>
       <td>gini</td>
       <td>2</td>
       <td>4</td>
@@ -1090,10 +1090,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001654</td>
-      <td>0.000010</td>
-      <td>0.001150</td>
-      <td>0.000014</td>
+      <td>0.002498</td>
+      <td>0.000238</td>
+      <td>0.001822</td>
+      <td>0.000129</td>
       <td>gini</td>
       <td>2</td>
       <td>6</td>
@@ -1109,10 +1109,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001638</td>
-      <td>0.000014</td>
-      <td>0.001146</td>
-      <td>0.000012</td>
+      <td>0.002365</td>
+      <td>0.000130</td>
+      <td>0.001803</td>
+      <td>0.000055</td>
       <td>gini</td>
       <td>2</td>
       <td>8</td>
@@ -1128,10 +1128,10 @@ dt_5cv_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001637</td>
-      <td>0.000014</td>
-      <td>0.001141</td>
-      <td>0.000016</td>
+      <td>0.002628</td>
+      <td>0.000191</td>
+      <td>0.001834</td>
+      <td>0.000159</td>
       <td>gini</td>
       <td>2</td>
       <td>10</td>
@@ -1185,7 +1185,7 @@ dt_5cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d8343970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f35af83c6d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_25_1.png" src="../_images/2022-11-09_25_1.png" />
@@ -1318,7 +1318,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d5900a30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f356f1d2e80&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_32_1.png" src="../_images/2022-11-09_32_1.png" />
@@ -1334,7 +1334,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f76d7c101c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f3572551100&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-09_34_1.png" src="../_images/2022-11-09_34_1.png" />
@@ -1349,7 +1349,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1361,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 2}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;criterion&#39;: &#39;gini&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 2}
 </pre></div>
 </div>
 </div>
@@ -1386,7 +1386,7 @@ dt_cv_df.head()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9473684210526315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9736842105263158
 </pre></div>
 </div>
 </div>
@@ -1435,7 +1435,7 @@ from sklearn.model_selection import LeaveOneOut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 16, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;entropy&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;min_samples_leaf&#39;: 6, &#39;max_depth&#39;: 4, &#39;criterion&#39;: &#39;gini&#39;}
 </pre></div>
 </div>
 </div>

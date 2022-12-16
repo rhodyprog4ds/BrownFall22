@@ -1289,14 +1289,14 @@ a smoothed out histogram.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/indexes/base.py:3803,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/indexes/base.py:3803,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3802</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3803</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
 <span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
@@ -1310,14 +1310,14 @@ a smoothed out histogram.</p>
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">robusta_df</span><span class="p">[</span><span class="s1">&#39;Aftertaste&#39;</span><span class="p">,</span><span class="s1">&#39;Mouthfeel&#39;</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/frame.py:3805,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/frame.py:3805,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">3804</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">3805</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3803</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
@@ -1449,7 +1449,7 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7bf9c1c5b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1dc959fd90&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_28_1.png" src="../_images/2022-09-21_28_1.png" />
@@ -1457,75 +1457,15 @@ Getting started with seaborn is the simplest, so we’ll use that.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data = robusta_df, x=&#39;Moutfeel&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data = robusta_df, x=&#39;Mouthfeel&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">robusta_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Moutfeel&#39;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/distributions.py:2125,</span> in <span class="ni">displot</span><span class="nt">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2111</span> <span class="k">def</span> <span class="nf">displot</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2112</span>     <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2113</span>     <span class="c1"># Vector variables</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2122</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2123</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2125</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">_DistributionFacetPlotter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2126</span>         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2127</span>         <span class="n">variables</span><span class="o">=</span><span class="n">_DistributionFacetPlotter</span><span class="o">.</span><span class="n">get_semantics</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
-<span class="g g-Whitespace">   </span><span class="mi">2128</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2130</span>     <span class="n">p</span><span class="o">.</span><span class="n">map_hue</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">hue_norm</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2132</span>     <span class="n">_check_argument</span><span class="p">(</span><span class="s2">&quot;kind&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="s2">&quot;ecdf&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/distributions.py:113,</span> in <span class="ni">_DistributionPlotter.__init__</span><span class="nt">(self, data, variables)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="n">variables</span><span class="o">=</span><span class="p">{},</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">113</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:640,</span> in <span class="ni">VectorPlotter.__init__</span><span class="nt">(self, data, variables)</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="c1"># var_ordered is relevant only for categorical axis variables, and may</span>
-<span class="g g-Whitespace">    </span><span class="mi">636</span> <span class="c1"># be better handled by an internal axis information object that tracks</span>
-<span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># such information and is set up by the scale_* methods. The analogous</span>
-<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="c1"># information for numeric axes would be information about log scales.</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_ordered</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>  <span class="c1"># alt., used DefaultDict</span>
-<span class="ne">--&gt; </span><span class="mi">640</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_variables</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_semantic_mappings</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span> 
-<span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="c1"># Create the mapping function</span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">map_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">map</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:701,</span> in <span class="ni">VectorPlotter.assign_variables</span><span class="nt">(self, data, variables)</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">701</span>     <span class="n">plot_data</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables_longform</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span>         <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">variables</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">plot_data</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/seaborn/_oldcore.py:938,</span> in <span class="ni">VectorPlotter._assign_variables_longform</span><span class="nt">(self, data, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">933</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span> 
-<span class="g g-Whitespace">    </span><span class="mi">935</span>     <span class="c1"># This looks like a column name but we don&#39;t know what it means!</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Could not interpret value `</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">` for parameter `</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">`&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">938</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">940</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">941</span> 
-<span class="g g-Whitespace">    </span><span class="mi">942</span>     <span class="c1"># Otherwise, assume the value is itself data</span>
-<span class="g g-Whitespace">    </span><span class="mi">943</span> 
-<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="c1"># Raise when data object is present and a vector can&#39;t matched</span>
-<span class="g g-Whitespace">    </span><span class="mi">945</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
-
-<span class="ne">ValueError</span>: Could not interpret value `Moutfeel` for parameter `x`
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1dc943cdf0&gt;
 </pre></div>
 </div>
+<img alt="../_images/2022-09-21_29_1.png" src="../_images/2022-09-21_29_1.png" />
 </div>
 </div>
 <p>to plot these together with seaborn we have to transform the DataFrame, so we will see that next year.</p>
@@ -1586,7 +1526,7 @@ line.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7bf9288610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1dc9114460&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_37_1.png" src="../_images/2022-09-21_37_1.png" />
@@ -1602,7 +1542,7 @@ line.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7bef225c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1dc50d36d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-09-21_39_1.png" src="../_images/2022-09-21_39_1.png" />

@@ -916,12 +916,12 @@ sv_df = pd.DataFrame(svm_opt.cv_results_)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.976190
-std       0.005525
-min       0.966667
-25%       0.975000
+mean      0.972619
+std       0.006052
+min       0.958333
+25%       0.968750
 50%       0.975000
-75%       0.981250
+75%       0.975000
 max       0.983333
 Name: mean_test_score, dtype: float64
 </pre></div>
@@ -936,13 +936,13 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.951296
-std       0.004311
-min       0.950000
+mean      0.948611
+std       0.003364
+min       0.933333
 25%       0.950000
 50%       0.950000
 75%       0.950000
-max       0.966667
+max       0.950000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -968,7 +968,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fed9d819130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f59c9bc9a30&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1010,7 +1010,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">svm_opt</span><span class="o">.</span><span class="n">predict_proba</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/_available_if.py:32,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/utils/_available_if.py:32,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
 <span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">attr_err</span> <span class="o">=</span> <span class="ne">AttributeError</span><span class="p">(</span>
 <span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="sa">f</span><span class="s2">&quot;This </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">owner</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span><span class="si">}</span><span class="s2"> has no attribute </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="p">)</span>
@@ -1021,7 +1021,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 <span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="k">raise</span> <span class="n">attr_err</span>
 <span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">MethodType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:363,</span> in <span class="ni">_estimator_has.&lt;locals&gt;.check</span><span class="nt">(self)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:363,</span> in <span class="ni">_estimator_has.&lt;locals&gt;.check</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="n">_check_refit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">361</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;best_estimator_&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="c1"># raise an AttributeError if `attr` does not exist</span>
@@ -1029,7 +1029,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 <span class="g g-Whitespace">    </span><span class="mi">364</span>     <span class="k">return</span> <span class="kc">True</span>
 <span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="c1"># raise an AttributeError if `attr` does not exist</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/utils/_available_if.py:32,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/utils/_available_if.py:32,</span> in <span class="ni">_AvailableIfDescriptor.__get__</span><span class="nt">(self, obj, owner)</span>
 <span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">attr_err</span> <span class="o">=</span> <span class="ne">AttributeError</span><span class="p">(</span>
 <span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="sa">f</span><span class="s2">&quot;This </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">owner</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span><span class="si">}</span><span class="s2"> has no attribute </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attribute_name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="p">)</span>
@@ -1040,7 +1040,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 <span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="k">raise</span> <span class="n">attr_err</span>
 <span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">MethodType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.15/x64/lib/python3.9/site-packages/sklearn/svm/_base.py:829,</span> in <span class="ni">BaseSVC._check_proba</span><span class="nt">(self)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/svm/_base.py:829,</span> in <span class="ni">BaseSVC._check_proba</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">827</span> <span class="k">def</span> <span class="nf">_check_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">828</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">probability</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">829</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
@@ -1095,7 +1095,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9666666666666666, 0.9833333333333334)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.95, 0.9833333333333334)
 </pre></div>
 </div>
 </div>
@@ -1107,7 +1107,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9345490587118275, 0.9987842746215057)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9110047011380431, 0.9889952988619568)
 </pre></div>
 </div>
 </div>
@@ -1120,7 +1120,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9565101872533032, 0.97682314608003)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9376686037557244, 0.9623313962442755)
 </pre></div>
 </div>
 </div>
@@ -1152,7 +1152,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9333333333333333
 </pre></div>
 </div>
 </div>
