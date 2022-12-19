@@ -916,13 +916,13 @@ sv_df = pd.DataFrame(svm_opt.cv_results_)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    14.000000
-mean      0.972619
-std       0.006052
-min       0.958333
-25%       0.968750
-50%       0.975000
-75%       0.975000
-max       0.983333
+mean      0.978571
+std       0.012957
+min       0.950000
+25%       0.975000
+50%       0.983333
+75%       0.983333
+max       1.000000
 Name: mean_test_score, dtype: float64
 </pre></div>
 </div>
@@ -936,12 +936,12 @@ Name: mean_test_score, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    90.000000
-mean      0.948611
-std       0.003364
-min       0.933333
-25%       0.950000
-50%       0.950000
-75%       0.950000
+mean      0.928333
+std       0.007474
+min       0.925000
+25%       0.925000
+50%       0.925000
+75%       0.925000
 max       0.950000
 Name: mean_test_score, dtype: float64
 </pre></div>
@@ -968,7 +968,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f59c9bc9a30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f58fc6197f0&gt;
 </pre></div>
 </div>
 <img alt="../_images/2022-11-16_8_1.png" src="../_images/2022-11-16_8_1.png" />
@@ -1095,7 +1095,7 @@ sns.lmplot(data=sv_df, x=&#39;mean_fit_time&#39;,y=&#39;mean_test_score&#39;,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.95, 0.9833333333333334)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.95, 1.0)
 </pre></div>
 </div>
 </div>

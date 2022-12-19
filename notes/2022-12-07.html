@@ -898,33 +898,37 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  9.27638D-01    |proj g|=  2.96053D-01
+At iterate    0    f=  9.49026D-01    |proj g|=  3.44085D-01
 
-At iterate    1    f=  7.22079D-01    |proj g|=  1.27676D-01
+At iterate    1    f=  5.61527D-01    |proj g|=  2.17973D-01
 
-At iterate    2    f=  6.26349D-01    |proj g|=  2.88916D-01
+At iterate    2    f=  2.23455D-01    |proj g|=  2.48238D-01
 
-At iterate    3    f=  1.44610D-01    |proj g|=  2.00641D-01
+At iterate    3    f=  1.35028D-01    |proj g|=  1.56897D-01
 
-At iterate    4    f=  6.73029D-02    |proj g|=  5.36426D-02
+At iterate    4    f=  5.87469D-02    |proj g|=  3.54584D-02
 
-At iterate    5    f=  6.05111D-02    |proj g|=  4.31353D-02
+At iterate    5    f=  5.46840D-02    |proj g|=  1.70278D-02
 
-At iterate    6    f=  5.21699D-02    |proj g|=  3.41343D-02
+At iterate    6    f=  5.16642D-02    |proj g|=  1.69448D-02
 
-At iterate    7    f=  5.08609D-02    |proj g|=  1.40614D-02
+At iterate    7    f=  4.93204D-02    |proj g|=  9.51965D-03
 
-At iterate    8    f=  5.01135D-02    |proj g|=  1.47073D-02
+At iterate    8    f=  4.89048D-02    |proj g|=  2.27246D-03
 
-At iterate    9    f=  4.81050D-02    |proj g|=  1.18256D-03
+At iterate    9    f=  4.88100D-02    |proj g|=  2.48116D-03
 
-At iterate   10    f=  4.79315D-02    |proj g|=  1.60484D-03
+At iterate   10    f=  4.87317D-02    |proj g|=  4.07073D-03
 
-At iterate   11    f=  4.79146D-02    |proj g|=  7.75983D-04
+At iterate   11    f=  4.83841D-02    |proj g|=  7.89417D-03
 
-At iterate   12    f=  4.79131D-02    |proj g|=  2.05608D-04
+At iterate   12    f=  4.80705D-02    |proj g|=  7.04623D-03
 
-At iterate   13    f=  4.79131D-02    |proj g|=  1.64368D-05
+At iterate   13    f=  4.79119D-02    |proj g|=  6.37820D-04
+
+At iterate   14    f=  4.79079D-02    |proj g|=  2.04161D-04
+
+At iterate   15    f=  4.79076D-02    |proj g|=  1.89477D-05
 
            * * *
 
@@ -939,8 +943,8 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    5     13     16      1     0     0   1.644D-05   4.791D-02
-  F =   4.7913056172735773E-002
+    5     15     17      1     0     0   1.895D-05   4.791D-02
+  F =   4.7907579755803981E-002
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
 </pre></div>
@@ -986,7 +990,7 @@ plt.plot(x_logistic,y_logistic)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa90cd54ee0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6bae498d90&gt;]
 </pre></div>
 </div>
 <img alt="../_images/2022-12-07_6_1.png" src="../_images/2022-12-07_6_1.png" />
@@ -999,9 +1003,9 @@ plt.plot(x_logistic,y_logistic)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 2.18897869],
-        [-0.0629934 ]]),
- array([[6.00347136]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-5.09240727],
+        [ 0.14657141]]),
+ array([[-2.57999695]])]
 </pre></div>
 </div>
 </div>
@@ -1013,7 +1017,7 @@ plt.plot(x_logistic,y_logistic)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([2.17008584]), array([-7.3322406])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([-1.28067162]), array([2.38983359])]
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1036,7 @@ plt.plot(x_logistic,y_logistic)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00027402]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00027438]])
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1048,7 @@ plt.plot(x_logistic,y_logistic)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9.99725976e-01, 2.74023827e-04]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9.99725625e-01, 2.74375013e-04]])
 </pre></div>
 </div>
 </div>
@@ -1086,7 +1090,7 @@ output_neuron(hidden_neuron(pt))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00027402]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00027438]])
 </pre></div>
 </div>
 </div>
@@ -1123,37 +1127,25 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  1.00507D+00    |proj g|=  6.91413D-01
+At iterate    0    f=  1.09992D+00    |proj g|=  4.72148D-01
 
-At iterate    1    f=  7.24064D-01    |proj g|=  1.26054D-01
+At iterate    1    f=  7.07077D-01    |proj g|=  1.62252D-01
 
-At iterate    2    f=  7.02643D-01    |proj g|=  9.71629D-02
+At iterate    2    f=  6.56854D-01    |proj g|=  1.29450D-01
 
-At iterate    3    f=  6.48079D-01    |proj g|=  1.23334D-01
+At iterate    3    f=  5.35261D-01    |proj g|=  1.39745D-01
 
-At iterate    4    f=  5.85546D-01    |proj g|=  1.03255D-01
+At iterate    4    f=  4.55790D-01    |proj g|=  9.59028D-02
 
-At iterate    5    f=  5.38210D-01    |proj g|=  7.49660D-02
+At iterate    5    f=  4.42499D-01    |proj g|=  4.61647D-02
 
-At iterate    6    f=  4.69527D-01    |proj g|=  5.27961D-02
+At iterate    6    f=  4.35963D-01    |proj g|=  1.22149D-02
 
-At iterate    7    f=  4.43802D-01    |proj g|=  1.82083D-02
+At iterate    7    f=  4.34971D-01    |proj g|=  1.02479D-02
 
-At iterate    8    f=  4.36883D-01    |proj g|=  4.76529D-02
+At iterate    8    f=  4.34672D-01    |proj g|=  2.89817D-03
 
-At iterate    9    f=  4.35128D-01    |proj g|=  1.46930D-02
-
-At iterate   10    f=  4.34781D-01    |proj g|=  3.13988D-03
-
-At iterate   11    f=  4.34726D-01    |proj g|=  1.98761D-03
-
-At iterate   12    f=  4.34681D-01    |proj g|=  1.18053D-03
-
-At iterate   13    f=  4.34661D-01    |proj g|=  3.46672D-04
-
-At iterate   14    f=  4.34661D-01    |proj g|=  1.47563D-04
-
-At iterate   15    f=  4.34661D-01    |proj g|=  4.59630D-05
+At iterate    9    f=  4.34656D-01    |proj g|=  9.79952D-05
 
            * * *
 
@@ -1168,8 +1160,8 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-    7     15     17      1     0     0   4.596D-05   4.347D-01
-  F =  0.43466053526886511     
+    7      9     10      1     0     0   9.800D-05   4.347D-01
+  F =  0.43465631975902269     
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
 </pre></div>
@@ -1191,7 +1183,94 @@ sns.pairplot(df,hue=&#39;y&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa90ccb6b20&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">,</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/axisgrid.py:2148,</span> in <span class="ni">pairplot</span><span class="nt">(data, hue, hue_order, palette, vars, x_vars, y_vars, kind, diag_kind, markers, height, aspect, corner, dropna, plot_kws, diag_kws, grid_kws, size)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2146</span>     <span class="n">diag_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;fill&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span>     <span class="n">diag_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;warn_singular&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2148</span>     <span class="n">grid</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">kdeplot</span><span class="p">,</span> <span class="o">**</span><span class="n">diag_kws</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2150</span> <span class="c1"># Maybe plot on the off-diagonals</span>
+<span class="g g-Whitespace">   </span><span class="mi">2151</span> <span class="k">if</span> <span class="n">diag_kind</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/axisgrid.py:1507,</span> in <span class="ni">PairGrid.map_diag</span><span class="nt">(self, func, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1505</span>     <span class="n">plot_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;hue_order&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hue_order</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1506</span>     <span class="n">plot_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;palette&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_palette</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1507</span>     <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vector</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1508</span>     <span class="n">ax</span><span class="o">.</span><span class="n">legend_</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1510</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_axis_labels</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/distributions.py:1717,</span> in <span class="ni">kdeplot</span><span class="nt">(data, x, y, hue, weights, palette, hue_order, hue_norm, color, fill, multiple, common_norm, common_grid, cumulative, bw_method, bw_adjust, warn_singular, log_scale, levels, thresh, gridsize, cut, clip, legend, cbar, cbar_ax, cbar_kws, ax, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1713</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">univariate</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1715</span>     <span class="n">plot_kws</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1717</span>     <span class="n">p</span><span class="o">.</span><span class="n">plot_univariate_density</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1718</span>         <span class="n">multiple</span><span class="o">=</span><span class="n">multiple</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1719</span>         <span class="n">common_norm</span><span class="o">=</span><span class="n">common_norm</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1720</span>         <span class="n">common_grid</span><span class="o">=</span><span class="n">common_grid</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1721</span>         <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1722</span>         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1723</span>         <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1724</span>         <span class="n">warn_singular</span><span class="o">=</span><span class="n">warn_singular</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1725</span>         <span class="n">estimate_kws</span><span class="o">=</span><span class="n">estimate_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1726</span>         <span class="o">**</span><span class="n">plot_kws</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1727</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1729</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1731</span>     <span class="n">p</span><span class="o">.</span><span class="n">plot_bivariate_density</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1732</span>         <span class="n">common_norm</span><span class="o">=</span><span class="n">common_norm</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1733</span>         <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/seaborn/distributions.py:996,</span> in <span class="ni">_DistributionPlotter.plot_univariate_density</span><span class="nt">(self, multiple, common_norm, common_grid, warn_singular, fill, color, legend, estimate_kws, **plot_kws)</span>
+<span class="g g-Whitespace">    </span><span class="mi">993</span> <span class="k">if</span> <span class="s2">&quot;x&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">995</span>     <span class="k">if</span> <span class="n">fill</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">996</span>         <span class="n">artist</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">support</span><span class="p">,</span> <span class="n">fill_from</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="o">**</span><span class="n">artist_kws</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">998</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">999</span>         <span class="n">artist</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">support</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="o">**</span><span class="n">artist_kws</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/__init__.py:1423,</span> in <span class="ni">_preprocess_data.&lt;locals&gt;.inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1420</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1421</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1422</span>     <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1423</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1425</span>     <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1426</span>     <span class="n">auto_label</span> <span class="o">=</span> <span class="p">(</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1427</span>                   <span class="ow">or</span> <span class="n">bound</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/axes/_axes.py:5367,</span> in <span class="ni">Axes.fill_between</span><span class="nt">(self, x, y1, y2, where, interpolate, step, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5365</span> <span class="k">def</span> <span class="nf">fill_between</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">5366</span>                  <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">5367</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fill_between_x_or_y</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5368</span>         <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">5369</span>         <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/axes/_axes.py:5272,</span> in <span class="ni">Axes._fill_between_x_or_y</span><span class="nt">(self, ind_dir, ind, dep1, dep2, where, interpolate, step, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5268</span>         <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;facecolor&quot;</span><span class="p">]</span> <span class="o">=</span> \
+<span class="g g-Whitespace">   </span><span class="mi">5269</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_get_patches_for_fill</span><span class="o">.</span><span class="n">get_next_color</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">5271</span> <span class="c1"># Handle united data, such as dates</span>
+<span class="ne">-&gt; </span><span class="mi">5272</span> <span class="n">ind</span><span class="p">,</span> <span class="n">dep1</span><span class="p">,</span> <span class="n">dep2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5273</span>     <span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_unit_info</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5274</span>         <span class="p">[(</span><span class="n">ind_dir</span><span class="p">,</span> <span class="n">ind</span><span class="p">),</span> <span class="p">(</span><span class="n">dep_dir</span><span class="p">,</span> <span class="n">dep1</span><span class="p">),</span> <span class="p">(</span><span class="n">dep_dir</span><span class="p">,</span> <span class="n">dep2</span><span class="p">)],</span> <span class="n">kwargs</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">5276</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">array</span> <span class="ow">in</span> <span class="p">[</span>
+<span class="g g-Whitespace">   </span><span class="mi">5277</span>         <span class="p">(</span><span class="n">ind_dir</span><span class="p">,</span> <span class="n">ind</span><span class="p">),</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dep_dir</span><span class="si">}</span><span class="s2">1&quot;</span><span class="p">,</span> <span class="n">dep1</span><span class="p">),</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dep_dir</span><span class="si">}</span><span class="s2">2&quot;</span><span class="p">,</span> <span class="n">dep2</span><span class="p">)]:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5278</span>     <span class="k">if</span> <span class="n">array</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/numpy/ma/core.py:2360,</span> in <span class="ni">masked_invalid</span><span class="nt">(a, copy)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2332</span> <span class="k">def</span> <span class="nf">masked_invalid</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2333</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2334</span><span class="sd">     Mask an array where invalid values occur (NaNs or infs).</span>
+<span class="g g-Whitespace">   </span><span class="mi">2335</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2357</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2358</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2360</span>     <span class="k">return</span> <span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">getdata</span><span class="p">(</span><span class="n">a</span><span class="p">))),</span> <span class="n">a</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: ufunc &#39;isfinite&#39; not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule &#39;&#39;safe&#39;&#39;
 </pre></div>
 </div>
 <img alt="../_images/2022-12-07_15_1.png" src="../_images/2022-12-07_15_1.png" />
@@ -1210,8 +1289,8 @@ output_neuron_4d(hidden_neuron_4d(pt_4d))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.95357206],
-       [0.85328168]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.95368234],
+       [0.85341629]])
 </pre></div>
 </div>
 </div>
@@ -1223,8 +1302,8 @@ output_neuron_4d(hidden_neuron_4d(pt_4d))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.04642794, 0.95357206],
-       [0.14671832, 0.85328168]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.04631766, 0.95368234],
+       [0.14658371, 0.85341629]])
 </pre></div>
 </div>
 </div>
@@ -1257,135 +1336,95 @@ Machine precision = 2.220D-16
 
 At X0         0 variables are exactly at the bounds
 
-At iterate    0    f=  7.48402D-01    |proj g|=  1.44529D-01
+At iterate    0    f=  7.20888D-01    |proj g|=  1.14613D-01
 
-At iterate    1    f=  7.32771D-01    |proj g|=  1.63955D-01
+At iterate    1    f=  6.98452D-01    |proj g|=  1.70132D-01
 
-At iterate    2    f=  6.71721D-01    |proj g|=  4.58335D-02
+At iterate    2    f=  6.41600D-01    |proj g|=  5.27035D-02
 
-At iterate    3    f=  6.57524D-01    |proj g|=  3.22687D-02
+At iterate    3    f=  6.11212D-01    |proj g|=  3.83964D-02
 
-At iterate    4    f=  5.95723D-01    |proj g|=  1.15532D-01
+At iterate    4    f=  5.33058D-01    |proj g|=  6.24294D-02
 
-At iterate    5    f=  5.53113D-01    |proj g|=  1.16816D-01
+At iterate    5    f=  4.89226D-01    |proj g|=  3.18379D-02
 
-At iterate    6    f=  4.94423D-01    |proj g|=  5.36933D-02
+At iterate    6    f=  4.42492D-01    |proj g|=  4.31905D-02
 
-At iterate    7    f=  4.64138D-01    |proj g|=  2.62419D-02
+At iterate    7    f=  4.17392D-01    |proj g|=  4.84905D-02
 
-At iterate    8    f=  4.52036D-01    |proj g|=  2.82306D-02
+At iterate    8    f=  3.67460D-01    |proj g|=  5.52345D-02
 
-At iterate    9    f=  4.41899D-01    |proj g|=  2.49683D-02
+At iterate    9    f=  3.14579D-01    |proj g|=  3.25247D-02
 
-At iterate   10    f=  4.28884D-01    |proj g|=  2.50437D-02
+At iterate   10    f=  2.52326D-01    |proj g|=  2.24289D-02
 
-At iterate   11    f=  4.15333D-01    |proj g|=  2.67376D-02
+At iterate   11    f=  2.11570D-01    |proj g|=  1.57131D-02
 
-At iterate   12    f=  3.91025D-01    |proj g|=  6.67845D-02
+At iterate   12    f=  1.81655D-01    |proj g|=  4.10451D-02
 
-At iterate   13    f=  3.48141D-01    |proj g|=  6.56161D-02
+At iterate   13    f=  1.56813D-01    |proj g|=  1.80140D-02
 
-At iterate   14    f=  2.90592D-01    |proj g|=  4.00328D-02
+At iterate   14    f=  1.42557D-01    |proj g|=  7.38595D-03
 
-At iterate   15    f=  2.57073D-01    |proj g|=  1.96296D-02
+At iterate   15    f=  1.30541D-01    |proj g|=  6.45148D-03
 
-At iterate   16    f=  2.30290D-01    |proj g|=  2.03543D-02
+At iterate   16    f=  1.11885D-01    |proj g|=  1.28641D-02
 
-At iterate   17    f=  1.93595D-01    |proj g|=  2.69101D-02
+At iterate   17    f=  1.05062D-01    |proj g|=  1.69399D-02
 
-At iterate   18    f=  1.83605D-01    |proj g|=  1.17806D-02
+At iterate   18    f=  9.82387D-02    |proj g|=  7.45985D-03
 
-At iterate   19    f=  1.78629D-01    |proj g|=  1.06858D-02
+At iterate   19    f=  9.37223D-02    |proj g|=  3.78335D-03
 
-At iterate   20    f=  1.52387D-01    |proj g|=  1.36082D-02
+At iterate   20    f=  8.74574D-02    |proj g|=  7.84794D-03
 
-At iterate   21    f=  1.48902D-01    |proj g|=  1.23860D-02
+At iterate   21    f=  8.39474D-02    |proj g|=  4.05436D-03
 
-At iterate   22    f=  1.04953D-01    |proj g|=  1.94467D-02
+At iterate   22    f=  8.13119D-02    |proj g|=  2.29872D-03
 
-At iterate   23    f=  9.15070D-02    |proj g|=  1.18111D-02
+At iterate   23    f=  7.93656D-02    |proj g|=  1.60631D-03
 
-At iterate   24    f=  7.69375D-02    |proj g|=  6.02877D-03
+At iterate   24    f=  7.79915D-02    |proj g|=  4.68177D-03
 
-At iterate   25    f=  6.74473D-02    |proj g|=  4.48090D-03
+At iterate   25    f=  7.70839D-02    |proj g|=  7.56809D-04
 
-At iterate   26    f=  5.98518D-02    |proj g|=  2.74886D-02
+At iterate   26    f=  7.69030D-02    |proj g|=  7.54387D-04
 
-At iterate   27    f=  5.38457D-02    |proj g|=  6.48849D-03
+At iterate   27    f=  7.66387D-02    |proj g|=  8.74487D-04
 
-At iterate   28    f=  5.24730D-02    |proj g|=  4.49837D-03
+At iterate   28    f=  7.64532D-02    |proj g|=  6.09387D-04
 
-At iterate   29    f=  5.03970D-02    |proj g|=  2.85453D-03
+At iterate   29    f=  7.63519D-02    |proj g|=  4.11102D-04
 
-At iterate   30    f=  4.94019D-02    |proj g|=  2.82674D-03
+At iterate   30    f=  7.62942D-02    |proj g|=  3.08257D-04
 
-At iterate   31    f=  4.74816D-02    |proj g|=  2.62452D-03
+At iterate   31    f=  7.62340D-02    |proj g|=  1.04018D-03
 
-At iterate   32    f=  4.53397D-02    |proj g|=  3.64234D-03
+At iterate   32    f=  7.61571D-02    |proj g|=  5.19864D-04
 
-At iterate   33    f=  3.76050D-02    |proj g|=  8.34422D-03
+At iterate   33    f=  7.61211D-02    |proj g|=  2.40876D-04
 
-At iterate   34    f=  3.25982D-02    |proj g|=  4.90510D-03
+At iterate   34    f=  7.60574D-02    |proj g|=  2.03304D-04
 
-At iterate   35    f=  3.12822D-02    |proj g|=  5.95120D-03
+At iterate   35    f=  7.59933D-02    |proj g|=  2.60982D-04
 
-At iterate   36    f=  2.83838D-02    |proj g|=  1.49536D-03
+At iterate   36    f=  7.59474D-02    |proj g|=  1.09094D-03
 
-At iterate   37    f=  2.77624D-02    |proj g|=  1.07353D-03
+At iterate   37    f=  7.58613D-02    |proj g|=  4.72727D-04
 
-At iterate   38    f=  2.73685D-02    |proj g|=  1.45339D-03
+At iterate   38    f=  7.58086D-02    |proj g|=  8.44053D-04
 
-At iterate   39    f=  2.70763D-02    |proj g|=  8.91333D-04
+At iterate   39    f=  7.57364D-02    |proj g|=  3.88693D-04
 
-At iterate   40    f=  2.69589D-02    |proj g|=  6.44613D-04
+At iterate   40    f=  7.56902D-02    |proj g|=  2.34561D-04
 
-At iterate   41    f=  2.68469D-02    |proj g|=  5.35566D-04
+At iterate   41    f=  7.56345D-02    |proj g|=  3.19095D-04
 
-At iterate   42    f=  2.66477D-02    |proj g|=  6.26149D-04
+At iterate   42    f=  7.55799D-02    |proj g|=  3.72708D-04
 
-At iterate   43    f=  2.60032D-02    |proj g|=  6.13412D-04
+At iterate   43    f=  7.55439D-02    |proj g|=  3.02874D-04
 
-At iterate   44    f=  2.59511D-02    |proj g|=  9.13475D-04
-
-At iterate   45    f=  2.57459D-02    |proj g|=  5.68192D-04
-
-At iterate   46    f=  2.54335D-02    |proj g|=  6.54003D-04
-
-At iterate   47    f=  2.50512D-02    |proj g|=  8.85647D-04
-
-At iterate   48    f=  2.48165D-02    |proj g|=  3.89644D-03
-
-At iterate   49    f=  2.45840D-02    |proj g|=  9.70792D-04
-
-At iterate   50    f=  2.42424D-02    |proj g|=  4.75576D-04
-
-At iterate   51    f=  2.41910D-02    |proj g|=  7.99096D-04
-
-At iterate   52    f=  2.39473D-02    |proj g|=  7.21812D-04
-
-At iterate   53    f=  2.36424D-02    |proj g|=  9.27023D-04
-
-At iterate   54    f=  2.31099D-02    |proj g|=  8.11922D-04
-
-At iterate   55    f=  2.30499D-02    |proj g|=  6.79327D-04
-
-At iterate   56    f=  2.29126D-02    |proj g|=  9.12937D-04
-
-At iterate   57    f=  2.28598D-02    |proj g|=  9.54616D-04
-
-At iterate   58    f=  2.28045D-02    |proj g|=  3.59032D-04
-
-At iterate   59    f=  2.27943D-02    |proj g|=  1.96553D-04
-
-At iterate   60    f=  2.27820D-02    |proj g|=  1.34601D-04
-
-At iterate   61    f=  2.27679D-02    |proj g|=  2.07258D-04
-
-At iterate   62    f=  2.27514D-02    |proj g|=  1.42863D-04
-
-At iterate   63    f=  2.27462D-02    |proj g|=  2.18080D-04
-
-At iterate   64    f=  2.27403D-02    |proj g|=  7.70120D-05
+At iterate   44    f=  7.55327D-02    |proj g|=  9.15878D-05
 
            * * *
 
@@ -1400,8 +1439,8 @@ F     = final function value
            * * *
 
    N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
-   25     64     79      1     0     0   7.701D-05   2.274D-02
-  F =   2.2740255571144920E-002
+   25     44     48      1     0     0   9.159D-05   7.553D-02
+  F =   7.5532676171159607E-002
 
 CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL            
 </pre></div>
@@ -1409,7 +1448,7 @@ CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> This problem is unconstrained.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.94
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.92
 </pre></div>
 </div>
 </div>
@@ -1440,8 +1479,8 @@ output_neuron_4d_4h = lambda x: aritificial_neuron_template(logistic_activation,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.84268761],
-       [0.99943736]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.9999897 ],
+       [0.99999976]])
 </pre></div>
 </div>
 </div>
@@ -1453,8 +1492,8 @@ output_neuron_4d_4h = lambda x: aritificial_neuron_template(logistic_activation,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.57312387e-01, 8.42687613e-01],
-       [5.62641551e-04, 9.99437358e-01]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.03043359e-05, 9.99989696e-01],
+       [2.41212960e-07, 9.99999759e-01]])
 </pre></div>
 </div>
 </div>

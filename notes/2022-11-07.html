@@ -1016,7 +1016,7 @@ each section gets used for testing.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 1.        , 1.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.96666667, 0.96666667, 0.9       , 0.93333333, 1.        ])
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1030,7 @@ to get a single estimate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9666666666666668
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
 </pre></div>
 </div>
 </div>
@@ -1043,7 +1043,7 @@ to get a single estimate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.96
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9533333333333334
 </pre></div>
 </div>
 </div>
@@ -1398,10 +1398,10 @@ dt_opt = GridSearchCV(dt,param_grid)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00248384, 0.00226445, 0.00218172, 0.00227914]),
- &#39;std_fit_time&#39;: array([2.45826274e-04, 7.81866676e-05, 1.68667447e-04, 2.07384292e-04]),
- &#39;mean_score_time&#39;: array([0.00166922, 0.00161395, 0.0016356 , 0.00162659]),
- &#39;std_score_time&#39;: array([0.00021888, 0.00018549, 0.00013297, 0.00026021]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00185766, 0.001791  , 0.00178885, 0.00179324]),
+ &#39;std_fit_time&#39;: array([1.59000176e-04, 2.61296321e-05, 1.73072840e-05, 2.34260540e-05]),
+ &#39;mean_score_time&#39;: array([0.00122561, 0.0011929 , 0.00116849, 0.00119224]),
+ &#39;std_score_time&#39;: array([6.78506939e-05, 2.81352511e-05, 1.85231443e-05, 3.18513659e-05]),
  &#39;param_max_depth&#39;: masked_array(data=[2, 3, 4, 5],
               mask=[False, False, False, False],
         fill_value=&#39;?&#39;,
@@ -1413,10 +1413,10 @@ dt_opt = GridSearchCV(dt,param_grid)
  &#39;split0_test_score&#39;: array([0.93333333, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split1_test_score&#39;: array([0.96666667, 0.96666667, 0.96666667, 0.96666667]),
  &#39;split2_test_score&#39;: array([0.9       , 0.93333333, 0.9       , 0.9       ]),
- &#39;split3_test_score&#39;: array([0.86666667, 0.93333333, 0.93333333, 1.        ]),
+ &#39;split3_test_score&#39;: array([0.86666667, 0.93333333, 0.93333333, 0.96666667]),
  &#39;split4_test_score&#39;: array([1., 1., 1., 1.]),
- &#39;mean_test_score&#39;: array([0.93333333, 0.96      , 0.95333333, 0.96666667]),
- &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03399346, 0.03651484]),
+ &#39;mean_test_score&#39;: array([0.93333333, 0.96      , 0.95333333, 0.96      ]),
+ &#39;std_test_score&#39;: array([0.04714045, 0.02494438, 0.03399346, 0.03265986]),
  &#39;rank_test_score&#39;: array([4, 2, 3, 1], dtype=int32)}
 </pre></div>
 </div>
@@ -1467,10 +1467,10 @@ dt_opt = GridSearchCV(dt,param_grid)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002484</td>
-      <td>0.000246</td>
-      <td>0.001669</td>
-      <td>0.000219</td>
+      <td>0.001858</td>
+      <td>0.000159</td>
+      <td>0.001226</td>
+      <td>0.000068</td>
       <td>2</td>
       <td>{'max_depth': 2}</td>
       <td>0.933333</td>
@@ -1484,10 +1484,10 @@ dt_opt = GridSearchCV(dt,param_grid)
     </tr>
     <tr>
       <th>1</th>
-      <td>0.002264</td>
-      <td>0.000078</td>
-      <td>0.001614</td>
-      <td>0.000185</td>
+      <td>0.001791</td>
+      <td>0.000026</td>
+      <td>0.001193</td>
+      <td>0.000028</td>
       <td>3</td>
       <td>{'max_depth': 3}</td>
       <td>0.966667</td>
@@ -1501,10 +1501,10 @@ dt_opt = GridSearchCV(dt,param_grid)
     </tr>
     <tr>
       <th>2</th>
-      <td>0.002182</td>
-      <td>0.000169</td>
-      <td>0.001636</td>
-      <td>0.000133</td>
+      <td>0.001789</td>
+      <td>0.000017</td>
+      <td>0.001168</td>
+      <td>0.000019</td>
       <td>4</td>
       <td>{'max_depth': 4}</td>
       <td>0.966667</td>
@@ -1518,19 +1518,19 @@ dt_opt = GridSearchCV(dt,param_grid)
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002279</td>
-      <td>0.000207</td>
-      <td>0.001627</td>
-      <td>0.000260</td>
+      <td>0.001793</td>
+      <td>0.000023</td>
+      <td>0.001192</td>
+      <td>0.000032</td>
       <td>5</td>
       <td>{'max_depth': 5}</td>
       <td>0.966667</td>
       <td>0.966667</td>
       <td>0.900000</td>
-      <td>1.000000</td>
-      <td>1.0</td>
       <td>0.966667</td>
-      <td>0.036515</td>
+      <td>1.0</td>
+      <td>0.960000</td>
+      <td>0.032660</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1623,6 +1623,20 @@ km_opt = GridSearchCV(km,param_grid)
   warnings.warn(
 /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
@@ -1632,22 +1646,6 @@ km_opt = GridSearchCV(km,param_grid)
 /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
 /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
 /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
   warnings.warn(
@@ -1711,10 +1709,10 @@ km_opt = GridSearchCV(km,param_grid)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.010315</td>
-      <td>0.001068</td>
-      <td>0.001635</td>
-      <td>0.000064</td>
+      <td>0.007247</td>
+      <td>0.002357</td>
+      <td>0.001162</td>
+      <td>0.000065</td>
       <td>2</td>
       <td>{'n_clusters': 2}</td>
       <td>-13.417292</td>
@@ -1728,27 +1726,27 @@ km_opt = GridSearchCV(km,param_grid)
     </tr>
     <tr>
       <th>1</th>
-      <td>0.014362</td>
-      <td>0.000781</td>
-      <td>0.001641</td>
-      <td>0.000158</td>
+      <td>0.008210</td>
+      <td>0.000141</td>
+      <td>0.001154</td>
+      <td>0.000030</td>
       <td>3</td>
       <td>{'n_clusters': 3}</td>
       <td>-9.062000</td>
       <td>-14.931959</td>
       <td>-18.932342</td>
       <td>-23.708943</td>
-      <td>-19.008131</td>
-      <td>-17.128675</td>
-      <td>4.898618</td>
+      <td>-19.554577</td>
+      <td>-17.237964</td>
+      <td>4.945204</td>
       <td>5</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.017187</td>
-      <td>0.000782</td>
-      <td>0.001635</td>
-      <td>0.000054</td>
+      <td>0.009823</td>
+      <td>0.000376</td>
+      <td>0.001202</td>
+      <td>0.000036</td>
       <td>4</td>
       <td>{'n_clusters': 4}</td>
       <td>-9.062000</td>
@@ -1762,53 +1760,53 @@ km_opt = GridSearchCV(km,param_grid)
     </tr>
     <tr>
       <th>3</th>
-      <td>0.020314</td>
-      <td>0.001239</td>
-      <td>0.001691</td>
-      <td>0.000145</td>
+      <td>0.011454</td>
+      <td>0.000734</td>
+      <td>0.001220</td>
+      <td>0.000014</td>
       <td>5</td>
       <td>{'n_clusters': 5}</td>
       <td>-9.062000</td>
       <td>-10.723786</td>
-      <td>-10.840587</td>
+      <td>-10.996277</td>
       <td>-17.596427</td>
       <td>-15.673617</td>
-      <td>-12.779283</td>
-      <td>3.267533</td>
+      <td>-12.810421</td>
+      <td>3.249602</td>
       <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.021194</td>
-      <td>0.000783</td>
-      <td>0.001560</td>
-      <td>0.000082</td>
+      <td>0.012644</td>
+      <td>0.000161</td>
+      <td>0.001230</td>
+      <td>0.000007</td>
       <td>6</td>
       <td>{'n_clusters': 6}</td>
       <td>-9.062000</td>
-      <td>-7.618046</td>
+      <td>-8.024337</td>
       <td>-10.996277</td>
       <td>-12.698270</td>
-      <td>-11.495341</td>
-      <td>-10.373987</td>
-      <td>1.809060</td>
+      <td>-11.476818</td>
+      <td>-10.451540</td>
+      <td>1.686290</td>
       <td>2</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.023136</td>
-      <td>0.000322</td>
-      <td>0.001680</td>
-      <td>0.000114</td>
+      <td>0.013671</td>
+      <td>0.000281</td>
+      <td>0.001206</td>
+      <td>0.000021</td>
       <td>7</td>
       <td>{'n_clusters': 7}</td>
       <td>-9.062000</td>
-      <td>-6.880162</td>
-      <td>-10.500941</td>
+      <td>-7.158558</td>
+      <td>-9.066973</td>
       <td>-12.183027</td>
       <td>-11.476818</td>
-      <td>-10.020590</td>
-      <td>1.887255</td>
+      <td>-9.789475</td>
+      <td>1.819295</td>
       <td>1</td>
     </tr>
   </tbody>
